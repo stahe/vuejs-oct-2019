@@ -1,0 +1,1237 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introduction au framework VUE.JS par l'exemple">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/vuejs-oct-2019/projet-vuejs-04-directives-v-model-v-bind-attributs-calcules-formulaire-de-saisie.html">
+      
+      
+        <link rel="prev" href="projet-vuejs-03-gestion-des-evenements.html">
+      
+      
+        <link rel="next" href="projet-vuejs-05-directive-v-for.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>6. projet [vuejs-04] : directives [v-model, v-bind], attributs calculés, formulaire de saisie - Introduction au framework VUE.JS par l'exemple</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-projet-vuejs-04-directives-v-model-v-bind-attributs-calcules-formulaire-de-saisie" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introduction au framework VUE.JS par l&#39;exemple" class="md-header__button md-logo" aria-label="Introduction au framework VUE.JS par l'exemple" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introduction au framework VUE.JS par l'exemple
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6. projet [vuejs-04] : directives [v-model, v-bind], attributs calculés, formulaire de saisie
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer au mode sombre"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Passer au mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Passer au mode clair"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Passer au mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/stahe/vuejs-oct-2019" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introduction au framework VUE.JS par l&#39;exemple" class="md-nav__button md-logo" aria-label="Introduction au framework VUE.JS par l'exemple" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introduction au framework VUE.JS par l'exemple
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/stahe/vuejs-oct-2019" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduction-au-framework-vuejs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introduction au framework VUE.JS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="creation-dun-environnement-de-travail.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Création d’un environnement de travail
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-01-les-bases.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. projet [vuejs-01] : les bases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-02-utilisation-du-framework-css-bootstrap.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. projet [vuejs-02] : utilisation du framework CSS Bootstrap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-03-gestion-des-evenements.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. projet [vuejs-03] : gestion des événements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. projet [vuejs-04] : directives [v-model, v-bind], attributs calculés, formulaire de saisie
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="projet-vuejs-04-directives-v-model-v-bind-attributs-calcules-formulaire-de-saisie.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. projet [vuejs-04] : directives [v-model, v-bind], attributs calculés, formulaire de saisie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-le-script-principal-mainjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Le script principal [main.js]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-le-composant-principal-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Le composant principal [App]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-le-composant-form" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3. Le composant [Form]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-execution-du-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4. Exécution du projet
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-05-directive-v-for.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. projet [vuejs-05] : directive [v-for]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-06-mise-en-page-dune-vue-avec-des-slots.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. projet [vuejs-06] : mise en page d’une vue avec des slots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-07-remontee-devenements-dans-la-hierarchie-des-composants.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. projet [vuejs-07] : remontée d’événements dans la hiérarchie des composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-08-evenements-independants-de-la-hierarchie-des-composants-cycle-de-vie-des-composants.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. projet [vuejs-08] : événements indépendants de la hiérarchie des composants, cycle de vie des composants
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-09-utilisation-dun-plugin-eventbus.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. projet [vuejs-09] : utilisation d’un plugin [eventBus]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-10-plugin-dao-requetes-http-asynchrones.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. projet [vuejs-10] : plugin [dao], requêtes HTTP asynchrones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-11-routage-et-navigation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. projet [vuejs-11] : routage et navigation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-12-gestion-des-tables-html.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. projet [vuejs-12] : gestion des tables HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-13-mise-a-jour-dun-composant-utilisation-dune-session.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. projet [vuejs-13] : mise à jour d’un composant, utilisation d’une session
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-14-rendre-la-session-reactive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. projet [vuejs-14] : rendre la session réactive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="projet-vuejs-15-utilisation-du-plugin-vuex.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. projet [vuejs-15] : utilisation du plugin [Vuex]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="client-vuejs-du-serveur-de-calcul-de-limpot.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Client Vue.js du serveur de calcul de l’impôt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ameliorations-du-client-vuejs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. Améliorations du client Vue.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="deploiement-de-lapplication-client--serveur-sur-un-service-dhebergement.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Déploiement de l’application client / serveur sur un service d’hébergement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="6-projet-vuejs-04-directives-v-model-v-bind-attributs-calcules-formulaire-de-saisie">6. projet [vuejs-04] : directives [v-model, v-bind], attributs calculés, formulaire de saisie</h1>
+<p>L’arborescence du projet <strong>[vuejs-04]</strong> est la suivante :</p>
+<p><img src="images/100000000000011F000001009A483751.png" style="width:2.661cm;height:2.371cm;" alt="Image" /></p>
+<h2 id="61-le-script-principal-mainjs">6.1. Le script principal [main.js]</h2>
+<p>C’est le même que dans l’exemple précédent.</p>
+<h2 id="62-le-composant-principal-app">6.2. Le composant principal [App]</h2>
+<p>Le code de <strong>[App.vue]</strong> est le suivant :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">container</span><span class="o">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">card</span><span class="o">&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">      </span><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">présentation</span><span class="w"> </span><span class="o">--&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">row</span><span class="o">&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">        </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">col</span><span class="w"> </span><span class="nx">cols</span><span class="o">=</span><span class="s2">&quot;8&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">          </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">alert</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">variant</span><span class="o">=</span><span class="s2">&quot;success&quot;</span><span class="w"> </span><span class="nx">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">            </span><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="p">[</span><span class="nx">vuejs</span><span class="o">-</span><span class="mo">04</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">directives</span><span class="w"> </span><span class="p">[</span><span class="nx">v</span><span class="o">-</span><span class="nx">model</span><span class="p">,</span><span class="w"> </span><span class="nx">v</span><span class="o">-</span><span class="nx">bind</span><span class="p">],</span><span class="w"> </span><span class="nx">attributs</span><span class="w"> </span><span class="nx">calculés</span><span class="p">,</span><span class="w"> </span><span class="nx">formulaire</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">saisie</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">          </span><span class="o">&lt;</span><span class="err">/b-alert&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">        </span><span class="o">&lt;</span><span class="err">/b-col&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">      </span><span class="o">&lt;</span><span class="err">/b-row&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">Form</span><span class="w"> </span><span class="o">/&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="o">&lt;</span><span class="err">/b-card&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">  </span><span class="o">&lt;</span><span class="err">/b-container&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="o">&lt;</span><span class="err">/template&gt;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">  </span><span class="k">import</span><span class="w"> </span><span class="nx">Form</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./components/Form.vue&quot;</span><span class="p">;</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;app&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">    </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">      </span><span class="nx">Form</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">  </span><span class="p">};</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>Le composant <strong>[App.vue]</strong> utilise le nouveau composant <strong>[Form]</strong> (lignes 12, 19, 24).</p>
+<h2 id="63-le-composant-form">6.3. Le composant [Form]</h2>
+<p>Le code du composant <strong>[Form]</strong> est le suivant :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span>
+<span class="normal"><a href="#__codelineno-1-32">32</a></span>
+<span class="normal"><a href="#__codelineno-1-33">33</a></span>
+<span class="normal"><a href="#__codelineno-1-34">34</a></span>
+<span class="normal"><a href="#__codelineno-1-35">35</a></span>
+<span class="normal"><a href="#__codelineno-1-36">36</a></span>
+<span class="normal"><a href="#__codelineno-1-37">37</a></span>
+<span class="normal"><a href="#__codelineno-1-38">38</a></span>
+<span class="normal"><a href="#__codelineno-1-39">39</a></span>
+<span class="normal"><a href="#__codelineno-1-40">40</a></span>
+<span class="normal"><a href="#__codelineno-1-41">41</a></span>
+<span class="normal"><a href="#__codelineno-1-42">42</a></span>
+<span class="normal"><a href="#__codelineno-1-43">43</a></span>
+<span class="normal"><a href="#__codelineno-1-44">44</a></span>
+<span class="normal"><a href="#__codelineno-1-45">45</a></span>
+<span class="normal"><a href="#__codelineno-1-46">46</a></span>
+<span class="normal"><a href="#__codelineno-1-47">47</a></span>
+<span class="normal"><a href="#__codelineno-1-48">48</a></span>
+<span class="normal"><a href="#__codelineno-1-49">49</a></span>
+<span class="normal"><a href="#__codelineno-1-50">50</a></span>
+<span class="normal"><a href="#__codelineno-1-51">51</a></span>
+<span class="normal"><a href="#__codelineno-1-52">52</a></span>
+<span class="normal"><a href="#__codelineno-1-53">53</a></span>
+<span class="normal"><a href="#__codelineno-1-54">54</a></span>
+<span class="normal"><a href="#__codelineno-1-55">55</a></span>
+<span class="normal"><a href="#__codelineno-1-56">56</a></span>
+<span class="normal"><a href="#__codelineno-1-57">57</a></span>
+<span class="normal"><a href="#__codelineno-1-58">58</a></span>
+<span class="normal"><a href="#__codelineno-1-59">59</a></span>
+<span class="normal"><a href="#__codelineno-1-60">60</a></span>
+<span class="normal"><a href="#__codelineno-1-61">61</a></span>
+<span class="normal"><a href="#__codelineno-1-62">62</a></span>
+<span class="normal"><a href="#__codelineno-1-63">63</a></span>
+<span class="normal"><a href="#__codelineno-1-64">64</a></span>
+<span class="normal"><a href="#__codelineno-1-65">65</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">formulaire</span><span class="w"> </span><span class="o">--&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">form</span><span class="o">&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">      </span><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">éléments</span><span class="w"> </span><span class="nx">du</span><span class="w"> </span><span class="nx">formulaire</span><span class="w"> </span><span class="o">--&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">row</span><span class="o">&gt;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">        </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">col</span><span class="w"> </span><span class="nx">cols</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">          </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">card</span><span class="w"> </span><span class="nx">bg</span><span class="o">-</span><span class="nx">variant</span><span class="o">=</span><span class="s2">&quot;light&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">            </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">group</span><span class="w"> </span><span class="nx">label</span><span class="o">=</span><span class="s2">&quot;Nombre d&#39;enfants à charge&quot;</span><span class="w"> </span><span class="nx">label</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;enfants&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">              </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">input</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">                       </span><span class="nx">id</span><span class="o">=</span><span class="s2">&quot;enfants&quot;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">                       </span><span class="nx">placeholder</span><span class="o">=</span><span class="s2">&quot;Indiquez votre nombre d&#39;enfants&quot;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">                       </span><span class="nx">v</span><span class="o">-</span><span class="nx">model</span><span class="o">=</span><span class="s2">&quot;enfants&quot;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">                       </span><span class="nx">v</span><span class="o">-</span><span class="nx">bind</span><span class="o">:</span><span class="nx">state</span><span class="o">=</span><span class="s2">&quot;enfantsValide&quot;</span><span class="w"> </span><span class="o">/&gt;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">              </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">invalid</span><span class="o">-</span><span class="nx">feedback</span><span class="w"> </span><span class="o">:</span><span class="nx">state</span><span class="o">=</span><span class="s2">&quot;enfantsValide&quot;</span><span class="o">&gt;</span><span class="nx">Vous</span><span class="w"> </span><span class="nx">devez</span><span class="w"> </span><span class="nx">saisir</span><span class="w"> </span><span class="nx">un</span><span class="w"> </span><span class="nx">nombre</span><span class="w"> </span><span class="nx">positif</span><span class="w"> </span><span class="nx">ou</span><span class="w"> </span><span class="nx">nul</span><span class="o">&lt;</span><span class="err">/b-form-invalid-feedback&gt;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">            </span><span class="o">&lt;</span><span class="err">/b-form-group&gt;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">            </span><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">bouton</span><span class="w"> </span><span class="o">--&gt;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">            </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">button</span><span class="w"> </span><span class="nx">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span><span class="w"> </span><span class="o">:</span><span class="nx">disabled</span><span class="o">=</span><span class="s2">&quot;formInvalide&quot;</span><span class="w"> </span><span class="err">@</span><span class="nx">click</span><span class="o">=</span><span class="s2">&quot;doSomething&quot;</span><span class="o">&gt;</span><span class="nx">Valider</span><span class="o">&lt;</span><span class="err">/b-button&gt;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">          </span><span class="o">&lt;</span><span class="err">/b-card&gt;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">        </span><span class="o">&lt;</span><span class="err">/b-col&gt;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">      </span><span class="o">&lt;</span><span class="err">/b-row&gt;</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">    </span><span class="o">&lt;</span><span class="err">/b-form&gt;</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">row</span><span class="w"> </span><span class="kd">class</span><span class="o">=</span><span class="s2">&quot;mt-3&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">col</span><span class="w"> </span><span class="nx">cols</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">        </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">alert</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">variant</span><span class="o">=</span><span class="s2">&quot;warning&quot;</span><span class="w"> </span><span class="nx">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">          </span><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">enfants</span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="nx">enfants</span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">        </span><span class="o">&lt;</span><span class="err">/b-alert&gt;</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="w">      </span><span class="o">&lt;</span><span class="err">/b-col&gt;</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="w">    </span><span class="o">&lt;</span><span class="err">/b-row&gt;</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="w">  </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="o">&lt;</span><span class="err">/template&gt;</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32"></a>
+<a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">script</span><span class="w"> </span><span class="o">--&gt;</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="w">    </span><span class="c1">// nom</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Form&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="w">    </span><span class="c1">// attributs statiques du composant</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="w">        </span><span class="c1">// nbre d&#39;enfants</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42"></a><span class="w">        </span><span class="nx">enfants</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="w">      </span><span class="p">};</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45"></a>
+<a id="__codelineno-1-46" name="__codelineno-1-46"></a><span class="w">    </span><span class="c1">// attributs calculés</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47"></a><span class="w">    </span><span class="nx">computed</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48"></a><span class="w">      </span><span class="c1">// attribut [formInvalide]</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49"></a><span class="w">      </span><span class="nx">formInvalide</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">enfantsValide</span><span class="p">;</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51"></a><span class="w">      </span><span class="p">},</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52"></a><span class="w">      </span><span class="c1">// attribut [enfantsInvalide]</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53"></a><span class="w">      </span><span class="nx">enfantsValide</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">enfants</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^\s*\d+\s*$/</span><span class="p">));</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57"></a><span class="w">    </span><span class="c1">// méthodes</span>
+<a id="__codelineno-1-58" name="__codelineno-1-58"></a><span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59"></a><span class="w">      </span><span class="nx">doSomething</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60"></a><span class="w">        </span><span class="c1">// le nbre d&#39;enfants est connu lorsque la validation a lieu</span>
+<a id="__codelineno-1-61" name="__codelineno-1-61"></a><span class="w">        </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Nombre d&#39;enfants : &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">enfants</span><span class="p">);</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-1-63" name="__codelineno-1-63"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64"></a><span class="w">  </span><span class="p">};</span>
+<a id="__codelineno-1-65" name="__codelineno-1-65"></a><span class="o">&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Rendu visuel</strong></p>
+<p><img src="images/1000000000000610000003F865A73DB8.png" style="width:10.27cm;height:6.721cm;" alt="Image" /></p>
+<p><img src="images/100000000000080C0000037C7B1E4A86.png" style="width:13.63cm;height:5.901cm;" alt="Image" /></p>
+<p><strong>Commentaires</strong></p>
+<ul>
+<li>lignes 4-32 : la balise &lt;b-form&gt; introduit un formulaire Bootstrap ;</li>
+<li>ligne 6 : la balise &lt;b-row&gt; introduit une ligne dans le formulaire ;</li>
+<li>ligne 7 : la balise &lt;b-col cols=’4’&gt; introduit une colonne s’étalant sur 4 colonnes Bootstrap ;</li>
+<li>ligne 8 : la balise &lt;b-card&gt; <strong>[6]</strong> introduit une carte Bootstrap, une zone encadrée par une bordure ;</li>
+<li>ligne 9 : la balise &lt;b-form-group&gt; introduit un groupe d’éléments du formulaire liés entre-eux. Ici un texte (attribut <strong>[label]</strong>) <strong>[1]</strong> est lié à une zone de saisie (attribut <strong>[label-for]</strong>). La valeur de <strong>[label-for]</strong> est la valeur du champ <strong>[id]</strong>, ligne 12, de la zone de saisie ;</li>
+<li>lignes 10-14 : la balise &lt;b-input&gt; <strong>[2]</strong> introduit une zone de saisie :</li>
+<li>ligne 10 : <strong>[type=’text’]</strong> indique qu’on peut taper du texte dans la zone de saisie. On aurait pu écrire <strong>[type=’number’]</strong> avec des contraintes <strong>[min=’val1’ max=’val2’ step=’val3’]</strong> puisqu’on attend un nombre d’enfants. On a mis <strong>[type=’text’]</strong> afin de montrer comment vérifier la validité d’une saisie ;</li>
+<li>ligne 12 : l’attribut <strong>[placeholder]</strong> <strong>[3]</strong> fixe le message affiché dans la zone de saisie tant que l’utilisateur n’a rien saisi ;</li>
+<li>ligne 13 : la directive <strong>[v-model]</strong> associe, de façon <strong>bidirectionnelle</strong> la valeur saisie avec l’attribut <strong>[enfants]</strong>, ligne 42, du composant :</li>
+<li>lorsque la valeur saisie change, alors la valeur de l’attribut <strong>[enfants]</strong> change également ;</li>
+<li>lorsque la valeur de l’attribut <strong>[enfants]</strong> change, alors la valeur saisie change également, ç-à-d que le contenu de <strong>[2]</strong> change ;</li>
+<li>le point important à comprendre est que, grâce au mécanisme précédent, lorsque l’utilisateur clique sur le bouton <strong>[Valider]</strong> <strong>[5]</strong>, l’attribut <strong>[enfants]</strong> de la ligne 42 a pour valeur, la valeur saisie en <strong>[2]</strong> ;</li>
+<li>ligne 14 : la directive <strong>[v-bind]</strong> introduit une liaison entre d’un côté un attribut de la balise &lt;b-input&gt;, ici l’attribut <strong>[state]</strong> avec un attribut du composant, ici <strong>[enfantsValide]</strong>, ligne 53. L’attribut <strong>[enfantsValide]</strong> est particulier en ce sens que c’est une <strong>fonction</strong> qui rend la valeur de l’attribut. On appelle, attribut <strong>calculé</strong>, ce type d’attribut. On trouve les attributs calculés dans la propriété <strong>[computed]</strong>, ligne 47, du composant. Les attributs calculés s’utilisent de la même façon que les attributs statiques de la fonction <strong>[data]</strong> : On n’écrit pas, ligne 14, <strong>[v-bind:state=’enfantsValide()’]</strong> mais <strong>[v-bind:state=’enfantsValide’]</strong>, <strong>sans les parenthèses</strong>. Aussi à la lecture du <strong>[template]</strong>, on ne sait pas distinguer un attribut <strong>calculé</strong> d’un attribut <strong>statique</strong>. Il faut pour cela regarder le code du script du composant ;</li>
+<li>ligne 14 : l’attribut <strong>[state]</strong> va fixer l’état valide / invalide de la valeur saisie : si <strong>[enfantsValide]</strong> rend la valeur <strong>[true]</strong>, la valeur saisie est considérée comme valide, sinon comme invalide. La copie d’écran ci-dessus montre le composant <strong>[b-input]</strong> lorsque la fonction <strong>[enfantsValide]</strong> rend la valeur <strong>[false]</strong> ;</li>
+<li>ligne 15 : la balise &lt;b-form-invalid-feedback&gt; <strong>[4]</strong> permet d’afficher un message lorsque la saisie en <strong>[2]</strong> est invalide. Son attribut <strong>[:state=’enfantsValide’]</strong> est identique à l’attribut <strong>[v-bind:state=’enfantsValide’]</strong> de la ligne 14. On peut omettre la directive <strong>[v-bind]</strong> mais il faut garder le signe <strong>[:]</strong>. Le message d’erreur s’affiche donc lorsque l’attribut <strong>[enfantsValide]</strong> vaut <strong>[false]</strong> ;</li>
+<li>ligne 16 : fin du groupe d’éléments &lt;b-group&gt; ;</li>
+<li>ligne 18 : le bouton <strong>[5]</strong> qui va permettre de valider la saisie :</li>
+<li>il sera bleu <strong>[variant=’primary’]</strong> ;</li>
+<li><strong>[:disabled=&quot;formInvalide&quot;]</strong> : l’attribut <strong>[disabled]</strong> permet de valider / invalider le bouton. Cet attribut est lié (v-bind) à l’attribut calculé <strong>[formInvalide]</strong> de la ligne 49 ;</li>
+<li><strong>[@click=&quot;doSomething&quot;]</strong> : lorsque l’utilisateur cliquera sur le bouton, la méthode <strong>[doSomething]</strong>, ligne 59, sera exécutée ;</li>
+<li>lignes 19-22 : fermeture des différentes balises ouvertes ;</li>
+<li>lignes 23-29 : une nouvelle ligne dans le <strong>[template]</strong>. <strong>[class=’mt-3’]</strong> signifie <strong>[margin (m) top (t) égale à 3 spacers]</strong>. <strong>[spacer]</strong> est une mesure d’espacement de Bootstrap. Cette classe génère l’espacement <strong>[8]</strong> dans la copie d’écran ci-dessus. Sans cette classe, la zone <strong>[7]</strong> est collée à la zone <strong>[1-6]</strong> ;</li>
+<li>ligne 24 : une colonne occupant 4 colonnes Bootstrap ;</li>
+<li>lignes 25-27 : une alerte <strong>[warning]</strong> affichant la valeur de l’attribut statique <strong>[enfants]</strong> (ligne 42). Comme cet attribut a une liaison bidirectionnelle avec la zone de saisie, dès que l’utilisateur modifie celle-ci, la valeur affichée dans l’alerte change également ;</li>
+<li>lignes 34-65 : le code jS du composant ;</li>
+<li>ligne 42 : l’unique attribut statique du composant ;</li>
+<li>lignes 47-56 : les attributs calculés du composant ;</li>
+<li>lignes 53-55 : la saisie est considérée valide si c’est un nombre entier positif éventuellement précédé / suivi par des ‘espaces’ ;</li>
+<li>lignes 49-51 : le formulaire est considéré comme valide si la saisie du nombre d’enfants est valide. En général, un formulaire a plusieurs saisies et est considéré valide si celles-ci sont toutes valides ;</li>
+<li>lignes 58-63 : les méthodes du composant qui réagissent aux événements de celui-ci. Ici, il n’y a qu’un événement : le <strong>[click]</strong> sur le bouton. On se contente d’afficher la valeur saisie pour montrer qu’on a bien accès à celle-ci ;</li>
+</ul>
+<h2 id="64-execution-du-projet">6.4. Exécution du projet</h2>
+<p>On modifie le fichier <strong>[package.json]</strong> et on exécute le projet :</p>
+<p><img src="images/100000000000071700000277ADBDFF0B.png" style="width:14.41cm;height:5.01cm;" alt="Image" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://tahe.developpez.com" target="_blank">
+          https://tahe.developpez.com
+        </a>
+        <br>
+        Ce cours tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
+        <em>Licence Creative Commons Attribution – Pas d’Utilisation Commerciale –
+        Partage dans les Mêmes Conditions 3.0 non transposé</em>.
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
