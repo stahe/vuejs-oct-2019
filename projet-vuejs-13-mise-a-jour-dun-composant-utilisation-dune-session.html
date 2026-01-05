@@ -60,6 +60,20 @@
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // CORRECTION ICI : Utilisation de guillemets doubles pour entourer le titre qui contient une apostrophe
+    var siteName = "Introduction au framework VUE.JS par l'exemple";
+
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+    console.log("[GA Debug] page_title forced to: " + siteName);
+  </script>
 
     
     
@@ -960,7 +974,7 @@
 
 
 <h1 id="15-projet-vuejs-13-mise-a-jour-dun-composant-utilisation-dune-session">15. projet [vuejs-13] : mise à jour d’un composant, utilisation d’une session</h1>
-<p>Le projet <strong>[vuejs-13]</strong> reprend le projet <strong>[vuejs-12]</strong> en amenant la modification suivante : le tableau affiché par la table HTML est défini dans un objet <strong>[session]</strong> connu de tous les composants. C’est donc une façon de partager de l’information entre composants. Ce concept est directement inspiré de la session web. Nous utilisons la méthode du plugin pour rendre disponible cet objet partagé dans un attribut <strong>[Vue.\$session]</strong>.</p>
+<p>Le projet <strong>[vuejs-13]</strong> reprend le projet <strong>[vuejs-12]</strong> en amenant la modification suivante : le tableau affiché par la table HTML est défini dans un objet <strong>[session]</strong> connu de tous les composants. C’est donc une façon de partager de l’information entre composants. Ce concept est directement inspiré de la session web. Nous utilisons la méthode du plugin pour rendre disponible cet objet partagé dans un attribut <strong>[Vue.$session]</strong>.</p>
 <p>L’arborescence du projet est la suivante :</p>
 <p><img src="images/10000000000001AF0000014C57F3066B.png" style="width:3.991cm;height:3.07cm;" alt="Image" /></p>
 <h2 id="151-lobjet-session">15.1. L’objet [session]</h2>
@@ -985,27 +999,27 @@
 <span class="normal"><a href="#__codelineno-0-18">18</a></span>
 <span class="normal"><a href="#__codelineno-0-19">19</a></span>
 <span class="normal"><a href="#__codelineno-0-20">20</a></span>
-<span class="normal"><a href="#__codelineno-0-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="c1">// liste des simulations</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">  </span><span class="nx">get</span><span class="w"> </span><span class="nx">lignes</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_lignes</span><span class="p">;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">  </span><span class="c1">// génération de la liste des simulations</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">  </span><span class="nx">generateLignes</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_lignes</span><span class="w"> </span><span class="o">=</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">      </span><span class="p">[</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">marié</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;oui&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">enfants</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">salaire</span><span class="o">:</span><span class="w"> </span><span class="mf">35000</span><span class="p">,</span><span class="w"> </span><span class="nx">impôt</span><span class="o">:</span><span class="w"> </span><span class="mf">1200</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">marié</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;non&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">enfants</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">salaire</span><span class="o">:</span><span class="w"> </span><span class="mf">35000</span><span class="p">,</span><span class="w"> </span><span class="nx">impôt</span><span class="o">:</span><span class="w"> </span><span class="mf">1900</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">marié</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;non&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">enfants</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">salaire</span><span class="o">:</span><span class="w"> </span><span class="mf">30000</span><span class="p">,</span><span class="w"> </span><span class="nx">impôt</span><span class="o">:</span><span class="w"> </span><span class="mf">2000</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">      </span><span class="p">]</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">  </span><span class="c1">// suppression ligne n° index</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">  </span><span class="nx">deleteLigne</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">_lignes</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">  </span><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">const</span> <span class="n">session</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>  <span class="o">//</span> <span class="n">liste</span> <span class="n">des</span> <span class="n">simulations</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>  <span class="n">get</span> <span class="n">lignes</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">_lignes</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>  <span class="p">},</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>  <span class="o">//</span> <span class="n">génération</span> <span class="n">de</span> <span class="n">la</span> <span class="n">liste</span> <span class="n">des</span> <span class="n">simulations</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>  <span class="n">generateLignes</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="n">this</span><span class="o">.</span><span class="n">_lignes</span> <span class="o">=</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>      <span class="p">[</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>        <span class="p">{</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">marié</span><span class="p">:</span> <span class="s2">&quot;oui&quot;</span><span class="p">,</span> <span class="n">enfants</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">salaire</span><span class="p">:</span> <span class="mi">35000</span><span class="p">,</span> <span class="n">impôt</span><span class="p">:</span> <span class="mi">1200</span> <span class="p">},</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>        <span class="p">{</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">marié</span><span class="p">:</span> <span class="s2">&quot;non&quot;</span><span class="p">,</span> <span class="n">enfants</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">salaire</span><span class="p">:</span> <span class="mi">35000</span><span class="p">,</span> <span class="n">impôt</span><span class="p">:</span> <span class="mi">1900</span> <span class="p">},</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>        <span class="p">{</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="n">marié</span><span class="p">:</span> <span class="s2">&quot;non&quot;</span><span class="p">,</span> <span class="n">enfants</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">salaire</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span> <span class="n">impôt</span><span class="p">:</span> <span class="mi">2000</span> <span class="p">}</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>      <span class="p">]</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>  <span class="p">},</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>  <span class="o">//</span> <span class="n">suppression</span> <span class="n">ligne</span> <span class="n">n</span><span class="err">°</span> <span class="n">index</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>  <span class="n">deleteLigne</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="n">this</span><span class="o">.</span><span class="n">_lignes</span><span class="o">.</span><span class="n">splice</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>  <span class="p">}</span>
 <a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="p">}</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="c1">// export de l&#39;objet [session]</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">session</span><span class="p">;</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="o">//</span> <span class="n">export</span> <span class="n">de</span> <span class="n">l</span><span class="s1">&#39;objet [session]</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="n">export</span> <span class="n">default</span> <span class="n">session</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="152-le-plugin-pluginspluginsession">15.2. Le plugin [./plugins/pluginSession]</h2>
 <p>Le script <strong>[pluginSession]</strong> est le suivant :</p>
@@ -1017,18 +1031,18 @@
 <span class="normal"><a href="#__codelineno-1-6">6</a></span>
 <span class="normal"><a href="#__codelineno-1-7">7</a></span>
 <span class="normal"><a href="#__codelineno-1-8">8</a></span>
-<span class="normal"><a href="#__codelineno-1-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="nx">install</span><span class="p">(</span><span class="nx">Vue</span><span class="p">,</span><span class="w"> </span><span class="nx">session</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="c1">// ajoute une propriété [$session] à la classe vue</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">Vue</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$session&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">      </span><span class="c1">// lorsque Vue.$session est référencé, on rend le 2ième paramètre [session] de la méthode [install]</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">      </span><span class="nx">get</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">session</span><span class="p">,</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="p">})</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">  </span><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-1-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>  <span class="n">install</span><span class="p">(</span><span class="n">Vue</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="o">//</span> <span class="n">ajoute</span> <span class="n">une</span> <span class="n">propriété</span> <span class="p">[</span><span class="err">$</span><span class="n">session</span><span class="p">]</span> <span class="n">à</span> <span class="n">la</span> <span class="n">classe</span> <span class="n">vue</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="n">Object</span><span class="o">.</span><span class="n">defineProperty</span><span class="p">(</span><span class="n">Vue</span><span class="o">.</span><span class="n">prototype</span><span class="p">,</span> <span class="s1">&#39;$session&#39;</span><span class="p">,</span> <span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>      <span class="o">//</span> <span class="n">lorsque</span> <span class="n">Vue</span><span class="o">.</span><span class="err">$</span><span class="n">session</span> <span class="n">est</span> <span class="n">référencé</span><span class="p">,</span> <span class="n">on</span> <span class="n">rend</span> <span class="n">le</span> <span class="mi">2</span><span class="n">ième</span> <span class="n">paramètre</span> <span class="p">[</span><span class="n">session</span><span class="p">]</span> <span class="n">de</span> <span class="n">la</span> <span class="n">méthode</span> <span class="p">[</span><span class="n">install</span><span class="p">]</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>      <span class="n">get</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">session</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="p">})</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>  <span class="p">}</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <ul>
-<li>ligne 4 : l’objet partagé <strong>[session]</strong> sera disponible dans la propriété <strong>[\$session]</strong> de tous les composants ;</li>
+<li>ligne 4 : l’objet partagé <strong>[session]</strong> sera disponible dans la propriété <strong>[$session]</strong> de tous les composants ;</li>
 </ul>
 <h2 id="153-le-script-principal-mainjs">15.3. Le script principal [main.js]</h2>
 <p>Le script principal <strong>[main.js]</strong> est le suivant :</p>
@@ -1084,7 +1098,7 @@
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>lignes 14-16 : le plugin <strong>[pluginSession]</strong> est intégré au framework <strong>[Vue.js]</strong> ;</li>
-<li>après la ligne 16, l’attribut <strong>[\$session]</strong> est disponible pour tous les composants ;</li>
+<li>après la ligne 16, l’attribut <strong>[$session]</strong> est disponible pour tous les composants ;</li>
 </ul>
 <h2 id="154-la-vue-principale-app">15.4. La vue principale [App]</h2>
 <p>La vue <strong>[App]</strong> est désormais la suivante :</p>
@@ -1128,47 +1142,47 @@
 <span class="normal"><a href="#__codelineno-3-38">38</a></span>
 <span class="normal"><a href="#__codelineno-3-39">39</a></span>
 <span class="normal"><a href="#__codelineno-3-40">40</a></span>
-<span class="normal"><a href="#__codelineno-3-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="p">&lt;</span><span class="nt">b-card</span><span class="p">&gt;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>      <span class="cm">&lt;!-- message --&gt;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>      <span class="p">&lt;</span><span class="nt">b-alert</span> <span class="na">show</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;success&quot;</span> <span class="na">align</span><span class="o">=</span><span class="s">&quot;center&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a>        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>[vuejs-13] : mise à jour d&#39;un composant, partage des données avec une session<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a>      <span class="p">&lt;/</span><span class="nt">b-alert</span><span class="p">&gt;</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a>      <span class="cm">&lt;!-- table HTML --&gt;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a>      <span class="p">&lt;</span><span class="nt">Table</span> <span class="err">@</span><span class="na">updateTable</span><span class="o">=</span><span class="s">&quot;updateTable&quot;</span> <span class="na">:key</span><span class="o">=</span><span class="s">&quot;versionTable&quot;</span><span class="p">/&gt;</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a>    <span class="p">&lt;/</span><span class="nt">b-card</span><span class="p">&gt;</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="normal"><a href="#__codelineno-3-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">card</span><span class="o">&gt;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">message</span> <span class="o">--&gt;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;success&quot;</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>        <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="p">[</span><span class="n">vuejs</span><span class="o">-</span><span class="mi">13</span><span class="p">]</span> <span class="p">:</span> <span class="n">mise</span> <span class="n">à</span> <span class="n">jour</span> <span class="n">d</span><span class="s1">&#39;un composant, partage des données avec une session&lt;/h4&gt;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">table</span> <span class="n">HTML</span> <span class="o">--&gt;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>      <span class="o">&lt;</span><span class="n">Table</span> <span class="nd">@updateTable</span><span class="o">=</span><span class="s2">&quot;updateTable&quot;</span> <span class="p">:</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;versionTable&quot;</span><span class="o">/&gt;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">card</span><span class="o">&gt;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
 <a id="__codelineno-3-13" name="__codelineno-3-13"></a>
-<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="k">import</span><span class="w"> </span><span class="nx">Table</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./components/Table&quot;</span><span class="p">;</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">  </span><span class="c1">// nom</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;app&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">  </span><span class="c1">// composants</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">  </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">    </span><span class="nx">Table</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">  </span><span class="c1">// état interne</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">  </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">      </span><span class="c1">// version table</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">      </span><span class="nx">versionTable</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">    </span><span class="p">};</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="kn">import</span><span class="w"> </span><span class="nn">Table</span> <span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Table&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a>  <span class="o">//</span> <span class="n">nom</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a>  <span class="o">//</span> <span class="n">composants</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a>  <span class="n">components</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a>    <span class="n">Table</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a>  <span class="p">},</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a>  <span class="o">//</span> <span class="n">état</span> <span class="n">interne</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a>  <span class="n">data</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a>    <span class="k">return</span> <span class="p">{</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a>      <span class="o">//</span> <span class="n">version</span> <span class="n">table</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a>      <span class="n">versionTable</span><span class="p">:</span> <span class="mi">1</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a>    <span class="p">};</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a>  <span class="p">},</span>
 <a id="__codelineno-3-30" name="__codelineno-3-30"></a>
-<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">  </span><span class="c1">// méthodes</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">  </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="w">    </span><span class="nx">updateTable</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">      </span><span class="c1">// eslint-disable-next-line</span>
-<a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;App updateTable&quot;</span><span class="p">);</span>
-<a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="w">      </span><span class="c1">// incrément version table</span>
-<a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">versionTable</span><span class="o">++</span><span class="p">;</span>
-<a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a>  <span class="o">//</span> <span class="n">méthodes</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a>  <span class="n">methods</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a>    <span class="n">updateTable</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a>      <span class="o">//</span> <span class="n">eslint</span><span class="o">-</span><span class="n">disable</span><span class="o">-</span><span class="nb">next</span><span class="o">-</span><span class="n">line</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a>      <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;App updateTable&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a>      <span class="o">//</span> <span class="n">incrément</span> <span class="n">version</span> <span class="n">table</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37"></a>      <span class="n">this</span><span class="o">.</span><span class="n">versionTable</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38"></a>    <span class="p">}</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39"></a>  <span class="p">}</span>
 <a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="p">};</span>
-<a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
@@ -1245,80 +1259,80 @@
 <span class="normal"><a href="#__codelineno-4-65">65</a></span>
 <span class="normal"><a href="#__codelineno-4-66">66</a></span>
 <span class="normal"><a href="#__codelineno-4-67">67</a></span>
-<span class="normal"><a href="#__codelineno-4-68">68</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="cm">&lt;!-- liste vide --&gt;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>    <span class="p">&lt;</span><span class="nt">template</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;lignes.length==0&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a>      <span class="p">&lt;</span><span class="nt">b-alert</span> <span class="na">show</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;warning&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a>        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Votre liste de simulations est vide<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a>      <span class="p">&lt;/</span><span class="nt">b-alert</span><span class="p">&gt;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a>      <span class="cm">&lt;!-- bouton de rechargement--&gt;</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a>      <span class="p">&lt;</span><span class="nt">b-button</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;primary&quot;</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&quot;rechargerListe&quot;</span><span class="p">&gt;</span>Recharger la liste<span class="p">&lt;/</span><span class="nt">b-button</span><span class="p">&gt;</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a>    <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a>    <span class="cm">&lt;!-- liste non vide--&gt;</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a>    <span class="p">&lt;</span><span class="nt">template</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;lignes.length!=0&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a>      <span class="p">&lt;</span><span class="nt">b-alert</span> <span class="na">show</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;primary&quot;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;lignes.length==0&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a>        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Liste de vos simulations<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15"></a>      <span class="p">&lt;/</span><span class="nt">b-alert</span><span class="p">&gt;</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a>      <span class="cm">&lt;!-- tableau des simulations --&gt;</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a>      <span class="p">&lt;</span><span class="nt">b-table</span> <span class="na">striped</span> <span class="na">hover</span> <span class="na">responsive</span> <span class="na">:items</span><span class="o">=</span><span class="s">&quot;lignes&quot;</span> <span class="na">:fields</span><span class="o">=</span><span class="s">&quot;fields&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18"></a>        <span class="p">&lt;</span><span class="nt">template</span> <span class="na">v-slot:cell</span><span class="err">(</span><span class="na">action</span><span class="err">)=&quot;</span><span class="na">row</span><span class="err">&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19"></a>          <span class="p">&lt;</span><span class="nt">b-button</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;link&quot;</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&quot;supprimerLigne(row.index)&quot;</span><span class="p">&gt;</span>Supprimer<span class="p">&lt;/</span><span class="nt">b-button</span><span class="p">&gt;</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20"></a>        <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21"></a>      <span class="p">&lt;/</span><span class="nt">b-table</span><span class="p">&gt;</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22"></a>    <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-4-23" name="__codelineno-4-23"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="normal"><a href="#__codelineno-4-68">68</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">liste</span> <span class="n">vide</span> <span class="o">--&gt;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>    <span class="o">&lt;</span><span class="n">template</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;lignes.length==0&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;warning&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>        <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="n">Votre</span> <span class="n">liste</span> <span class="n">de</span> <span class="n">simulations</span> <span class="n">est</span> <span class="n">vide</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">bouton</span> <span class="n">de</span> <span class="n">rechargement</span><span class="o">--&gt;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">button</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span> <span class="nd">@click</span><span class="o">=</span><span class="s2">&quot;rechargerListe&quot;</span><span class="o">&gt;</span><span class="n">Recharger</span> <span class="n">la</span> <span class="n">liste</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">button</span><span class="o">&gt;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>    <span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">liste</span> <span class="n">non</span> <span class="n">vide</span><span class="o">--&gt;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>    <span class="o">&lt;</span><span class="n">template</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;lignes.length!=0&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;lignes.length==0&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>        <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="n">Liste</span> <span class="n">de</span> <span class="n">vos</span> <span class="n">simulations</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">tableau</span> <span class="n">des</span> <span class="n">simulations</span> <span class="o">--&gt;</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">table</span> <span class="n">striped</span> <span class="n">hover</span> <span class="n">responsive</span> <span class="p">:</span><span class="n">items</span><span class="o">=</span><span class="s2">&quot;lignes&quot;</span> <span class="p">:</span><span class="n">fields</span><span class="o">=</span><span class="s2">&quot;fields&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a>        <span class="o">&lt;</span><span class="n">template</span> <span class="n">v</span><span class="o">-</span><span class="n">slot</span><span class="p">:</span><span class="n">cell</span><span class="p">(</span><span class="n">action</span><span class="p">)</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a>          <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">button</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;link&quot;</span> <span class="nd">@click</span><span class="o">=</span><span class="s2">&quot;supprimerLigne(row.index)&quot;</span><span class="o">&gt;</span><span class="n">Supprimer</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">button</span><span class="o">&gt;</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a>        <span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">table</span><span class="o">&gt;</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a>    <span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
 <a id="__codelineno-4-25" name="__codelineno-4-25"></a>
-<a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-28" name="__codelineno-4-28"></a><span class="w">  </span><span class="c1">// état calculé</span>
-<a id="__codelineno-4-29" name="__codelineno-4-29"></a><span class="w">  </span><span class="nx">computed</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-30" name="__codelineno-4-30"></a><span class="w">    </span><span class="nx">lignes</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-31" name="__codelineno-4-31"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">$session</span><span class="p">.</span><span class="nx">lignes</span><span class="p">;</span>
-<a id="__codelineno-4-32" name="__codelineno-4-32"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-4-33" name="__codelineno-4-33"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-4-34" name="__codelineno-4-34"></a><span class="w">  </span><span class="c1">// état interne</span>
-<a id="__codelineno-4-35" name="__codelineno-4-35"></a><span class="w">  </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-36" name="__codelineno-4-36"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-37" name="__codelineno-4-37"></a><span class="w">      </span><span class="nx">fields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-4-38" name="__codelineno-4-38"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;id&quot;</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-4-39" name="__codelineno-4-39"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Marié&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;marié&quot;</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-4-40" name="__codelineno-4-40"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Nombre d&#39;enfants&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;enfants&quot;</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-4-41" name="__codelineno-4-41"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Salaire&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;salaire&quot;</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-4-42" name="__codelineno-4-42"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Impôt&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;impôt&quot;</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-4-43" name="__codelineno-4-43"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;action&quot;</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-4-44" name="__codelineno-4-44"></a><span class="w">      </span><span class="p">]</span>
-<a id="__codelineno-4-45" name="__codelineno-4-45"></a><span class="w">    </span><span class="p">};</span>
-<a id="__codelineno-4-46" name="__codelineno-4-46"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-4-47" name="__codelineno-4-47"></a><span class="w">  </span><span class="c1">// méthodes</span>
-<a id="__codelineno-4-48" name="__codelineno-4-48"></a><span class="w">  </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-49" name="__codelineno-4-49"></a><span class="w">    </span><span class="nx">supprimerLigne</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-50" name="__codelineno-4-50"></a><span class="w">      </span><span class="c1">// eslint-disable-next-line</span>
-<a id="__codelineno-4-51" name="__codelineno-4-51"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Table supprimerLigne&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">);</span>
-<a id="__codelineno-4-52" name="__codelineno-4-52"></a><span class="w">      </span><span class="c1">// on supprime la ligne</span>
-<a id="__codelineno-4-53" name="__codelineno-4-53"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$session</span><span class="p">.</span><span class="nx">deleteLigne</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
-<a id="__codelineno-4-54" name="__codelineno-4-54"></a><span class="w">      </span><span class="c1">// on demande au composant parent de mettre à jour la vue</span>
-<a id="__codelineno-4-55" name="__codelineno-4-55"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;updateTable&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-56" name="__codelineno-4-56"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-4-57" name="__codelineno-4-57"></a><span class="w">    </span><span class="c1">// rechargement de la liste affichée</span>
-<a id="__codelineno-4-58" name="__codelineno-4-58"></a><span class="w">    </span><span class="nx">rechargerListe</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-59" name="__codelineno-4-59"></a><span class="w">      </span><span class="c1">// eslint-disable-next-line</span>
-<a id="__codelineno-4-60" name="__codelineno-4-60"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Table rechargerListe&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-61" name="__codelineno-4-61"></a><span class="w">      </span><span class="c1">// on régènère la liste des simulations</span>
-<a id="__codelineno-4-62" name="__codelineno-4-62"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$session</span><span class="p">.</span><span class="nx">generateLignes</span><span class="p">();</span>
-<a id="__codelineno-4-63" name="__codelineno-4-63"></a><span class="w">      </span><span class="c1">// on demande au composant parent de mettre à jour la vue</span>
-<a id="__codelineno-4-64" name="__codelineno-4-64"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;updateTable&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-65" name="__codelineno-4-65"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-4-66" name="__codelineno-4-66"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28"></a>  <span class="o">//</span> <span class="n">état</span> <span class="n">calculé</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29"></a>  <span class="n">computed</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30"></a>    <span class="n">lignes</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31"></a>      <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="err">$</span><span class="n">session</span><span class="o">.</span><span class="n">lignes</span><span class="p">;</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32"></a>    <span class="p">}</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33"></a>  <span class="p">},</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34"></a>  <span class="o">//</span> <span class="n">état</span> <span class="n">interne</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35"></a>  <span class="n">data</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36"></a>    <span class="k">return</span> <span class="p">{</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37"></a>      <span class="n">fields</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38"></a>        <span class="p">{</span> <span class="n">label</span><span class="p">:</span> <span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;id&quot;</span> <span class="p">},</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39"></a>        <span class="p">{</span> <span class="n">label</span><span class="p">:</span> <span class="s2">&quot;Marié&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;marié&quot;</span> <span class="p">},</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40"></a>        <span class="p">{</span> <span class="n">label</span><span class="p">:</span> <span class="s2">&quot;Nombre d&#39;enfants&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;enfants&quot;</span> <span class="p">},</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41"></a>        <span class="p">{</span> <span class="n">label</span><span class="p">:</span> <span class="s2">&quot;Salaire&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;salaire&quot;</span> <span class="p">},</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42"></a>        <span class="p">{</span> <span class="n">label</span><span class="p">:</span> <span class="s2">&quot;Impôt&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;impôt&quot;</span> <span class="p">},</span>
+<a id="__codelineno-4-43" name="__codelineno-4-43"></a>        <span class="p">{</span> <span class="n">label</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;action&quot;</span> <span class="p">}</span>
+<a id="__codelineno-4-44" name="__codelineno-4-44"></a>      <span class="p">]</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45"></a>    <span class="p">};</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46"></a>  <span class="p">},</span>
+<a id="__codelineno-4-47" name="__codelineno-4-47"></a>  <span class="o">//</span> <span class="n">méthodes</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48"></a>  <span class="n">methods</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-4-49" name="__codelineno-4-49"></a>    <span class="n">supprimerLigne</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-4-50" name="__codelineno-4-50"></a>      <span class="o">//</span> <span class="n">eslint</span><span class="o">-</span><span class="n">disable</span><span class="o">-</span><span class="nb">next</span><span class="o">-</span><span class="n">line</span>
+<a id="__codelineno-4-51" name="__codelineno-4-51"></a>      <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;Table supprimerLigne&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">);</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52"></a>      <span class="o">//</span> <span class="n">on</span> <span class="n">supprime</span> <span class="n">la</span> <span class="n">ligne</span>
+<a id="__codelineno-4-53" name="__codelineno-4-53"></a>      <span class="n">this</span><span class="o">.</span><span class="err">$</span><span class="n">session</span><span class="o">.</span><span class="n">deleteLigne</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
+<a id="__codelineno-4-54" name="__codelineno-4-54"></a>      <span class="o">//</span> <span class="n">on</span> <span class="n">demande</span> <span class="n">au</span> <span class="n">composant</span> <span class="n">parent</span> <span class="n">de</span> <span class="n">mettre</span> <span class="n">à</span> <span class="n">jour</span> <span class="n">la</span> <span class="n">vue</span>
+<a id="__codelineno-4-55" name="__codelineno-4-55"></a>      <span class="n">this</span><span class="o">.</span><span class="err">$</span><span class="n">emit</span><span class="p">(</span><span class="s2">&quot;updateTable&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-56" name="__codelineno-4-56"></a>    <span class="p">},</span>
+<a id="__codelineno-4-57" name="__codelineno-4-57"></a>    <span class="o">//</span> <span class="n">rechargement</span> <span class="n">de</span> <span class="n">la</span> <span class="n">liste</span> <span class="n">affichée</span>
+<a id="__codelineno-4-58" name="__codelineno-4-58"></a>    <span class="n">rechargerListe</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-4-59" name="__codelineno-4-59"></a>      <span class="o">//</span> <span class="n">eslint</span><span class="o">-</span><span class="n">disable</span><span class="o">-</span><span class="nb">next</span><span class="o">-</span><span class="n">line</span>
+<a id="__codelineno-4-60" name="__codelineno-4-60"></a>      <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;Table rechargerListe&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-61" name="__codelineno-4-61"></a>      <span class="o">//</span> <span class="n">on</span> <span class="n">régènère</span> <span class="n">la</span> <span class="n">liste</span> <span class="n">des</span> <span class="n">simulations</span>
+<a id="__codelineno-4-62" name="__codelineno-4-62"></a>      <span class="n">this</span><span class="o">.</span><span class="err">$</span><span class="n">session</span><span class="o">.</span><span class="n">generateLignes</span><span class="p">();</span>
+<a id="__codelineno-4-63" name="__codelineno-4-63"></a>      <span class="o">//</span> <span class="n">on</span> <span class="n">demande</span> <span class="n">au</span> <span class="n">composant</span> <span class="n">parent</span> <span class="n">de</span> <span class="n">mettre</span> <span class="n">à</span> <span class="n">jour</span> <span class="n">la</span> <span class="n">vue</span>
+<a id="__codelineno-4-64" name="__codelineno-4-64"></a>      <span class="n">this</span><span class="o">.</span><span class="err">$</span><span class="n">emit</span><span class="p">(</span><span class="s2">&quot;updateTable&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-65" name="__codelineno-4-65"></a>    <span class="p">}</span>
+<a id="__codelineno-4-66" name="__codelineno-4-66"></a>  <span class="p">}</span>
 <a id="__codelineno-4-67" name="__codelineno-4-67"></a><span class="p">};</span>
-<a id="__codelineno-4-68" name="__codelineno-4-68"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-4-68" name="__codelineno-4-68"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires :</strong></p>
 <ul>
-<li>l’attribut <strong>[lignes]</strong> (lignes 4, 12, 17) n’est plus un paramètre fixé par le composant parent mais un attribut calculé du composant <strong>[Table]</strong> (lignes 30-32). <strong>[lignes]</strong> est alors le tableau <strong>[\$session.lignes]</strong> (ligne 31) ;</li>
-<li>lignes 49-56 : la méthode <strong>[supprimerLigne]</strong> fait supprimer une ligne du tableau <strong>[\$session.lignes]</strong>. Cette suppression ne change pas, par défaut, l’affichage de la table HTML. En effet, les éléments de <strong>[\$session]</strong> <strong>ne sont pas réactifs</strong> : leur modification n’est pas répercutée sur les composants qui les utilisent. Pour cette raison, le composant <strong>[Table]</strong> demande à son parent de le régénérer au moyen de l’événement <strong>[updateTable]</strong> (ligne 55). On a vu que le composant parent allait alors incrémenter l’attribut <strong>[:key]</strong> du composant <strong>[Table]</strong> pour forcer sa régénération ;</li>
-<li>lignes 58-65 : la méthode <strong>[rechargerListe]</strong> demande à l’objet <strong>[\$session]</strong> de régénérer le tableau <strong>[\$session.lignes]</strong>. Pour la même raison que précédemment, cette modification de <strong>[\$session.liste]</strong> ne change pas, par défaut, l’affichage de la table HTML. Pour cette raison, le composant <strong>[Table]</strong> demande à son parent de le régénérer au moyen de l’événement <strong>[updateTable]</strong> (ligne 64).</li>
+<li>l’attribut <strong>[lignes]</strong> (lignes 4, 12, 17) n’est plus un paramètre fixé par le composant parent mais un attribut calculé du composant <strong>[Table]</strong> (lignes 30-32). <strong>[lignes]</strong> est alors le tableau <strong>[$session.lignes]</strong> (ligne 31) ;</li>
+<li>lignes 49-56 : la méthode <strong>[supprimerLigne]</strong> fait supprimer une ligne du tableau <strong>[$session.lignes]</strong>. Cette suppression ne change pas, par défaut, l’affichage de la table HTML. En effet, les éléments de <strong>[$session]</strong> <strong>ne sont pas réactifs</strong> : leur modification n’est pas répercutée sur les composants qui les utilisent. Pour cette raison, le composant <strong>[Table]</strong> demande à son parent de le régénérer au moyen de l’événement <strong>[updateTable]</strong> (ligne 55). On a vu que le composant parent allait alors incrémenter l’attribut <strong>[:key]</strong> du composant <strong>[Table]</strong> pour forcer sa régénération ;</li>
+<li>lignes 58-65 : la méthode <strong>[rechargerListe]</strong> demande à l’objet <strong>[$session]</strong> de régénérer le tableau <strong>[$session.lignes]</strong>. Pour la même raison que précédemment, cette modification de <strong>[$session.liste]</strong> ne change pas, par défaut, l’affichage de la table HTML. Pour cette raison, le composant <strong>[Table]</strong> demande à son parent de le régénérer au moyen de l’événement <strong>[updateTable]</strong> (ligne 64).</li>
 </ul>
 <h2 id="156-execution-du-projet">15.6. Exécution du projet</h2>
 <p><img src="images/10000000000006FF0000025B003B9340.png" style="width:14.221cm;height:4.791cm;" alt="Image" /></p>
@@ -1331,6 +1345,8 @@
 
 
 
+
+  
 
 
 
@@ -1378,7 +1394,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>

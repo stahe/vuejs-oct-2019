@@ -60,6 +60,20 @@
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // CORRECTION ICI : Utilisation de guillemets doubles pour entourer le titre qui contient une apostrophe
+    var siteName = "Introduction au framework VUE.JS par l'exemple";
+
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+    console.log("[GA Debug] page_title forced to: " + siteName);
+  </script>
 
     
     
@@ -990,14 +1004,14 @@
 <span class="normal"><a href="#__codelineno-1-6">6</a></span>
 <span class="normal"><a href="#__codelineno-1-7">7</a></span>
 <span class="normal"><a href="#__codelineno-1-8">8</a></span>
-<span class="normal"><a href="#__codelineno-1-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="nx">install</span><span class="p">(</span><span class="nx">Vue</span><span class="p">,</span><span class="w"> </span><span class="nx">eventBus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="c1">// ajoute une propriété [$eventBus] à la classe Vue</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">Vue</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;$eventBus&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">      </span><span class="c1">// lorsque Vue.$eventBus est référencé, on rend le 2ième paramètre [eventBus]</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">      </span><span class="nx">get</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">eventBus</span><span class="p">,</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="p">})</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">  </span><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-1-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>  <span class="n">install</span><span class="p">(</span><span class="n">Vue</span><span class="p">,</span> <span class="n">eventBus</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="o">//</span> <span class="n">ajoute</span> <span class="n">une</span> <span class="n">propriété</span> <span class="p">[</span><span class="err">$</span><span class="n">eventBus</span><span class="p">]</span> <span class="n">à</span> <span class="n">la</span> <span class="n">classe</span> <span class="n">Vue</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="n">Object</span><span class="o">.</span><span class="n">defineProperty</span><span class="p">(</span><span class="n">Vue</span><span class="o">.</span><span class="n">prototype</span><span class="p">,</span> <span class="s1">&#39;$eventBus&#39;</span><span class="p">,</span> <span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>      <span class="o">//</span> <span class="n">lorsque</span> <span class="n">Vue</span><span class="o">.</span><span class="err">$</span><span class="n">eventBus</span> <span class="n">est</span> <span class="n">référencé</span><span class="p">,</span> <span class="n">on</span> <span class="n">rend</span> <span class="n">le</span> <span class="mi">2</span><span class="n">ième</span> <span class="n">paramètre</span> <span class="p">[</span><span class="n">eventBus</span><span class="p">]</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>      <span class="n">get</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">eventBus</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="p">})</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>  <span class="p">}</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
@@ -1007,10 +1021,10 @@
 <li>ligne 2 : la fonction <strong>[install]</strong> accepte ici deux paramètres :</li>
 <li><strong>[Vue]</strong> : la fonction obtenue par l’instruction <strong>[import Vue from ‘Vue’]</strong>. Peut-être assimilée à une classe ;</li>
 <li><strong>[eventBus]</strong> : l’objet exporté par le script <strong>[./event-bus]</strong> ;</li>
-<li>lignes 4-7 : modifient la définition (on dit le prototype) de la fonction <strong>[Vue]</strong> en lui ajoutant la propriété <strong>[\$eventBus]</strong>. Si on raisonne avec le terme <strong>[classe]</strong>, la propriété <strong>[\$eventBus]</strong> est ajoutée à la clase <strong>[Vue]</strong>. Les composants qui sont des instances de <strong>[Vue]</strong> auront donc accès à cette nouvelle propriété ;</li>
-<li>la ligne 6 indique que lorsqu’on référencera la propriété <strong>[Vue]</strong><strong>.\$eventBus</strong>, on obtiendra le paramètre <strong>[eventBus]</strong> de la ligne 2. Nous allons voir un peu plus loin que ce second paramètre sera l’objet <strong>[eventBus]</strong> exporté par le script <strong>[./event-bus.js]</strong>. Donc au final, lorsqu’un composant C utilisera l’expression <strong>[C.\$eventBus]</strong> il référencera  l’objet <strong>[eventBus]</strong> exporté par le script <strong>[./event-bus.js]</strong>. Cela lui évitera d’importer le script <strong>[./event-bus.js]</strong>. L’intérêt du plugin est là : simplifier l’accès à l’objet <strong>[eventBus]</strong> exporté par le script <strong>[./event-bus.js]</strong> ;</li>
+<li>lignes 4-7 : modifient la définition (on dit le prototype) de la fonction <strong>[Vue]</strong> en lui ajoutant la propriété <strong>[$eventBus]</strong>. Si on raisonne avec le terme <strong>[classe]</strong>, la propriété <strong>[$eventBus]</strong> est ajoutée à la clase <strong>[Vue]</strong>. Les composants qui sont des instances de <strong>[Vue]</strong> auront donc accès à cette nouvelle propriété ;</li>
+<li>la ligne 6 indique que lorsqu’on référencera la propriété <strong>[Vue]</strong><strong>.$eventBus</strong>, on obtiendra le paramètre <strong>[eventBus]</strong> de la ligne 2. Nous allons voir un peu plus loin que ce second paramètre sera l’objet <strong>[eventBus]</strong> exporté par le script <strong>[./event-bus.js]</strong>. Donc au final, lorsqu’un composant C utilisera l’expression <strong>[C.$eventBus]</strong> il référencera  l’objet <strong>[eventBus]</strong> exporté par le script <strong>[./event-bus.js]</strong>. Cela lui évitera d’importer le script <strong>[./event-bus.js]</strong>. L’intérêt du plugin est là : simplifier l’accès à l’objet <strong>[eventBus]</strong> exporté par le script <strong>[./event-bus.js]</strong> ;</li>
 <li>on notera que le plugin n’a pas à s’appeler lui-même <strong>[event-bus.js]</strong>. On aurait pu l’appeler <strong>[plugin-event-bus]</strong> par exemple ;</li>
-<li>on notera également que le terme \$ dans <strong>[\$eventBus]</strong> est une convention pour désigner les propriétés de <strong>[Vue]</strong> qui ont été ajoutées via des plugins. On n’est pas obligés d’observer cette convention. Dans ce texte, nous l’observerons ;</li>
+<li>on notera également que le terme $ dans <strong>[$eventBus]</strong> est une convention pour désigner les propriétés de <strong>[Vue]</strong> qui ont été ajoutées via des plugins. On n’est pas obligés d’observer cette convention. Dans ce texte, nous l’observerons ;</li>
 </ul>
 <h2 id="112-le-script-principal-mainjs">11.2. Le script principal [main.js]</h2>
 <p>Le script <strong>[./plugins/event-bus.js]</strong> définit un plugin pour le framework <strong>[Vue.js]</strong>. Ce plugin n’est pas encore utilisé, juste défini. C’est le script <strong>[main.js]</strong> qui l’active :</p>
@@ -1064,12 +1078,12 @@
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>les lignes 14-16 activent le plugin <strong>[PluginEventBus]</strong>. Après la ligne 16, toutes les instances de la classe (fonction) <strong>[Vue]</strong> possèdent la propriété <strong>[\$eventBus]</strong> qui pointe pour chacune d’elles sur le même object exporté par le script <strong>[./event-bus.js]</strong>. Ce sera le cas pour chacun des composants du projet ;</li>
+<li>les lignes 14-16 activent le plugin <strong>[PluginEventBus]</strong>. Après la ligne 16, toutes les instances de la classe (fonction) <strong>[Vue]</strong> possèdent la propriété <strong>[$eventBus]</strong> qui pointe pour chacune d’elles sur le même object exporté par le script <strong>[./event-bus.js]</strong>. Ce sera le cas pour chacun des composants du projet ;</li>
 </ul>
 <h2 id="113-la-vue-principale-app">11.3. La vue principale [App]</h2>
 <p>La vue principale <strong>[App]</strong> reste ce qu’elle était dans le projet précédent.</p>
 <h2 id="114-le-composant-component1">11.4. Le composant [Component1]</h2>
-<p>Le composant <strong>[Component1]</strong> utilise désormais sa propriété <strong>[\$eventBus]</strong> pour écouter l’événement <strong>[someEvent]</strong> :</p>
+<p>Le composant <strong>[Component1]</strong> utilise désormais sa propriété <strong>[$eventBus]</strong> pour écouter l’événement <strong>[someEvent]</strong> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -1105,49 +1119,49 @@
 <span class="normal"><a href="#__codelineno-3-33">33</a></span>
 <span class="normal"><a href="#__codelineno-3-34">34</a></span>
 <span class="normal"><a href="#__codelineno-3-35">35</a></span>
-<span class="normal"><a href="#__codelineno-3-36">36</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="p">&lt;</span><span class="nt">b-row</span><span class="p">&gt;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="p">&lt;</span><span class="nt">b-col</span><span class="p">&gt;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>      <span class="p">&lt;</span><span class="nt">b-alert</span> <span class="na">show</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>               <span class="na">variant</span><span class="o">=</span><span class="s">&quot;warning&quot;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a>               <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;showMsg&quot;</span><span class="p">&gt;</span>Evénement [someEvent] intercepté par [Component1]. Valeur reçue={{data}}<span class="p">&lt;/</span><span class="nt">b-alert</span><span class="p">&gt;</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a>    <span class="p">&lt;/</span><span class="nt">b-col</span><span class="p">&gt;</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a>  <span class="p">&lt;/</span><span class="nt">b-row</span><span class="p">&gt;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="normal"><a href="#__codelineno-3-36">36</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>               <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;warning&quot;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>               <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;showMsg&quot;</span><span class="o">&gt;</span><span class="n">Evénement</span> <span class="p">[</span><span class="n">someEvent</span><span class="p">]</span> <span class="n">intercepté</span> <span class="n">par</span> <span class="p">[</span><span class="n">Component1</span><span class="p">]</span><span class="o">.</span> <span class="n">Valeur</span> <span class="n">reçue</span><span class="o">=</span><span class="p">{{</span><span class="n">data</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>  <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10"></a>
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;component1&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">    </span><span class="c1">// état du composant</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">        </span><span class="nx">showMsg</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">      </span><span class="p">};</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">    </span><span class="c1">// méthodes de gestion des évts</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">      </span><span class="c1">// gestion de l&#39;evt [someEvent]</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">      </span><span class="nx">doSomething</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">;</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">showMsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">      </span><span class="p">}</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="w">    </span><span class="c1">// gestion du cycle de vie du composant</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">    </span><span class="c1">// évt [created] - le composant a été créé</span>
-<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">    </span><span class="nx">created</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">      </span><span class="c1">// écoute de l&#39;évt [someEvent]</span>
-<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$eventBus</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">&quot;someEvent&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">doSomething</span><span class="p">);</span>
-<a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="w">  </span><span class="p">};</span>
-<a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>  <span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;component1&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>    <span class="o">//</span> <span class="n">état</span> <span class="n">du</span> <span class="n">composant</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a>    <span class="n">data</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a>      <span class="k">return</span> <span class="p">{</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a>        <span class="n">data</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a>        <span class="n">showMsg</span><span class="p">:</span> <span class="n">false</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a>      <span class="p">};</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a>    <span class="p">},</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a>    <span class="o">//</span> <span class="n">méthodes</span> <span class="n">de</span> <span class="n">gestion</span> <span class="n">des</span> <span class="n">évts</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a>    <span class="n">methods</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a>      <span class="o">//</span> <span class="n">gestion</span> <span class="n">de</span> <span class="n">l</span><span class="s1">&#39;evt [someEvent]</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a>      <span class="n">doSomething</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a>        <span class="n">this</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">;</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a>        <span class="n">this</span><span class="o">.</span><span class="n">showMsg</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a>      <span class="p">}</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a>    <span class="p">},</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a>    <span class="o">//</span> <span class="n">gestion</span> <span class="n">du</span> <span class="n">cycle</span> <span class="n">de</span> <span class="n">vie</span> <span class="n">du</span> <span class="n">composant</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a>    <span class="o">//</span> <span class="n">évt</span> <span class="p">[</span><span class="n">created</span><span class="p">]</span> <span class="o">-</span> <span class="n">le</span> <span class="n">composant</span> <span class="n">a</span> <span class="n">été</span> <span class="n">créé</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a>    <span class="n">created</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a>      <span class="o">//</span> <span class="n">écoute</span> <span class="n">de</span> <span class="n">l</span><span class="s1">&#39;évt [someEvent]</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a>      <span class="n">this</span><span class="o">.</span><span class="err">$</span><span class="n">eventBus</span><span class="o">.</span><span class="err">$</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;someEvent&quot;</span><span class="p">,</span> <span class="n">this</span><span class="o">.</span><span class="n">doSomething</span><span class="p">);</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a>    <span class="p">}</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a>  <span class="p">};</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 33, utilisation de la propriété <strong>[this.\$eventBus]</strong> du composant. On remarquera de plus que le script ligne 11 n’importe plus le script <strong>[./event-bus.js]</strong> ;</li>
+<li>ligne 33, utilisation de la propriété <strong>[this.$eventBus]</strong> du composant. On remarquera de plus que le script ligne 11 n’importe plus le script <strong>[./event-bus.js]</strong> ;</li>
 </ul>
 <h2 id="115-le-composant-component2">11.5. Le composant [Component2]</h2>
-<p>Le composant <strong>[Component2]</strong> utilise désormais sa propriété <strong>[\$eventBus]</strong> pour émettre l’événement <strong>[someEvent]</strong> :</p>
+<p>Le composant <strong>[Component2]</strong> utilise désormais sa propriété <strong>[$eventBus]</strong> pour émettre l’événement <strong>[someEvent]</strong> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
@@ -1164,27 +1178,27 @@
 <span class="normal"><a href="#__codelineno-4-14">14</a></span>
 <span class="normal"><a href="#__codelineno-4-15">15</a></span>
 <span class="normal"><a href="#__codelineno-4-16">16</a></span>
-<span class="normal"><a href="#__codelineno-4-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="p">&lt;</span><span class="nt">b-button</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&quot;createEvent&quot;</span><span class="p">&gt;</span>Créer un événement<span class="p">&lt;/</span><span class="nt">b-button</span><span class="p">&gt;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="cm">&lt;!-- script --&gt;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;component2&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">    </span><span class="c1">// méthodes de gestion des évts</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">      </span><span class="nx">createEvent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">$eventBus</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;someEvent&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="p">})</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">      </span><span class="p">}</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">  </span><span class="p">};</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">button</span> <span class="nd">@click</span><span class="o">=</span><span class="s2">&quot;createEvent&quot;</span><span class="o">&gt;</span><span class="n">Créer</span> <span class="n">un</span> <span class="n">événement</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">button</span><span class="o">&gt;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">script</span> <span class="o">--&gt;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>  <span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;component2&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>    <span class="o">//</span> <span class="n">méthodes</span> <span class="n">de</span> <span class="n">gestion</span> <span class="n">des</span> <span class="n">évts</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>    <span class="n">methods</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>      <span class="n">createEvent</span><span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a>        <span class="n">this</span><span class="o">.</span><span class="err">$</span><span class="n">eventBus</span><span class="o">.</span><span class="err">$</span><span class="n">emit</span><span class="p">(</span><span class="s2">&quot;someEvent&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mi">4</span> <span class="p">})</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>      <span class="p">}</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a>    <span class="p">}</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a>  <span class="p">};</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 13, utilisation de la propriété <strong>[this.\$eventBus]</strong> du composant. On remarquera de plus que le script ligne 7 n’importe plus le script <strong>[./event-bus.js]</strong> ;</li>
+<li>ligne 13, utilisation de la propriété <strong>[this.$eventBus]</strong> du composant. On remarquera de plus que le script ligne 7 n’importe plus le script <strong>[./event-bus.js]</strong> ;</li>
 </ul>
 <h2 id="116-composant-component3">11.6. Composant [Component3]</h2>
 <p>Le composant <strong>[Component3]</strong> a le même code que <strong>[Component1]</strong>. Lui également écoute l’événement <strong>[someEvent]</strong>.</p>
@@ -1199,6 +1213,8 @@
 
 
 
+
+  
 
 
 
@@ -1246,7 +1262,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>

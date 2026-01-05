@@ -60,6 +60,20 @@
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // CORRECTION ICI : Utilisation de guillemets doubles pour entourer le titre qui contient une apostrophe
+    var siteName = "Introduction au framework VUE.JS par l'exemple";
+
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+    console.log("[GA Debug] page_title forced to: " + siteName);
+  </script>
 
     
     
@@ -866,9 +880,9 @@
 <li><strong>[&lt;template&gt;...&lt;/template&gt;]</strong> : du code HTML ;</li>
 <li><strong>[&lt;script&gt;...&lt;/script&gt;]</strong> : le code Javascript associé au code HTML ;</li>
 <li><strong>[&lt;style&gt;...&lt;/style&gt;]</strong> : le style CSS associé au code HTML ;</li>
-<li><strong>[public/index.html]</strong> <strong>[5]</strong> : le document HTML visualisé par la commande <strong>[npm run serve]</strong> ;</li>
+<li><strong>[public/index.html]</strong> <strong>[5]</strong> : le document HTML visualisé par la commande <strong>[npm run serve]</strong> ;
+Le fichier <strong>[public/index.html]</strong> affiché à l’exécution du projet est celui-ci :</li>
 </ul>
-<p>Le fichier <strong>[public/index.html]</strong> affiché à l’exécution du projet est celui-ci :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -885,23 +899,23 @@
 <span class="normal"><a href="#__codelineno-0-14">14</a></span>
 <span class="normal"><a href="#__codelineno-0-15">15</a></span>
 <span class="normal"><a href="#__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#__codelineno-0-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;IE=edge&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width,initial-scale=1.0&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;icon&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>vuejs<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="p">&lt;</span><span class="nt">noscript</span><span class="p">&gt;</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a>      <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>We&#39;re sorry but vuejs doesn&#39;t work properly without JavaScript enabled. Please enable it to continue.<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="p">&lt;/</span><span class="nt">noscript</span><span class="p">&gt;</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="cm">&lt;!-- built files will be auto injected --&gt;</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="o">&lt;</span><span class="n">html</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>  <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="o">&lt;</span><span class="n">meta</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s2">&quot;X-UA-Compatible&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;IE=edge&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="o">&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;viewport&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;width=device-width,initial-scale=1.0&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;icon&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">vuejs</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>  <span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>  <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span class="o">&lt;</span><span class="n">noscript</span><span class="o">&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>      <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">We</span><span class="s1">&#39;re sorry but vuejs doesn&#39;</span><span class="n">t</span> <span class="n">work</span> <span class="n">properly</span> <span class="n">without</span> <span class="n">JavaScript</span> <span class="n">enabled</span><span class="o">.</span> <span class="n">Please</span> <span class="n">enable</span> <span class="n">it</span> <span class="n">to</span> <span class="k">continue</span><span class="o">.&lt;/</span><span class="n">strong</span><span class="o">&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="o">&lt;/</span><span class="n">noscript</span><span class="o">&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;app&quot;</span><span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">built</span> <span class="n">files</span> <span class="n">will</span> <span class="n">be</span> <span class="n">auto</span> <span class="n">injected</span> <span class="o">--&gt;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>  <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p>Ce fichier HTML n’affiche donc rien <strong>statiquement</strong>. Il n’y a ici pas de code HTML. L’affichage est <strong>dynamique</strong> : le code jS du projet va générer du HTML qui va remplacer entièrement la balise <strong>[&lt;div id=’app’&gt;]</strong> de la ligne 14. Le code HTML généré par le code jS du projet et inséré à la place de la balise <strong>[&lt;div&gt;]</strong> de la ligne 14 provient des balises <strong>[template]</strong> des composants <strong>[vue.js]</strong>, les fichiers ayant le suffixe <strong>[.vue]</strong>.</p>
 <p>Le code HTML est inséré dynamiquement ligne 14 par le script <strong>[vuejs-01/main.js]</strong> suivant :</p>
@@ -934,9 +948,9 @@
 <li>ligne 6 : configuration de l’objet <strong>[Vue]</strong> ;</li>
 <li>lignes 9-11 : ce sont les lignes qui :</li>
 <li>génèrent le code HTML de l’application. Ligne 10, c’est le fichier <strong>[App.vue]</strong> qui le génère ;</li>
-<li>chargent le code HTML généré ligne 10 dans la section <strong>[&lt;div id=’app’&gt;&lt;/div&gt;]</strong> du fichier <strong>[public/index.html]</strong> ;</li>
+<li>chargent le code HTML généré ligne 10 dans la section <strong>[&lt;div id=’app’&gt;&lt;/div&gt;]</strong> du fichier <strong>[public/index.html]</strong> ;
+Tout projet <strong>[Vue.js]</strong> peut conserver le fichier <strong>[index.html]</strong> tel quel.</li>
 </ul>
-<p>Tout projet <strong>[Vue.js]</strong> peut conserver le fichier <strong>[index.html]</strong> tel quel.</p>
 <p>Le fichier <strong>[App.vue]</strong> du projet initial <strong>[vuejs-00]</strong> est simplifié de la façon suivante dans le projet <strong>[vuejs-01]</strong> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
@@ -954,34 +968,36 @@
 <span class="normal"><a href="#__codelineno-2-14">14</a></span>
 <span class="normal"><a href="#__codelineno-2-15">15</a></span>
 <span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myApp&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Vue logo&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./assets/logo.png&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="p">&lt;</span><span class="nt">HelloWorld</span> <span class="na">msg</span><span class="o">=</span><span class="s">&quot;Notre première application Vue.js&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>  <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;myApp&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="o">&lt;</span><span class="n">img</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Vue logo&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./assets/logo.png&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="o">&lt;</span><span class="n">HelloWorld</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Notre première application Vue.js&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7"></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="k">import</span><span class="w"> </span><span class="nx">HelloWorld</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./components/HelloWorld.vue&quot;</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">HelloWorld</span> <span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/HelloWorld.vue&quot;</span><span class="p">;</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10"></a>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;app&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">  </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">    </span><span class="nx">HelloWorld</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>  <span class="n">components</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="n">HelloWorld</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>  <span class="p">}</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="p">};</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
 <li>un fragment <strong>[.vue]</strong> comprend au plus trois sections :</li>
 <li><strong>[&lt;template&gt;...&lt;/template&gt;]</strong> : du code HTML ;</li>
 <li><strong>[&lt;script&gt;...&lt;/script&gt;]</strong> : le code Javascript associé au code HTML ;</li>
-<li><strong>[&lt;style&gt;...&lt;/style&gt;]</strong> : le style CSS associé au code HTML ;</li>
-</ul>
-<p>Ici, nous n’avons pas de section <strong>[style]</strong>.</p>
-<ul>
-<li>lignes 1-6 : le code HTML du fragment (page, composant,  vue, ...) ;</li>
+<li>
+<p><strong>[&lt;style&gt;...&lt;/style&gt;]</strong> : le style CSS associé au code HTML ;
+Ici, nous n’avons pas de section <strong>[style]</strong>.</p>
+</li>
+<li>
+<p>lignes 1-6 : le code HTML du fragment (page, composant,  vue, ...) ;</p>
+</li>
 <li>lignes 2-5 : la section <strong>[template]</strong> ne peut contenir qu’un élément. On met en général une section <strong>[div]</strong> qui englobe tout le HTML du fragment. On peut mettre également une balise &lt;template&gt; ;</li>
 <li>ligne 3 : une image ;</li>
 </ul>
@@ -993,14 +1009,14 @@
 <li>ligne 9 : pour pouvoir utiliser le composant <strong>[HelloWorld]</strong> dans le composant <strong>[App]</strong>, il faut importer sa définition dans la partie <strong>[script]</strong> ;</li>
 <li>lignes 11-16 : le script définit un objet et l’exporte afin de le rendre disponible à l’extérieur ;</li>
 <li>ligne 12 : l’attribut <strong>[name]</strong> : définit le nom du composant exporté ;</li>
-<li>lignes 13-15 : l’attribut <strong>[components]</strong> liste les composants utilisés par le composant <strong>[App]</strong>. Ils sont exportés avec lui ;</li>
+<li>lignes 13-15 : l’attribut <strong>[components]</strong> liste les composants utilisés par le composant <strong>[App]</strong>. Ils sont exportés avec lui ;
+Ligne 9, il n’y a pas obligation que le composant <strong>[HelloWorld]</strong> porte le même nom que le fichier qui le définit. On pourrait l’importer en tant que <strong>[X]</strong> et l’exporter en tant que composant <strong>[Bonjour]</strong> :</li>
 </ul>
-<p>Ligne 9, il n’y a pas obligation que le composant <strong>[HelloWorld]</strong> porte le même nom que le fichier qui le définit. On pourrait l’importer en tant que <strong>[X]</strong> et l’exporter en tant que composant <strong>[Bonjour]</strong> :</p>
 <p><img src="images/10000000000003F700000322A4C5E0AD.png" style="width:9.401cm;height:7.43cm;" alt="Image" /></p>
 <ul>
-<li>ligne 14 : le composant <strong>[X]</strong> est exporté sous le nom <strong>[Bonjour]</strong>. Il est alors utilisé sous ce nom, ligne 4 ;</li>
+<li>ligne 14 : le composant <strong>[X]</strong> est exporté sous le nom <strong>[Bonjour]</strong>. Il est alors utilisé sous ce nom, ligne 4 ;
+La première version est la version la plus courante, aussi définirons-nous nos composants de cette façon ;</li>
 </ul>
-<p>La première version est la version la plus courante, aussi définirons-nous nos composants de cette façon ;</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -1017,23 +1033,23 @@
 <span class="normal"><a href="#__codelineno-3-14">14</a></span>
 <span class="normal"><a href="#__codelineno-3-15">15</a></span>
 <span class="normal"><a href="#__codelineno-3-16">16</a></span>
-<span class="normal"><a href="#__codelineno-3-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myApp&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Vue logo&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./assets/logo.png&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>    <span class="p">&lt;</span><span class="nt">HelloWorld</span> <span class="na">msg</span><span class="o">=</span><span class="s">&quot;Notre première application Vue.js&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;myApp&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="o">&lt;</span><span class="n">img</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Vue logo&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./assets/logo.png&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>    <span class="o">&lt;</span><span class="n">HelloWorld</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Notre première application Vue.js&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7"></a>
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="k">import</span><span class="w"> </span><span class="nx">HelloWorld</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./components/HelloWorld.vue&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">HelloWorld</span> <span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/HelloWorld.vue&quot;</span><span class="p">;</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10"></a>
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;app&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">  </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">    </span><span class="nx">HelloWorld</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>  <span class="n">components</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>    <span class="n">HelloWorld</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a>  <span class="p">}</span>
 <a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="p">};</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p>La ligne 14 est un raccourci pour le code <strong>[HelloWorld : HelloWorld]</strong> : le composant <strong>[HelloWorld]</strong> (à droite, importé ligne 9) est exporté sous le nom <strong>[HelloWorld]</strong> (à gauche).</p>
 <p><img src="images/10000000000001350000014894FDE6BC.png" style="width:2.86cm;height:3.04cm;" alt="Image" /></p>
@@ -1051,42 +1067,42 @@
 <span class="normal"><a href="#__codelineno-4-11">11</a></span>
 <span class="normal"><a href="#__codelineno-4-12">12</a></span>
 <span class="normal"><a href="#__codelineno-4-13">13</a></span>
-<span class="normal"><a href="#__codelineno-4-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ msg }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">msg</span> <span class="p">}}</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6"></a>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;HelloWorld&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">  </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">    </span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;HelloWorld&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>  <span class="n">props</span><span class="p">:</span> <span class="p">{</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>    <span class="n">msg</span><span class="p">:</span> <span class="n">String</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>  <span class="p">}</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="p">};</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
 <li>le composant <strong>[HelloWorld]</strong> a la même structure de fichier que le composant principal <strong>[App]</strong> ;</li>
 <li>ligne 3 : on a ici une évaluation d’expression Javascript, ici l’expression <strong>[msg]</strong> ;</li>
-<li>lignes 10-12 : définissent les propriétés du composant, plus exactement ses paramètres. Lorsque le composant <strong>[App]</strong> a instancié un composant <strong>[HelloWorld]</strong>, il l’a fait avec la syntaxe suivante :</li>
+<li>lignes 10-12 : définissent les propriétés du composant, plus exactement ses paramètres. Lorsque le composant <strong>[App]</strong> a instancié un composant <strong>[HelloWorld]</strong>, il l’a fait avec la syntaxe suivante :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="o">&lt;</span><span class="n">HelloWorld</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Notre première application Vue.js&quot;</span> <span class="o">/&gt;</span>
+</code></pre></div></td></tr></table></div></li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>&lt;HelloWorld msg=&quot;Notre première application Vue.js&quot; /&gt;
-</code></pre></div></td></tr></table></div>
 <p>Le composant <strong>[HelloWorld]</strong> est instancié en donnant une valeur au paramètre (attribut) <strong>[msg]</strong>. Si on suit le <strong>[template]</strong> du composant <strong>[HelloWorld]</strong>, celui-ci devient :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
 <span class="normal"><a href="#__codelineno-6-2">2</a></span>
-<span class="normal"><a href="#__codelineno-6-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a>    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Notre première application Vue.js<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Notre</span> <span class="n">première</span> <span class="n">application</span> <span class="n">Vue</span><span class="o">.</span><span class="n">js</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>lignes 7-14 : les propriétés du composant définies sous la forme d’un objet qui est exporté ;</li>
 <li>ligne 9 : le composant est exporté sous le nom <strong>[HelloWorld]</strong> ;</li>
-<li>lignes 10-12 : ses paramètres sont définis par la propriété <strong>[props]</strong> ;</li>
+<li>lignes 10-12 : ses paramètres sont définis par la propriété <strong>[props]</strong> ;
+Au final, si on rassemble les templates des deux composants <strong>[App, HelloWorld]</strong> utilisés, le fichier <strong>[index.html]</strong> affiché sera le suivant :</li>
 </ul>
-<p>Au final, si on rassemble les templates des deux composants <strong>[App, HelloWorld]</strong> utilisés, le fichier <strong>[index.html]</strong> affiché sera le suivant :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
@@ -1106,26 +1122,26 @@
 <span class="normal"><a href="#__codelineno-7-17">17</a></span>
 <span class="normal"><a href="#__codelineno-7-18">18</a></span>
 <span class="normal"><a href="#__codelineno-7-19">19</a></span>
-<span class="normal"><a href="#__codelineno-7-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;IE=edge&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a>  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width,initial-scale=1.0&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a>  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;icon&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8"></a>  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>vuejs<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11"></a>  <span class="p">&lt;</span><span class="nt">noscript</span><span class="p">&gt;</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12"></a>    <span class="p">&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>We&#39;re sorry but vuejs doesn&#39;t work properly without JavaScript enabled. Please enable it to continue.<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13"></a>  <span class="p">&lt;/</span><span class="nt">noscript</span><span class="p">&gt;</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myApp&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15"></a>    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Vue logo&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;./assets/logo.png&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16"></a>    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17"></a>      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Notre première application Vue.js<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="normal"><a href="#__codelineno-7-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="o">&lt;</span><span class="n">html</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>  <span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>  <span class="o">&lt;</span><span class="n">meta</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s2">&quot;X-UA-Compatible&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;IE=edge&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>  <span class="o">&lt;</span><span class="n">meta</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;viewport&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;width=device-width,initial-scale=1.0&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>  <span class="o">&lt;</span><span class="n">link</span> <span class="n">rel</span><span class="o">=</span><span class="s2">&quot;icon&quot;</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>  <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">vuejs</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a>  <span class="o">&lt;</span><span class="n">noscript</span><span class="o">&gt;</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a>    <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">We</span><span class="s1">&#39;re sorry but vuejs doesn&#39;</span><span class="n">t</span> <span class="n">work</span> <span class="n">properly</span> <span class="n">without</span> <span class="n">JavaScript</span> <span class="n">enabled</span><span class="o">.</span> <span class="n">Please</span> <span class="n">enable</span> <span class="n">it</span> <span class="n">to</span> <span class="k">continue</span><span class="o">.&lt;/</span><span class="n">strong</span><span class="o">&gt;</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a>  <span class="o">&lt;/</span><span class="n">noscript</span><span class="o">&gt;</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a>  <span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;myApp&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a>    <span class="o">&lt;</span><span class="n">img</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Vue logo&quot;</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;./assets/logo.png&quot;</span> <span class="o">/&gt;</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16"></a>    <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17"></a>      <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Notre</span> <span class="n">première</span> <span class="n">application</span> <span class="n">Vue</span><span class="o">.</span><span class="n">js</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18"></a>    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p>Nous lançons l’application en modifiant la commande <strong>[serve]</strong> <strong>[1]</strong> du fichier <strong>[package.json]</strong> :</p>
 <p><img src="images/100000000000081C0000029C213051F8.png" style="width:16.481cm;height:5.301cm;" alt="Image" /></p>
@@ -1134,9 +1150,9 @@
 <p><img src="images/100000000000077B00000295864F5236.png" style="width:17.731cm;height:6.121cm;" alt="Image" /></p>
 <ul>
 <li>en <strong>[1]</strong>, faire <strong>[clic droit]</strong> ;</li>
-<li>en <strong>[2]</strong>, le code source de la page. On voit que c’est le code du fichier initial <strong>[index.html]</strong> et ce n’est pas ça qui a été affiché. C’est bien la page <strong>[index.html]</strong> qui a été chargée initialement. Ensuite, dynamiquement, du code Javascript a modifié cette page, mais cela ne nous est pas montré ;</li>
+<li>en <strong>[2]</strong>, le code source de la page. On voit que c’est le code du fichier initial <strong>[index.html]</strong> et ce n’est pas ça qui a été affiché. C’est bien la page <strong>[index.html]</strong> qui a été chargée initialement. Ensuite, dynamiquement, du code Javascript a modifié cette page, mais cela ne nous est pas montré ;
+Lorsque les pages sont générées dynamiquement par du Javascript, l’option <strong>[2]</strong> ne sert à rien. Il faut aller dans les outils du navigateur (F12 sur Firefox) pour voir le code de la page actuellement affichée :</li>
 </ul>
-<p>Lorsque les pages sont générées dynamiquement par du Javascript, l’option <strong>[2]</strong> ne sert à rien. Il faut aller dans les outils du navigateur (F12 sur Firefox) pour voir le code de la page actuellement affichée :</p>
 <p><img src="images/10000000000003D700000423F1048BC4.png" style="width:9.101cm;height:9.812cm;" alt="Image" /></p>
 <ul>
 <li>en <strong>[1]</strong>, l’inspecteur du DOM (Document Object Model) du document affiché ;</li>
@@ -1144,26 +1160,28 @@
 <li><strong>[3-4]</strong>, des outils que nous utiliserons pour afficher les objets Javascript utilisés par le framework <strong>[Vue.js]</strong> ;</li>
 <li><strong>[4]</strong> est une extension (ici Firefox) pour déboguer des applications <strong>[Vue.js]</strong> :</li>
 <li>pour Firefox : <strong>[https://addons.mozilla.org/fr/firefox/addon/vue-js-devtools/]</strong>;</li>
-<li>pour Chrome : <strong>[https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd]</strong>;</li>
+<li>pour Chrome : <strong>[https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd]</strong>;
+Examinons l’onglet <strong>[Vue]</strong> <strong>[4]</strong> :</li>
 </ul>
-<p>Examinons l’onglet <strong>[Vue]</strong> <strong>[4]</strong> :</p>
 <p><img src="images/10000000000007F70000028B2332E881.png" style="width:16.181cm;height:5.171cm;" alt="Image" /></p>
 <p>La vue <strong>[1-4]</strong> nous montre la structure <strong>[Vue.js]</strong> du document : la racine du document <strong>[2]</strong> (index.html) comprend le composant <strong>[App]</strong> (3) qui lui même comprend le composant <strong>[HelloWorld]</strong> (4). Cliquer sur <strong>[4]</strong> fait apparaître les propriétés du composant <strong>[HelloWorld]</strong> <strong>[5]</strong>.</p>
-<p>On voit en <strong>[4]</strong> (à droite), l’indicateur <strong>[\$vm0]</strong>. C’est le nom de la variable qu’on peut utiliser dans la console JavaScript <strong>[6]</strong> pour désigner l’objet <strong>[HelloWorld]</strong>. Faisons-le :</p>
+<p>On voit en <strong>[4]</strong> (à droite), l’indicateur <strong>[$vm0]</strong>. C’est le nom de la variable qu’on peut utiliser dans la console JavaScript <strong>[6]</strong> pour désigner l’objet <strong>[HelloWorld]</strong>. Faisons-le :</p>
 <p><img src="images/100000000000050D00000364B1481999.png" style="width:11.971cm;height:8.041cm;" alt="Image" /></p>
 <ul>
-<li>en <strong>[2]</strong>, on fait évaluer l’expression <strong>[\$vm0]</strong>, ce qui a pour effet d’afficher sa structure. Normalement nous n’aurons pas à utiliser directement cette structure ;</li>
-</ul>
-<p>Terminons en montrant la capacité de <strong>[hot reload]</strong> de la commande <strong>[serve]</strong> utilisée pour exécuter le projet :</p>
-<ul>
-<li>dans <strong>[App.vue]</strong>, modifiez le message affiché par <strong>[HelloWorld]</strong> :</li>
+<li>
+<p>en <strong>[2]</strong>, on fait évaluer l’expression <strong>[$vm0]</strong>, ce qui a pour effet d’afficher sa structure. Normalement nous n’aurons pas à utiliser directement cette structure ;
+Terminons en montrant la capacité de <strong>[hot reload]</strong> de la commande <strong>[serve]</strong> utilisée pour exécuter le projet :</p>
+</li>
+<li>
+<p>dans <strong>[App.vue]</strong>, modifiez le message affiché par <strong>[HelloWorld]</strong> :</p>
+</li>
 </ul>
 <p><img src="images/1000000000000811000002A06D4FC083.png" style="width:16.391cm;height:5.331cm;" alt="Image" /></p>
 <ul>
 <li>en <strong>[1]</strong>, on modifie le message affiché ;</li>
-<li>en <strong>[2-3]</strong>, la page est automatiquement mise en jour sans intervention de notre part ;</li>
+<li>en <strong>[2-3]</strong>, la page est automatiquement mise en jour sans intervention de notre part ;
+Nous allons maintenant créer divers projets <strong>[vuejs-xx]</strong> pour illustrer les points importants de <strong>[Vue.js]</strong>. Par ‘importants’, il faut entendre ‘que nous allons utiliser dans le client <strong>[vue.js]</strong> du serveur de calcul de l’impôt’. D’autres points ‘importants’ seront passés sous silence s’ils ne sont pas utilisés dans le client. Ce n’est donc pas une présentation exhaustive de <strong>[vue.js]</strong> qui sera faite.</li>
 </ul>
-<p>Nous allons maintenant créer divers projets <strong>[vuejs-xx]</strong> pour illustrer les points importants de <strong>[Vue.js]</strong>. Par ‘importants’, il faut entendre ‘que nous allons utiliser dans le client <strong>[vue.js]</strong> du serveur de calcul de l’impôt’. D’autres points ‘importants’ seront passés sous silence s’ils ne sont pas utilisés dans le client. Ce n’est donc pas une présentation exhaustive de <strong>[vue.js]</strong> qui sera faite.</p>
 
 
 
@@ -1172,6 +1190,8 @@
 
 
 
+
+  
 
 
 
@@ -1219,7 +1239,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
