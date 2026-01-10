@@ -65,14 +65,10 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    // CORRECTION ICI : Utilisation de guillemets doubles pour entourer le titre qui contient une apostrophe
     var siteName = "Introduction au framework VUE.JS par l'exemple";
-
     gtag('config', 'G-EBZC3JVJNR', {
         'page_title': siteName
     });
-    console.log("[GA Debug] page_title forced to: " + siteName);
   </script>
 
     
@@ -1091,18 +1087,20 @@
 <li>le script <strong>[router.js]</strong> va fixer les règles de routage de notre application ;</li>
 <li>ligne 1-6 : activation du plugin <strong>[vue-router]</strong> nécessaire au routage. Cette activation nécessite l’import de la classe / fonction <strong>[Vue]</strong> (ligne 2) et celui du plugin de routage (ligne 3). Ce plugin a été installé avec la dépendance <strong>[router]</strong> que nous venons d’installer ;</li>
 <li>lignes 8-11 : import des vues cibles du routage ;</li>
-<li>lignes 15-21 : définition du tableau des routes. Chaque élément de ce tableau est un objet avec les propriétés suivantes :</li>
+<li>lignes 15-21 : définition du tableau des routes. Chaque élément de ce tableau est un objet avec les propriétés suivantes :<ul>
 <li><strong>[path]</strong> : l’URL de la vue, celle que nous voulons voir affichée dans le champ <strong>[URL]</strong> du navigateur. On est libre de mettre ce qu’on veut ;</li>
 <li><strong>[name]</strong> : le nom de la route. Là également on peut mettre ce qu’on veut ;</li>
-<li>
-<p><strong>[component]</strong> : le composant qui affiche la vue. Là c’est forcément un composant existant ;
-On aura donc ici quatre routes <strong>[/, /vue1, /vue2, /vue3]</strong>.</p>
+<li><strong>[component]</strong> : le composant qui affiche la vue. Là c’est forcément un composant existant ;</li>
+</ul>
 </li>
-<li>
-<p>lignes 33-36 : le routeur est une instance de la classe <strong>[VueRouter]</strong> importée ligne 3. Le constructeur de <strong>[VueRouter]</strong> est ici utilisé avec deux paramètres :</p>
-</li>
+</ul>
+<p>On aura donc ici quatre routes <strong>[/, /vue1, /vue2, /vue3]</strong>.</p>
+<ul>
+<li>lignes 33-36 : le routeur est une instance de la classe <strong>[VueRouter]</strong> importée ligne 3. Le constructeur de <strong>[VueRouter]</strong> est ici utilisé avec deux paramètres :<ul>
 <li>les routes de l’application ;</li>
 <li>un mode d’écriture des URL dans le navigateur : le mode par défaut <strong>[hash]</strong> écrit les URL sous la forme <strong>[localhost:8080/#/vue1]</strong> (# est le hash). Le mode <strong>[history]</strong> enlève le # <strong>[localhost:8080/vue1]</strong> ;</li>
+</ul>
+</li>
 <li>ligne 39 : on exporte le routeur ;</li>
 </ul>
 <h2 id="133-le-script-principal-mainjs">13.3. Le script principal [main.js]</h2>
@@ -1183,24 +1181,24 @@ On aura donc ici quatre routes <strong>[/, /vue1, /vue2, /vue3]</strong>.</p>
 <span class="normal"><a href="#__codelineno-2-15">15</a></span>
 <span class="normal"><a href="#__codelineno-2-16">16</a></span>
 <span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">card</span><span class="o">&gt;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">un</span> <span class="n">message</span> <span class="o">--&gt;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;success&quot;</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a>        <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="p">[</span><span class="n">vuejs</span><span class="o">-</span><span class="mi">11</span><span class="p">]</span> <span class="p">:</span> <span class="n">routage</span> <span class="n">et</span> <span class="n">navigation</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">la</span> <span class="n">vue</span> <span class="n">courante</span> <span class="n">du</span> <span class="n">routage</span> <span class="o">--&gt;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a>      <span class="o">&lt;</span><span class="n">router</span><span class="o">-</span><span class="n">view</span> <span class="o">/&gt;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">card</span><span class="o">&gt;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="p">&lt;</span><span class="nt">b-card</span><span class="p">&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>      <span class="cm">&lt;!-- un message --&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>      <span class="p">&lt;</span><span class="nt">b-alert</span> <span class="na">show</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;success&quot;</span> <span class="na">align</span><span class="o">=</span><span class="s">&quot;center&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>[vuejs-11] : routage et navigation<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>      <span class="p">&lt;/</span><span class="nt">b-alert</span><span class="p">&gt;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>      <span class="cm">&lt;!-- la vue courante du routage --&gt;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>      <span class="p">&lt;</span><span class="nt">router-view</span> <span class="p">/&gt;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="p">&lt;/</span><span class="nt">b-card</span><span class="p">&gt;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 <a id="__codelineno-2-13" name="__codelineno-2-13"></a>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a>  <span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a>    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a>  <span class="p">};</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;app&quot;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">  </span><span class="p">};</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
@@ -1236,35 +1234,35 @@ On aura donc ici quatre routes <strong>[/, /vue1, /vue2, /vue3]</strong>.</p>
 <span class="normal"><a href="#__codelineno-3-26">26</a></span>
 <span class="normal"><a href="#__codelineno-3-27">27</a></span>
 <span class="normal"><a href="#__codelineno-3-28">28</a></span>
-<span class="normal"><a href="#__codelineno-3-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">ligne</span> <span class="o">--&gt;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">zone</span> <span class="n">à</span> <span class="n">trois</span> <span class="n">colonnes</span> <span class="o">--&gt;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">cols</span><span class="o">=</span><span class="s2">&quot;2&quot;</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a>        <span class="o">&lt;</span><span class="n">slot</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;left&quot;</span> <span class="o">/&gt;</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">zone</span> <span class="n">à</span> <span class="n">neuf</span> <span class="n">colonnes</span> <span class="o">--&gt;</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">cols</span><span class="o">=</span><span class="s2">&quot;10&quot;</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a>        <span class="o">&lt;</span><span class="n">slot</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;right&quot;</span> <span class="o">/&gt;</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<span class="normal"><a href="#__codelineno-3-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="cm">&lt;!-- ligne --&gt;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>    <span class="p">&lt;</span><span class="nt">b-row</span><span class="p">&gt;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>      <span class="cm">&lt;!-- zone à trois colonnes --&gt;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>      <span class="p">&lt;</span><span class="nt">b-col</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;2&quot;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;left&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>        <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;left&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>      <span class="p">&lt;/</span><span class="nt">b-col</span><span class="p">&gt;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>      <span class="cm">&lt;!-- zone à neuf colonnes --&gt;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>      <span class="p">&lt;</span><span class="nt">b-col</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;10&quot;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;right&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>        <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;right&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>      <span class="p">&lt;/</span><span class="nt">b-col</span><span class="p">&gt;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a>    <span class="p">&lt;/</span><span class="nt">b-row</span><span class="p">&gt;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 <a id="__codelineno-3-16" name="__codelineno-3-16"></a>
-<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18"></a>  <span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19"></a>    <span class="o">//</span> <span class="n">paramètres</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20"></a>    <span class="n">props</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21"></a>      <span class="n">left</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22"></a>        <span class="nb">type</span><span class="p">:</span> <span class="n">Boolean</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23"></a>      <span class="p">},</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24"></a>      <span class="n">right</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25"></a>        <span class="nb">type</span><span class="p">:</span> <span class="n">Boolean</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26"></a>      <span class="p">}</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27"></a>    <span class="p">}</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28"></a>  <span class="p">};</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">    </span><span class="c1">// paramètres</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">    </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">      </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Boolean</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">      </span><span class="p">},</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">      </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Boolean</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">  </span><span class="p">};</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p>Nous avons déjà utilisé et expliqué cette mise en page dans le projet <strong>[vuejs-06]</strong> du paragraphe <a href="#1.7.projet [vuejs-06] : mise en page d’une vue avec des slots|outline">[vuejs-06]</a>.</p>
 <h2 id="136-le-composant-de-navigation">13.6. Le composant de navigation</h2>
@@ -1278,14 +1276,14 @@ On aura donc ici quatre routes <strong>[/, /vue1, /vue2, /vue3]</strong>.</p>
 <span class="normal"><a href="#__codelineno-4-5">5</a></span>
 <span class="normal"><a href="#__codelineno-4-6">6</a></span>
 <span class="normal"><a href="#__codelineno-4-7">7</a></span>
-<span class="normal"><a href="#__codelineno-4-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>  <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">menu</span> <span class="n">Bootstrap</span> <span class="n">à</span> <span class="n">trois</span> <span class="n">options</span> <span class="o">--&gt;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>  <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span> <span class="n">vertical</span><span class="o">&gt;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">-</span><span class="n">item</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;/vue1&quot;</span> <span class="n">exact</span> <span class="n">exact</span><span class="o">-</span><span class="n">active</span><span class="o">-</span><span class="n">class</span><span class="o">=</span><span class="s2">&quot;active&quot;</span><span class="o">&gt;</span><span class="n">Vue</span> <span class="mi">1</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">-</span><span class="n">item</span><span class="o">&gt;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">-</span><span class="n">item</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;/vue2&quot;</span> <span class="n">exact</span> <span class="n">exact</span><span class="o">-</span><span class="n">active</span><span class="o">-</span><span class="n">class</span><span class="o">=</span><span class="s2">&quot;active&quot;</span><span class="o">&gt;</span><span class="n">Vue</span> <span class="mi">2</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">-</span><span class="n">item</span><span class="o">&gt;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">-</span><span class="n">item</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;/vue3&quot;</span> <span class="n">exact</span> <span class="n">exact</span><span class="o">-</span><span class="n">active</span><span class="o">-</span><span class="n">class</span><span class="o">=</span><span class="s2">&quot;active&quot;</span><span class="o">&gt;</span><span class="n">Vue</span> <span class="mi">3</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">-</span><span class="n">item</span><span class="o">&gt;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a>  <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">&gt;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<span class="normal"><a href="#__codelineno-4-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>&lt;template&gt;
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>  &lt;!-- menu Bootstrap à trois options --&gt;
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>  &lt;b-nav vertical&gt;
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>    &lt;b-nav-item to=&quot;/vue1&quot; exact exact-active-class=&quot;active&quot;&gt;Vue 1&lt;/b-nav-item&gt;
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>    &lt;b-nav-item to=&quot;/vue2&quot; exact exact-active-class=&quot;active&quot;&gt;Vue 2&lt;/b-nav-item&gt;
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>    &lt;b-nav-item to=&quot;/vue3&quot; exact exact-active-class=&quot;active&quot;&gt;Vue 3&lt;/b-nav-item&gt;
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>  &lt;/b-nav&gt;
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>&lt;/template&gt;
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>ce code génère le bloc 1 de trois liens permettant la navigation ;</li>
@@ -1341,9 +1339,9 @@ On aura donc ici quatre routes <strong>[/, /vue1, /vue2, /vue3]</strong>.</p>
 <ul>
 <li>ligne 2 : la vue n° 1 utilise la mise en page du composant <strong>[Layout]</strong> composée de deux slots appelés <strong>[left, right]</strong> ;</li>
 <li>ligne 4 : le menu de navigation est placé dans le slot de gauche. C’est la zone <strong>[3]</strong> qu’on voit ci-dessus ;</li>
-<li>ligne 6 : un message est placé dans le slot de droite. C’est la zone <strong>[4]</strong> qu’on voit ci-dessus ;
-Les vues 2 et 3 sont analogues.</li>
+<li>ligne 6 : un message est placé dans le slot de droite. C’est la zone <strong>[4]</strong> qu’on voit ci-dessus ;</li>
 </ul>
+<p>Les vues 2 et 3 sont analogues.</p>
 <p>Vue n° 2 affichée par le composant <strong>[Component2]</strong> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
@@ -1441,37 +1439,37 @@ Les vues 2 et 3 sont analogues.</li>
 <p>A l’exécution la vue suivante s’affiche :</p>
 <p><img src="images/10000000000005F600000276BAF9C18A.png" style="width:10.09cm;height:4.171cm;" alt="Image" /></p>
 <ul>
-<li>en <strong>[1]</strong>, l’URL est <strong>[http://localhost:8080]</strong>. C’est alors la règle de routage suivante qui s’est exécutée :
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="p">{</span> <span class="n">path</span><span class="p">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Component1</span> <span class="p">}</span>
-</code></pre></div></td></tr></table></div></li>
+<li>en <strong>[1]</strong>, l’URL est <strong>[http://localhost:8080]</strong>. C’est alors la règle de routage suivante qui s’est exécutée :</li>
 </ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>{ path: &#39;/&#39;, name: &#39;home&#39;, component: Component1 }
+</code></pre></div></td></tr></table></div>
 <p>C’est donc le composant <strong>[Component1]</strong> qui a été affiché. Il affiche la vue n° 1 <strong>[2]</strong>. Maintenant cliquons sur le lien <strong>[Vue 1]</strong> dont le code est le suivant :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">-</span><span class="n">item</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;/vue1&quot;</span> <span class="n">exact</span> <span class="n">exact</span><span class="o">-</span><span class="n">active</span><span class="o">-</span><span class="n">class</span><span class="o">=</span><span class="s2">&quot;active&quot;</span><span class="o">&gt;</span><span class="n">Vue</span> <span class="mi">1</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">-</span><span class="n">item</span><span class="o">&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>&lt;b-nav-item to=&quot;/vue1&quot; exact exact-active-class=&quot;active&quot;&gt;Vue 1&lt;/b-nav-item&gt;
 </code></pre></div></td></tr></table></div>
 <p>L’affichage devient le suivant :</p>
 <ul>
-<li>en <strong>[3]</strong>, la règle suivante de routage s’est exécutée :
-path: &#x27;<mark>/vue1</mark>&#x27;, name: &#x27;vue1&#x27;, component: Component1</li>
+<li>en <strong>[3]</strong>, la règle suivante de routage s’est exécutée :</li>
 </ul>
+<p>path: &#x27;<mark style="background-color: #ffff00">/vue1</mark>&#x27;, name: &#x27;vue1&#x27;, component: Component1</p>
 <p>C’est donc de nouveau le composant <strong>[Component1]</strong> qui a été affiché et donc la vue n° 1 <strong>[4]</strong>. Maintenant cliquons sur le lien <strong>[Vue 2]</strong> dont le code est le suivant :</p>
-<p>&lt;b-nav-item to=&quot;<mark>/vue2</mark>&quot; exact exact-active-class=&quot;active&quot;&gt;Vue 2&lt;/b-nav-item&gt;</p>
+<p>&lt;b-nav-item to=&quot;<mark style="background-color: #ffff00">/vue2</mark>&quot; exact exact-active-class=&quot;active&quot;&gt;Vue 2&lt;/b-nav-item&gt;</p>
 <p>La nouvelle vue est alors la suivante :</p>
 <p><img src="images/10000000000002D10000028345F88051.png" style="width:4.77cm;height:4.25cm;" alt="Image" /></p>
 <ul>
-<li>en <strong>[5]</strong>, la règle suivante de routage s’est exécutée :
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="n">path</span><span class="p">:</span> <span class="s1">&#39;/vue2&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;vue2&#39;</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Component2</span>
-</code></pre></div></td></tr></table></div></li>
+<li>en <strong>[5]</strong>, la règle suivante de routage s’est exécutée :</li>
 </ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>path: &#39;/vue2&#39;, name: &#39;vue2&#39;, component: Component2
+</code></pre></div></td></tr></table></div>
 <p>C’est donc le composant <strong>[Component2]</strong> qui a été affiché et donc la vue n° 2. Si maintenant nous cliquons sur le lien <strong>[Vue 3]</strong>, dont le code est le suivant :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">-</span><span class="n">item</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;/vue3&quot;</span> <span class="n">exact</span> <span class="n">exact</span><span class="o">-</span><span class="n">active</span><span class="o">-</span><span class="n">class</span><span class="o">=</span><span class="s2">&quot;active&quot;</span><span class="o">&gt;</span><span class="n">Vue</span> <span class="mi">3</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">-</span><span class="n">item</span><span class="o">&gt;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>&lt;b-nav-item to=&quot;/vue3&quot; exact exact-active-class=&quot;active&quot;&gt;Vue 3&lt;/b-nav-item&gt;
 </code></pre></div></td></tr></table></div>
 <p>Nous obtenons la nouvelle vue suivante :</p>
 <p><img src="images/10000000000002D200000247B35F1259.png" style="width:4.77cm;height:3.86cm;" alt="Image" /></p>
 <ul>
-<li>en <strong>[6]</strong>, la règle de routage suivante s’est exécutée :
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">path</span><span class="p">:</span> <span class="s1">&#39;/vue3&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;vue3&#39;</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Component3</span>
-</code></pre></div></td></tr></table></div></li>
+<li>en <strong>[6]</strong>, la règle de routage suivante s’est exécutée :</li>
 </ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>path: &#39;/vue3&#39;, name: &#39;vue3&#39;, component: Component3
+</code></pre></div></td></tr></table></div>
 <p>C’est donc le composant <strong>[Component3]</strong> qui s’est affiché, ç-à-d la vue n° 3 <strong>[8]</strong>.</p>
 
 
@@ -1512,7 +1510,7 @@ path: &#x27;<mark>/vue1</mark>&#x27;, name: &#x27;vue1&#x27;, component: Compone
           https://tahe.developpez.com
         </a>
         <br>
-        Ce cours tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
+        Ce cours-tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
         <em>Licence Creative Commons Attribution – Pas d’Utilisation Commerciale –
         Partage dans les Mêmes Conditions 3.0 non transposé</em>.
       </div>

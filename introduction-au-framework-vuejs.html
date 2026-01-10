@@ -65,14 +65,10 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    // CORRECTION ICI : Utilisation de guillemets doubles pour entourer le titre qui contient une apostrophe
     var siteName = "Introduction au framework VUE.JS par l'exemple";
-
     gtag('config', 'G-EBZC3JVJNR', {
         'page_title': siteName
     });
-    console.log("[GA Debug] page_title forced to: " + siteName);
   </script>
 
     
@@ -871,50 +867,53 @@
 
 
 <h1 id="1-introduction-au-framework-vuejs">1. Introduction au framework VUE.JS</h1>
+<p>Le PDF de ce document est disponible |<a href="https://stahe.github.io/vuejs-oct-2019/vuejs-oct-2019.pdf"><u>ICI</u></a>|`.</p>
 <p>Ce document fait partie d’une série de quatre articles :</p>
-<ul>
-<li>|[<a href="https://tahe.developpez.com/tutoriels-cours/php7">Introduction au langage </a><a href="https://tahe.developpez.com/tutoriels-cours/php7"><strong><em>*PHP7</em></strong>*</a><a href="https://tahe.developpez.com/tutoriels-cours/php7"> par l’exemple</a>| ;</li>
-<li>|<a href="https://tahe.developpez.com/tutoriels-cours/ecmascript6">Introduction au langage </a><a href="https://tahe.developpez.com/tutoriels-cours/ecmascript6"><strong><em>*ECMASCRIPT 6</em></strong>*</a><a href="https://tahe.developpez.com/tutoriels-cours/ecmascript6"> par l’exemple</a>| ;</li>
+<ol>
+<li>|[<a href="https://tahe.developpez.com/tutoriels-cours/php7">Introduction au langage </a><a href="https://tahe.developpez.com/tutoriels-cours/php7"><strong>PHP7</strong></a><a href="https://tahe.developpez.com/tutoriels-cours/php7"> par l’exemple</a>| ;</li>
+<li>|<a href="https://tahe.developpez.com/tutoriels-cours/ecmascript6">Introduction au langage </a><a href="https://tahe.developpez.com/tutoriels-cours/ecmascript6"><strong>ECMASCRIPT 6</strong></a><a href="https://tahe.developpez.com/tutoriels-cours/ecmascript6"> par l’exemple</a>| ;</li>
 <li>|<a href="https://tahe.developpez.com/tutoriels-cours/vuejs">Introduction au framework VUE.JS par l’exemple</a>|. <strong>C’est le document présent</strong> ;</li>
-<li>
-<p>|<a href="https://tahe.developpez.com/tutoriels-cours/nuxtjs">Introduction au framework </a><a href="https://tahe.developpez.com/tutoriels-cours/nuxtjs"><strong><em>*NUXT.JS</em></strong>*</a><a href="https://tahe.developpez.com/tutoriels-cours/nuxtjs"> par l’exemple</a>| ;
-Ce sont tous des documents pour <strong>débutants</strong>. Les articles ont une suite logique mais <strong>sont faiblement couplés</strong> :</p>
-</li>
-<li>
-<p>le document [1] présente le langage PHP 7. Le lecteur seulement intéressé par le langage PHP et pas par le langage Javascript des articles suivants s’arrêtera là ;</p>
-</li>
+<li>|<a href="https://tahe.developpez.com/tutoriels-cours/nuxtjs">Introduction au framework </a><a href="https://tahe.developpez.com/tutoriels-cours/nuxtjs"><strong>NUXT.JS</strong></a><a href="https://tahe.developpez.com/tutoriels-cours/nuxtjs"> par l’exemple</a>| ;</li>
+</ol>
+<p>Ce sont tous des documents pour <strong>débutants</strong>. Les articles ont une suite logique mais <strong>sont faiblement couplés</strong> :</p>
+<ul>
+<li>le document [1] présente le langage PHP 7. Le lecteur seulement intéressé par le langage PHP et pas par le langage Javascript des articles suivants s’arrêtera là ;</li>
 <li>les documents [2-4] visent tous à construire un client Javascript au serveur de calcul de l’impôt développé dans le document [1] ;</li>
 <li>les frameworks Javascript [vue.js] et [nuxt.js] des articles 3 et 4 nécessitent de connaître le Javascript des dernières versions d’ECMASCRIPT, celles de la version 6. Le document [2] est donc destiné à ceux qui ne connaissent pas cette version de JavaScript. Il fait référence au serveur de calcul de l’impôt construit dans le document [1]. Le lecteur de [2] aura alors parfois besoin de se référer au document [1] ;</li>
 <li>une fois ECMASCRIPT 6 maîtrisé, on peut aborder le framework VUE.JS qui permet de construire des clients Javascript s’exécutant dans un navigateur en mode SPA (Single Page Application). C’est le document [3]. Il fait référence à la fois au serveur de calcul de l’impôt construit dans le document [1] et au code du client JavaScript autonome construit en [2]. Le lecteur de [3] aura alors parfois besoin de se référer aux documents [1] et [2] ;</li>
-<li>
-<p>une fois VUE.JS maîtrisé, on peut aborder le framework NUXT.JS qui permet de construire des clients Javascript s’exécutant dans un navigateur en mode SSR (Server Side Rendered). Il fait référence à la fois au serveur de calcul de l’impôt construit dans le document [1], au code du client Javascript autonome construit en [2] ainsi qu’à l’application [vue.js] développée dans le document [3]. Le lecteur de [4] aura alors parfois besoin de se référer aux documents [1] [2] et [3] ;
-La dernière version du serveur de calcul de l’impôt développée dans le document [1] (cf document |<a href="https://tahe.developpez.com/tutoriels-cours/php7">https://tahe.developpez.com/tutoriels-cours/php7</a>|) peut être améliorée de diverses manières :</p>
-</li>
+<li>une fois VUE.JS maîtrisé, on peut aborder le framework NUXT.JS qui permet de construire des clients Javascript s’exécutant dans un navigateur en mode SSR (Server Side Rendered). Il fait référence à la fois au serveur de calcul de l’impôt construit dans le document [1], au code du client Javascript autonome construit en [2] ainsi qu’à l’application [vue.js] développée dans le document [3]. Le lecteur de [4] aura alors parfois besoin de se référer aux documents [1] [2] et [3] ;</li>
+</ul>
+<p>La dernière version du serveur de calcul de l’impôt développée dans le document [1] (cf document |<a href="https://tahe.developpez.com/tutoriels-cours/php7">https://tahe.developpez.com/tutoriels-cours/php7</a>|) peut être améliorée de diverses manières :</p>
+<ul>
 <li>
 <p>la version écrite est centrée sur le serveur. La tendance est désormais (sept 2019) au client / serveur :</p>
-</li>
+<ul>
 <li>le serveur fonctionne en service jSON ;</li>
 <li>une page statique ou non est le point d’entrée de l’application web. Cette page contient du HTML /CSS mais aussi du JavaScript ;</li>
-<li>les autres pages de l’application web sont obtenues dynamiquement par le JavaScript :</li>
+<li>les autres pages de l’application web sont obtenues dynamiquement par le JavaScript :<ul>
 <li>la page HTML peut être obtenue par assemblage de fragments statiques ou non, fournis par le même serveur qui a fourni la page d’entrée, ou bien construites par le Javascript du client ;</li>
-<li>ces différentes pages affichent des données qui sont demandées au service jSON ;
-Ainsi le travail est réparti sur le client et le serveur. Le serveur ainsi déchargé peut servir davantage d’utilisateurs.</li>
+<li>ces différentes pages affichent des données qui sont demandées au service jSON ;</li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Ainsi le travail est réparti sur le client et le serveur. Le serveur ainsi déchargé peut servir davantage d’utilisateurs.</p>
 <p>L’architecture correspondant à ce modèle est le suivant :</p>
 <p><img src="images/1000000000000722000002398D4B2A81.png" style="width:14.491cm;height:4.522cm;" alt="Image" /></p>
 <p><strong>JS</strong> : JavaScript</p>
 <p>Le navigateur est client :</p>
 <ul>
 <li>d’un service de pages ou fragments statiques ou non (non représenté ci-dessus) ;</li>
-<li>d’un service de données jSON ;
-Le code JavaScript est donc un client jSON et à ce titre peut être organisé en couches <strong>[UI, métier, dao]</strong> (UI : User Interface) comme l’ont été nos clients jSON écrits en PHP. Au final, le navigateur ne charge qu’une unique page, la page d’accueil. Toutes les autres sont obtenues et construites par le JavaScript. On appelle ce type d’application <strong>SPA</strong> : <strong>S</strong>ingle <strong>P</strong>age <strong>A</strong>pplication ou encore <strong>APU</strong> : <strong>A</strong>pplication à <strong>P</strong>age <strong>U</strong>nique.</li>
+<li>d’un service de données jSON ;</li>
 </ul>
+<p>Le code JavaScript est donc un client jSON et à ce titre peut être organisé en couches <strong>[UI, métier, dao]</strong> (UI : User Interface) comme l’ont été nos clients jSON écrits en PHP. Au final, le navigateur ne charge qu’une unique page, la page d’accueil. Toutes les autres sont obtenues et construites par le JavaScript. On appelle ce type d’application <strong>SPA</strong> : <strong>S</strong>ingle <strong>P</strong>age <strong>A</strong>pplication ou encore <strong>APU</strong> : <strong>A</strong>pplication à <strong>P</strong>age <strong>U</strong>nique.</p>
 <p>Ce type d’application fait également partie des applications dites <strong>AJAX</strong> : <strong>A</strong>synchronous <strong>J</strong>avascript <strong>A</strong>nd <strong>X</strong>M :</p>
 <ul>
 <li><strong>Asynchronous</strong> : parce que les appels du client Javascript au serveur jSON sont asynchrones ;</li>
-<li><strong>XML</strong> : parce que XML était la technologie utilisée avant l’avènement du jSON. On a cependant gardé l’acronyme AJAX ;
-Nous allons étudier une telle architecture dans ce document. Côté client, nous utiliserons le framework Javascript <strong>[Vue.js]</strong> <strong>[https://vuejs.org/]</strong> pour écrire le client Javascript du serveur jSON PHP que nous avons écrit dans le document [1].</li>
+<li><strong>XML</strong> : parce que XML était la technologie utilisée avant l’avènement du jSON. On a cependant gardé l’acronyme AJAX ;</li>
 </ul>
+<p>Nous allons étudier une telle architecture dans ce document. Côté client, nous utiliserons le framework Javascript <strong>[Vue.js]</strong> <strong>[https://vuejs.org/]</strong> pour écrire le client Javascript du serveur jSON PHP que nous avons écrit dans le document [1].</p>
 <p><strong>[Vue.js]</strong> est un framework JavaScript. Nous avons présenté le langage Javascript dans le document [2].  Nous ne ferons pas une étude exhaustive du framework [vue.js]. Nous nous contenterons de présenter les concepts qui seront utilisés ensuite dans l’écriture d’un client <strong>[Vue.js]</strong> pour la version jSON de la version 14 du serveur de calcul de l’impôt (cf |<a href="https://tahe.developpez.com/tutoriels-cours/php7">https://tahe.developpez.com/tutoriels-cours/php7</a>|).</p>
 <p>Les scripts de ce document sont commentés et leur exécution console reproduite. Des explications supplémentaires sont parfois fournies. Le document nécessite une lecture active : pour comprendre un script, il faut à la fois lire son code, ses commentaires et ses résultats d&#x27;exécution.</p>
 <p>Les exemples du document sont disponibles |<a href="https://tahe.developpez.com/tutoriels-cours/vuejs/documents/vuejs.rar"><strong><em>*ici</em></strong>*</a><strong>|</strong>.</p>
@@ -959,7 +958,7 @@ Nous allons étudier une telle architecture dans ce document. Côté client, nou
           https://tahe.developpez.com
         </a>
         <br>
-        Ce cours tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
+        Ce cours-tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
         <em>Licence Creative Commons Attribution – Pas d’Utilisation Commerciale –
         Partage dans les Mêmes Conditions 3.0 non transposé</em>.
       </div>

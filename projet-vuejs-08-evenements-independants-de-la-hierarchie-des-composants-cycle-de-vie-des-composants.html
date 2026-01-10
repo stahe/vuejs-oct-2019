@@ -65,14 +65,10 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    // CORRECTION ICI : Utilisation de guillemets doubles pour entourer le titre qui contient une apostrophe
     var siteName = "Introduction au framework VUE.JS par l'exemple";
-
     gtag('config', 'G-EBZC3JVJNR', {
         'page_title': siteName
     });
-    console.log("[GA Debug] page_title forced to: " + siteName);
   </script>
 
     
@@ -1000,9 +996,9 @@
 <p>Le script <strong>[event-bus]</strong> se contente de créer une instance de la classe <strong>[Vue]</strong> (lignes 1-2) et de l’exporter (ligne 3). La classe <strong>[Vue]</strong> possède deux méthodes pour gérer les événements :</p>
 <ul>
 <li><strong>[Vue]</strong><strong>.$emit(nom, donnée)</strong> : permet d’émettre un événement nommé <strong>[nom]</strong> et associé à la donnée <strong>[donnée]</strong> ;</li>
-<li><strong>[Vue]</strong><strong>.$on(nom, fn)</strong> : permet d’intercepter l’événement nommé <strong>[nom]</strong> et de le faire traiter par la fonction <strong>[fn]</strong>. La fonction <strong>[fn]</strong> recevra en paramètre la donnée <strong>[donnée]</strong> associée à l’événement par son émetteur ;
-Cette gestion d’événements n’est pas liée à la hiérarchie des composants. Il faut simplement que les composants qui veulent communiquer ainsi utilisent <strong>la même instance</strong> de la classe <strong>[Vue]</strong> pour émettre / écouter les événements. Dans notre exemple, nous utiliserons l’instance <strong>[eventBus]</strong> définie par le script <strong>[event-bus.js]</strong> précédent.</li>
+<li><strong>[Vue]</strong><strong>.$on(nom, fn)</strong> : permet d’intercepter l’événement nommé <strong>[nom]</strong> et de le faire traiter par la fonction <strong>[fn]</strong>. La fonction <strong>[fn]</strong> recevra en paramètre la donnée <strong>[donnée]</strong> associée à l’événement par son émetteur ;</li>
 </ul>
+<p>Cette gestion d’événements n’est pas liée à la hiérarchie des composants. Il faut simplement que les composants qui veulent communiquer ainsi utilisent <strong>la même instance</strong> de la classe <strong>[Vue]</strong> pour émettre / écouter les événements. Dans notre exemple, nous utiliserons l’instance <strong>[eventBus]</strong> définie par le script <strong>[event-bus.js]</strong> précédent.</p>
 <h2 id="103-la-vue-principale-appvue">10.3. La vue principale [App.vue]</h2>
 <p>Le code de la vue principale <strong>[App]</strong> est le suivant :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
@@ -1309,7 +1305,7 @@ Cette gestion d’événements n’est pas liée à la hiérarchie des composant
           https://tahe.developpez.com
         </a>
         <br>
-        Ce cours tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
+        Ce cours-tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
         <em>Licence Creative Commons Attribution – Pas d’Utilisation Commerciale –
         Partage dans les Mêmes Conditions 3.0 non transposé</em>.
       </div>

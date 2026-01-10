@@ -65,14 +65,10 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    // CORRECTION ICI : Utilisation de guillemets doubles pour entourer le titre qui contient une apostrophe
     var siteName = "Introduction au framework VUE.JS par l'exemple";
-
     gtag('config', 'G-EBZC3JVJNR', {
         'page_title': siteName
     });
-    console.log("[GA Debug] page_title forced to: " + siteName);
   </script>
 
     
@@ -1067,64 +1063,64 @@
 <span class="normal"><a href="#__codelineno-1-55">55</a></span>
 <span class="normal"><a href="#__codelineno-1-56">56</a></span>
 <span class="normal"><a href="#__codelineno-1-57">57</a></span>
-<span class="normal"><a href="#__codelineno-1-58">58</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">une</span> <span class="n">liste</span> <span class="n">déroulante</span> <span class="o">--&gt;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">dropdown</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;dropdown&quot;</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Options&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">dropdown</span><span class="o">-</span><span class="n">item</span> <span class="n">v</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;(option,index) in options&quot;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>                       <span class="p">:</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;option.id&quot;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>                       <span class="nd">@click</span><span class="o">=</span><span class="s2">&quot;select(index)&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">option</span><span class="o">.</span><span class="n">text</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">dropdown</span><span class="o">-</span><span class="n">item</span><span class="o">&gt;</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">dropdown</span><span class="o">&gt;</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">bouton</span> <span class="o">--&gt;</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">button</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;ml-3&quot;</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a>              <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a>              <span class="nd">@click</span><span class="o">=</span><span class="s2">&quot;generateErrors&quot;</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a>              <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;!error&quot;</span><span class="o">&gt;</span><span class="n">Générer</span> <span class="n">une</span> <span class="n">liste</span> <span class="n">d</span><span class="s1">&#39;erreurs&lt;/b-button&gt;</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">alerte</span> <span class="o">--&gt;</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;danger&quot;</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;error&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;mt-3&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a>      <span class="n">Les</span> <span class="n">erreurs</span> <span class="n">suivantes</span> <span class="n">se</span> <span class="n">sont</span> <span class="n">produites</span> <span class="p">:</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17"></a>      <span class="o">&lt;</span><span class="n">br</span> <span class="o">/&gt;</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18"></a>      <span class="o">&lt;</span><span class="n">ul</span><span class="o">&gt;</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19"></a>        <span class="o">&lt;</span><span class="n">li</span> <span class="n">v</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;(erreur,index) in erreurs&quot;</span> <span class="p">:</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">erreur</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20"></a>      <span class="o">&lt;/</span><span class="n">ul</span><span class="o">&gt;</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">script</span> <span class="o">--&gt;</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26"></a>  <span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27"></a>    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;VFor&quot;</span><span class="p">,</span>
+<span class="normal"><a href="#__codelineno-1-58">58</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="cm">&lt;!-- une liste déroulante --&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="p">&lt;</span><span class="nt">b-dropdown</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;dropdown&quot;</span> <span class="na">text</span><span class="o">=</span><span class="s">&quot;Options&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>      <span class="p">&lt;</span><span class="nt">b-dropdown-item</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&quot;(option,index) in options&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>                       <span class="na">:key</span><span class="o">=</span><span class="s">&quot;option.id&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>                       <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&quot;select(index)&quot;</span><span class="p">&gt;</span>{{option.text}}<span class="p">&lt;/</span><span class="nt">b-dropdown-item</span><span class="p">&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="p">&lt;/</span><span class="nt">b-dropdown</span><span class="p">&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>    <span class="cm">&lt;!-- bouton --&gt;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>    <span class="p">&lt;</span><span class="nt">b-button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;ml-3&quot;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>              <span class="na">variant</span><span class="o">=</span><span class="s">&quot;primary&quot;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>              <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&quot;generateErrors&quot;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>              <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;!error&quot;</span><span class="p">&gt;</span>Générer une liste d&#39;erreurs<span class="p">&lt;/</span><span class="nt">b-button</span><span class="p">&gt;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>    <span class="cm">&lt;!-- alerte --&gt;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>    <span class="p">&lt;</span><span class="nt">b-alert</span> <span class="na">show</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;danger&quot;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;error&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mt-3&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>      Les erreurs suivantes se sont produites :
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a>      <span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a>      <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a>        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">v-for</span><span class="o">=</span><span class="s">&quot;(erreur,index) in erreurs&quot;</span> <span class="na">:key</span><span class="o">=</span><span class="s">&quot;index&quot;</span><span class="p">&gt;</span>{{erreur}}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a>      <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a>    <span class="p">&lt;/</span><span class="nt">b-alert</span><span class="p">&gt;</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="cm">&lt;!-- script --&gt;</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;VFor&quot;</span><span class="p">,</span>
 <a id="__codelineno-1-28" name="__codelineno-1-28"></a>
-<a id="__codelineno-1-29" name="__codelineno-1-29"></a>    <span class="o">//</span> <span class="n">propriétés</span> <span class="n">statiques</span> <span class="n">du</span> <span class="n">composant</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30"></a>    <span class="n">data</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31"></a>      <span class="k">return</span> <span class="p">{</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32"></a>        <span class="o">//</span> <span class="n">liste</span> <span class="n">des</span> <span class="n">erreurs</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33"></a>        <span class="n">erreurs</span><span class="p">:</span> <span class="p">[],</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34"></a>        <span class="o">//</span> <span class="n">erreur</span> <span class="n">ou</span> <span class="n">pas</span>
-<a id="__codelineno-1-35" name="__codelineno-1-35"></a>        <span class="n">error</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36"></a>        <span class="o">//</span> <span class="n">liste</span> <span class="n">des</span> <span class="n">options</span> <span class="n">du</span> <span class="n">menu</span>
-<a id="__codelineno-1-37" name="__codelineno-1-37"></a>        <span class="n">options</span><span class="p">:</span> <span class="p">[</span>
-<a id="__codelineno-1-38" name="__codelineno-1-38"></a>          <span class="p">{</span> <span class="n">text</span><span class="p">:</span> <span class="s2">&quot;option 1&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">1</span> <span class="p">},</span>
-<a id="__codelineno-1-39" name="__codelineno-1-39"></a>          <span class="p">{</span> <span class="n">text</span><span class="p">:</span> <span class="s2">&quot;option 2&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">2</span> <span class="p">},</span>
-<a id="__codelineno-1-40" name="__codelineno-1-40"></a>          <span class="p">{</span> <span class="n">text</span><span class="p">:</span> <span class="s2">&quot;option 3&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">3</span> <span class="p">}</span>
-<a id="__codelineno-1-41" name="__codelineno-1-41"></a>        <span class="p">]</span>
-<a id="__codelineno-1-42" name="__codelineno-1-42"></a>      <span class="p">};</span>
-<a id="__codelineno-1-43" name="__codelineno-1-43"></a>    <span class="p">},</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="w">    </span><span class="c1">// propriétés statiques du composant</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="w">        </span><span class="c1">// liste des erreurs</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="w">        </span><span class="nx">erreurs</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="w">        </span><span class="c1">// erreur ou pas</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="w">        </span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="w">        </span><span class="c1">// liste des options du menu</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="w">        </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;option 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;option 2&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;option 3&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="w">        </span><span class="p">]</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42"></a><span class="w">      </span><span class="p">};</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="w">    </span><span class="p">},</span>
 <a id="__codelineno-1-44" name="__codelineno-1-44"></a>
-<a id="__codelineno-1-45" name="__codelineno-1-45"></a>    <span class="o">//</span> <span class="n">méthodes</span>
-<a id="__codelineno-1-46" name="__codelineno-1-46"></a>    <span class="n">methods</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-1-47" name="__codelineno-1-47"></a>      <span class="o">//</span> <span class="n">génération</span> <span class="n">d</span><span class="s1">&#39;une liste d&#39;</span><span class="n">erreurs</span>
-<a id="__codelineno-1-48" name="__codelineno-1-48"></a>      <span class="n">generateErrors</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-1-49" name="__codelineno-1-49"></a>        <span class="n">this</span><span class="o">.</span><span class="n">erreurs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;erreur 1&quot;</span><span class="p">,</span> <span class="s2">&quot;erreur 2&quot;</span><span class="p">,</span> <span class="s2">&quot;erreur 3&quot;</span><span class="p">];</span>
-<a id="__codelineno-1-50" name="__codelineno-1-50"></a>        <span class="n">this</span><span class="o">.</span><span class="n">error</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
-<a id="__codelineno-1-51" name="__codelineno-1-51"></a>      <span class="p">},</span>
-<a id="__codelineno-1-52" name="__codelineno-1-52"></a>      <span class="o">//</span> <span class="n">l</span><span class="s1">&#39;utilisateur a sélectionné une option</span>
-<a id="__codelineno-1-53" name="__codelineno-1-53"></a>      <span class="n">select</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-1-54" name="__codelineno-1-54"></a>        <span class="n">alert</span><span class="p">(</span><span class="s2">&quot;Vous avez choisi : &quot;</span> <span class="o">+</span> <span class="n">this</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">);</span>
-<a id="__codelineno-1-55" name="__codelineno-1-55"></a>      <span class="p">}</span>
-<a id="__codelineno-1-56" name="__codelineno-1-56"></a>    <span class="p">}</span>
-<a id="__codelineno-1-57" name="__codelineno-1-57"></a>  <span class="p">};</span>
-<a id="__codelineno-1-58" name="__codelineno-1-58"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45"></a><span class="w">    </span><span class="c1">// méthodes</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46"></a><span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47"></a><span class="w">      </span><span class="c1">// génération d&#39;une liste d&#39;erreurs</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48"></a><span class="w">      </span><span class="nx">generateErrors</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">erreurs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;erreur 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;erreur 2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;erreur 3&quot;</span><span class="p">];</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51"></a><span class="w">      </span><span class="p">},</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52"></a><span class="w">      </span><span class="c1">// l&#39;utilisateur a sélectionné une option</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53"></a><span class="w">      </span><span class="nx">select</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54"></a><span class="w">        </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Vous avez choisi : &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">[</span><span class="nx">index</span><span class="p">].</span><span class="nx">text</span><span class="p">);</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57"></a><span class="w">  </span><span class="p">};</span>
+<a id="__codelineno-1-58" name="__codelineno-1-58"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
@@ -1184,7 +1180,7 @@
           https://tahe.developpez.com
         </a>
         <br>
-        Ce cours tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
+        Ce cours-tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
         <em>Licence Creative Commons Attribution – Pas d’Utilisation Commerciale –
         Partage dans les Mêmes Conditions 3.0 non transposé</em>.
       </div>

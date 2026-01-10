@@ -65,14 +65,10 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    // CORRECTION ICI : Utilisation de guillemets doubles pour entourer le titre qui contient une apostrophe
     var siteName = "Introduction au framework VUE.JS par l'exemple";
-
     gtag('config', 'G-EBZC3JVJNR', {
         'page_title': siteName
     });
-    console.log("[GA Debug] page_title forced to: " + siteName);
   </script>
 
     
@@ -1101,9 +1097,9 @@
 <li>lignes 13-15 : une colonne qui va occuper 8 des 12 colonnes de la ligne. on y met un texte ;</li>
 <li>ligne 18 : utilisation d’un composant appelé <strong>[HelloBootstrap]</strong> avec une propriété nommée <strong>[msg]</strong> ;</li>
 <li>lignes 24-33 : la partie &lt;script&gt; du composant ;</li>
-<li>lignes 29-31 : le composant <strong>[HelloBootstrap]</strong> utilisée ligne 18 est exporté. Pour être connu, il doit être importé ligne 25 ;
-Le résultat est le suivant :</li>
+<li>lignes 29-31 : le composant <strong>[HelloBootstrap]</strong> utilisée ligne 18 est exporté. Pour être connu, il doit être importé ligne 25 ;</li>
 </ul>
+<p>Le résultat est le suivant :</p>
 <p><img src="images/10000000000008D9000002B38C0F4F3C.png" style="width:14.981cm;height:4.571cm;" alt="Image" /></p>
 <ul>
 <li>en <strong>[1]</strong>, la balise &lt;b-card&gt; ;</li>
@@ -1137,36 +1133,36 @@ Le résultat est le suivant :</li>
 <span class="normal"><a href="#__codelineno-2-22">22</a></span>
 <span class="normal"><a href="#__codelineno-2-23">23</a></span>
 <span class="normal"><a href="#__codelineno-2-24">24</a></span>
-<span class="normal"><a href="#__codelineno-2-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">message</span> <span class="n">sur</span> <span class="n">fond</span> <span class="n">vert</span> <span class="o">--&gt;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">cols</span><span class="o">=</span><span class="s2">&quot;12&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;success&quot;</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a>        <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="p">[</span><span class="n">vuejs</span><span class="o">-</span><span class="mi">02</span><span class="p">]</span> <span class="p">:</span> <span class="n">bootstrap</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">message</span> <span class="n">sur</span> <span class="n">fond</span> <span class="n">jaune</span> <span class="o">--&gt;</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">cols</span><span class="o">=</span><span class="s2">&quot;12&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;warning&quot;</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a>        <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="p">{{</span><span class="n">msg</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    <span class="cm">&lt;!-- message sur fond vert --&gt;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="p">&lt;</span><span class="nt">b-col</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;12&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>      <span class="p">&lt;</span><span class="nt">b-alert</span> <span class="na">show</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;success&quot;</span> <span class="na">align</span><span class="o">=</span><span class="s">&quot;center&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>[vuejs-02] : bootstrap<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>      <span class="p">&lt;/</span><span class="nt">b-alert</span><span class="p">&gt;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="p">&lt;/</span><span class="nt">b-col</span><span class="p">&gt;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="cm">&lt;!-- message sur fond jaune --&gt;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="p">&lt;</span><span class="nt">b-col</span> <span class="na">cols</span><span class="o">=</span><span class="s">&quot;12&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>      <span class="p">&lt;</span><span class="nt">b-alert</span> <span class="na">show</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;warning&quot;</span> <span class="na">align</span><span class="o">=</span><span class="s">&quot;center&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>{{msg}}<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>      <span class="p">&lt;/</span><span class="nt">b-alert</span><span class="p">&gt;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="p">&lt;/</span><span class="nt">b-col</span><span class="p">&gt;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 <a id="__codelineno-2-17" name="__codelineno-2-17"></a>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a>  <span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a>    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;HelloBootstrap&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a>    <span class="n">props</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a>      <span class="n">msg</span><span class="p">:</span> <span class="n">String</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a>    <span class="p">}</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24"></a>  <span class="p">};</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;HelloBootstrap&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">    </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">      </span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="nb">String</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="w">  </span><span class="p">};</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
 <li>ligne 3 : la balise &lt;b-alert show&gt; affiche un rectangle de couleur dans lequel on met en général un texte (ligne 6). L’attribut <strong>[variant]</strong> permet de sélectionner un type d’alerte. Chaque type d’alerte a une couleur de fond différente. La couleur de la variante <strong>[success]</strong> est le vert. L’attribut <strong>[align]</strong> permet d’aligner le texte de l’alerte (gauche, droite, centré). On notera que l’attribut <strong>[show]</strong> est obligatoire pour afficher l’alerte. Sans cet attribut, l’alerte n’est pas visible ;</li>
-<li>les valeurs possibles de <strong>[variant]</strong> :</li>
+<li>les valeurs possibles de <strong>[variant]</strong> :<ul>
 <li><strong>[primary]</strong> : bleu ;</li>
 <li><strong>[secondary]</strong> : gris ;</li>
 <li><strong>[success]</strong>:vert ;</li>
@@ -1175,9 +1171,11 @@ Le résultat est le suivant :</li>
 <li><strong>[info]</strong> : turquoise ;</li>
 <li><strong>[light]</strong> : pas de couleur de fond ;</li>
 <li><strong>[dark]</strong> : gris un peu plus foncé que <strong>[secondary]</strong> ;</li>
-<li>ligne 12 : <strong>[msg]</strong> est un paramètre du composant <strong>[HelloBootstrap]</strong> (lignes 21-23) ;
-Le rendu visuel est le suivant :</li>
 </ul>
+</li>
+<li>ligne 12 : <strong>[msg]</strong> est un paramètre du composant <strong>[HelloBootstrap]</strong> (lignes 21-23) ;</li>
+</ul>
+<p>Le rendu visuel est le suivant :</p>
 <p><img src="images/10000000000008FD000004463E55F670.png" style="width:8.051cm;height:4.121cm;" alt="Image" /></p>
 <ul>
 <li><strong>[1]</strong> : balise &lt;b-alert show variant=’success’&gt; ;</li>
@@ -1188,9 +1186,9 @@ Le rendu visuel est le suivant :</li>
 <p><img src="images/1000000000000735000001FF3D38ABB4.png" style="width:8.051cm;height:4.121cm;" alt="Image" /></p>
 <ul>
 <li>en <strong>[3]</strong>, on modifie le script exécuté par la commande <strong>[serve]</strong> <strong>[2]</strong> du fichier package.json <strong>[1]</strong> ;</li>
-<li>en <strong>[4]</strong>, on exécute le projet ;
-<strong>Note</strong> : dans tout ce qui suit on utilisera les balises du framework BootstrapVue, des balises de la forme &lt;b-qqchose&gt;. Ce n’est pas obligatoire. On peut utiliser les balises originelles du framework Bootstrap. Elles sont fonctionnelles dans les templates de <strong>[Vue.js]</strong>. Aussi le développeur habitué aux balises Bootstrap peut continuer à les utiliser.</li>
+<li>en <strong>[4]</strong>, on exécute le projet ;</li>
 </ul>
+<p><strong>Note</strong> : dans tout ce qui suit on utilisera les balises du framework BootstrapVue, des balises de la forme &lt;b-qqchose&gt;. Ce n’est pas obligatoire. On peut utiliser les balises originelles du framework Bootstrap. Elles sont fonctionnelles dans les templates de <strong>[Vue.js]</strong>. Aussi le développeur habitué aux balises Bootstrap peut continuer à les utiliser.</p>
 
 
 
@@ -1230,7 +1228,7 @@ Le rendu visuel est le suivant :</li>
           https://tahe.developpez.com
         </a>
         <br>
-        Ce cours tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
+        Ce cours-tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
         <em>Licence Creative Commons Attribution – Pas d’Utilisation Commerciale –
         Partage dans les Mêmes Conditions 3.0 non transposé</em>.
       </div>

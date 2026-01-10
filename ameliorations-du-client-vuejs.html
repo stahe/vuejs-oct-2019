@@ -65,14 +65,10 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    // CORRECTION ICI : Utilisation de guillemets doubles pour entourer le titre qui contient une apostrophe
     var siteName = "Introduction au framework VUE.JS par l'exemple";
-
     gtag('config', 'G-EBZC3JVJNR', {
         'page_title': siteName
     });
-    console.log("[GA Debug] page_title forced to: " + siteName);
   </script>
 
     
@@ -1175,13 +1171,11 @@
 <ul>
 <li><strong>[session.js]</strong> : exporte un objet <strong>[session]</strong> qui va encapsuler des informations sur la session courante ;</li>
 <li><strong>[pluginSession]</strong> : rend disponible l’objet <strong>[session]</strong> précédent dans la propriété <strong>[$session]</strong> des vues ;</li>
-<li>
-<p><strong>[NotFound.vue]</strong> : une nouvelle vue affichée lorsque l’utilisateur demande manuellement une URL qui n’existe pas ;
-Des fichiers seront modifiés :</p>
-</li>
-<li>
-<p><strong>[main.js]</strong> : va initialiser la session courante puis, lorsque l’utilisateur va taper manuellement des URL va la restaurer ;</p>
-</li>
+<li><strong>[NotFound.vue]</strong> : une nouvelle vue affichée lorsque l’utilisateur demande manuellement une URL qui n’existe pas ;</li>
+</ul>
+<p>Des fichiers seront modifiés :</p>
+<ul>
+<li><strong>[main.js]</strong> : va initialiser la session courante puis, lorsque l’utilisateur va taper manuellement des URL va la restaurer ;</li>
 <li><strong>[router.js]</strong> : des contrôles sont ajoutés pour traiter le cas des URL tapées par l’utilisateur ;</li>
 <li><strong>[store.js]</strong> : une nouvelle mutation est ajoutée ;</li>
 <li><strong>[config.js]</strong> : une nouvelle configuration est ajoutée ;</li>
@@ -1307,9 +1301,9 @@ Des fichiers seront modifiés :</p>
 <ul>
 <li>d’utiliser une session qui stockerait les informations qu’on veut conserver si l’utilisateur tape manuellement des URL ;</li>
 <li>de la sauvegarder à des moments clés de l’application ;</li>
-<li>de la restaurer dans <strong>[main.js]</strong> qui <strong>est toujours exécuté</strong> lorsqu’une URL est tapée manuellement ;
-Le script <strong>[./session]</strong> est le suivant :</li>
+<li>de la restaurer dans <strong>[main.js]</strong> qui <strong>est toujours exécuté</strong> lorsqu’une URL est tapée manuellement ;</li>
 </ul>
+<p>Le script <strong>[./session]</strong> est le suivant :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -1471,28 +1465,36 @@ Le script <strong>[./session]</strong> est le suivant :</li>
 <p><strong>Commentaires</strong></p>
 <ul>
 <li>ligne 2 : la session va encapsuler également le store <strong>[Vuex]</strong> (liste des simulations, n° de la dernière simulation faite) ;</li>
-<li>lignes 7-17 : les informations conservées par la session :</li>
+<li>lignes 7-17 : les informations conservées par la session :<ul>
 <li><strong>[started]</strong> : la session jSON avec le serveur a démarré ou non ;</li>
 <li><strong>[authenticated]</strong> : l’utilisateur s’est authentifié ou pas ;</li>
 <li><strong>[saveTime]</strong> : la date en millisecondes de la dernière sauvegarde ;</li>
 <li><strong>[métier]</strong> : une référence sur la couche <strong>[métier]</strong>. Celle-ci contient la donnée <strong>[taxAdminData]</strong> qui permet le calcul de l’impôt ;</li>
 <li><strong>[state]</strong> : le state du store <strong>[Vuex]</strong> (liste des simulations, n° de la dernière simulation faite) ;</li>
-<li>lignes 20-30 : la méthode <strong>[save]</strong> sauvegarde la session localement sur le navigateur exécutant l’application ;</li>
+</ul>
+</li>
+<li>lignes 20-30 : la méthode <strong>[save]</strong> sauvegarde la session localement sur le navigateur exécutant l’application ;<ul>
 <li>ligne 22 : on note l’heure de sauvegarde ;</li>
 <li>ligne 23 : on récupère le <strong>[state]</strong> du store <strong>[Vuex]</strong> ;</li>
 <li>ligne 25 : on crée la chaîne jSON de la session ;</li>
 <li>ligne 27 : on la stocke localement sur le navigateur associée à la clé <strong>[session]</strong> ;</li>
-<li>lignes 33-57 : la méthode <strong>[restore]</strong> permet de restaurer une session à partir de sa sauvegarde locale sur le navigateur ;</li>
+</ul>
+</li>
+<li>lignes 33-57 : la méthode <strong>[restore]</strong> permet de restaurer une session à partir de sa sauvegarde locale sur le navigateur ;<ul>
 <li>ligne 35 : on récupère la sauvegarde jSON locale ;</li>
 <li>ligne 37 : si on a récupéré quelque chose ;</li>
 <li>lignes 39-44 : l’objet <strong>[session]</strong> est reconstitué ;</li>
 <li>ligne 46 : on calcule la durée qui nous sépare de la dernière sauvegarde ;</li>
 <li>lignes 47-50 : si cette durée est supérieure à une valeur <strong>[config.duréeSession]</strong> fixée par configuration, la session est réinitialisée (ligne 49) et à cette occasion sauvegardée ;</li>
 <li>ligne 52 : sinon on régénère l’attribut <strong>[state]</strong> du store <strong>[Vuex]</strong> ;</li>
-<li>lignes 60-75 : la méthode <strong>[clear]</strong> réinitialise la session ;</li>
+</ul>
+</li>
+<li>lignes 60-75 : la méthode <strong>[clear]</strong> réinitialise la session ;<ul>
 <li>lignes 64-70 : les propriétés de la session sont réinitialisées à leurs valeurs initiales ;</li>
 <li>ligne 72 : ainsi que le store <strong>[Vuex]</strong> ;</li>
 <li>ligne 74 : la nouvelle session est sauvegardée ;</li>
+</ul>
+</li>
 </ul>
 <h2 id="194-le-fichier-de-configuration-config">19.4. Le fichier de configuration [config]</h2>
 <p>Le fichier <strong>[./config]</strong> évolue de la façon suivante :</p>
@@ -1817,15 +1819,19 @@ Le script <strong>[./session]</strong> est le suivant :</li>
 <li>ligne 23 : on met dans <strong>[meta]</strong>, la propriété <strong>[authenticated]</strong> (ce nom peut être quelconque). Il signifiera pour nous que pour aller à la vue <strong>[CalculImpot]</strong>, l’utilisateur doit être authentifié ;</li>
 <li>lignes 26-29 : on fait la même chose pour la route qui mène à la vue <strong>[ListeSimulations]</strong>. Là aussi, l’utilisateur doit être authentifié ;</li>
 <li>la propriété <strong>[meta.authenticated]</strong> va nous permettre de vérifier qu’un utilisateur qui tape manuellement les URL des vues <strong>[CalculImpot, ListeSimulations]</strong> ne peut pas les obtenir s’il n’est pas authentifié ;</li>
-<li>lignes 51-76 : la méthode <strong>[beforeEach]</strong> est exécutée avant qu’une vue ne soit routée. C’est le bon moment pour faire des vérifications ;</li>
+<li>lignes 51-76 : la méthode <strong>[beforeEach]</strong> est exécutée avant qu’une vue ne soit routée. C’est le bon moment pour faire des vérifications ;<ul>
 <li><strong>[to]</strong> : la prochaine route si on ne fait rien ;</li>
 <li><strong>[from]</strong> : la dernière route affichée ;</li>
 <li><strong>[next]</strong> : fonction permettant de changer la prochaine route affichée ;</li>
+</ul>
+</li>
 <li>ligne 55 : on regarde si la prochaine route demande à ce que l’utilisateur soit authentifié ;</li>
 <li>lignes 56-59 : si oui et que l’utilisateur n’est pas authentifié, on change la prochaine route vers la vue <strong>[Authentification]</strong> ;</li>
-<li>lignes 64-73 : on traite le cas particulier de la route <strong>[finSession]</strong> des lignes 30-32. Celle-ci n’a pas de vue associée ;</li>
+<li>lignes 64-73 : on traite le cas particulier de la route <strong>[finSession]</strong> des lignes 30-32. Celle-ci n’a pas de vue associée ;<ul>
 <li>ligne 66 : on réinitialise la session à sa valeur initiale ;</li>
 <li>lignes 68-70 : on programme la vue <strong>[Authentification]</strong> comme prochaine vue ;</li>
+</ul>
+</li>
 <li>ligne 75 : si on n’est pas dans les deux cas précédents, on se contente de passer à la route prévue par le fichier de routage ;</li>
 <li>lignes 35-37 : on prévoit une vue <strong>[NotFound]</strong> si la route tapée par l’utilisateur ne correspond à aucune route connue. Cette vue est importée ligne 8. Les routes sont vérifiées dans l’ordre du fichier de routage. Si donc on arrive à la ligne 36, c’est que la route demandée n’est aucune des routes des lignes 18-33 ;</li>
 </ul>
@@ -2502,15 +2508,21 @@ Le script <strong>[./session]</strong> est le suivant :</li>
 <p>Lors des tests vérifiez les points suivants :</p>
 <ul>
 <li>si l’utilisateur ‘utilise’ l’application via les liens du menu de navigation et les boutons / liens d’action, celle-ci fonctionne ;</li>
-<li>si l’utilisateur tape manuellement des URL, l’application continue à fonctionner. Faites en particulier le test suivant :</li>
+<li>si l’utilisateur tape manuellement des URL, l’application continue à fonctionner. Faites en particulier le test suivant :<ul>
 <li>faites simulations ;</li>
 <li>une fois sur la vue <strong>[ListeSimulations]</strong>, rechargez (F5) la vue. Dans l’application précédente <strong>[vuejs-20]</strong>, on perdait alors les simulations. Ici ce n’est pas le cas : on retrouve bien les simulations déjà faites ;</li>
-<li>regardez les logs pour comprendre :</li>
+</ul>
+</li>
+<li>regardez les logs pour comprendre :<ul>
 <li>à quel moment le script <strong>[main]</strong> est exécuté. Vous devez voir qu’il l’est à chaque fois que l’utilisateur tape une URL à la main ;</li>
 <li>à quels moments les vues sont créées. Vous devez voir qu’elles le sont à chaque fois qu’elles vont être affichées ;</li>
-<li>le fonctionnement du routage. Avant chaque routage un log est fait qui vous indique :</li>
+<li>le fonctionnement du routage. Avant chaque routage un log est fait qui vous indique :<ul>
 <li>la route d’où vous venez ;</li>
 <li>la route où vous allez ;</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="1913-deploiement-de-lapplication-sur-un-serveur-local">19.13. Déploiement de l’application sur un serveur local</h2>
 <p>Comme exercice, suivez le paragraphe <a href="#1.17.6.Déploiement de l’application sur un serveur local|outline">|Déploiement sur un serveur local|</a>, pour déployer le projet <strong>[vuejs-21]</strong> sur le serveur Laragon local. Puis testez-le.</p>
@@ -2538,25 +2550,25 @@ Le script <strong>[./session]</strong> est le suivant :</li>
 <span class="normal"><a href="#__codelineno-12-16">16</a></span>
 <span class="normal"><a href="#__codelineno-12-17">17</a></span>
 <span class="normal"><a href="#__codelineno-12-18">18</a></span>
-<span class="normal"><a href="#__codelineno-12-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">définition</span> <span class="n">HTML</span> <span class="n">de</span> <span class="n">la</span> <span class="n">vue</span> <span class="o">--&gt;</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">card</span><span class="o">&gt;</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">jumbotron</span> <span class="o">--&gt;</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">jumbotron</span><span class="o">&gt;</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7"></a>        <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8"></a>          <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">sm</span><span class="o">=</span><span class="s2">&quot;4&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-12-9" name="__codelineno-12-9"></a>            <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../assets/logo.jpg&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;Cerisier en fleurs&quot;</span> <span class="o">/&gt;</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10"></a>          <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-12-11" name="__codelineno-12-11"></a>          <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">sm</span><span class="o">=</span><span class="s2">&quot;8&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-12-12" name="__codelineno-12-12"></a>            <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Calculez</span> <span class="n">votre</span> <span class="n">impôt</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-<a id="__codelineno-12-13" name="__codelineno-12-13"></a>          <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-12-14" name="__codelineno-12-14"></a>        <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
-<a id="__codelineno-12-15" name="__codelineno-12-15"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">jumbotron</span><span class="o">&gt;</span>
-<a id="__codelineno-12-16" name="__codelineno-12-16"></a>      <span class="o">....</span>
-<a id="__codelineno-12-17" name="__codelineno-12-17"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">card</span><span class="o">&gt;</span>
-<a id="__codelineno-12-18" name="__codelineno-12-18"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="cm">&lt;!-- définition HTML de la vue --&gt;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>    <span class="p">&lt;</span><span class="nt">b-card</span><span class="p">&gt;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>      <span class="cm">&lt;!-- jumbotron --&gt;</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>      <span class="p">&lt;</span><span class="nt">b-jumbotron</span><span class="p">&gt;</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a>        <span class="p">&lt;</span><span class="nt">b-row</span><span class="p">&gt;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a>          <span class="p">&lt;</span><span class="nt">b-col</span> <span class="na">sm</span><span class="o">=</span><span class="s">&quot;4&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a>            <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../assets/logo.jpg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Cerisier en fleurs&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a>          <span class="p">&lt;/</span><span class="nt">b-col</span><span class="p">&gt;</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a>          <span class="p">&lt;</span><span class="nt">b-col</span> <span class="na">sm</span><span class="o">=</span><span class="s">&quot;8&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a>            <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Calculez votre impôt<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a>          <span class="p">&lt;/</span><span class="nt">b-col</span><span class="p">&gt;</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a>        <span class="p">&lt;/</span><span class="nt">b-row</span><span class="p">&gt;</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15"></a>      <span class="p">&lt;/</span><span class="nt">b-jumbotron</span><span class="p">&gt;</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16"></a>      ....
+<a id="__codelineno-12-17" name="__codelineno-12-17"></a>    <span class="p">&lt;/</span><span class="nt">b-card</span><span class="p">&gt;</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
@@ -2580,22 +2592,22 @@ Le script <strong>[./session]</strong> est le suivant :</li>
 <span class="normal"><a href="#__codelineno-13-13">13</a></span>
 <span class="normal"><a href="#__codelineno-13-14">14</a></span>
 <span class="normal"><a href="#__codelineno-13-15">15</a></span>
-<span class="normal"><a href="#__codelineno-13-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">définition</span> <span class="n">HTML</span> <span class="n">de</span> <span class="n">la</span> <span class="n">mise</span> <span class="n">en</span> <span class="n">page</span> <span class="n">de</span> <span class="n">la</span> <span class="n">vue</span> <span class="n">routée</span> <span class="o">--&gt;</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3"></a>  <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">ligne</span> <span class="o">--&gt;</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4"></a>  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">zone</span> <span class="n">de</span> <span class="n">trois</span> <span class="n">colonnes</span> <span class="n">à</span> <span class="n">gauche</span> <span class="o">--&gt;</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">sm</span><span class="o">=</span><span class="s2">&quot;3&quot;</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-13-8" name="__codelineno-13-8"></a>        <span class="o">&lt;</span><span class="n">slot</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;left&quot;</span> <span class="o">/&gt;</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-13-10" name="__codelineno-13-10"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">zone</span> <span class="n">de</span> <span class="n">neuf</span> <span class="n">colonnes</span> <span class="n">à</span> <span class="n">droite</span> <span class="o">--&gt;</span>
-<a id="__codelineno-13-11" name="__codelineno-13-11"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">sm</span><span class="o">=</span><span class="s2">&quot;9&quot;</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-13-12" name="__codelineno-13-12"></a>        <span class="o">&lt;</span><span class="n">slot</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;right&quot;</span> <span class="o">/&gt;</span>
-<a id="__codelineno-13-13" name="__codelineno-13-13"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-13-14" name="__codelineno-13-14"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
-<a id="__codelineno-13-15" name="__codelineno-13-15"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="cm">&lt;!-- définition HTML de la mise en page de la vue routée --&gt;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>  <span class="cm">&lt;!-- ligne --&gt;</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>    <span class="p">&lt;</span><span class="nt">b-row</span><span class="p">&gt;</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a>      <span class="cm">&lt;!-- zone de trois colonnes à gauche --&gt;</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a>      <span class="p">&lt;</span><span class="nt">b-col</span> <span class="na">sm</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;left&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a>        <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;left&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a>      <span class="p">&lt;/</span><span class="nt">b-col</span><span class="p">&gt;</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a>      <span class="cm">&lt;!-- zone de neuf colonnes à droite --&gt;</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a>      <span class="p">&lt;</span><span class="nt">b-col</span> <span class="na">sm</span><span class="o">=</span><span class="s">&quot;9&quot;</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;right&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a>        <span class="p">&lt;</span><span class="nt">slot</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;right&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a>      <span class="p">&lt;/</span><span class="nt">b-col</span><span class="p">&gt;</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a>    <span class="p">&lt;/</span><span class="nt">b-row</span><span class="p">&gt;</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="19143-la-vue-authentification">19.14.3. La vue [Authentification]</h3>
 <p>La vue <strong>[Authentification]</strong> évolue comme suit :</p>
@@ -2639,51 +2651,51 @@ Le script <strong>[./session]</strong> est le suivant :</li>
 <span class="normal"><a href="#__codelineno-14-38">38</a></span>
 <span class="normal"><a href="#__codelineno-14-39">39</a></span>
 <span class="normal"><a href="#__codelineno-14-40">40</a></span>
-<span class="normal"><a href="#__codelineno-14-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">définition</span> <span class="n">HTML</span> <span class="n">de</span> <span class="n">la</span> <span class="n">vue</span> <span class="o">--&gt;</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3"></a>  <span class="o">&lt;</span><span class="n">Layout</span> <span class="p">:</span><span class="n">left</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="p">:</span><span class="n">right</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4"></a>    <span class="o">&lt;</span><span class="n">template</span> <span class="n">slot</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">formulaire</span> <span class="n">HTML</span> <span class="o">-</span> <span class="n">on</span> <span class="n">poste</span> <span class="n">ses</span> <span class="n">valeurs</span> <span class="n">avec</span> <span class="n">l</span><span class="s1">&#39;action [authentifier-utilisateur] --&gt;</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span> <span class="nd">@submit</span><span class="o">.</span><span class="n">prevent</span><span class="o">=</span><span class="s2">&quot;login&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-14-7" name="__codelineno-14-7"></a>        <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">titre</span> <span class="o">--&gt;</span>
-<a id="__codelineno-14-8" name="__codelineno-14-8"></a>        <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-14-9" name="__codelineno-14-9"></a>          <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="n">Bienvenue</span><span class="o">.</span> <span class="n">Veuillez</span> <span class="n">vous</span> <span class="n">authentifier</span> <span class="n">pour</span> <span class="n">vous</span> <span class="n">connecter</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
-<a id="__codelineno-14-10" name="__codelineno-14-10"></a>        <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-14-11" name="__codelineno-14-11"></a>        <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="mi">1</span><span class="n">ère</span> <span class="n">ligne</span> <span class="o">--&gt;</span>
-<a id="__codelineno-14-12" name="__codelineno-14-12"></a>        <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">group</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Nom d&#39;utilisateur&quot;</span> <span class="n">label</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;user&quot;</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Tapez admin&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-14-13" name="__codelineno-14-13"></a>          <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">zone</span> <span class="n">de</span> <span class="n">saisie</span> <span class="n">user</span> <span class="o">--&gt;</span>
-<a id="__codelineno-14-14" name="__codelineno-14-14"></a>          <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">sm</span><span class="o">=</span><span class="s2">&quot;6&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-14-15" name="__codelineno-14-15"></a>            <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;user&quot;</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Nom d&#39;utilisateur&quot;</span> <span class="n">v</span><span class="o">-</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;user&quot;</span> <span class="o">/&gt;</span>
-<a id="__codelineno-14-16" name="__codelineno-14-16"></a>          <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-14-17" name="__codelineno-14-17"></a>        <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">group</span><span class="o">&gt;</span>
-<a id="__codelineno-14-18" name="__codelineno-14-18"></a>        <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="mi">2</span><span class="n">ième</span> <span class="n">ligne</span> <span class="o">--&gt;</span>
-<a id="__codelineno-14-19" name="__codelineno-14-19"></a>        <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">group</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Mot de passe&quot;</span> <span class="n">label</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Tapez admin&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-14-20" name="__codelineno-14-20"></a>          <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">zone</span> <span class="n">de</span> <span class="n">saisie</span> <span class="n">password</span> <span class="o">--&gt;</span>
-<a id="__codelineno-14-21" name="__codelineno-14-21"></a>          <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">sm</span><span class="o">=</span><span class="s2">&quot;6&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-14-22" name="__codelineno-14-22"></a>            <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Mot de passe&quot;</span> <span class="n">v</span><span class="o">-</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;password&quot;</span> <span class="o">/&gt;</span>
-<a id="__codelineno-14-23" name="__codelineno-14-23"></a>          <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-14-24" name="__codelineno-14-24"></a>        <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">group</span><span class="o">&gt;</span>
-<a id="__codelineno-14-25" name="__codelineno-14-25"></a>        <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="mi">3</span><span class="n">ième</span> <span class="n">ligne</span> <span class="o">--&gt;</span>
-<a id="__codelineno-14-26" name="__codelineno-14-26"></a>        <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span>
-<a id="__codelineno-14-27" name="__codelineno-14-27"></a>          <span class="n">show</span>
-<a id="__codelineno-14-28" name="__codelineno-14-28"></a>          <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;danger&quot;</span>
-<a id="__codelineno-14-29" name="__codelineno-14-29"></a>          <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;showError&quot;</span>
-<a id="__codelineno-14-30" name="__codelineno-14-30"></a>          <span class="n">class</span><span class="o">=</span><span class="s2">&quot;mt-3&quot;</span>
-<a id="__codelineno-14-31" name="__codelineno-14-31"></a>        <span class="o">&gt;</span><span class="n">L</span><span class="s1">&#39;erreur suivante s&#39;</span><span class="n">est</span> <span class="n">produite</span> <span class="p">:</span> <span class="p">{{</span><span class="n">message</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-14-32" name="__codelineno-14-32"></a>        <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">bouton</span> <span class="n">de</span> <span class="nb">type</span> <span class="p">[</span><span class="n">submit</span><span class="p">]</span> <span class="n">sur</span> <span class="n">une</span> <span class="mi">3</span><span class="n">ième</span> <span class="n">ligne</span> <span class="o">--&gt;</span>
-<a id="__codelineno-14-33" name="__codelineno-14-33"></a>        <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
-<a id="__codelineno-14-34" name="__codelineno-14-34"></a>          <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">sm</span><span class="o">=</span><span class="s2">&quot;2&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-14-35" name="__codelineno-14-35"></a>            <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">button</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="p">:</span><span class="n">disabled</span><span class="o">=</span><span class="s2">&quot;!valid&quot;</span><span class="o">&gt;</span><span class="n">Valider</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">button</span><span class="o">&gt;</span>
-<a id="__codelineno-14-36" name="__codelineno-14-36"></a>          <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-14-37" name="__codelineno-14-37"></a>        <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
-<a id="__codelineno-14-38" name="__codelineno-14-38"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">&gt;</span>
-<a id="__codelineno-14-39" name="__codelineno-14-39"></a>    <span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-14-40" name="__codelineno-14-40"></a>  <span class="o">&lt;/</span><span class="n">Layout</span><span class="o">&gt;</span>
-<a id="__codelineno-14-41" name="__codelineno-14-41"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<span class="normal"><a href="#__codelineno-14-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>&lt;!-- définition HTML de la vue --&gt;
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>&lt;template&gt;
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>  &lt;Layout :left=&quot;false&quot; :right=&quot;true&quot;&gt;
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>    &lt;template slot=&quot;right&quot;&gt;
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>      &lt;!-- formulaire HTML - on poste ses valeurs avec l&#39;action [authentifier-utilisateur] --&gt;
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>      &lt;b-form @submit.prevent=&quot;login&quot;&gt;
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a>        &lt;!-- titre --&gt;
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a>        &lt;b-alert show variant=&quot;primary&quot;&gt;
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a>          &lt;h4&gt;Bienvenue. Veuillez vous authentifier pour vous connecter&lt;/h4&gt;
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a>        &lt;/b-alert&gt;
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a>        &lt;!-- 1ère ligne --&gt;
+<a id="__codelineno-14-12" name="__codelineno-14-12"></a>        &lt;b-form-group label=&quot;Nom d&#39;utilisateur&quot; label-for=&quot;user&quot; description=&quot;Tapez admin&quot;&gt;
+<a id="__codelineno-14-13" name="__codelineno-14-13"></a>          &lt;!-- zone de saisie user --&gt;
+<a id="__codelineno-14-14" name="__codelineno-14-14"></a>          &lt;b-col sm=&quot;6&quot;&gt;
+<a id="__codelineno-14-15" name="__codelineno-14-15"></a>            &lt;b-form-input type=&quot;text&quot; id=&quot;user&quot; placeholder=&quot;Nom d&#39;utilisateur&quot; v-model=&quot;user&quot; /&gt;
+<a id="__codelineno-14-16" name="__codelineno-14-16"></a>          &lt;/b-col&gt;
+<a id="__codelineno-14-17" name="__codelineno-14-17"></a>        &lt;/b-form-group&gt;
+<a id="__codelineno-14-18" name="__codelineno-14-18"></a>        &lt;!-- 2ième ligne --&gt;
+<a id="__codelineno-14-19" name="__codelineno-14-19"></a>        &lt;b-form-group label=&quot;Mot de passe&quot; label-for=&quot;password&quot; description=&quot;Tapez admin&quot;&gt;
+<a id="__codelineno-14-20" name="__codelineno-14-20"></a>          &lt;!-- zone de saisie password --&gt;
+<a id="__codelineno-14-21" name="__codelineno-14-21"></a>          &lt;b-col sm=&quot;6&quot;&gt;
+<a id="__codelineno-14-22" name="__codelineno-14-22"></a>            &lt;b-input type=&quot;password&quot; id=&quot;password&quot; placeholder=&quot;Mot de passe&quot; v-model=&quot;password&quot; /&gt;
+<a id="__codelineno-14-23" name="__codelineno-14-23"></a>          &lt;/b-col&gt;
+<a id="__codelineno-14-24" name="__codelineno-14-24"></a>        &lt;/b-form-group&gt;
+<a id="__codelineno-14-25" name="__codelineno-14-25"></a>        &lt;!-- 3ième ligne --&gt;
+<a id="__codelineno-14-26" name="__codelineno-14-26"></a>        &lt;b-alert
+<a id="__codelineno-14-27" name="__codelineno-14-27"></a>          show
+<a id="__codelineno-14-28" name="__codelineno-14-28"></a>          variant=&quot;danger&quot;
+<a id="__codelineno-14-29" name="__codelineno-14-29"></a>          v-if=&quot;showError&quot;
+<a id="__codelineno-14-30" name="__codelineno-14-30"></a>          class=&quot;mt-3&quot;
+<a id="__codelineno-14-31" name="__codelineno-14-31"></a>        &gt;L&#39;erreur suivante s&#39;est produite : {{message}}&lt;/b-alert&gt;
+<a id="__codelineno-14-32" name="__codelineno-14-32"></a>        &lt;!-- bouton de type [submit] sur une 3ième ligne --&gt;
+<a id="__codelineno-14-33" name="__codelineno-14-33"></a>        &lt;b-row&gt;
+<a id="__codelineno-14-34" name="__codelineno-14-34"></a>          &lt;b-col sm=&quot;2&quot;&gt;
+<a id="__codelineno-14-35" name="__codelineno-14-35"></a>            &lt;b-button variant=&quot;primary&quot; type=&quot;submit&quot; :disabled=&quot;!valid&quot;&gt;Valider&lt;/b-button&gt;
+<a id="__codelineno-14-36" name="__codelineno-14-36"></a>          &lt;/b-col&gt;
+<a id="__codelineno-14-37" name="__codelineno-14-37"></a>        &lt;/b-row&gt;
+<a id="__codelineno-14-38" name="__codelineno-14-38"></a>      &lt;/b-form&gt;
+<a id="__codelineno-14-39" name="__codelineno-14-39"></a>    &lt;/template&gt;
+<a id="__codelineno-14-40" name="__codelineno-14-40"></a>  &lt;/Layout&gt;
+<a id="__codelineno-14-41" name="__codelineno-14-41"></a>&lt;/template&gt;
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 11 et 19 : on a supprimé l’attribut <strong>[label-cols]</strong> qui fixait un nombre de colonnes au label de la saisie. En l’absence de cet attribut, le label est <mark>au-dessus</mark> de la zone de saisie. Cela convient mieux aux écrans des smartphones ;</li>
+<li>lignes 11 et 19 : on a supprimé l’attribut <strong>[label-cols]</strong> qui fixait un nombre de colonnes au label de la saisie. En l’absence de cet attribut, le label est <mark style="background-color: #ffff00">au-dessus</mark> de la zone de saisie. Cela convient mieux aux écrans des smartphones ;</li>
 </ul>
 <h3 id="19144-la-vue-calculimpot">19.14.4. La vue [CalculImpot]</h3>
 <p>La vue <strong>[CalculImpot]</strong> évolue comme suit :</p>
@@ -2708,28 +2720,28 @@ Le script <strong>[./session]</strong> est le suivant :</li>
 <span class="normal"><a href="#__codelineno-15-19">19</a></span>
 <span class="normal"><a href="#__codelineno-15-20">20</a></span>
 <span class="normal"><a href="#__codelineno-15-21">21</a></span>
-<span class="normal"><a href="#__codelineno-15-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">définition</span> <span class="n">HTML</span> <span class="n">de</span> <span class="n">la</span> <span class="n">vue</span> <span class="o">--&gt;</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3"></a>  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4"></a>    <span class="o">&lt;</span><span class="n">Layout</span> <span class="p">:</span><span class="n">left</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="p">:</span><span class="n">right</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">formulaire</span> <span class="n">de</span> <span class="n">calcul</span> <span class="n">de</span> <span class="n">l</span><span class="s1">&#39;impôt à droite --&gt;</span>
-<a id="__codelineno-15-6" name="__codelineno-15-6"></a>      <span class="o">&lt;</span><span class="n">FormCalculImpot</span> <span class="n">slot</span><span class="o">=</span><span class="s2">&quot;right&quot;</span> <span class="nd">@resultatObtenu</span><span class="o">=</span><span class="s2">&quot;handleResultatObtenu&quot;</span> <span class="o">/&gt;</span>
-<a id="__codelineno-15-7" name="__codelineno-15-7"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">menu</span> <span class="n">de</span> <span class="n">navigation</span> <span class="n">à</span> <span class="n">gauche</span> <span class="o">--&gt;</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8"></a>      <span class="o">&lt;</span><span class="n">Menu</span> <span class="n">slot</span><span class="o">=</span><span class="s2">&quot;left&quot;</span> <span class="p">:</span><span class="n">options</span><span class="o">=</span><span class="s2">&quot;options&quot;</span> <span class="o">/&gt;</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9"></a>    <span class="o">&lt;/</span><span class="n">Layout</span><span class="o">&gt;</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">zone</span> <span class="n">d</span><span class="s1">&#39;affichage des résultat du calcul de l&#39;</span><span class="n">impôt</span> <span class="n">sous</span> <span class="n">le</span> <span class="n">formulaire</span> <span class="o">--&gt;</span>
-<a id="__codelineno-15-11" name="__codelineno-15-11"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">row</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;résultatObtenu&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;mt-3&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-15-12" name="__codelineno-15-12"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">zone</span> <span class="n">de</span> <span class="n">trois</span> <span class="n">colonnes</span> <span class="n">vide</span> <span class="o">--&gt;</span>
-<a id="__codelineno-15-13" name="__codelineno-15-13"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">sm</span><span class="o">=</span><span class="s2">&quot;3&quot;</span> <span class="o">/&gt;</span>
-<a id="__codelineno-15-14" name="__codelineno-15-14"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">zone</span> <span class="n">de</span> <span class="n">neuf</span> <span class="n">colonnes</span> <span class="o">--&gt;</span>
-<a id="__codelineno-15-15" name="__codelineno-15-15"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">sm</span><span class="o">=</span><span class="s2">&quot;9&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-15-16" name="__codelineno-15-16"></a>        <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;success&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-15-17" name="__codelineno-15-17"></a>          <span class="o">&lt;</span><span class="n">span</span> <span class="n">v</span><span class="o">-</span><span class="n">html</span><span class="o">=</span><span class="s2">&quot;résultat&quot;</span><span class="o">&gt;&lt;/</span><span class="n">span</span><span class="o">&gt;</span>
-<a id="__codelineno-15-18" name="__codelineno-15-18"></a>        <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-15-19" name="__codelineno-15-19"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-15-20" name="__codelineno-15-20"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
-<a id="__codelineno-15-21" name="__codelineno-15-21"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-15-22" name="__codelineno-15-22"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<span class="normal"><a href="#__codelineno-15-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="cm">&lt;!-- définition HTML de la vue --&gt;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>    <span class="p">&lt;</span><span class="nt">Layout</span> <span class="na">:left</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="na">:right</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>      <span class="cm">&lt;!-- formulaire de calcul de l&#39;impôt à droite --&gt;</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a>      <span class="p">&lt;</span><span class="nt">FormCalculImpot</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;right&quot;</span> <span class="err">@</span><span class="na">resultatObtenu</span><span class="o">=</span><span class="s">&quot;handleResultatObtenu&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>      <span class="cm">&lt;!-- menu de navigation à gauche --&gt;</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a>      <span class="p">&lt;</span><span class="nt">Menu</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;left&quot;</span> <span class="na">:options</span><span class="o">=</span><span class="s">&quot;options&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9"></a>    <span class="p">&lt;/</span><span class="nt">Layout</span><span class="p">&gt;</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10"></a>    <span class="cm">&lt;!-- zone d&#39;affichage des résultat du calcul de l&#39;impôt sous le formulaire --&gt;</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11"></a>    <span class="p">&lt;</span><span class="nt">b-row</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;résultatObtenu&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;mt-3&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12"></a>      <span class="cm">&lt;!-- zone de trois colonnes vide --&gt;</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13"></a>      <span class="p">&lt;</span><span class="nt">b-col</span> <span class="na">sm</span><span class="o">=</span><span class="s">&quot;3&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14"></a>      <span class="cm">&lt;!-- zone de neuf colonnes --&gt;</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15"></a>      <span class="p">&lt;</span><span class="nt">b-col</span> <span class="na">sm</span><span class="o">=</span><span class="s">&quot;9&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16"></a>        <span class="p">&lt;</span><span class="nt">b-alert</span> <span class="na">show</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;success&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17"></a>          <span class="p">&lt;</span><span class="nt">span</span> <span class="na">v-html</span><span class="o">=</span><span class="s">&quot;résultat&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18"></a>        <span class="p">&lt;/</span><span class="nt">b-alert</span><span class="p">&gt;</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19"></a>      <span class="p">&lt;/</span><span class="nt">b-col</span><span class="p">&gt;</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20"></a>    <span class="p">&lt;/</span><span class="nt">b-row</span><span class="p">&gt;</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-15-22" name="__codelineno-15-22"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="19145-la-vue-formcalculimpot">19.14.5. La vue [FormCalculImpot]</h3>
 <p>La vue <strong>[FormCalculImpot]</strong> évolue comme suit :</p>
@@ -2787,67 +2799,67 @@ Le script <strong>[./session]</strong> est le suivant :</li>
 <span class="normal"><a href="#__codelineno-16-52">52</a></span>
 <span class="normal"><a href="#__codelineno-16-53">53</a></span>
 <span class="normal"><a href="#__codelineno-16-54">54</a></span>
-<span class="normal"><a href="#__codelineno-16-55">55</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">définition</span> <span class="n">HTML</span> <span class="n">de</span> <span class="n">la</span> <span class="n">vue</span> <span class="o">--&gt;</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2"></a>  <span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3"></a>  <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">formulaire</span> <span class="n">HTML</span> <span class="o">--&gt;</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4"></a>  <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span> <span class="nd">@submit</span><span class="o">.</span><span class="n">prevent</span><span class="o">=</span><span class="s2">&quot;calculerImpot&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;mb-3&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">message</span> <span class="n">sur</span> <span class="mi">12</span> <span class="n">colonnes</span> <span class="n">sur</span> <span class="n">fond</span> <span class="n">bleu</span> <span class="o">--&gt;</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">sm</span><span class="o">=</span><span class="s2">&quot;12&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8"></a>        <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9"></a>          <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="n">Remplissez</span> <span class="n">le</span> <span class="n">formulaire</span> <span class="n">ci</span><span class="o">-</span><span class="n">dessous</span> <span class="n">puis</span> <span class="n">validez</span><span class="o">-</span><span class="n">le</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10"></a>        <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-16-12" name="__codelineno-16-12"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">row</span><span class="o">&gt;</span>
-<a id="__codelineno-16-13" name="__codelineno-16-13"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">éléments</span> <span class="n">du</span> <span class="n">formulaire</span> <span class="o">--&gt;</span>
-<a id="__codelineno-16-14" name="__codelineno-16-14"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">première</span> <span class="n">ligne</span> <span class="o">--&gt;</span>
-<a id="__codelineno-16-15" name="__codelineno-16-15"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">group</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Etes-vous marié(e) ou pacsé(e) ?&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-16-16" name="__codelineno-16-16"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">boutons</span> <span class="n">radio</span> <span class="n">sur</span> <span class="mi">5</span> <span class="n">colonnes</span><span class="o">--&gt;</span>
-<a id="__codelineno-16-17" name="__codelineno-16-17"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">sm</span><span class="o">=</span><span class="s2">&quot;5&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-16-18" name="__codelineno-16-18"></a>        <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">radio</span> <span class="n">v</span><span class="o">-</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;marié&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;oui&quot;</span><span class="o">&gt;</span><span class="n">Oui</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">radio</span><span class="o">&gt;</span>
-<a id="__codelineno-16-19" name="__codelineno-16-19"></a>        <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">radio</span> <span class="n">v</span><span class="o">-</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;marié&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;non&quot;</span><span class="o">&gt;</span><span class="n">Non</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">radio</span><span class="o">&gt;</span>
-<a id="__codelineno-16-20" name="__codelineno-16-20"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-16-21" name="__codelineno-16-21"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">group</span><span class="o">&gt;</span>
-<a id="__codelineno-16-22" name="__codelineno-16-22"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">deuxième</span> <span class="n">ligne</span> <span class="o">--&gt;</span>
-<a id="__codelineno-16-23" name="__codelineno-16-23"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">group</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Nombre d&#39;enfants à charge&quot;</span> <span class="n">label</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;enfants&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-16-24" name="__codelineno-16-24"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="nb">input</span>
-<a id="__codelineno-16-25" name="__codelineno-16-25"></a>        <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span>
-<a id="__codelineno-16-26" name="__codelineno-16-26"></a>        <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;enfants&quot;</span>
-<a id="__codelineno-16-27" name="__codelineno-16-27"></a>        <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Indiquez votre nombre d&#39;enfants&quot;</span>
-<a id="__codelineno-16-28" name="__codelineno-16-28"></a>        <span class="n">v</span><span class="o">-</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;enfants&quot;</span>
-<a id="__codelineno-16-29" name="__codelineno-16-29"></a>        <span class="p">:</span><span class="n">state</span><span class="o">=</span><span class="s2">&quot;enfantsValide&quot;</span>
-<a id="__codelineno-16-30" name="__codelineno-16-30"></a>      <span class="o">&gt;&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="nb">input</span><span class="o">&gt;</span>
-<a id="__codelineno-16-31" name="__codelineno-16-31"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">message</span> <span class="n">d</span><span class="s1">&#39;erreur éventuel --&gt;</span>
-<a id="__codelineno-16-32" name="__codelineno-16-32"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">invalid</span><span class="o">-</span><span class="n">feedback</span> <span class="p">:</span><span class="n">state</span><span class="o">=</span><span class="s2">&quot;enfantsValide&quot;</span><span class="o">&gt;</span><span class="n">Vous</span> <span class="n">devez</span> <span class="n">saisir</span> <span class="n">un</span> <span class="n">nombre</span> <span class="n">positif</span> <span class="n">ou</span> <span class="n">nul</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">invalid</span><span class="o">-</span><span class="n">feedback</span><span class="o">&gt;</span>
-<a id="__codelineno-16-33" name="__codelineno-16-33"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">group</span><span class="o">&gt;</span>
-<a id="__codelineno-16-34" name="__codelineno-16-34"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">troisème</span> <span class="n">ligne</span> <span class="o">--&gt;</span>
-<a id="__codelineno-16-35" name="__codelineno-16-35"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">group</span>
-<a id="__codelineno-16-36" name="__codelineno-16-36"></a>      <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Salaire annuel net imposable&quot;</span>
-<a id="__codelineno-16-37" name="__codelineno-16-37"></a>      <span class="n">label</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;salaire&quot;</span>
-<a id="__codelineno-16-38" name="__codelineno-16-38"></a>      <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Arrondissez à l&#39;euro inférieur&quot;</span>
-<a id="__codelineno-16-39" name="__codelineno-16-39"></a>    <span class="o">&gt;</span>
-<a id="__codelineno-16-40" name="__codelineno-16-40"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="nb">input</span>
-<a id="__codelineno-16-41" name="__codelineno-16-41"></a>        <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span>
-<a id="__codelineno-16-42" name="__codelineno-16-42"></a>        <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;salaire&quot;</span>
-<a id="__codelineno-16-43" name="__codelineno-16-43"></a>        <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Salaire annuel&quot;</span>
-<a id="__codelineno-16-44" name="__codelineno-16-44"></a>        <span class="n">v</span><span class="o">-</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;salaire&quot;</span>
-<a id="__codelineno-16-45" name="__codelineno-16-45"></a>        <span class="p">:</span><span class="n">state</span><span class="o">=</span><span class="s2">&quot;salaireValide&quot;</span>
-<a id="__codelineno-16-46" name="__codelineno-16-46"></a>      <span class="o">&gt;&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="nb">input</span><span class="o">&gt;</span>
-<a id="__codelineno-16-47" name="__codelineno-16-47"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">message</span> <span class="n">d</span><span class="s1">&#39;erreur éventuel --&gt;</span>
-<a id="__codelineno-16-48" name="__codelineno-16-48"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">invalid</span><span class="o">-</span><span class="n">feedback</span> <span class="p">:</span><span class="n">state</span><span class="o">=</span><span class="s2">&quot;salaireValide&quot;</span><span class="o">&gt;</span><span class="n">Vous</span> <span class="n">devez</span> <span class="n">saisir</span> <span class="n">un</span> <span class="n">nombre</span> <span class="n">positif</span> <span class="n">ou</span> <span class="n">nul</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">invalid</span><span class="o">-</span><span class="n">feedback</span><span class="o">&gt;</span>
-<a id="__codelineno-16-49" name="__codelineno-16-49"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">-</span><span class="n">group</span><span class="o">&gt;</span>
-<a id="__codelineno-16-50" name="__codelineno-16-50"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">quatrième</span> <span class="n">ligne</span><span class="p">,</span> <span class="n">bouton</span> <span class="p">[</span><span class="n">submit</span><span class="p">]</span> <span class="o">--&gt;</span>
-<a id="__codelineno-16-51" name="__codelineno-16-51"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">col</span> <span class="n">sm</span><span class="o">=</span><span class="s2">&quot;3&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-16-52" name="__codelineno-16-52"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">button</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span> <span class="p">:</span><span class="n">disabled</span><span class="o">=</span><span class="s2">&quot;formInvalide&quot;</span><span class="o">&gt;</span><span class="n">Valider</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">button</span><span class="o">&gt;</span>
-<a id="__codelineno-16-53" name="__codelineno-16-53"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">col</span><span class="o">&gt;</span>
-<a id="__codelineno-16-54" name="__codelineno-16-54"></a>  <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">form</span><span class="o">&gt;</span>
-<a id="__codelineno-16-55" name="__codelineno-16-55"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<span class="normal"><a href="#__codelineno-16-55">55</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a>&lt;!-- définition HTML de la vue --&gt;
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>  &lt;template&gt;
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a>  &lt;!-- formulaire HTML --&gt;
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a>  &lt;b-form @submit.prevent=&quot;calculerImpot&quot; class=&quot;mb-3&quot;&gt;
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a>    &lt;!-- message sur 12 colonnes sur fond bleu --&gt;
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a>    &lt;b-row&gt;
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a>      &lt;b-col sm=&quot;12&quot;&gt;
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a>        &lt;b-alert show variant=&quot;primary&quot;&gt;
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a>          &lt;h4&gt;Remplissez le formulaire ci-dessous puis validez-le&lt;/h4&gt;
+<a id="__codelineno-16-10" name="__codelineno-16-10"></a>        &lt;/b-alert&gt;
+<a id="__codelineno-16-11" name="__codelineno-16-11"></a>      &lt;/b-col&gt;
+<a id="__codelineno-16-12" name="__codelineno-16-12"></a>    &lt;/b-row&gt;
+<a id="__codelineno-16-13" name="__codelineno-16-13"></a>    &lt;!-- éléments du formulaire --&gt;
+<a id="__codelineno-16-14" name="__codelineno-16-14"></a>    &lt;!-- première ligne --&gt;
+<a id="__codelineno-16-15" name="__codelineno-16-15"></a>    &lt;b-form-group label=&quot;Etes-vous marié(e) ou pacsé(e) ?&quot;&gt;
+<a id="__codelineno-16-16" name="__codelineno-16-16"></a>      &lt;!-- boutons radio sur 5 colonnes--&gt;
+<a id="__codelineno-16-17" name="__codelineno-16-17"></a>      &lt;b-col sm=&quot;5&quot;&gt;
+<a id="__codelineno-16-18" name="__codelineno-16-18"></a>        &lt;b-form-radio v-model=&quot;marié&quot; value=&quot;oui&quot;&gt;Oui&lt;/b-form-radio&gt;
+<a id="__codelineno-16-19" name="__codelineno-16-19"></a>        &lt;b-form-radio v-model=&quot;marié&quot; value=&quot;non&quot;&gt;Non&lt;/b-form-radio&gt;
+<a id="__codelineno-16-20" name="__codelineno-16-20"></a>      &lt;/b-col&gt;
+<a id="__codelineno-16-21" name="__codelineno-16-21"></a>    &lt;/b-form-group&gt;
+<a id="__codelineno-16-22" name="__codelineno-16-22"></a>    &lt;!-- deuxième ligne --&gt;
+<a id="__codelineno-16-23" name="__codelineno-16-23"></a>    &lt;b-form-group label=&quot;Nombre d&#39;enfants à charge&quot; label-for=&quot;enfants&quot;&gt;
+<a id="__codelineno-16-24" name="__codelineno-16-24"></a>      &lt;b-form-input
+<a id="__codelineno-16-25" name="__codelineno-16-25"></a>        type=&quot;text&quot;
+<a id="__codelineno-16-26" name="__codelineno-16-26"></a>        id=&quot;enfants&quot;
+<a id="__codelineno-16-27" name="__codelineno-16-27"></a>        placeholder=&quot;Indiquez votre nombre d&#39;enfants&quot;
+<a id="__codelineno-16-28" name="__codelineno-16-28"></a>        v-model=&quot;enfants&quot;
+<a id="__codelineno-16-29" name="__codelineno-16-29"></a>        :state=&quot;enfantsValide&quot;
+<a id="__codelineno-16-30" name="__codelineno-16-30"></a>      &gt;&lt;/b-form-input&gt;
+<a id="__codelineno-16-31" name="__codelineno-16-31"></a>      &lt;!-- message d&#39;erreur éventuel --&gt;
+<a id="__codelineno-16-32" name="__codelineno-16-32"></a>      &lt;b-form-invalid-feedback :state=&quot;enfantsValide&quot;&gt;Vous devez saisir un nombre positif ou nul&lt;/b-form-invalid-feedback&gt;
+<a id="__codelineno-16-33" name="__codelineno-16-33"></a>    &lt;/b-form-group&gt;
+<a id="__codelineno-16-34" name="__codelineno-16-34"></a>    &lt;!-- troisème ligne --&gt;
+<a id="__codelineno-16-35" name="__codelineno-16-35"></a>    &lt;b-form-group
+<a id="__codelineno-16-36" name="__codelineno-16-36"></a>      label=&quot;Salaire annuel net imposable&quot;
+<a id="__codelineno-16-37" name="__codelineno-16-37"></a>      label-for=&quot;salaire&quot;
+<a id="__codelineno-16-38" name="__codelineno-16-38"></a>      description=&quot;Arrondissez à l&#39;euro inférieur&quot;
+<a id="__codelineno-16-39" name="__codelineno-16-39"></a>    &gt;
+<a id="__codelineno-16-40" name="__codelineno-16-40"></a>      &lt;b-form-input
+<a id="__codelineno-16-41" name="__codelineno-16-41"></a>        type=&quot;text&quot;
+<a id="__codelineno-16-42" name="__codelineno-16-42"></a>        id=&quot;salaire&quot;
+<a id="__codelineno-16-43" name="__codelineno-16-43"></a>        placeholder=&quot;Salaire annuel&quot;
+<a id="__codelineno-16-44" name="__codelineno-16-44"></a>        v-model=&quot;salaire&quot;
+<a id="__codelineno-16-45" name="__codelineno-16-45"></a>        :state=&quot;salaireValide&quot;
+<a id="__codelineno-16-46" name="__codelineno-16-46"></a>      &gt;&lt;/b-form-input&gt;
+<a id="__codelineno-16-47" name="__codelineno-16-47"></a>      &lt;!-- message d&#39;erreur éventuel --&gt;
+<a id="__codelineno-16-48" name="__codelineno-16-48"></a>      &lt;b-form-invalid-feedback :state=&quot;salaireValide&quot;&gt;Vous devez saisir un nombre positif ou nul&lt;/b-form-invalid-feedback&gt;
+<a id="__codelineno-16-49" name="__codelineno-16-49"></a>    &lt;/b-form-group&gt;
+<a id="__codelineno-16-50" name="__codelineno-16-50"></a>    &lt;!-- quatrième ligne, bouton [submit] --&gt;
+<a id="__codelineno-16-51" name="__codelineno-16-51"></a>    &lt;b-col sm=&quot;3&quot;&gt;
+<a id="__codelineno-16-52" name="__codelineno-16-52"></a>      &lt;b-button type=&quot;submit&quot; variant=&quot;primary&quot; :disabled=&quot;formInvalide&quot;&gt;Valider&lt;/b-button&gt;
+<a id="__codelineno-16-53" name="__codelineno-16-53"></a>    &lt;/b-col&gt;
+<a id="__codelineno-16-54" name="__codelineno-16-54"></a>  &lt;/b-form&gt;
+<a id="__codelineno-16-55" name="__codelineno-16-55"></a>&lt;/template&gt;
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 15, 23, 35 : on a supprimé l’attribut <strong>[label-cols]</strong> ;
-Par ailleurs, on fait évoluer les tests de validité :</li>
+<li>lignes 15, 23, 35 : on a supprimé l’attribut <strong>[label-cols]</strong> ;</li>
 </ul>
+<p>Par ailleurs, on fait évoluer les tests de validité :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
@@ -2877,36 +2889,36 @@ Par ailleurs, on fait évoluer les tests de validité :</li>
 <span class="normal"><a href="#__codelineno-17-27">27</a></span>
 <span class="normal"><a href="#__codelineno-17-28">28</a></span>
 <span class="normal"><a href="#__codelineno-17-29">29</a></span>
-<span class="normal"><a href="#__codelineno-17-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="o">...</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="o">//</span> <span class="n">état</span> <span class="n">interne</span> <span class="n">calculé</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3"></a>  <span class="n">computed</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4"></a>    <span class="o">//</span> <span class="n">validation</span> <span class="n">du</span> <span class="n">formulaire</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5"></a>    <span class="n">formInvalide</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6"></a>      <span class="k">return</span> <span class="p">(</span>
-<a id="__codelineno-17-7" name="__codelineno-17-7"></a>        <span class="o">//</span> <span class="n">salaire</span> <span class="n">invalide</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8"></a>        <span class="err">!</span><span class="n">this</span><span class="o">.</span><span class="n">salaire</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">/^</span>\<span class="n">s</span><span class="o">*</span>\<span class="n">d</span><span class="o">+</span>\<span class="n">s</span><span class="o">*</span><span class="err">$</span><span class="o">/</span><span class="p">)</span> <span class="o">||</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9"></a>        <span class="o">//</span> <span class="n">ou</span> <span class="n">enfants</span> <span class="n">invalide</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10"></a>        <span class="err">!</span><span class="n">this</span><span class="o">.</span><span class="n">enfants</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">/^</span>\<span class="n">s</span><span class="o">*</span>\<span class="n">d</span><span class="o">+</span>\<span class="n">s</span><span class="o">*</span><span class="err">$</span><span class="o">/</span><span class="p">)</span> <span class="o">||</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11"></a>        <span class="o">//</span> <span class="n">ou</span> <span class="n">données</span> <span class="n">fiscales</span> <span class="n">pas</span> <span class="n">obtenues</span>
-<a id="__codelineno-17-12" name="__codelineno-17-12"></a>        <span class="err">!</span><span class="n">this</span><span class="o">.</span><span class="err">$</span><span class="n">métier</span><span class="o">.</span><span class="n">taxAdminData</span>
-<a id="__codelineno-17-13" name="__codelineno-17-13"></a>      <span class="p">);</span>
-<a id="__codelineno-17-14" name="__codelineno-17-14"></a>    <span class="p">},</span>
-<a id="__codelineno-17-15" name="__codelineno-17-15"></a>    <span class="o">//</span> <span class="n">validation</span> <span class="n">du</span> <span class="n">salaire</span>
-<a id="__codelineno-17-16" name="__codelineno-17-16"></a>    <span class="n">salaireValide</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-17-17" name="__codelineno-17-17"></a>      <span class="o">//</span> <span class="n">doit</span> <span class="n">être</span> <span class="n">numérique</span> <span class="o">&gt;=</span><span class="mi">0</span>
-<a id="__codelineno-17-18" name="__codelineno-17-18"></a>      <span class="k">return</span> <span class="n">Boolean</span><span class="p">(</span>
-<a id="__codelineno-17-19" name="__codelineno-17-19"></a>        <span class="n">this</span><span class="o">.</span><span class="n">salaire</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">/^</span>\<span class="n">s</span><span class="o">*</span>\<span class="n">d</span><span class="o">+</span>\<span class="n">s</span><span class="o">*</span><span class="err">$</span><span class="o">/</span><span class="p">)</span> <span class="o">||</span> <span class="n">this</span><span class="o">.</span><span class="n">salaire</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">/^</span>\<span class="n">s</span><span class="o">*</span><span class="err">$</span><span class="o">/</span><span class="p">)</span>
-<a id="__codelineno-17-20" name="__codelineno-17-20"></a>      <span class="p">);</span>
-<a id="__codelineno-17-21" name="__codelineno-17-21"></a>    <span class="p">},</span>
-<a id="__codelineno-17-22" name="__codelineno-17-22"></a>    <span class="o">//</span> <span class="n">validation</span> <span class="n">des</span> <span class="n">enfants</span>
-<a id="__codelineno-17-23" name="__codelineno-17-23"></a>    <span class="n">enfantsValide</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-17-24" name="__codelineno-17-24"></a>      <span class="o">//</span> <span class="n">doit</span> <span class="n">être</span> <span class="n">numérique</span> <span class="o">&gt;=</span><span class="mi">0</span>
-<a id="__codelineno-17-25" name="__codelineno-17-25"></a>      <span class="k">return</span> <span class="n">Boolean</span><span class="p">(</span>
-<a id="__codelineno-17-26" name="__codelineno-17-26"></a>        <span class="n">this</span><span class="o">.</span><span class="n">enfants</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">/^</span>\<span class="n">s</span><span class="o">*</span>\<span class="n">d</span><span class="o">+</span>\<span class="n">s</span><span class="o">*</span><span class="err">$</span><span class="o">/</span><span class="p">)</span> <span class="o">||</span> <span class="n">this</span><span class="o">.</span><span class="n">enfants</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="o">/^</span>\<span class="n">s</span><span class="o">*</span><span class="err">$</span><span class="o">/</span><span class="p">)</span>
-<a id="__codelineno-17-27" name="__codelineno-17-27"></a>      <span class="p">);</span>
-<a id="__codelineno-17-28" name="__codelineno-17-28"></a>    <span class="p">}</span>
-<a id="__codelineno-17-29" name="__codelineno-17-29"></a><span class="p">},</span>
-<a id="__codelineno-17-30" name="__codelineno-17-30"></a><span class="o">...</span>
+<span class="normal"><a href="#__codelineno-17-30">30</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a>...
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>// état interne calculé
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>  computed: {
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a>    // validation du formulaire
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a>    formInvalide() {
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a>      return (
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a>        // salaire invalide
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a>        !this.salaire.match(/^\s*\d+\s*$/) ||
+<a id="__codelineno-17-9" name="__codelineno-17-9"></a>        // ou enfants invalide
+<a id="__codelineno-17-10" name="__codelineno-17-10"></a>        !this.enfants.match(/^\s*\d+\s*$/) ||
+<a id="__codelineno-17-11" name="__codelineno-17-11"></a>        // ou données fiscales pas obtenues
+<a id="__codelineno-17-12" name="__codelineno-17-12"></a>        !this.$métier.taxAdminData
+<a id="__codelineno-17-13" name="__codelineno-17-13"></a>      );
+<a id="__codelineno-17-14" name="__codelineno-17-14"></a>    },
+<a id="__codelineno-17-15" name="__codelineno-17-15"></a>    // validation du salaire
+<a id="__codelineno-17-16" name="__codelineno-17-16"></a>    salaireValide() {
+<a id="__codelineno-17-17" name="__codelineno-17-17"></a>      // doit être numérique &gt;=0
+<a id="__codelineno-17-18" name="__codelineno-17-18"></a>      return Boolean(
+<a id="__codelineno-17-19" name="__codelineno-17-19"></a>        this.salaire.match(/^\s*\d+\s*$/) || this.salaire.match(/^\s*$/)
+<a id="__codelineno-17-20" name="__codelineno-17-20"></a>      );
+<a id="__codelineno-17-21" name="__codelineno-17-21"></a>    },
+<a id="__codelineno-17-22" name="__codelineno-17-22"></a>    // validation des enfants
+<a id="__codelineno-17-23" name="__codelineno-17-23"></a>    enfantsValide() {
+<a id="__codelineno-17-24" name="__codelineno-17-24"></a>      // doit être numérique &gt;=0
+<a id="__codelineno-17-25" name="__codelineno-17-25"></a>      return Boolean(
+<a id="__codelineno-17-26" name="__codelineno-17-26"></a>        this.enfants.match(/^\s*\d+\s*$/) || this.enfants.match(/^\s*$/)
+<a id="__codelineno-17-27" name="__codelineno-17-27"></a>      );
+<a id="__codelineno-17-28" name="__codelineno-17-28"></a>    }
+<a id="__codelineno-17-29" name="__codelineno-17-29"></a>},
+<a id="__codelineno-17-30" name="__codelineno-17-30"></a>...
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
@@ -2931,22 +2943,22 @@ Par ailleurs, on fait évoluer les tests de validité :</li>
 <span class="normal"><a href="#__codelineno-18-13">13</a></span>
 <span class="normal"><a href="#__codelineno-18-14">14</a></span>
 <span class="normal"><a href="#__codelineno-18-15">15</a></span>
-<span class="normal"><a href="#__codelineno-18-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">définition</span> <span class="n">HTML</span> <span class="n">de</span> <span class="n">la</span> <span class="n">vue</span> <span class="o">--&gt;</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3"></a>  <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">card</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;mb-3&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">menu</span> <span class="n">Bootstrap</span> <span class="n">vertical</span> <span class="o">--&gt;</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span> <span class="n">vertical</span><span class="o">&gt;</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">options</span> <span class="n">du</span> <span class="n">menu</span> <span class="o">--&gt;</span>
-<a id="__codelineno-18-7" name="__codelineno-18-7"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">-</span><span class="n">item</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8"></a>        <span class="n">v</span><span class="o">-</span><span class="k">for</span><span class="o">=</span><span class="s2">&quot;(option,index) of options&quot;</span>
-<a id="__codelineno-18-9" name="__codelineno-18-9"></a>        <span class="p">:</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;index&quot;</span>
-<a id="__codelineno-18-10" name="__codelineno-18-10"></a>        <span class="p">:</span><span class="n">to</span><span class="o">=</span><span class="s2">&quot;option.path&quot;</span>
-<a id="__codelineno-18-11" name="__codelineno-18-11"></a>        <span class="n">exact</span>
-<a id="__codelineno-18-12" name="__codelineno-18-12"></a>        <span class="n">exact</span><span class="o">-</span><span class="n">active</span><span class="o">-</span><span class="n">class</span><span class="o">=</span><span class="s2">&quot;active&quot;</span>
-<a id="__codelineno-18-13" name="__codelineno-18-13"></a>      <span class="o">&gt;</span><span class="p">{{</span><span class="n">option</span><span class="o">.</span><span class="n">text</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">-</span><span class="n">item</span><span class="o">&gt;</span>
-<a id="__codelineno-18-14" name="__codelineno-18-14"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">nav</span><span class="o">&gt;</span>
-<a id="__codelineno-18-15" name="__codelineno-18-15"></a>  <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">card</span><span class="o">&gt;</span>
-<a id="__codelineno-18-16" name="__codelineno-18-16"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<span class="normal"><a href="#__codelineno-18-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a>&lt;!-- définition HTML de la vue --&gt;
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a>&lt;template&gt;
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>  &lt;b-card class=&quot;mb-3&quot;&gt;
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a>    &lt;!-- menu Bootstrap vertical --&gt;
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a>    &lt;b-nav vertical&gt;
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a>      &lt;!-- options du menu --&gt;
+<a id="__codelineno-18-7" name="__codelineno-18-7"></a>      &lt;b-nav-item
+<a id="__codelineno-18-8" name="__codelineno-18-8"></a>        v-for=&quot;(option,index) of options&quot;
+<a id="__codelineno-18-9" name="__codelineno-18-9"></a>        :key=&quot;index&quot;
+<a id="__codelineno-18-10" name="__codelineno-18-10"></a>        :to=&quot;option.path&quot;
+<a id="__codelineno-18-11" name="__codelineno-18-11"></a>        exact
+<a id="__codelineno-18-12" name="__codelineno-18-12"></a>        exact-active-class=&quot;active&quot;
+<a id="__codelineno-18-13" name="__codelineno-18-13"></a>      &gt;{{option.text}}&lt;/b-nav-item&gt;
+<a id="__codelineno-18-14" name="__codelineno-18-14"></a>    &lt;/b-nav&gt;
+<a id="__codelineno-18-15" name="__codelineno-18-15"></a>  &lt;/b-card&gt;
+<a id="__codelineno-18-16" name="__codelineno-18-16"></a>&lt;/template&gt;
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
@@ -2984,37 +2996,37 @@ Par ailleurs, on fait évoluer les tests de validité :</li>
 <span class="normal"><a href="#__codelineno-19-28">28</a></span>
 <span class="normal"><a href="#__codelineno-19-29">29</a></span>
 <span class="normal"><a href="#__codelineno-19-30">30</a></span>
-<span class="normal"><a href="#__codelineno-19-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">définition</span> <span class="n">HTML</span> <span class="n">de</span> <span class="n">la</span> <span class="n">vue</span> <span class="o">--&gt;</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3"></a>  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">mise</span> <span class="n">en</span> <span class="n">page</span> <span class="o">--&gt;</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5"></a>    <span class="o">&lt;</span><span class="n">Layout</span> <span class="p">:</span><span class="n">left</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="p">:</span><span class="n">right</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">simulations</span> <span class="n">dans</span> <span class="n">colonne</span> <span class="n">de</span> <span class="n">droite</span> <span class="o">--&gt;</span>
-<a id="__codelineno-19-7" name="__codelineno-19-7"></a>      <span class="o">&lt;</span><span class="n">template</span> <span class="n">slot</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-19-8" name="__codelineno-19-8"></a>        <span class="o">&lt;</span><span class="n">template</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;simulations.length==0&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-19-9" name="__codelineno-19-9"></a>          <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">pas</span> <span class="n">de</span> <span class="n">simulations</span> <span class="o">--&gt;</span>
-<a id="__codelineno-19-10" name="__codelineno-19-10"></a>          <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-19-11" name="__codelineno-19-11"></a>            <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="n">Votre</span> <span class="n">liste</span> <span class="n">de</span> <span class="n">simulations</span> <span class="n">est</span> <span class="n">vide</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
-<a id="__codelineno-19-12" name="__codelineno-19-12"></a>          <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-19-13" name="__codelineno-19-13"></a>        <span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-19-14" name="__codelineno-19-14"></a>        <span class="o">&lt;</span><span class="n">template</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;simulations.length!=0&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-19-15" name="__codelineno-19-15"></a>          <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">il</span> <span class="n">y</span> <span class="n">a</span> <span class="n">des</span> <span class="n">simulations</span> <span class="o">--&gt;</span>
-<a id="__codelineno-19-16" name="__codelineno-19-16"></a>          <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-19-17" name="__codelineno-19-17"></a>            <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="n">Liste</span> <span class="n">de</span> <span class="n">vos</span> <span class="n">simulations</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
-<a id="__codelineno-19-18" name="__codelineno-19-18"></a>          <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-19-19" name="__codelineno-19-19"></a>          <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">tableau</span> <span class="n">des</span> <span class="n">simulations</span> <span class="o">--&gt;</span>
-<a id="__codelineno-19-20" name="__codelineno-19-20"></a>          <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">table</span> <span class="n">striped</span> <span class="n">hover</span> <span class="n">responsive</span> <span class="p">:</span><span class="n">items</span><span class="o">=</span><span class="s2">&quot;simulations&quot;</span> <span class="p">:</span><span class="n">fields</span><span class="o">=</span><span class="s2">&quot;fields&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-19-21" name="__codelineno-19-21"></a>            <span class="o">&lt;</span><span class="n">template</span> <span class="n">v</span><span class="o">-</span><span class="n">slot</span><span class="p">:</span><span class="n">cell</span><span class="p">(</span><span class="n">action</span><span class="p">)</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-19-22" name="__codelineno-19-22"></a>              <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">button</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;link&quot;</span> <span class="nd">@click</span><span class="o">=</span><span class="s2">&quot;supprimerSimulation(data.index)&quot;</span><span class="o">&gt;</span><span class="n">Supprimer</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">button</span><span class="o">&gt;</span>
-<a id="__codelineno-19-23" name="__codelineno-19-23"></a>            <span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-19-24" name="__codelineno-19-24"></a>          <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">table</span><span class="o">&gt;</span>
-<a id="__codelineno-19-25" name="__codelineno-19-25"></a>        <span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-19-26" name="__codelineno-19-26"></a>      <span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-19-27" name="__codelineno-19-27"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">menu</span> <span class="n">de</span> <span class="n">navigation</span> <span class="n">dans</span> <span class="n">colonne</span> <span class="n">de</span> <span class="n">gauche</span> <span class="o">--&gt;</span>
-<a id="__codelineno-19-28" name="__codelineno-19-28"></a>      <span class="o">&lt;</span><span class="n">Menu</span> <span class="n">slot</span><span class="o">=</span><span class="s2">&quot;left&quot;</span> <span class="p">:</span><span class="n">options</span><span class="o">=</span><span class="s2">&quot;options&quot;</span> <span class="o">/&gt;</span>
-<a id="__codelineno-19-29" name="__codelineno-19-29"></a>    <span class="o">&lt;/</span><span class="n">Layout</span><span class="o">&gt;</span>
-<a id="__codelineno-19-30" name="__codelineno-19-30"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-19-31" name="__codelineno-19-31"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<span class="normal"><a href="#__codelineno-19-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="cm">&lt;!-- définition HTML de la vue --&gt;</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a>    <span class="cm">&lt;!-- mise en page --&gt;</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5"></a>    <span class="p">&lt;</span><span class="nt">Layout</span> <span class="na">:left</span><span class="o">=</span><span class="s">&quot;true&quot;</span> <span class="na">:right</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6"></a>      <span class="cm">&lt;!-- simulations dans colonne de droite --&gt;</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7"></a>      <span class="p">&lt;</span><span class="nt">template</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;right&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8"></a>        <span class="p">&lt;</span><span class="nt">template</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;simulations.length==0&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9"></a>          <span class="cm">&lt;!-- pas de simulations --&gt;</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10"></a>          <span class="p">&lt;</span><span class="nt">b-alert</span> <span class="na">show</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;primary&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11"></a>            <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Votre liste de simulations est vide<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12"></a>          <span class="p">&lt;/</span><span class="nt">b-alert</span><span class="p">&gt;</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13"></a>        <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14"></a>        <span class="p">&lt;</span><span class="nt">template</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;simulations.length!=0&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15"></a>          <span class="cm">&lt;!-- il y a des simulations --&gt;</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16"></a>          <span class="p">&lt;</span><span class="nt">b-alert</span> <span class="na">show</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;primary&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17"></a>            <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Liste de vos simulations<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18"></a>          <span class="p">&lt;/</span><span class="nt">b-alert</span><span class="p">&gt;</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19"></a>          <span class="cm">&lt;!-- tableau des simulations --&gt;</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20"></a>          <span class="p">&lt;</span><span class="nt">b-table</span> <span class="na">striped</span> <span class="na">hover</span> <span class="na">responsive</span> <span class="na">:items</span><span class="o">=</span><span class="s">&quot;simulations&quot;</span> <span class="na">:fields</span><span class="o">=</span><span class="s">&quot;fields&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21"></a>            <span class="p">&lt;</span><span class="nt">template</span> <span class="na">v-slot:cell</span><span class="err">(</span><span class="na">action</span><span class="err">)=&quot;</span><span class="na">data</span><span class="err">&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-19-22" name="__codelineno-19-22"></a>              <span class="p">&lt;</span><span class="nt">b-button</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;link&quot;</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&quot;supprimerSimulation(data.index)&quot;</span><span class="p">&gt;</span>Supprimer<span class="p">&lt;/</span><span class="nt">b-button</span><span class="p">&gt;</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23"></a>            <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24"></a>          <span class="p">&lt;/</span><span class="nt">b-table</span><span class="p">&gt;</span>
+<a id="__codelineno-19-25" name="__codelineno-19-25"></a>        <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26"></a>      <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<a id="__codelineno-19-27" name="__codelineno-19-27"></a>      <span class="cm">&lt;!-- menu de navigation dans colonne de gauche --&gt;</span>
+<a id="__codelineno-19-28" name="__codelineno-19-28"></a>      <span class="p">&lt;</span><span class="nt">Menu</span> <span class="na">slot</span><span class="o">=</span><span class="s">&quot;left&quot;</span> <span class="na">:options</span><span class="o">=</span><span class="s">&quot;options&quot;</span> <span class="p">/&gt;</span>
+<a id="__codelineno-19-29" name="__codelineno-19-29"></a>    <span class="p">&lt;/</span><span class="nt">Layout</span><span class="p">&gt;</span>
+<a id="__codelineno-19-30" name="__codelineno-19-30"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-19-31" name="__codelineno-19-31"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires</strong></p>
 <ul>
@@ -3069,7 +3081,7 @@ Par ailleurs, on fait évoluer les tests de validité :</li>
           https://tahe.developpez.com
         </a>
         <br>
-        Ce cours tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
+        Ce cours-tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
         <em>Licence Creative Commons Attribution – Pas d’Utilisation Commerciale –
         Partage dans les Mêmes Conditions 3.0 non transposé</em>.
       </div>

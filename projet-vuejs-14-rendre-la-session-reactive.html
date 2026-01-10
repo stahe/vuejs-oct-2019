@@ -65,14 +65,10 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    // CORRECTION ICI : Utilisation de guillemets doubles pour entourer le titre qui contient une apostrophe
     var siteName = "Introduction au framework VUE.JS par l'exemple";
-
     gtag('config', 'G-EBZC3JVJNR', {
         'page_title': siteName
     });
-    console.log("[GA Debug] page_title forced to: " + siteName);
   </script>
 
     
@@ -1117,75 +1113,75 @@
 <span class="normal"><a href="#__codelineno-1-66">66</a></span>
 <span class="normal"><a href="#__codelineno-1-67">67</a></span>
 <span class="normal"><a href="#__codelineno-1-68">68</a></span>
-<span class="normal"><a href="#__codelineno-1-69">69</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>  <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">liste</span> <span class="n">vide</span> <span class="o">--&gt;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="o">&lt;</span><span class="n">template</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;lignes.length==0&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;warning&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>        <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="n">Votre</span> <span class="n">liste</span> <span class="n">de</span> <span class="n">simulations</span> <span class="n">est</span> <span class="n">vide</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">bouton</span> <span class="n">de</span> <span class="n">rechargement</span><span class="o">--&gt;</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">button</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span> <span class="nd">@click</span><span class="o">=</span><span class="s2">&quot;rechargerListe&quot;</span><span class="o">&gt;</span><span class="n">Recharger</span> <span class="n">la</span> <span class="n">liste</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">button</span><span class="o">&gt;</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a>    <span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a>    <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">liste</span> <span class="n">non</span> <span class="n">vide</span><span class="o">--&gt;</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a>    <span class="o">&lt;</span><span class="n">template</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;lignes.length!=0&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;lignes.length==0&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a>        <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="n">Liste</span> <span class="n">de</span> <span class="n">vos</span> <span class="n">simulations</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">tableau</span> <span class="n">des</span> <span class="n">simulations</span> <span class="o">--&gt;</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">table</span> <span class="n">striped</span> <span class="n">hover</span> <span class="n">responsive</span> <span class="p">:</span><span class="n">items</span><span class="o">=</span><span class="s2">&quot;lignes&quot;</span> <span class="p">:</span><span class="n">fields</span><span class="o">=</span><span class="s2">&quot;fields&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18"></a>        <span class="o">&lt;</span><span class="n">template</span> <span class="n">v</span><span class="o">-</span><span class="n">slot</span><span class="p">:</span><span class="n">cell</span><span class="p">(</span><span class="n">action</span><span class="p">)</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19"></a>          <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">button</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;link&quot;</span> <span class="nd">@click</span><span class="o">=</span><span class="s2">&quot;supprimerLigne(row.index)&quot;</span><span class="o">&gt;</span><span class="n">Supprimer</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">button</span><span class="o">&gt;</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20"></a>        <span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">table</span><span class="o">&gt;</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22"></a>    <span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+<span class="normal"><a href="#__codelineno-1-69">69</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">liste</span><span class="w"> </span><span class="nx">vide</span><span class="w"> </span><span class="o">--&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">template</span><span class="w"> </span><span class="nx">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;lignes.length==0&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">alert</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">variant</span><span class="o">=</span><span class="s2">&quot;warning&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">        </span><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">Votre</span><span class="w"> </span><span class="nx">liste</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">simulations</span><span class="w"> </span><span class="nx">est</span><span class="w"> </span><span class="nx">vide</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">      </span><span class="o">&lt;</span><span class="err">/b-alert&gt;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">      </span><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">bouton</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">rechargement</span><span class="o">--&gt;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">button</span><span class="w"> </span><span class="nx">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span><span class="w"> </span><span class="err">@</span><span class="nx">click</span><span class="o">=</span><span class="s2">&quot;rechargerListe&quot;</span><span class="o">&gt;</span><span class="nx">Recharger</span><span class="w"> </span><span class="nx">la</span><span class="w"> </span><span class="nx">liste</span><span class="o">&lt;</span><span class="err">/b-button&gt;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="o">&lt;</span><span class="err">/template&gt;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">liste</span><span class="w"> </span><span class="nx">non</span><span class="w"> </span><span class="nx">vide</span><span class="o">--&gt;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">template</span><span class="w"> </span><span class="nx">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;lignes.length!=0&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">alert</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span><span class="w"> </span><span class="nx">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;lignes.length==0&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">        </span><span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="nx">Liste</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">vos</span><span class="w"> </span><span class="nx">simulations</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">      </span><span class="o">&lt;</span><span class="err">/b-alert&gt;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">      </span><span class="c">&lt;!--</span><span class="w"> </span><span class="nx">tableau</span><span class="w"> </span><span class="nx">des</span><span class="w"> </span><span class="nx">simulations</span><span class="w"> </span><span class="o">--&gt;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">table</span><span class="w"> </span><span class="nx">striped</span><span class="w"> </span><span class="nx">hover</span><span class="w"> </span><span class="nx">responsive</span><span class="w"> </span><span class="o">:</span><span class="nx">items</span><span class="o">=</span><span class="s2">&quot;lignes&quot;</span><span class="w"> </span><span class="o">:</span><span class="nx">fields</span><span class="o">=</span><span class="s2">&quot;fields&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">        </span><span class="o">&lt;</span><span class="nx">template</span><span class="w"> </span><span class="nx">v</span><span class="o">-</span><span class="nx">slot</span><span class="o">:</span><span class="nx">cell</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="o">&gt;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">          </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">button</span><span class="w"> </span><span class="nx">variant</span><span class="o">=</span><span class="s2">&quot;link&quot;</span><span class="w"> </span><span class="err">@</span><span class="nx">click</span><span class="o">=</span><span class="s2">&quot;supprimerLigne(row.index)&quot;</span><span class="o">&gt;</span><span class="nx">Supprimer</span><span class="o">&lt;</span><span class="err">/b-button&gt;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">        </span><span class="o">&lt;</span><span class="err">/template&gt;</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">      </span><span class="o">&lt;</span><span class="err">/b-table&gt;</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">    </span><span class="o">&lt;</span><span class="err">/template&gt;</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">  </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="o">&lt;</span><span class="err">/template&gt;</span>
 <a id="__codelineno-1-25" name="__codelineno-1-25"></a>
-<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28"></a>  <span class="o">//</span> <span class="n">état</span> <span class="n">calculé</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29"></a>  <span class="n">computed</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30"></a>    <span class="n">lignes</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31"></a>      <span class="k">return</span> <span class="n">this</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">lignes</span><span class="p">;</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32"></a>    <span class="p">}</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33"></a>  <span class="p">},</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34"></a>  <span class="o">//</span> <span class="n">état</span> <span class="n">interne</span>
-<a id="__codelineno-1-35" name="__codelineno-1-35"></a>  <span class="n">data</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36"></a>    <span class="k">return</span> <span class="p">{</span>
-<a id="__codelineno-1-37" name="__codelineno-1-37"></a>      <span class="n">fields</span><span class="p">:</span> <span class="p">[</span>
-<a id="__codelineno-1-38" name="__codelineno-1-38"></a>        <span class="p">{</span> <span class="n">label</span><span class="p">:</span> <span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;id&quot;</span> <span class="p">},</span>
-<a id="__codelineno-1-39" name="__codelineno-1-39"></a>        <span class="p">{</span> <span class="n">label</span><span class="p">:</span> <span class="s2">&quot;Marié&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;marié&quot;</span> <span class="p">},</span>
-<a id="__codelineno-1-40" name="__codelineno-1-40"></a>        <span class="p">{</span> <span class="n">label</span><span class="p">:</span> <span class="s2">&quot;Nombre d&#39;enfants&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;enfants&quot;</span> <span class="p">},</span>
-<a id="__codelineno-1-41" name="__codelineno-1-41"></a>        <span class="p">{</span> <span class="n">label</span><span class="p">:</span> <span class="s2">&quot;Salaire&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;salaire&quot;</span> <span class="p">},</span>
-<a id="__codelineno-1-42" name="__codelineno-1-42"></a>        <span class="p">{</span> <span class="n">label</span><span class="p">:</span> <span class="s2">&quot;Impôt&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;impôt&quot;</span> <span class="p">},</span>
-<a id="__codelineno-1-43" name="__codelineno-1-43"></a>        <span class="p">{</span> <span class="n">label</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="s2">&quot;action&quot;</span> <span class="p">}</span>
-<a id="__codelineno-1-44" name="__codelineno-1-44"></a>      <span class="p">],</span>
-<a id="__codelineno-1-45" name="__codelineno-1-45"></a>      <span class="n">session</span> <span class="p">:</span> <span class="p">{}</span>
-<a id="__codelineno-1-46" name="__codelineno-1-46"></a>    <span class="p">};</span>
-<a id="__codelineno-1-47" name="__codelineno-1-47"></a>  <span class="p">},</span>
-<a id="__codelineno-1-48" name="__codelineno-1-48"></a>  <span class="o">//</span> <span class="n">cycle</span> <span class="n">de</span> <span class="n">vie</span>
-<a id="__codelineno-1-49" name="__codelineno-1-49"></a>  <span class="n">created</span><span class="p">(){</span>
-<a id="__codelineno-1-50" name="__codelineno-1-50"></a>    <span class="n">this</span><span class="o">.</span><span class="n">session</span><span class="o">=</span><span class="n">this</span><span class="o">.</span><span class="err">$</span><span class="n">session</span>
-<a id="__codelineno-1-51" name="__codelineno-1-51"></a>  <span class="p">},</span>
-<a id="__codelineno-1-52" name="__codelineno-1-52"></a>  <span class="o">//</span> <span class="n">méthodes</span>
-<a id="__codelineno-1-53" name="__codelineno-1-53"></a>  <span class="n">methods</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-1-54" name="__codelineno-1-54"></a>    <span class="n">supprimerLigne</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-1-55" name="__codelineno-1-55"></a>      <span class="o">//</span> <span class="n">eslint</span><span class="o">-</span><span class="n">disable</span><span class="o">-</span><span class="nb">next</span><span class="o">-</span><span class="n">line</span>
-<a id="__codelineno-1-56" name="__codelineno-1-56"></a>      <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;Table supprimerLigne&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">);</span>
-<a id="__codelineno-1-57" name="__codelineno-1-57"></a>      <span class="o">//</span> <span class="n">on</span> <span class="n">supprime</span> <span class="n">la</span> <span class="n">ligne</span>
-<a id="__codelineno-1-58" name="__codelineno-1-58"></a>      <span class="n">this</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">deleteLigne</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
-<a id="__codelineno-1-59" name="__codelineno-1-59"></a>    <span class="p">},</span>
-<a id="__codelineno-1-60" name="__codelineno-1-60"></a>    <span class="o">//</span> <span class="n">rechargement</span> <span class="n">de</span> <span class="n">la</span> <span class="n">liste</span> <span class="n">affichée</span>
-<a id="__codelineno-1-61" name="__codelineno-1-61"></a>    <span class="n">rechargerListe</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-1-62" name="__codelineno-1-62"></a>      <span class="o">//</span> <span class="n">eslint</span><span class="o">-</span><span class="n">disable</span><span class="o">-</span><span class="nb">next</span><span class="o">-</span><span class="n">line</span>
-<a id="__codelineno-1-63" name="__codelineno-1-63"></a>      <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;Table rechargerListe&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-64" name="__codelineno-1-64"></a>      <span class="o">//</span> <span class="n">on</span> <span class="n">régènère</span> <span class="n">la</span> <span class="n">liste</span> <span class="n">des</span> <span class="n">simulations</span>
-<a id="__codelineno-1-65" name="__codelineno-1-65"></a>      <span class="n">this</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">generateLignes</span><span class="p">();</span>
-<a id="__codelineno-1-66" name="__codelineno-1-66"></a>    <span class="p">}</span>
-<a id="__codelineno-1-67" name="__codelineno-1-67"></a>  <span class="p">}</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="w">  </span><span class="c1">// état calculé</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="w">  </span><span class="nx">computed</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="w">    </span><span class="nx">lignes</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">lignes</span><span class="p">;</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="w">  </span><span class="c1">// état interne</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="w">  </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="w">      </span><span class="nx">fields</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;id&quot;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Marié&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;marié&quot;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Nombre d&#39;enfants&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;enfants&quot;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Salaire&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;salaire&quot;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Impôt&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;impôt&quot;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;action&quot;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="w">      </span><span class="p">],</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45"></a><span class="w">      </span><span class="nx">session</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46"></a><span class="w">    </span><span class="p">};</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48"></a><span class="w">  </span><span class="c1">// cycle de vie</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49"></a><span class="w">  </span><span class="nx">created</span><span class="p">(){</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">session</span><span class="o">=</span><span class="k">this</span><span class="p">.</span><span class="nx">$session</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52"></a><span class="w">  </span><span class="c1">// méthodes</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53"></a><span class="w">  </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54"></a><span class="w">    </span><span class="nx">supprimerLigne</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55"></a><span class="w">      </span><span class="c1">// eslint-disable-next-line</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Table supprimerLigne&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">index</span><span class="p">);</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57"></a><span class="w">      </span><span class="c1">// on supprime la ligne</span>
+<a id="__codelineno-1-58" name="__codelineno-1-58"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">deleteLigne</span><span class="p">(</span><span class="nx">index</span><span class="p">);</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60"></a><span class="w">    </span><span class="c1">// rechargement de la liste affichée</span>
+<a id="__codelineno-1-61" name="__codelineno-1-61"></a><span class="w">    </span><span class="nx">rechargerListe</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62"></a><span class="w">      </span><span class="c1">// eslint-disable-next-line</span>
+<a id="__codelineno-1-63" name="__codelineno-1-63"></a><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Table rechargerListe&quot;</span><span class="p">);</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64"></a><span class="w">      </span><span class="c1">// on régènère la liste des simulations</span>
+<a id="__codelineno-1-65" name="__codelineno-1-65"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">generateLignes</span><span class="p">();</span>
+<a id="__codelineno-1-66" name="__codelineno-1-66"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-67" name="__codelineno-1-67"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-1-68" name="__codelineno-1-68"></a><span class="p">};</span>
-<a id="__codelineno-1-69" name="__codelineno-1-69"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<a id="__codelineno-1-69" name="__codelineno-1-69"></a><span class="o">&lt;</span><span class="err">/script&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p><strong>Commentaires :</strong></p>
 <ul>
@@ -1234,7 +1230,7 @@
           https://tahe.developpez.com
         </a>
         <br>
-        Ce cours tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
+        Ce cours-tutoriel écrit par <strong>Serge Tahé</strong> est mis à disposition du public selon les termes de la
         <em>Licence Creative Commons Attribution – Pas d’Utilisation Commerciale –
         Partage dans les Mêmes Conditions 3.0 non transposé</em>.
       </div>
