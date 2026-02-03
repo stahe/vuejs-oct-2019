@@ -866,6 +866,7 @@
   
 
 
+<p><a id="refheadingtoc225454640539168"></a></p>
 <h1 id="2-creation-dun-environnement-de-travail">2. Création d’un environnement de travail</h1>
 <p>Nous reprenons l’environnement de travail détaillé dans le document [2] :</p>
 <ul>
@@ -892,108 +893,60 @@
 <li>une fois toutes les questions répondues,  de nouveaux packages sont téléchargés et un projet généré dans le dossier courant <strong>[14]</strong>.</li>
 </ul>
 <p>Regardons ce qui a été généré. Le fichier <strong>[package.json]</strong> est le suivant :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span>
-<span class="normal"><a href="#__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#__codelineno-0-19">19</a></span>
-<span class="normal"><a href="#__codelineno-0-20">20</a></span>
-<span class="normal"><a href="#__codelineno-0-21">21</a></span>
-<span class="normal"><a href="#__codelineno-0-22">22</a></span>
-<span class="normal"><a href="#__codelineno-0-23">23</a></span>
-<span class="normal"><a href="#__codelineno-0-24">24</a></span>
-<span class="normal"><a href="#__codelineno-0-25">25</a></span>
-<span class="normal"><a href="#__codelineno-0-26">26</a></span>
-<span class="normal"><a href="#__codelineno-0-27">27</a></span>
-<span class="normal"><a href="#__codelineno-0-28">28</a></span>
-<span class="normal"><a href="#__codelineno-0-29">29</a></span>
-<span class="normal"><a href="#__codelineno-0-30">30</a></span>
-<span class="normal"><a href="#__codelineno-0-31">31</a></span>
-<span class="normal"><a href="#__codelineno-0-32">32</a></span>
-<span class="normal"><a href="#__codelineno-0-33">33</a></span>
-<span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span>
-<span class="normal"><a href="#__codelineno-0-36">36</a></span>
-<span class="normal"><a href="#__codelineno-0-37">37</a></span>
-<span class="normal"><a href="#__codelineno-0-38">38</a></span>
-<span class="normal"><a href="#__codelineno-0-39">39</a></span>
-<span class="normal"><a href="#__codelineno-0-40">40</a></span>
-<span class="normal"><a href="#__codelineno-0-41">41</a></span>
-<span class="normal"><a href="#__codelineno-0-42">42</a></span>
-<span class="normal"><a href="#__codelineno-0-43">43</a></span>
-<span class="normal"><a href="#__codelineno-0-44">44</a></span>
-<span class="normal"><a href="#__codelineno-0-45">45</a></span>
-<span class="normal"><a href="#__codelineno-0-46">46</a></span>
-<span class="normal"><a href="#__codelineno-0-47">47</a></span>
-<span class="normal"><a href="#__codelineno-0-48">48</a></span>
-<span class="normal"><a href="#__codelineno-0-49">49</a></span>
-<span class="normal"><a href="#__codelineno-0-50">50</a></span>
-<span class="normal"><a href="#__codelineno-0-51">51</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="err">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vuejs&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">  </span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span><span class="s2">&quot;private&quot;</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">  </span><span class="s2">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">{</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="s2">&quot;serve&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vue-cli-service serve vuejs-20/main.js&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="s2">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vue-cli-service build vuejs-20/main.js&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="s2">&quot;lint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vue-cli-service lint&quot;</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span><span class="err">},</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">  </span><span class="s2">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">{</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="s2">&quot;axios&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^0.19.0&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="s2">&quot;bootstrap&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^4.3.1&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="s2">&quot;bootstrap-vue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.0.2&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="s2">&quot;core-js&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.6.5&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="s2">&quot;vue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.6.10&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="s2">&quot;vue-router&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^3.1.3&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="s2">&quot;vuex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^3.1.1&quot;</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">  </span><span class="err">},</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">  </span><span class="s2">&quot;devDependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">{</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="s2">&quot;@vue/cli-plugin-babel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^3.11.0&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">    </span><span class="s2">&quot;@vue/cli-plugin-eslint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^3.11.0&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">    </span><span class="s2">&quot;@vue/cli-service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^3.11.0&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">    </span><span class="s2">&quot;babel-eslint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^10.0.1&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">    </span><span class="s2">&quot;eslint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^5.16.0&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="s2">&quot;eslint-plugin-vue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^5.0.0&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">    </span><span class="s2">&quot;vue-template-compiler&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.6.10&quot;</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">  </span><span class="err">},</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">  </span><span class="s2">&quot;eslintConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">{</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">    </span><span class="s2">&quot;root&quot;</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p">,</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">    </span><span class="s2">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">{</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">      </span><span class="s2">&quot;node&quot;</span><span class="p">:</span><span class="w"> </span><span class="no">true</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">    </span><span class="err">},</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">    </span><span class="s2">&quot;extends&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">      </span><span class="s2">&quot;plugin:vue/essential&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">      </span><span class="s2">&quot;eslint:recommended&quot;</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">    </span><span class="err">],</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">    </span><span class="s2">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">{},</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">    </span><span class="s2">&quot;parserOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">{</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">      </span><span class="s2">&quot;parser&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;babel-eslint&quot;</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="w">    </span><span class="err">}</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="w">  </span><span class="err">},</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">  </span><span class="s2">&quot;postcss&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">{</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="w">    </span><span class="s2">&quot;plugins&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">{</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">      </span><span class="s2">&quot;autoprefixer&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">{}</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">    </span><span class="err">}</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="w">  </span><span class="err">},</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">  </span><span class="s2">&quot;browserslist&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">[</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">    </span><span class="s2">&quot;&gt; 1%&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">    </span><span class="s2">&quot;last 2 versions&quot;</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">  </span><span class="err">]</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="err">}</span>
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-vbscript">
+<span class="odt-code-line">{</span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#2e75b6">&quot;name&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;vuejs&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#2e75b6">&quot;version&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;0.1.0&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#2e75b6">&quot;private&quot;</span><span style="color:#000000">: </span><span style="color:#0000ff">true</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#2e75b6">&quot;scripts&quot;</span><span style="color:#000000">: {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;serve&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;vue-cli-service serve vuejs-20/main.js&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;build&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;vue-cli-service build vuejs-20/main.js&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;lint&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;vue-cli-service lint&quot;</span></span>
+<span class="odt-code-line">  },</span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#2e75b6">&quot;dependencies&quot;</span><span style="color:#000000">: {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;axios&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^0.19.0&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;bootstrap&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^4.3.1&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;bootstrap-vue&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^2.0.2&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;core-js&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^2.6.5&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;vue&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^2.6.10&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;vue-router&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^3.1.3&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;vuex&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^3.1.1&quot;</span></span>
+<span class="odt-code-line">  },</span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#2e75b6">&quot;devDependencies&quot;</span><span style="color:#000000">: {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;@vue/cli-plugin-babel&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^3.11.0&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;@vue/cli-plugin-eslint&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^3.11.0&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;@vue/cli-service&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^3.11.0&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;babel-eslint&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^10.0.1&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;eslint&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^5.16.0&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;eslint-plugin-vue&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^5.0.0&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;vue-template-compiler&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;^2.6.10&quot;</span></span>
+<span class="odt-code-line">  },</span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#2e75b6">&quot;eslintConfig&quot;</span><span style="color:#000000">: {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;root&quot;</span><span style="color:#000000">: </span><span style="color:#0000ff">true</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;env&quot;</span><span style="color:#000000">: {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#2e75b6">&quot;node&quot;</span><span style="color:#000000">: </span><span style="color:#0000ff">true</span></span>
+<span class="odt-code-line">    },</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;extends&quot;</span><span style="color:#000000">: [</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#a31515">&quot;plugin:vue/essential&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#a31515">&quot;eslint:recommended&quot;</span></span>
+<span class="odt-code-line">    ],</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;rules&quot;</span><span style="color:#000000">: {},</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;parserOptions&quot;</span><span style="color:#000000">: {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#2e75b6">&quot;parser&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;babel-eslint&quot;</span></span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line">  },</span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#2e75b6">&quot;postcss&quot;</span><span style="color:#000000">: {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;plugins&quot;</span><span style="color:#000000">: {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#2e75b6">&quot;autoprefixer&quot;</span><span style="color:#000000">: {}</span></span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line">  },</span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#2e75b6">&quot;browserslist&quot;</span><span style="color:#000000">: [</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#a31515">&quot;&gt; 1%&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#a31515">&quot;last 2 versions&quot;</span></span>
+<span class="odt-code-line">  ]</span>
+<span class="odt-code-line">}</span>
+</code></pre></div>
+
 <p><strong>Commentaires</strong></p>
 <ul>
 <li>lignes 14-22 : dans les dépendances nécessaires au développement on voit des références aux deux outils <strong>[eslint, babel]</strong> déjà utilisés dans les deux chapitres précédents. S’y ajoutent des plugins de ces deux outils destinés à leur utilisation au sein de <strong>[vue.js]</strong> ;</li>
@@ -1006,64 +959,38 @@
 </li>
 </ul>
 <p>Un fichier <strong>[README.md]</strong> a été généré avec le contenu suivant :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#__codelineno-1-14">14</a></span>
-<span class="normal"><a href="#__codelineno-1-15">15</a></span>
-<span class="normal"><a href="#__codelineno-1-16">16</a></span>
-<span class="normal"><a href="#__codelineno-1-17">17</a></span>
-<span class="normal"><a href="#__codelineno-1-18">18</a></span>
-<span class="normal"><a href="#__codelineno-1-19">19</a></span>
-<span class="normal"><a href="#__codelineno-1-20">20</a></span>
-<span class="normal"><a href="#__codelineno-1-21">21</a></span>
-<span class="normal"><a href="#__codelineno-1-22">22</a></span>
-<span class="normal"><a href="#__codelineno-1-23">23</a></span>
-<span class="normal"><a href="#__codelineno-1-24">24</a></span>
-<span class="normal"><a href="#__codelineno-1-25">25</a></span>
-<span class="normal"><a href="#__codelineno-1-26">26</a></span>
-<span class="normal"><a href="#__codelineno-1-27">27</a></span>
-<span class="normal"><a href="#__codelineno-1-28">28</a></span>
-<span class="normal"><a href="#__codelineno-1-29">29</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a># vuejs
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>## Project setup
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>```
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>npm install
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>```
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>### Compiles and hot-reloads for development
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a>```
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a>npm run serve
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a>```
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a>### Compiles and minifies for production
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a>```
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a>npm run build
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a>```
-<a id="__codelineno-1-17" name="__codelineno-1-17"></a>
-<a id="__codelineno-1-18" name="__codelineno-1-18"></a>### Run your tests
-<a id="__codelineno-1-19" name="__codelineno-1-19"></a>```
-<a id="__codelineno-1-20" name="__codelineno-1-20"></a>npm run test
-<a id="__codelineno-1-21" name="__codelineno-1-21"></a>```
-<a id="__codelineno-1-22" name="__codelineno-1-22"></a>
-<a id="__codelineno-1-23" name="__codelineno-1-23"></a>### Lints and fixes files
-<a id="__codelineno-1-24" name="__codelineno-1-24"></a>```
-<a id="__codelineno-1-25" name="__codelineno-1-25"></a>npm run lint
-<a id="__codelineno-1-26" name="__codelineno-1-26"></a>```
-<a id="__codelineno-1-27" name="__codelineno-1-27"></a>
-<a id="__codelineno-1-28" name="__codelineno-1-28"></a>### Customize configuration
-<a id="__codelineno-1-29" name="__codelineno-1-29"></a>See [Configuration Reference](https://cli.vuejs.org/config/).
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-markdown">
+<span class="odt-code-line"><span style="color:#008000">#</span><span style="color:#a31515"> </span><span style="color:#2b91af">vuejs</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#008000">##</span><span style="color:#a31515"> </span><span style="color:#2b91af">Project setup</span></span>
+<span class="odt-code-line">```</span>
+<span class="odt-code-line">npm install</span>
+<span class="odt-code-line">```</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#008000">###</span><span style="color:#a31515"> </span><span style="color:#2b91af">Compiles and hot-reloads for development</span></span>
+<span class="odt-code-line">```</span>
+<span class="odt-code-line">npm run serve</span>
+<span class="odt-code-line">```</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#008000">###</span><span style="color:#a31515"> </span><span style="color:#2b91af">Compiles and minifies for production</span></span>
+<span class="odt-code-line">```</span>
+<span class="odt-code-line">npm run build</span>
+<span class="odt-code-line">```</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#008000">###</span><span style="color:#a31515"> </span><span style="color:#2b91af">Run your tests</span></span>
+<span class="odt-code-line">```</span>
+<span class="odt-code-line">npm run test</span>
+<span class="odt-code-line">```</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#008000">###</span><span style="color:#a31515"> </span><span style="color:#2b91af">Lints and fixes files</span></span>
+<span class="odt-code-line">```</span>
+<span class="odt-code-line">npm run lint</span>
+<span class="odt-code-line">```</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#008000">###</span><span style="color:#a31515"> </span><span style="color:#2b91af">Customize configuration</span></span>
+<span class="odt-code-line"><span style="color:#000000">See </span><span style="color:#a31515">[Configuration Reference]</span><span style="color:#000000">(https://cli.vuejs.org/config/).</span></span>
+</code></pre></div>
+
 <p>Ce fichier résume les commandes à utiliser pour gérer le projet.</p>
 <p>Nous savons que dans <strong>[VSCode]</strong>, les tâches <strong>[npm]</strong> sont proposées à l’exécution :</p>
 <p><img src="images/10000000000006FF000001C5AB06CAC3.png" style="width:16.821cm;height:4.25cm;" alt="Image" /></p>
@@ -1084,16 +1011,14 @@
 <li>en <strong>[9-10]</strong>, on désactive l’utilisation de <strong>[git]</strong> dans le projet ;</li>
 </ul>
 <p>Nous allons écrire divers tests pour montrer le fonctionnement de <strong>[vue.js]</strong>. Nous ne voulons cependant pas créer à chaque fois un nouveau projet car il faudrait alors à chaque fois générer un dossier <strong>[node_modules]</strong> alors que celui-ci fait plusieurs centaines de méga-octets. Revenons sur les tâches <strong>[npm]</strong> du fichier <strong>[package.json]</strong> :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">4</a></span>
-<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>  &quot;scripts&quot;: {
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>    &quot;serve&quot;: &quot;vue-cli-service serve vuejs-00/main.js&quot;,
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>    &quot;build&quot;: &quot;vue-cli-service build vuejs-00/main.js&quot;,
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    &quot;lint&quot;: &quot;vue-cli-service lint&quot;
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>  },
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#2e75b6">&quot;scripts&quot;</span><span style="color:#000000">: {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;serve&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;vue-cli-service serve vuejs-00/main.js&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;build&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;vue-cli-service build vuejs-00/main.js&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#2e75b6">&quot;lint&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;vue-cli-service lint&quot;</span></span>
+<span class="odt-code-line">  },</span>
+</code></pre></div>
+
 <ul>
 <li>ligne 2 : la commande <strong>[serve]</strong> utilise par défaut :<ul>
 <li>le fichier <strong>[public/index.html]</strong> ;</li>
@@ -1102,8 +1027,10 @@
 </li>
 </ul>
 <p>Ligne 2, il est possible de préciser à la commande <strong>[serve]</strong>, le point d’entrée du projet, par exemple :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>&quot;serve&quot;: &quot;vue-cli-service serve vuejs-00/main.js&quot;,
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span style="color:#2e75b6">&quot;serve&quot;</span><span style="color:#000000">: </span><span style="color:#a31515">&quot;vue-cli-service serve vuejs-00/main.js&quot;</span><span style="color:#000000">,</span></span>
+</code></pre></div>
+
 <p>Essayons :</p>
 <p><img src="images/10000000000007DE00000279D843579C.png" style="width:16.821cm;height:5.28cm;" alt="Image" /></p>
 <ul>
@@ -1180,7 +1107,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>

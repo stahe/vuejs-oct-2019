@@ -980,346 +980,200 @@
   
 
 
+<p><a id="refheadingtoc2480492728496130"></a></p>
 <h1 id="12-projet-vuejs-10-plugin-dao-requetes-http-asynchrones">12. projet [vuejs-10] : plugin [dao], requêtes HTTP asynchrones</h1>
 <p>L’arborescence du projet <strong>[vuejs-10]</strong> est la suivante :</p>
 <p><img src="images/100000000000017F0000014C6FA960FB.png" style="width:3.551cm;height:3.07cm;" alt="Image" /></p>
 <p>Le projet <strong>[vuejs-10]</strong> montre un composant faisant une requête HTTP à un serveur distant. L’architecture utilisée est la suivante :</p>
 <p><img src="images/10000000000008690000024E0C4F847A.png" style="width:17.091cm;height:4.68cm;" alt="Image" /></p>
 <p>Un composant <strong>[Vue.js]</strong> utilise la couche <strong>[dao]</strong> pour dialoguer avec le serveur de calcul de l’impôt.</p>
+<p><a id="refheadingtoc2480512728496130"></a></p>
 <h2 id="121-installation-des-dependances">12.1. Installation des dépendances</h2>
 <p>L’application <strong>[vuejs-10]</strong> utilise la bibliothèque <strong>[axios]</strong> pour faire les requêtes asynchrones vers le serveur de calcul d’impôt. Il nous faut installer cette dépendance :</p>
 <p><img src="images/100000000000076A0000018CD19A0CFA.png" style="width:15.071cm;height:3.14cm;" alt="Image" /></p>
 <ul>
 <li>en <strong>[4-5]</strong>, la ligne ajoutée au fichier <strong>[package.json]</strong> après l’installation de la bibliothèque <strong>[axios]</strong> <strong>[1-3]</strong> ;</li>
 </ul>
+<p><a id="refheadingtoc2480532728496130"></a></p>
 <h2 id="122-la-classe-dao">12.2. La classe [Dao]</h2>
 <p>La classe <strong>[Dao]</strong> est celle qui a été développée au paragraphe <a href="#1.11.2.La classe [Dao]|outline">[La classe Dao]</a>. Nous la redonnons ici pour mémoire :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">  1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">  2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">  3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">  4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">  5</a></span>
-<span class="normal"><a href="#__codelineno-0-6">  6</a></span>
-<span class="normal"><a href="#__codelineno-0-7">  7</a></span>
-<span class="normal"><a href="#__codelineno-0-8">  8</a></span>
-<span class="normal"><a href="#__codelineno-0-9">  9</a></span>
-<span class="normal"><a href="#__codelineno-0-10"> 10</a></span>
-<span class="normal"><a href="#__codelineno-0-11"> 11</a></span>
-<span class="normal"><a href="#__codelineno-0-12"> 12</a></span>
-<span class="normal"><a href="#__codelineno-0-13"> 13</a></span>
-<span class="normal"><a href="#__codelineno-0-14"> 14</a></span>
-<span class="normal"><a href="#__codelineno-0-15"> 15</a></span>
-<span class="normal"><a href="#__codelineno-0-16"> 16</a></span>
-<span class="normal"><a href="#__codelineno-0-17"> 17</a></span>
-<span class="normal"><a href="#__codelineno-0-18"> 18</a></span>
-<span class="normal"><a href="#__codelineno-0-19"> 19</a></span>
-<span class="normal"><a href="#__codelineno-0-20"> 20</a></span>
-<span class="normal"><a href="#__codelineno-0-21"> 21</a></span>
-<span class="normal"><a href="#__codelineno-0-22"> 22</a></span>
-<span class="normal"><a href="#__codelineno-0-23"> 23</a></span>
-<span class="normal"><a href="#__codelineno-0-24"> 24</a></span>
-<span class="normal"><a href="#__codelineno-0-25"> 25</a></span>
-<span class="normal"><a href="#__codelineno-0-26"> 26</a></span>
-<span class="normal"><a href="#__codelineno-0-27"> 27</a></span>
-<span class="normal"><a href="#__codelineno-0-28"> 28</a></span>
-<span class="normal"><a href="#__codelineno-0-29"> 29</a></span>
-<span class="normal"><a href="#__codelineno-0-30"> 30</a></span>
-<span class="normal"><a href="#__codelineno-0-31"> 31</a></span>
-<span class="normal"><a href="#__codelineno-0-32"> 32</a></span>
-<span class="normal"><a href="#__codelineno-0-33"> 33</a></span>
-<span class="normal"><a href="#__codelineno-0-34"> 34</a></span>
-<span class="normal"><a href="#__codelineno-0-35"> 35</a></span>
-<span class="normal"><a href="#__codelineno-0-36"> 36</a></span>
-<span class="normal"><a href="#__codelineno-0-37"> 37</a></span>
-<span class="normal"><a href="#__codelineno-0-38"> 38</a></span>
-<span class="normal"><a href="#__codelineno-0-39"> 39</a></span>
-<span class="normal"><a href="#__codelineno-0-40"> 40</a></span>
-<span class="normal"><a href="#__codelineno-0-41"> 41</a></span>
-<span class="normal"><a href="#__codelineno-0-42"> 42</a></span>
-<span class="normal"><a href="#__codelineno-0-43"> 43</a></span>
-<span class="normal"><a href="#__codelineno-0-44"> 44</a></span>
-<span class="normal"><a href="#__codelineno-0-45"> 45</a></span>
-<span class="normal"><a href="#__codelineno-0-46"> 46</a></span>
-<span class="normal"><a href="#__codelineno-0-47"> 47</a></span>
-<span class="normal"><a href="#__codelineno-0-48"> 48</a></span>
-<span class="normal"><a href="#__codelineno-0-49"> 49</a></span>
-<span class="normal"><a href="#__codelineno-0-50"> 50</a></span>
-<span class="normal"><a href="#__codelineno-0-51"> 51</a></span>
-<span class="normal"><a href="#__codelineno-0-52"> 52</a></span>
-<span class="normal"><a href="#__codelineno-0-53"> 53</a></span>
-<span class="normal"><a href="#__codelineno-0-54"> 54</a></span>
-<span class="normal"><a href="#__codelineno-0-55"> 55</a></span>
-<span class="normal"><a href="#__codelineno-0-56"> 56</a></span>
-<span class="normal"><a href="#__codelineno-0-57"> 57</a></span>
-<span class="normal"><a href="#__codelineno-0-58"> 58</a></span>
-<span class="normal"><a href="#__codelineno-0-59"> 59</a></span>
-<span class="normal"><a href="#__codelineno-0-60"> 60</a></span>
-<span class="normal"><a href="#__codelineno-0-61"> 61</a></span>
-<span class="normal"><a href="#__codelineno-0-62"> 62</a></span>
-<span class="normal"><a href="#__codelineno-0-63"> 63</a></span>
-<span class="normal"><a href="#__codelineno-0-64"> 64</a></span>
-<span class="normal"><a href="#__codelineno-0-65"> 65</a></span>
-<span class="normal"><a href="#__codelineno-0-66"> 66</a></span>
-<span class="normal"><a href="#__codelineno-0-67"> 67</a></span>
-<span class="normal"><a href="#__codelineno-0-68"> 68</a></span>
-<span class="normal"><a href="#__codelineno-0-69"> 69</a></span>
-<span class="normal"><a href="#__codelineno-0-70"> 70</a></span>
-<span class="normal"><a href="#__codelineno-0-71"> 71</a></span>
-<span class="normal"><a href="#__codelineno-0-72"> 72</a></span>
-<span class="normal"><a href="#__codelineno-0-73"> 73</a></span>
-<span class="normal"><a href="#__codelineno-0-74"> 74</a></span>
-<span class="normal"><a href="#__codelineno-0-75"> 75</a></span>
-<span class="normal"><a href="#__codelineno-0-76"> 76</a></span>
-<span class="normal"><a href="#__codelineno-0-77"> 77</a></span>
-<span class="normal"><a href="#__codelineno-0-78"> 78</a></span>
-<span class="normal"><a href="#__codelineno-0-79"> 79</a></span>
-<span class="normal"><a href="#__codelineno-0-80"> 80</a></span>
-<span class="normal"><a href="#__codelineno-0-81"> 81</a></span>
-<span class="normal"><a href="#__codelineno-0-82"> 82</a></span>
-<span class="normal"><a href="#__codelineno-0-83"> 83</a></span>
-<span class="normal"><a href="#__codelineno-0-84"> 84</a></span>
-<span class="normal"><a href="#__codelineno-0-85"> 85</a></span>
-<span class="normal"><a href="#__codelineno-0-86"> 86</a></span>
-<span class="normal"><a href="#__codelineno-0-87"> 87</a></span>
-<span class="normal"><a href="#__codelineno-0-88"> 88</a></span>
-<span class="normal"><a href="#__codelineno-0-89"> 89</a></span>
-<span class="normal"><a href="#__codelineno-0-90"> 90</a></span>
-<span class="normal"><a href="#__codelineno-0-91"> 91</a></span>
-<span class="normal"><a href="#__codelineno-0-92"> 92</a></span>
-<span class="normal"><a href="#__codelineno-0-93"> 93</a></span>
-<span class="normal"><a href="#__codelineno-0-94"> 94</a></span>
-<span class="normal"><a href="#__codelineno-0-95"> 95</a></span>
-<span class="normal"><a href="#__codelineno-0-96"> 96</a></span>
-<span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
-<span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
-<span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
-<span class="normal"><a href="#__codelineno-0-100">100</a></span>
-<span class="normal"><a href="#__codelineno-0-101">101</a></span>
-<span class="normal"><a href="#__codelineno-0-102">102</a></span>
-<span class="normal"><a href="#__codelineno-0-103">103</a></span>
-<span class="normal"><a href="#__codelineno-0-104">104</a></span>
-<span class="normal"><a href="#__codelineno-0-105">105</a></span>
-<span class="normal"><a href="#__codelineno-0-106">106</a></span>
-<span class="normal"><a href="#__codelineno-0-107">107</a></span>
-<span class="normal"><a href="#__codelineno-0-108">108</a></span>
-<span class="normal"><a href="#__codelineno-0-109">109</a></span>
-<span class="normal"><a href="#__codelineno-0-110">110</a></span>
-<span class="normal"><a href="#__codelineno-0-111">111</a></span>
-<span class="normal"><a href="#__codelineno-0-112">112</a></span>
-<span class="normal"><a href="#__codelineno-0-113">113</a></span>
-<span class="normal"><a href="#__codelineno-0-114">114</a></span>
-<span class="normal"><a href="#__codelineno-0-115">115</a></span>
-<span class="normal"><a href="#__codelineno-0-116">116</a></span>
-<span class="normal"><a href="#__codelineno-0-117">117</a></span>
-<span class="normal"><a href="#__codelineno-0-118">118</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="c1">// imports</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="k">import</span><span class="w"> </span><span class="nx">qs</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;qs&#39;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="c1">// classe [Dao]</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Dao</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span><span class="c1">// constructeur</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">axios</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">axios</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">axios</span><span class="p">;</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="c1">// cookie de session</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">sessionCookieName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;PHPSESSID&quot;</span><span class="p">;</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">sessionCookie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">  </span><span class="c1">// init session</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">  </span><span class="k">async</span><span class="w">  </span><span class="nx">initSession</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">    </span><span class="c1">// options de la requête HHTP [get /main.php?action=init-session&amp;type=json]</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">      </span><span class="c1">// paramètres de l&#39;URL</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">      </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">        </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;init-session&#39;</span><span class="p">,</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;json&#39;</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">      </span><span class="p">}</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">    </span><span class="p">};</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">    </span><span class="c1">// exécution de la requête HTTP</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getRemoteData</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">  </span><span class="k">async</span><span class="w">  </span><span class="nx">authentifierUtilisateur</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">password</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">    </span><span class="c1">// options de la requête HHTP [post /main.php?action=authentifier-utilisateur]</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">        </span><span class="s1">&#39;Content-type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">,</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">      </span><span class="p">},</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">      </span><span class="c1">// corps du POST</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="w">      </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">qs</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="w">        </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">user</span><span class="p">,</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">        </span><span class="nx">password</span><span class="o">:</span><span class="w"> </span><span class="nx">password</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="w">      </span><span class="p">}),</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">      </span><span class="c1">// paramètres de l&#39;URL</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">      </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="w">        </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;authentifier-utilisateur&#39;</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="w">      </span><span class="p">}</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="w">    </span><span class="p">};</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="w">    </span><span class="c1">// exécution de la requête HTTP</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getRemoteData</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">getAdminData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="w">    </span><span class="c1">// options de la requête HHTP  [get /main.php?action=get-admindata]</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="w">      </span><span class="c1">// paramètres de l&#39;URL</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="w">      </span><span class="nx">params</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="w">        </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;get-admindata&#39;</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="w">      </span><span class="p">}</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="w">    </span><span class="p">};</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="w">    </span><span class="c1">// exécution de la requête HTTP</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getRemoteData</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a><span class="w">    </span><span class="c1">// résultat</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">data</span><span class="p">;</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a><span class="w">  </span><span class="k">async</span><span class="w">  </span><span class="nx">getRemoteData</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a><span class="w">    </span><span class="c1">// pour le cookie de session</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">options</span><span class="p">.</span><span class="nx">headers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71"></a><span class="w">      </span><span class="nx">options</span><span class="p">.</span><span class="nx">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73"></a><span class="w">    </span><span class="nx">options</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">Cookie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">sessionCookie</span><span class="p">;</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="w">    </span><span class="c1">// exécution de la requête HTTP</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77"></a><span class="w">      </span><span class="c1">// requête asynchrone</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="w">      </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">axios</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s1">&#39;main.php&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">);</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="w">      </span><span class="c1">// le paramètre [error] est une instance d&#39;exception - elle peut avoir diverses formes</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="w">        </span><span class="c1">// la réponse du serveur est dans [error.response]</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="w">        </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">;</span>
-<a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="w">        </span><span class="c1">// on relance l&#39;erreur</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
-<a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="w">      </span><span class="p">}</span>
-<a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89"></a><span class="w">    </span><span class="c1">// response est l&#39;ensemble de la réponse HTTP du serveur (entêtes HTTP + réponse elle-même)</span>
-<a id="__codelineno-0-90" name="__codelineno-0-90"></a><span class="w">    </span><span class="c1">// on récupère le cookie de session s&#39;il existe</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">setCookie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">&#39;set-cookie&#39;</span><span class="p">];</span>
-<a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">setCookie</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="w">      </span><span class="c1">// setCookie est un tableau</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="w">      </span><span class="c1">// on cherche le cookie de session dans ce tableau</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95"></a><span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">trouvé</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<a id="__codelineno-0-97" name="__codelineno-0-97"></a><span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">trouvé</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">setCookie</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98"></a><span class="w">        </span><span class="c1">// on cherche le cookie de session</span>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">RegExp</span><span class="p">(</span><span class="s1">&#39;^(&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">sessionCookieName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;.+?);&#39;</span><span class="p">).</span><span class="nx">exec</span><span class="p">(</span><span class="nx">setCookie</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-101" name="__codelineno-0-101"></a><span class="w">          </span><span class="c1">// on mémorise le cookie de session</span>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="w">          </span><span class="c1">// eslint-disable-next-line require-atomic-updates</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">sessionCookie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a><span class="w">          </span><span class="c1">// on a trouvé</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="w">          </span><span class="nx">trouvé</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<a id="__codelineno-0-106" name="__codelineno-0-106"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-107" name="__codelineno-0-107"></a><span class="w">          </span><span class="c1">// élément suivant</span>
-<a id="__codelineno-0-108" name="__codelineno-0-108"></a><span class="w">          </span><span class="nx">i</span><span class="o">++</span><span class="p">;</span>
-<a id="__codelineno-0-109" name="__codelineno-0-109"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-0-110" name="__codelineno-0-110"></a><span class="w">      </span><span class="p">}</span>
-<a id="__codelineno-0-111" name="__codelineno-0-111"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-0-112" name="__codelineno-0-112"></a><span class="w">    </span><span class="c1">// la réponse du serveur est dans [response.data]</span>
-<a id="__codelineno-0-113" name="__codelineno-0-113"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
-<a id="__codelineno-0-114" name="__codelineno-0-114"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-0-115" name="__codelineno-0-115"></a><span class="p">}</span>
-<a id="__codelineno-0-116" name="__codelineno-0-116"></a>
-<a id="__codelineno-0-117" name="__codelineno-0-117"></a><span class="c1">// export de la classe</span>
-<a id="__codelineno-0-118" name="__codelineno-0-118"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">Dao</span><span class="p">;</span>
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-javascript">
+<span class="odt-code-line"><span style="color:#a31515">&#x27;use strict&#x27;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// imports</span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> qs </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;qs&#x27;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// classe <span style="font-weight:bold">[Dao]</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">class</span><span style="color:#000000"> </span><span style="color:#2b91af">Dao</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008000">// constructeur</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">constructor</span><span style="color:#000000">(axios) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">this</span><span style="color:#000000">.axios = axios;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// cookie de session</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">this</span><span style="color:#000000">.sessionCookieName = </span><span style="color:#a31515">&quot;PHPSESSID&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">this</span><span style="color:#000000">.sessionCookie = </span><span style="color:#a31515">&#x27;&#x27;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#008000">// init session</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">async</span><span style="color:#000000">  initSession() {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// options de la requête HHTP </span><span style="font-weight:bold;color:#008000">[get /main.php?action=init-session&amp;type=json]</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">const</span><span style="color:#000000"> options = {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      method: </span><span style="color:#a31515">&quot;GET&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// paramètres de l&#x27;URL</span></span>
+<span class="odt-code-line">      params: {</span>
+<span class="odt-code-line"><span style="color:#000000">        action: </span><span style="color:#a31515">&#x27;init-session&#x27;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">        type: </span><span style="color:#a31515">&#x27;json&#x27;</span></span>
+<span class="odt-code-line">      }</span>
+<span class="odt-code-line">    };</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// exécution de la requête HTTP</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> </span><span style="color:#0000ff">await</span><span style="color:#000000"> </span><span style="color:#0000ff">this</span><span style="color:#000000">.getRemoteData(options);</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">async</span><span style="color:#000000">  authentifierUtilisateur(user, password) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// options de la requête HHTP </span><span style="font-weight:bold;color:#008000">[post /main.php?action=authentifier-utilisateur]</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">const</span><span style="color:#000000"> options = {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      method: </span><span style="color:#a31515">&quot;POST&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line">      headers: {</span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#a31515">&#x27;Content-type&#x27;</span><span style="color:#000000">: </span><span style="color:#a31515">&#x27;application/x-www-form-urlencoded&#x27;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line">      },</span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// corps du POST</span></span>
+<span class="odt-code-line">      data: qs.stringify({</span>
+<span class="odt-code-line">        user: user,</span>
+<span class="odt-code-line">        password: password</span>
+<span class="odt-code-line">      }),</span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// paramètres de l&#x27;URL</span></span>
+<span class="odt-code-line">      params: {</span>
+<span class="odt-code-line"><span style="color:#000000">        action: </span><span style="color:#a31515">&#x27;authentifier-utilisateur&#x27;</span></span>
+<span class="odt-code-line">      }</span>
+<span class="odt-code-line">    };</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// exécution de la requête HTTP</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> </span><span style="color:#0000ff">await</span><span style="color:#000000"> </span><span style="color:#0000ff">this</span><span style="color:#000000">.getRemoteData(options);</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">async</span><span style="color:#000000"> getAdminData() {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// options de la requête HHTP  </span><span style="font-weight:bold;color:#008000">[get /main.php?action=get-admindata]</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">const</span><span style="color:#000000"> options = {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      method: </span><span style="color:#a31515">&quot;GET&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// paramètres de l&#x27;URL</span></span>
+<span class="odt-code-line">      params: {</span>
+<span class="odt-code-line"><span style="color:#000000">        action: </span><span style="color:#a31515">&#x27;get-admindata&#x27;</span></span>
+<span class="odt-code-line">      }</span>
+<span class="odt-code-line">    };</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// exécution de la requête HTTP</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">const</span><span style="color:#000000"> data = </span><span style="color:#0000ff">await</span><span style="color:#000000"> </span><span style="color:#0000ff">this</span><span style="color:#000000">.getRemoteData(options);</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// résultat</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> data;</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">async</span><span style="color:#000000">  getRemoteData(options) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// pour le cookie de session</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> (!options.headers) {</span></span>
+<span class="odt-code-line">      options.headers = {};</span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line"><span style="color:#000000">    options.headers.Cookie = </span><span style="color:#0000ff">this</span><span style="color:#000000">.sessionCookie;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// exécution de la requête HTTP</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">let</span><span style="color:#000000"> response;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">try</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// requête asynchrone</span></span>
+<span class="odt-code-line"><span style="color:#000000">      response = </span><span style="color:#0000ff">await</span><span style="color:#000000"> </span><span style="color:#0000ff">this</span><span style="color:#000000">.axios.request(</span><span style="color:#a31515">&#x27;main.php&#x27;</span><span style="color:#000000">, options);</span></span>
+<span class="odt-code-line"><span style="color:#000000">    } </span><span style="color:#0000ff">catch</span><span style="color:#000000"> (error) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// le paramètre </span><span style="font-weight:bold;color:#008000">[error]</span><span style="color:#008000"> est une instance d&#x27;exception - elle peut avoir diverses formes</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">if</span><span style="color:#000000"> (error.response) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// la réponse du serveur est dans </span><span style="font-weight:bold;color:#008000">[error.response]</span></span>
+<span class="odt-code-line">        response = error.response;</span>
+<span class="odt-code-line"><span style="color:#000000">      } </span><span style="color:#0000ff">else</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// on relance l&#x27;erreur</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">throw</span><span style="color:#000000"> error;</span></span>
+<span class="odt-code-line">      }</span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// response est l&#x27;ensemble de la réponse HTTP du serveur (entêtes HTTP + réponse elle-même)</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// on récupère le cookie de session s&#x27;il existe</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">const</span><span style="color:#000000"> setCookie = response.headers</span><span style="font-weight:bold;color:#000000">[&#x27;set-cookie&#x27;]</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">if</span><span style="color:#000000"> (setCookie) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// setCookie est un tableau</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// on cherche le cookie de session dans ce tableau</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">let</span><span style="color:#000000"> trouvé = </span><span style="color:#0000ff">false</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">let</span><span style="color:#000000"> i = 0;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">while</span><span style="color:#000000"> (!trouvé &amp;&amp; i &lt; setCookie.length) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// on cherche le cookie de session</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">const</span><span style="color:#000000"> results = RegExp(</span><span style="color:#a31515">&#x27;^(&#x27;</span><span style="color:#000000"> + </span><span style="color:#0000ff">this</span><span style="color:#000000">.sessionCookieName + </span><span style="color:#a31515">&#x27;.+?);&#x27;</span><span style="color:#000000">).exec(setCookie</span><span style="font-weight:bold;color:#000000">[i]</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">if</span><span style="color:#000000"> (results) {</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008000">// on mémorise le cookie de session</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008000">// eslint-disable-next-line require-atomic-updates</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#0000ff">this</span><span style="color:#000000">.sessionCookie = results</span><span style="font-weight:bold;color:#000000">[1]</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008000">// on a trouvé</span></span>
+<span class="odt-code-line"><span style="color:#000000">          trouvé = </span><span style="color:#0000ff">true</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        } </span><span style="color:#0000ff">else</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008000">// élément suivant</span></span>
+<span class="odt-code-line">          i++;</span>
+<span class="odt-code-line">        }</span>
+<span class="odt-code-line">      }</span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// la réponse du serveur est dans </span><span style="font-weight:bold;color:#008000">[response.data]</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">return</span><span style="color:#000000"> response.data;</span></span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line">}</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// export de la classe</span>
+<span class="odt-code-line"><span style="color:#0000ff">export</span><span style="color:#000000"> </span><span style="color:#0000ff">default</span><span style="color:#000000"> Dao;</span></span>
+</code></pre></div>
+
 <p>Le projet <strong>[vuejs-10]</strong> n’utilise que la méthode asynchrone <strong>[initSession]</strong> des lignes 18-30. On rappelle que la classe <strong>[Dao]</strong> est instanciée avec un paramètre <strong>[axios]</strong>, ligne 10, paramètre initialisé par le code appelant. Ce code appelant sera ici le script <strong>[./main.js]</strong>.</p>
+<p><a id="refheadingtoc2480552728496130"></a></p>
 <h2 id="123-le-plugin-plugindao">12.3. Le plugin [pluginDao]</h2>
 <p>Le plugin <strong>[pluginDao]</strong> est le suivant :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">6</a></span>
-<span class="normal"><a href="#__codelineno-1-7">7</a></span>
-<span class="normal"><a href="#__codelineno-1-8">8</a></span>
-<span class="normal"><a href="#__codelineno-1-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>  <span class="n">install</span><span class="p">(</span><span class="n">Vue</span><span class="p">,</span> <span class="n">dao</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="o">//</span> <span class="n">ajoute</span> <span class="n">une</span> <span class="n">propriété</span> <span class="p">[</span><span class="err">$</span><span class="n">dao</span><span class="p">]</span> <span class="n">à</span> <span class="n">la</span> <span class="n">classe</span> <span class="n">Vue</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="n">Object</span><span class="o">.</span><span class="n">defineProperty</span><span class="p">(</span><span class="n">Vue</span><span class="o">.</span><span class="n">prototype</span><span class="p">,</span> <span class="s1">&#39;$dao&#39;</span><span class="p">,</span> <span class="p">{</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>      <span class="o">//</span> <span class="n">lorsque</span> <span class="n">Vue</span><span class="o">.</span><span class="err">$</span><span class="n">dao</span> <span class="n">est</span> <span class="n">référencé</span><span class="p">,</span> <span class="n">on</span> <span class="n">rend</span> <span class="n">le</span> <span class="mi">2</span><span class="n">ième</span> <span class="n">paramètre</span> <span class="p">[</span><span class="n">dao</span><span class="p">]</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>      <span class="n">get</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">dao</span><span class="p">,</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="p">})</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>  <span class="p">}</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="p">}</span>
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span style="color:#0000ff">export</span><span style="color:#000000"> </span><span style="color:#0000ff">default</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line">  install(Vue, dao) {</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// ajoute une propriété </span><span style="font-weight:bold;color:#008000">[$dao]</span><span style="color:#008000"> à la classe Vue</span></span>
+<span class="odt-code-line"><span style="color:#000000">    Object.defineProperty(Vue.prototype, </span><span style="color:#a31515">&#x27;$dao&#x27;</span><span style="color:#000000">, {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// lorsque Vue.$dao est référencé, on rend le 2ième paramètre </span><span style="font-weight:bold;color:#008000">[dao]</span></span>
+<span class="odt-code-line">      get: () =&gt; dao,</span>
+<span class="odt-code-line">    })</span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line">}</span>
+</code></pre></div>
+
 <p>Si on se souvient de l’explication donnée pour le plugin <strong>[event-bus]</strong>, on voit que le plugin <strong>[pluginDao]</strong> crée dans la classe / fonction <strong>[Vue]</strong>, une nouvelle propriété appelée <strong>[$dao]</strong>. Cette propriété aura (ça reste à montrer) pour valeur, l’objet exporté par le script <strong>[./Dao]</strong>, ç-à-d la classe <strong>[Dao]</strong> précédente.</p>
+<p><a id="refheadingtoc2480572728496130"></a></p>
 <h2 id="124-le-script-principal-mainjs">12.4. Le script principal [main.js]</h2>
 <p>Le code du script principal <strong>[main.js]</strong> est le suivant :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span>
-<span class="normal"><a href="#__codelineno-2-23">23</a></span>
-<span class="normal"><a href="#__codelineno-2-24">24</a></span>
-<span class="normal"><a href="#__codelineno-2-25">25</a></span>
-<span class="normal"><a href="#__codelineno-2-26">26</a></span>
-<span class="normal"><a href="#__codelineno-2-27">27</a></span>
-<span class="normal"><a href="#__codelineno-2-28">28</a></span>
-<span class="normal"><a href="#__codelineno-2-29">29</a></span>
-<span class="normal"><a href="#__codelineno-2-30">30</a></span>
-<span class="normal"><a href="#__codelineno-2-31">31</a></span>
-<span class="normal"><a href="#__codelineno-2-32">32</a></span>
-<span class="normal"><a href="#__codelineno-2-33">33</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="o">//</span> <span class="n">imports</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">Vue</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;vue&#39;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">App</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;./App.vue&#39;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">axios</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;axios&#39;</span><span class="p">;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="o">//</span> <span class="n">plugins</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">BootstrapVue</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;bootstrap-vue&#39;</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="n">Vue</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">BootstrapVue</span><span class="p">);</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="o">//</span> <span class="n">bootstrap</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="kn">import</span><span class="w"> </span><span class="s1">&#39;bootstrap/dist/css/bootstrap.css&#39;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="kn">import</span><span class="w"> </span><span class="s1">&#39;bootstrap-vue/dist/bootstrap-vue.css&#39;</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="o">//</span> <span class="n">couche</span> <span class="p">[</span><span class="n">dao</span><span class="p">]</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="kn">import</span><span class="w"> </span><span class="nn">Dao</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;./Dao&#39;</span><span class="p">;</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="o">//</span> <span class="n">configuration</span> <span class="n">axios</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="n">axios</span><span class="o">.</span><span class="n">defaults</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">;</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="n">axios</span><span class="o">.</span><span class="n">defaults</span><span class="o">.</span><span class="n">baseURL</span> <span class="o">=</span> <span class="s1">&#39;http://localhost/php7/scripts-web/impots/version-14&#39;</span><span class="p">;</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="n">axios</span><span class="o">.</span><span class="n">defaults</span><span class="o">.</span><span class="n">withCredentials</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="o">//</span> <span class="n">instanciation</span> <span class="n">couche</span> <span class="p">[</span><span class="n">dao</span><span class="p">]</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="n">const</span> <span class="n">dao</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Dao</span><span class="p">(</span><span class="n">axios</span><span class="p">);</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a>
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="o">//</span> <span class="n">plugin</span> <span class="p">[</span><span class="n">dao</span><span class="p">]</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pluginDao</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;./plugins/dao&#39;</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="n">Vue</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">pluginDao</span><span class="p">,</span> <span class="n">dao</span><span class="p">)</span>
-<a id="__codelineno-2-26" name="__codelineno-2-26"></a>
-<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="o">//</span> <span class="n">configuration</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="n">Vue</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">productionTip</span> <span class="o">=</span> <span class="n">false</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29"></a>
-<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="o">//</span> <span class="n">instanciation</span> <span class="n">projet</span> <span class="p">[</span><span class="n">App</span><span class="p">]</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="n">new</span> <span class="n">Vue</span><span class="p">({</span>
-<a id="__codelineno-2-32" name="__codelineno-2-32"></a>  <span class="n">render</span><span class="p">:</span> <span class="n">h</span> <span class="o">=&gt;</span> <span class="n">h</span><span class="p">(</span><span class="n">App</span><span class="p">),</span>
-<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="p">})</span><span class="o">.</span><span class="err">$</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;#app&#39;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line">// imports</span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> Vue </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;vue&#x27;</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> App </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;./App.vue&#x27;</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> axios </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;axios&#x27;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// plugins</span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> BootstrapVue </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;bootstrap-vue&#x27;</span></span>
+<span class="odt-code-line">Vue.use(BootstrapVue);</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// bootstrap</span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;bootstrap/dist/css/bootstrap.css&#x27;</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;bootstrap-vue/dist/bootstrap-vue.css&#x27;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// couche <span style="font-weight:bold">[dao]</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> Dao </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;./Dao&#x27;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">// configuration axios</span>
+<span class="odt-code-line">axios.defaults.timeout = 2000;</span>
+<span class="odt-code-line"><span style="color:#000000">axios.defaults.baseURL = </span><span style="color:#a31515">&#x27;http://localhost/php7/scripts-web/impots/version-14&#x27;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">axios.defaults.withCredentials = </span><span style="color:#0000ff">true</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">// instanciation couche <span style="font-weight:bold">[dao]</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">const</span><span style="color:#000000"> dao = </span><span style="color:#0000ff">new</span><span style="color:#000000"> Dao(axios);</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// plugin <span style="font-weight:bold">[dao]</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> pluginDao </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;./plugins/dao&#x27;</span></span>
+<span class="odt-code-line">Vue.use(pluginDao, dao)</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// configuration</span>
+<span class="odt-code-line"><span style="color:#000000">Vue.config.productionTip = </span><span style="color:#0000ff">false</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// instanciation projet <span style="font-weight:bold">[App]</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">new</span><span style="color:#000000"> Vue({</span></span>
+<span class="odt-code-line">  render: h =&gt; h(App),</span>
+<span class="odt-code-line"><span style="color:#000000">}).$mount(</span><span style="color:#a31515">&#x27;#app&#x27;</span><span style="color:#000000">)</span></span>
+</code></pre></div>
+
 <p>Le script <strong>[main.js]</strong> :</p>
 <ul>
 <li>instancie la couche <strong>[dao]</strong> aux lignes 14-21 ;</li>
@@ -1337,138 +1191,77 @@
 </ul>
 </li>
 </ul>
+<p><a id="refheadingtoc2480592728496130"></a></p>
 <h2 id="125-la-vue-principale-appvue">12.5. La vue principale [App.vue]</h2>
 <p>Le code de la vue principale <strong>[App]</strong> est le suivant :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-3-10">10</a></span>
-<span class="normal"><a href="#__codelineno-3-11">11</a></span>
-<span class="normal"><a href="#__codelineno-3-12">12</a></span>
-<span class="normal"><a href="#__codelineno-3-13">13</a></span>
-<span class="normal"><a href="#__codelineno-3-14">14</a></span>
-<span class="normal"><a href="#__codelineno-3-15">15</a></span>
-<span class="normal"><a href="#__codelineno-3-16">16</a></span>
-<span class="normal"><a href="#__codelineno-3-17">17</a></span>
-<span class="normal"><a href="#__codelineno-3-18">18</a></span>
-<span class="normal"><a href="#__codelineno-3-19">19</a></span>
-<span class="normal"><a href="#__codelineno-3-20">20</a></span>
-<span class="normal"><a href="#__codelineno-3-21">21</a></span>
-<span class="normal"><a href="#__codelineno-3-22">22</a></span>
-<span class="normal"><a href="#__codelineno-3-23">23</a></span>
-<span class="normal"><a href="#__codelineno-3-24">24</a></span>
-<span class="normal"><a href="#__codelineno-3-25">25</a></span>
-<span class="normal"><a href="#__codelineno-3-26">26</a></span>
-<span class="normal"><a href="#__codelineno-3-27">27</a></span>
-<span class="normal"><a href="#__codelineno-3-28">28</a></span>
-<span class="normal"><a href="#__codelineno-3-29">29</a></span>
-<span class="normal"><a href="#__codelineno-3-30">30</a></span>
-<span class="normal"><a href="#__codelineno-3-31">31</a></span>
-<span class="normal"><a href="#__codelineno-3-32">32</a></span>
-<span class="normal"><a href="#__codelineno-3-33">33</a></span>
-<span class="normal"><a href="#__codelineno-3-34">34</a></span>
-<span class="normal"><a href="#__codelineno-3-35">35</a></span>
-<span class="normal"><a href="#__codelineno-3-36">36</a></span>
-<span class="normal"><a href="#__codelineno-3-37">37</a></span>
-<span class="normal"><a href="#__codelineno-3-38">38</a></span>
-<span class="normal"><a href="#__codelineno-3-39">39</a></span>
-<span class="normal"><a href="#__codelineno-3-40">40</a></span>
-<span class="normal"><a href="#__codelineno-3-41">41</a></span>
-<span class="normal"><a href="#__codelineno-3-42">42</a></span>
-<span class="normal"><a href="#__codelineno-3-43">43</a></span>
-<span class="normal"><a href="#__codelineno-3-44">44</a></span>
-<span class="normal"><a href="#__codelineno-3-45">45</a></span>
-<span class="normal"><a href="#__codelineno-3-46">46</a></span>
-<span class="normal"><a href="#__codelineno-3-47">47</a></span>
-<span class="normal"><a href="#__codelineno-3-48">48</a></span>
-<span class="normal"><a href="#__codelineno-3-49">49</a></span>
-<span class="normal"><a href="#__codelineno-3-50">50</a></span>
-<span class="normal"><a href="#__codelineno-3-51">51</a></span>
-<span class="normal"><a href="#__codelineno-3-52">52</a></span>
-<span class="normal"><a href="#__codelineno-3-53">53</a></span>
-<span class="normal"><a href="#__codelineno-3-54">54</a></span>
-<span class="normal"><a href="#__codelineno-3-55">55</a></span>
-<span class="normal"><a href="#__codelineno-3-56">56</a></span>
-<span class="normal"><a href="#__codelineno-3-57">57</a></span>
-<span class="normal"><a href="#__codelineno-3-58">58</a></span>
-<span class="normal"><a href="#__codelineno-3-59">59</a></span>
-<span class="normal"><a href="#__codelineno-3-60">60</a></span>
-<span class="normal"><a href="#__codelineno-3-61">61</a></span>
-<span class="normal"><a href="#__codelineno-3-62">62</a></span>
-<span class="normal"><a href="#__codelineno-3-63">63</a></span>
-<span class="normal"><a href="#__codelineno-3-64">64</a></span>
-<span class="normal"><a href="#__codelineno-3-65">65</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">card</span><span class="o">&gt;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">message</span> <span class="o">--&gt;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;success&quot;</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a>        <span class="o">&lt;</span><span class="n">h4</span><span class="o">&gt;</span><span class="p">[</span><span class="n">vuejs</span><span class="o">-</span><span class="mi">10</span><span class="p">]</span> <span class="p">:</span> <span class="n">plugin</span> <span class="p">[</span><span class="n">dao</span><span class="p">],</span> <span class="n">requêtes</span> <span class="n">HTTP</span> <span class="n">asynchrones</span><span class="o">&lt;/</span><span class="n">h4</span><span class="o">&gt;</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">composant</span> <span class="n">faisant</span> <span class="n">une</span> <span class="n">requête</span> <span class="n">asynchrone</span> <span class="n">au</span> <span class="n">serveur</span> <span class="n">de</span> <span class="n">calcul</span> <span class="n">d</span><span class="s1">&#39;impôt--&gt;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a>      <span class="o">&lt;</span><span class="n">Component1</span> <span class="nd">@error</span><span class="o">=</span><span class="s2">&quot;doSomethingWithError&quot;</span> <span class="nd">@endWaiting</span><span class="o">=</span><span class="s2">&quot;endWaiting&quot;</span> <span class="nd">@beginWaiting</span><span class="o">=</span><span class="s2">&quot;beginWaiting&quot;</span> <span class="o">/&gt;</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">affichage</span> <span class="n">d</span><span class="s1">&#39;une éventuelle erreur --&gt;</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a>               <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;danger&quot;</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13"></a>               <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;showError&quot;</span><span class="o">&gt;</span><span class="n">Evénement</span> <span class="p">[</span><span class="n">error</span><span class="p">]</span> <span class="n">intercepté</span> <span class="n">par</span> <span class="p">[</span><span class="n">App</span><span class="p">]</span><span class="o">.</span> <span class="n">Valeur</span> <span class="n">reçue</span> <span class="o">=</span> <span class="p">{{</span><span class="n">error</span><span class="p">}}</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14"></a>      <span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">message</span> <span class="n">d</span><span class="s1">&#39;attente avec un spinner --&gt;</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15"></a>      <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span> <span class="n">show</span> <span class="n">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;showWaiting&quot;</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;light&quot;</span><span class="o">&gt;</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16"></a>        <span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;</span><span class="n">Requête</span> <span class="n">au</span> <span class="n">serveur</span> <span class="n">de</span> <span class="n">calcul</span> <span class="n">d</span><span class="s1">&#39;impôt en cours...&lt;/strong&gt;</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17"></a>        <span class="o">&lt;</span><span class="n">b</span><span class="o">-</span><span class="n">spinner</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;primary&quot;</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Spinning&quot;</span><span class="o">&gt;&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">spinner</span><span class="o">&gt;</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18"></a>      <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">alert</span><span class="o">&gt;</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19"></a>    <span class="o">&lt;/</span><span class="n">b</span><span class="o">-</span><span class="n">card</span><span class="o">&gt;</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20"></a>  <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22"></a>
-<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24"></a>  <span class="kn">import</span><span class="w"> </span><span class="nn">Component1</span> <span class="kn">from</span><span class="w"> </span><span class="s2">&quot;./components/Component1&quot;</span><span class="p">;</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25"></a>  <span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26"></a>    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;app&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27"></a>    <span class="o">//</span> <span class="n">état</span> <span class="n">du</span> <span class="n">composant</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28"></a>    <span class="n">data</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29"></a>      <span class="k">return</span> <span class="p">{</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30"></a>        <span class="o">//</span> <span class="n">contrôle</span> <span class="n">le</span> <span class="n">spinner</span> <span class="n">d</span><span class="s1">&#39;attente</span>
-<a id="__codelineno-3-31" name="__codelineno-3-31"></a>        <span class="n">showWaiting</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32"></a>        <span class="o">//</span> <span class="n">contrôle</span> <span class="n">l</span><span class="s1">&#39;affichage de l&#39;</span><span class="n">erreur</span>
-<a id="__codelineno-3-33" name="__codelineno-3-33"></a>        <span class="n">showError</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-<a id="__codelineno-3-34" name="__codelineno-3-34"></a>        <span class="o">//</span> <span class="n">l</span><span class="s1">&#39;erreur interceptée</span>
-<a id="__codelineno-3-35" name="__codelineno-3-35"></a>        <span class="n">error</span><span class="p">:</span> <span class="p">{}</span>
-<a id="__codelineno-3-36" name="__codelineno-3-36"></a>      <span class="p">};</span>
-<a id="__codelineno-3-37" name="__codelineno-3-37"></a>    <span class="p">},</span>
-<a id="__codelineno-3-38" name="__codelineno-3-38"></a>    <span class="o">//</span> <span class="n">composants</span> <span class="n">utilisés</span>
-<a id="__codelineno-3-39" name="__codelineno-3-39"></a>    <span class="n">components</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-3-40" name="__codelineno-3-40"></a>      <span class="n">Component1</span>
-<a id="__codelineno-3-41" name="__codelineno-3-41"></a>    <span class="p">},</span>
-<a id="__codelineno-3-42" name="__codelineno-3-42"></a>    <span class="o">//</span> <span class="n">méthodes</span> <span class="n">de</span> <span class="n">gestion</span> <span class="n">des</span> <span class="n">évts</span>
-<a id="__codelineno-3-43" name="__codelineno-3-43"></a>    <span class="n">methods</span><span class="p">:</span> <span class="p">{</span>
-<a id="__codelineno-3-44" name="__codelineno-3-44"></a>      <span class="o">//</span> <span class="n">début</span> <span class="n">attente</span>
-<a id="__codelineno-3-45" name="__codelineno-3-45"></a>      <span class="n">beginWaiting</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-3-46" name="__codelineno-3-46"></a>        <span class="o">//</span> <span class="n">on</span> <span class="n">affiche</span> <span class="n">l</span><span class="s1">&#39;attente</span>
-<a id="__codelineno-3-47" name="__codelineno-3-47"></a>        <span class="n">this</span><span class="o">.</span><span class="n">showWaiting</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
-<a id="__codelineno-3-48" name="__codelineno-3-48"></a>        <span class="o">//</span> <span class="n">on</span> <span class="n">cache</span> <span class="n">le</span> <span class="n">msg</span> <span class="n">d</span><span class="s1">&#39;erreur</span>
-<a id="__codelineno-3-49" name="__codelineno-3-49"></a>        <span class="n">this</span><span class="o">.</span><span class="n">showError</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
-<a id="__codelineno-3-50" name="__codelineno-3-50"></a>      <span class="p">},</span>
-<a id="__codelineno-3-51" name="__codelineno-3-51"></a>      <span class="o">//</span> <span class="n">fin</span> <span class="n">attente</span>
-<a id="__codelineno-3-52" name="__codelineno-3-52"></a>      <span class="n">endWaiting</span><span class="p">()</span> <span class="p">{</span>
-<a id="__codelineno-3-53" name="__codelineno-3-53"></a>        <span class="o">//</span> <span class="n">on</span> <span class="n">cache</span> <span class="n">l</span><span class="s1">&#39;attente</span>
-<a id="__codelineno-3-54" name="__codelineno-3-54"></a>        <span class="n">this</span><span class="o">.</span><span class="n">showWaiting</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
-<a id="__codelineno-3-55" name="__codelineno-3-55"></a>      <span class="p">},</span>
-<a id="__codelineno-3-56" name="__codelineno-3-56"></a>      <span class="o">//</span> <span class="n">gestion</span> <span class="n">d</span><span class="s1">&#39;erreur</span>
-<a id="__codelineno-3-57" name="__codelineno-3-57"></a>      <span class="n">doSomethingWithError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-3-58" name="__codelineno-3-58"></a>        <span class="o">//</span> <span class="n">on</span> <span class="n">note</span> <span class="n">qu</span><span class="s1">&#39;il y a eu erreur</span>
-<a id="__codelineno-3-59" name="__codelineno-3-59"></a>        <span class="n">this</span><span class="o">.</span><span class="n">error</span> <span class="o">=</span> <span class="n">error</span><span class="p">;</span>
-<a id="__codelineno-3-60" name="__codelineno-3-60"></a>        <span class="o">//</span> <span class="n">on</span> <span class="n">affiche</span> <span class="n">le</span> <span class="n">msg</span> <span class="n">d</span><span class="s1">&#39;erreur</span>
-<a id="__codelineno-3-61" name="__codelineno-3-61"></a>        <span class="n">this</span><span class="o">.</span><span class="n">showError</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
-<a id="__codelineno-3-62" name="__codelineno-3-62"></a>      <span class="p">}</span>
-<a id="__codelineno-3-63" name="__codelineno-3-63"></a>    <span class="p">}</span>
-<a id="__codelineno-3-64" name="__codelineno-3-64"></a>  <span class="p">};</span>
-<a id="__codelineno-3-65" name="__codelineno-3-65"></a><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">template</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">div</span><span style="color:#000000"> </span><span style="color:#ff0000">class</span><span style="color:#0000ff">=&quot;container&quot;&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">b-card</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#006400">&lt;!-- message --&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">b-alert</span><span style="color:#000000"> </span><span style="color:#ff0000">show</span><span style="color:#000000"> </span><span style="color:#ff0000">variant</span><span style="color:#0000ff">=&quot;success&quot;</span><span style="color:#000000"> </span><span style="color:#ff0000">align</span><span style="color:#0000ff">=&quot;center&quot;&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">h4</span><span style="color:#0000ff">&gt;</span><span style="font-weight:bold;color:#000000">[vuejs-10]</span><span style="color:#000000"> : plugin </span><span style="font-weight:bold;color:#000000">[dao]</span><span style="color:#000000">, requêtes HTTP asynchrones</span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">h4</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">b-alert</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#006400">&lt;!-- composant faisant une requête asynchrone au serveur de calcul d&#x27;impôt--&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">Component1</span><span style="color:#000000"> </span><span style="color:#ff0000">@error</span><span style="color:#0000ff">=&quot;doSomethingWithError&quot;</span><span style="color:#000000"> </span><span style="color:#ff0000">@endWaiting</span><span style="color:#0000ff">=&quot;endWaiting&quot;</span><span style="color:#000000"> </span><span style="color:#ff0000">@beginWaiting</span><span style="color:#0000ff">=&quot;beginWaiting&quot;</span><span style="color:#000000"> </span><span style="color:#0000ff">/&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#006400">&lt;!-- affichage d&#x27;une éventuelle erreur --&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">b-alert</span><span style="color:#000000"> </span><span style="color:#ff0000">show</span></span>
+<span class="odt-code-line"><span style="color:#000000">               </span><span style="color:#ff0000">variant</span><span style="color:#0000ff">=&quot;danger&quot;</span></span>
+<span class="odt-code-line"><span style="color:#000000">               </span><span style="color:#ff0000">v-if</span><span style="color:#0000ff">=&quot;showError&quot;&gt;</span><span style="color:#000000">Evénement </span><span style="font-weight:bold;color:#000000">[error]</span><span style="color:#000000"> intercepté par </span><span style="font-weight:bold;color:#000000">[App]</span><span style="color:#000000">. Valeur reçue = </span><span style="font-weight:bold;color:#000000">{{</span><span style="color:#800080">error</span><span style="font-weight:bold;color:#000000">}}</span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">b-alert</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#006400">&lt;!-- message d&#x27;attente avec un spinner --&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">b-alert</span><span style="color:#000000"> </span><span style="color:#ff0000">show</span><span style="color:#000000"> </span><span style="color:#ff0000">v-if</span><span style="color:#0000ff">=&quot;showWaiting&quot;</span><span style="color:#000000"> </span><span style="color:#ff0000">variant</span><span style="color:#0000ff">=&quot;light&quot;&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">strong</span><span style="color:#0000ff">&gt;</span><span style="color:#000000">Requête au serveur de calcul d&#x27;impôt en cours...</span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">strong</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">b-spinner</span><span style="color:#000000"> </span><span style="color:#ff0000">variant</span><span style="color:#0000ff">=&quot;primary&quot;</span><span style="color:#000000"> </span><span style="color:#ff0000">label</span><span style="color:#0000ff">=&quot;Spinning&quot;&gt;&lt;/</span><span style="color:#800000">b-spinner</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">b-alert</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">b-card</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">div</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">&lt;/</span><span style="color:#800000">template</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">script</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">import</span><span style="color:#000000"> Component1 </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&quot;./components/Component1&quot;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">export</span><span style="color:#000000"> </span><span style="color:#0000ff">default</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    name: </span><span style="color:#a31515">&quot;app&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// état du composant</span></span>
+<span class="odt-code-line">    data() {</span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">return</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// contrôle le spinner d&#x27;attente</span></span>
+<span class="odt-code-line"><span style="color:#000000">        showWaiting: </span><span style="color:#0000ff">false</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// contrôle l&#x27;affichage de l&#x27;erreur</span></span>
+<span class="odt-code-line"><span style="color:#000000">        showError: </span><span style="color:#0000ff">false</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// l&#x27;erreur interceptée</span></span>
+<span class="odt-code-line">        error: {}</span>
+<span class="odt-code-line">      };</span>
+<span class="odt-code-line">    },</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// composants utilisés</span></span>
+<span class="odt-code-line">    components: {</span>
+<span class="odt-code-line">      Component1</span>
+<span class="odt-code-line">    },</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// méthodes de gestion des évts</span></span>
+<span class="odt-code-line">    methods: {</span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// début attente</span></span>
+<span class="odt-code-line">      beginWaiting() {</span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// on affiche l&#x27;attente</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">this</span><span style="color:#000000">.showWaiting = </span><span style="color:#0000ff">true</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// on cache le msg d&#x27;erreur</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">this</span><span style="color:#000000">.showError = </span><span style="color:#0000ff">false</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">      },</span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// fin attente</span></span>
+<span class="odt-code-line">      endWaiting() {</span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// on cache l&#x27;attente</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">this</span><span style="color:#000000">.showWaiting = </span><span style="color:#0000ff">false</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">      },</span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// gestion d&#x27;erreur</span></span>
+<span class="odt-code-line">      doSomethingWithError(error) {</span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// on note qu&#x27;il y a eu erreur</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">this</span><span style="color:#000000">.error = error;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// on affiche le msg d&#x27;erreur</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">this</span><span style="color:#000000">.showError = </span><span style="color:#0000ff">true</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">      }</span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line">  };</span>
+<span class="odt-code-line"><span style="color:#0000ff">&lt;/</span><span style="color:#800000">script</span><span style="color:#0000ff">&gt;</span></span>
+</code></pre></div>
+
 <p><strong>Commentaires</strong></p>
 <ul>
 <li>ligne 9 : <strong>[Component1]</strong> est le composant qui fait la requête HTTP asynchrone. Il peut émettre trois événements :<ul>
@@ -1483,118 +1276,67 @@
 <li>lignes 52-55 : <strong>[endWaiting]</strong> est la méthode exécutée à réception de l’événement <strong>[endWaiting]</strong>. Elle cache le message d’attente (ligne 54) ;</li>
 <li>lignes 57-62 : <strong>[doSomethingWithError]</strong> est la méthode exécutée à réception de l’événement <strong>[error]</strong>. Elle enregistre l’erreur reçue (ligne 59) et affiche le message d’erreur (ligne 61) ;</li>
 </ul>
+<p><a id="refheadingtoc2480612728496130"></a></p>
 <h2 id="126-le-composant-component1">12.6. Le composant [Component1]</h2>
 <p>Le code du composant <strong>[Component1]</strong> est le suivant :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-4-10">10</a></span>
-<span class="normal"><a href="#__codelineno-4-11">11</a></span>
-<span class="normal"><a href="#__codelineno-4-12">12</a></span>
-<span class="normal"><a href="#__codelineno-4-13">13</a></span>
-<span class="normal"><a href="#__codelineno-4-14">14</a></span>
-<span class="normal"><a href="#__codelineno-4-15">15</a></span>
-<span class="normal"><a href="#__codelineno-4-16">16</a></span>
-<span class="normal"><a href="#__codelineno-4-17">17</a></span>
-<span class="normal"><a href="#__codelineno-4-18">18</a></span>
-<span class="normal"><a href="#__codelineno-4-19">19</a></span>
-<span class="normal"><a href="#__codelineno-4-20">20</a></span>
-<span class="normal"><a href="#__codelineno-4-21">21</a></span>
-<span class="normal"><a href="#__codelineno-4-22">22</a></span>
-<span class="normal"><a href="#__codelineno-4-23">23</a></span>
-<span class="normal"><a href="#__codelineno-4-24">24</a></span>
-<span class="normal"><a href="#__codelineno-4-25">25</a></span>
-<span class="normal"><a href="#__codelineno-4-26">26</a></span>
-<span class="normal"><a href="#__codelineno-4-27">27</a></span>
-<span class="normal"><a href="#__codelineno-4-28">28</a></span>
-<span class="normal"><a href="#__codelineno-4-29">29</a></span>
-<span class="normal"><a href="#__codelineno-4-30">30</a></span>
-<span class="normal"><a href="#__codelineno-4-31">31</a></span>
-<span class="normal"><a href="#__codelineno-4-32">32</a></span>
-<span class="normal"><a href="#__codelineno-4-33">33</a></span>
-<span class="normal"><a href="#__codelineno-4-34">34</a></span>
-<span class="normal"><a href="#__codelineno-4-35">35</a></span>
-<span class="normal"><a href="#__codelineno-4-36">36</a></span>
-<span class="normal"><a href="#__codelineno-4-37">37</a></span>
-<span class="normal"><a href="#__codelineno-4-38">38</a></span>
-<span class="normal"><a href="#__codelineno-4-39">39</a></span>
-<span class="normal"><a href="#__codelineno-4-40">40</a></span>
-<span class="normal"><a href="#__codelineno-4-41">41</a></span>
-<span class="normal"><a href="#__codelineno-4-42">42</a></span>
-<span class="normal"><a href="#__codelineno-4-43">43</a></span>
-<span class="normal"><a href="#__codelineno-4-44">44</a></span>
-<span class="normal"><a href="#__codelineno-4-45">45</a></span>
-<span class="normal"><a href="#__codelineno-4-46">46</a></span>
-<span class="normal"><a href="#__codelineno-4-47">47</a></span>
-<span class="normal"><a href="#__codelineno-4-48">48</a></span>
-<span class="normal"><a href="#__codelineno-4-49">49</a></span>
-<span class="normal"><a href="#__codelineno-4-50">50</a></span>
-<span class="normal"><a href="#__codelineno-4-51">51</a></span>
-<span class="normal"><a href="#__codelineno-4-52">52</a></span>
-<span class="normal"><a href="#__codelineno-4-53">53</a></span>
-<span class="normal"><a href="#__codelineno-4-54">54</a></span>
-<span class="normal"><a href="#__codelineno-4-55">55</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">  </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">row</span><span class="o">&gt;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">col</span><span class="o">&gt;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">b</span><span class="o">-</span><span class="nx">alert</span><span class="w"> </span><span class="nx">show</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">               </span><span class="nx">variant</span><span class="o">=</span><span class="s2">&quot;warning&quot;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">               </span><span class="nx">v</span><span class="o">-</span><span class="k">if</span><span class="o">=</span><span class="s2">&quot;showMsg&quot;</span><span class="o">&gt;</span><span class="nx">Valeur</span><span class="w"> </span><span class="nx">reçue</span><span class="w"> </span><span class="nx">du</span><span class="w"> </span><span class="nx">serveur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="nx">data</span><span class="p">}}</span><span class="o">&lt;</span><span class="err">/b-alert&gt;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">    </span><span class="o">&lt;</span><span class="err">/b-col&gt;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">  </span><span class="o">&lt;</span><span class="err">/b-row&gt;</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="o">&lt;</span><span class="err">/template&gt;</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a>
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;component1&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="c1">// état du composant</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">        </span><span class="nx">showMsg</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="w">      </span><span class="p">};</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="w">    </span><span class="c1">// méthodes de gestion des évts</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">      </span><span class="c1">// traitement de la donnée reçue du serveur</span>
-<a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="w">      </span><span class="nx">doSomethingWithData</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">        </span><span class="c1">// on enregistre la donnée reçue</span>
-<a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">;</span>
-<a id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="w">        </span><span class="c1">// on l&#39;affiche</span>
-<a id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">showMsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<a id="__codelineno-4-28" name="__codelineno-4-28"></a><span class="w">      </span><span class="p">}</span>
-<a id="__codelineno-4-29" name="__codelineno-4-29"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-4-30" name="__codelineno-4-30"></a><span class="w">    </span><span class="c1">// le composant vient d&#39;être créé</span>
-<a id="__codelineno-4-31" name="__codelineno-4-31"></a><span class="w">    </span><span class="nx">created</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-32" name="__codelineno-4-32"></a><span class="w">      </span><span class="c1">// on initialise la session avec le serveur - requête asynchrone</span>
-<a id="__codelineno-4-33" name="__codelineno-4-33"></a><span class="w">      </span><span class="c1">// on utilise la promesse rendue par les méthodes de la couche [dao]</span>
-<a id="__codelineno-4-34" name="__codelineno-4-34"></a><span class="w">      </span><span class="c1">// on signale le début de l&#39;opération</span>
-<a id="__codelineno-4-35" name="__codelineno-4-35"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;beginWaiting&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-36" name="__codelineno-4-36"></a><span class="w">      </span><span class="c1">// on lance l&#39;opération asynchrone</span>
-<a id="__codelineno-4-37" name="__codelineno-4-37"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$dao</span>
-<a id="__codelineno-4-38" name="__codelineno-4-38"></a><span class="w">        </span><span class="c1">// il s&#39;agit d&#39;initialiser une session jSON avec le serveur de calcul de l&#39;impôt</span>
-<a id="__codelineno-4-39" name="__codelineno-4-39"></a><span class="w">        </span><span class="p">.</span><span class="nx">initSession</span><span class="p">()</span>
-<a id="__codelineno-4-40" name="__codelineno-4-40"></a><span class="w">        </span><span class="c1">// méthode qui traite la donnée reçue en cas de succès</span>
-<a id="__codelineno-4-41" name="__codelineno-4-41"></a><span class="w">        </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-42" name="__codelineno-4-42"></a><span class="w">          </span><span class="c1">// on traite la donnée reçue</span>
-<a id="__codelineno-4-43" name="__codelineno-4-43"></a><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">doSomethingWithData</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<a id="__codelineno-4-44" name="__codelineno-4-44"></a><span class="w">        </span><span class="p">})</span>
-<a id="__codelineno-4-45" name="__codelineno-4-45"></a><span class="w">        </span><span class="c1">// méthode qui traite l&#39;erreur en cas d&#39;erreur</span>
-<a id="__codelineno-4-46" name="__codelineno-4-46"></a><span class="w">        </span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-47" name="__codelineno-4-47"></a><span class="w">          </span><span class="c1">// on remonte l&#39;erreur au composant parent</span>
-<a id="__codelineno-4-48" name="__codelineno-4-48"></a><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-<a id="__codelineno-4-49" name="__codelineno-4-49"></a><span class="w">        </span><span class="p">}).</span><span class="k">finally</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-50" name="__codelineno-4-50"></a><span class="w">          </span><span class="c1">// fin de l&#39;attente</span>
-<a id="__codelineno-4-51" name="__codelineno-4-51"></a><span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;endWaiting&quot;</span><span class="p">);</span>
-<a id="__codelineno-4-52" name="__codelineno-4-52"></a><span class="w">        </span><span class="p">})</span>
-<a id="__codelineno-4-53" name="__codelineno-4-53"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-4-54" name="__codelineno-4-54"></a><span class="w">  </span><span class="p">};</span>
-<a id="__codelineno-4-55" name="__codelineno-4-55"></a><span class="o">&lt;</span><span class="err">/script&gt;</span>
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-javascript">
+<span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">template</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">b-row</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">b-col</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">b-alert</span><span style="color:#000000"> </span><span style="color:#ff0000">show</span></span>
+<span class="odt-code-line"><span style="color:#000000">               </span><span style="color:#ff0000">variant</span><span style="color:#0000ff">=&quot;warning&quot;</span></span>
+<span class="odt-code-line"><span style="color:#000000">               </span><span style="color:#ff0000">v-if</span><span style="color:#0000ff">=&quot;showMsg&quot;&gt;</span><span style="color:#000000">Valeur reçue du serveur = </span><span style="font-weight:bold;color:#000000">{{</span><span style="color:#800080">data</span><span style="font-weight:bold;color:#000000">}}</span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">b-alert</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">b-col</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">b-row</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">&lt;/</span><span style="color:#800000">template</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">script</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">export</span><span style="color:#000000"> </span><span style="color:#0000ff">default</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    name: </span><span style="color:#a31515">&quot;component1&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// état du composant</span></span>
+<span class="odt-code-line">    data() {</span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">return</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line"><span style="color:#000000">        showMsg: </span><span style="color:#0000ff">false</span></span>
+<span class="odt-code-line">      };</span>
+<span class="odt-code-line">    },</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// méthodes de gestion des évts</span></span>
+<span class="odt-code-line">    methods: {</span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// traitement de la donnée reçue du serveur</span></span>
+<span class="odt-code-line">      doSomethingWithData(data) {</span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// on enregistre la donnée reçue</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">this</span><span style="color:#000000">.data = data;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// on l&#x27;affiche</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">this</span><span style="color:#000000">.showMsg = </span><span style="color:#0000ff">true</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">      }</span>
+<span class="odt-code-line">    },</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// le composant vient d&#x27;être créé</span></span>
+<span class="odt-code-line">    created() {</span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// on initialise la session avec le serveur - requête asynchrone</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// on utilise la promesse rendue par les méthodes de la couche </span><span style="font-weight:bold;color:#008000">[dao]</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// on signale le début de l&#x27;opération</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">this</span><span style="color:#000000">.$emit(</span><span style="color:#a31515">&quot;beginWaiting&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// on lance l&#x27;opération asynchrone</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">this</span><span style="color:#000000">.$dao</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// il s&#x27;agit d&#x27;initialiser une session jSON avec le serveur de calcul de l&#x27;impôt</span></span>
+<span class="odt-code-line">        .initSession()</span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// méthode qui traite la donnée reçue en cas de succès</span></span>
+<span class="odt-code-line">        .then(data =&gt; {</span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008000">// on traite la donnée reçue</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#0000ff">this</span><span style="color:#000000">.doSomethingWithData(data);</span></span>
+<span class="odt-code-line">        })</span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#008000">// méthode qui traite l&#x27;erreur en cas d&#x27;erreur</span></span>
+<span class="odt-code-line">        .catch(error =&gt; {</span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008000">// on remonte l&#x27;erreur au composant parent</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#0000ff">this</span><span style="color:#000000">.$emit(</span><span style="color:#a31515">&quot;error&quot;</span><span style="color:#000000">, error.message);</span></span>
+<span class="odt-code-line">        }).finally(() =&gt; {</span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#008000">// fin de l&#x27;attente</span></span>
+<span class="odt-code-line"><span style="color:#000000">          </span><span style="color:#0000ff">this</span><span style="color:#000000">.$emit(</span><span style="color:#a31515">&quot;endWaiting&quot;</span><span style="color:#000000">);</span></span>
+<span class="odt-code-line">        })</span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line">  };</span>
+<span class="odt-code-line"><span style="color:#0000ff">&lt;/</span><span style="color:#800000">script</span><span style="color:#0000ff">&gt;</span></span>
+</code></pre></div>
+
 <p><strong>Commentaires</strong></p>
 <ul>
 <li>lignes 4-6 : le composant est constitué d’une unique alerte qui affiche la valeur renvoyée par le serveur de calcul de l’impôt, ceci uniquement en cas de succès de la requête HTTP. Cette alerte est contrôlée par le booléen <strong>[showMsg]</strong> de la ligne 17 ;</li>
@@ -1606,6 +1348,7 @@
 <li>lignes 49-52 : ce code s’exécute dans tous les cas. On indique au composant parent que la requête HTTP est terminée ;</li>
 <li>lignes 23-28 : la méthode <strong>[doSomethingWithData]</strong> est la méthode chagée d’exploiter la donnée <strong>[data]</strong> envoyée par le serveur. Ligne 25, on enregistre cette donnée et ligne 27 on l’affiche ;</li>
 </ul>
+<p><a id="refheadingtoc2480632728496130"></a></p>
 <h2 id="127-execution-du-projet">12.7. Exécution du projet</h2>
 <p><img src="images/10000000000006F40000024A89EDD34C.png" style="width:14.131cm;height:4.65cm;" alt="Image" /></p>
 <p>Si lorsqu’on lance le projet, le serveur de calcul d’impôt n’est pas lancé alors on obtient le résultat suivant :</p>
@@ -1670,7 +1413,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>

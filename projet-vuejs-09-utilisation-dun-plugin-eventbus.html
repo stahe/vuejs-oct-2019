@@ -980,36 +980,32 @@
   
 
 
+<p><a id="refheadingtoc2480332728496130"></a></p>
 <h1 id="11-projet-vuejs-09-utilisation-dun-plugin-eventbus">11. projet [vuejs-09] : utilisation d’un plugin [eventBus]</h1>
 <p>Le projet <strong>[vuejs-09]</strong> est identique au projet <strong>[vuejs-08]</strong> si ce n’est qu’il introduit la notion de plugin. L’arborescence du projet est la suivante :</p>
 <p><img src="images/10000000000001650000021767474659.png" style="width:3.312cm;height:4.95cm;" alt="Image" /></p>
+<p><a id="refheadingtoc2480352728496130"></a></p>
 <h2 id="111-le-plugin-pluginsevent-bus">11.1. Le plugin [./plugins/event-bus]</h2>
 <p>Le script <strong>[./event-bus.js]</strong> reste ce qu’il était dans l’exemple précédent :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">Vue</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;vue&#39;</span><span class="p">;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">const</span> <span class="n">eventBus</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Vue</span><span class="p">();</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="n">export</span> <span class="n">default</span> <span class="n">eventBus</span><span class="p">;</span>
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> Vue </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;vue&#x27;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">const</span><span style="color:#000000"> eventBus = </span><span style="color:#0000ff">new</span><span style="color:#000000"> Vue();</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">export</span><span style="color:#000000"> </span><span style="color:#0000ff">default</span><span style="color:#000000"> eventBus;</span></span>
+</code></pre></div>
+
 <p>Le plugin <strong>[./plugins/event-bus.js]</strong> est le suivant :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">6</a></span>
-<span class="normal"><a href="#__codelineno-1-7">7</a></span>
-<span class="normal"><a href="#__codelineno-1-8">8</a></span>
-<span class="normal"><a href="#__codelineno-1-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">export</span> <span class="n">default</span> <span class="p">{</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>  <span class="n">install</span><span class="p">(</span><span class="n">Vue</span><span class="p">,</span> <span class="n">eventBus</span><span class="p">)</span> <span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    <span class="o">//</span> <span class="n">ajoute</span> <span class="n">une</span> <span class="n">propriété</span> <span class="p">[</span><span class="err">$</span><span class="n">eventBus</span><span class="p">]</span> <span class="n">à</span> <span class="n">la</span> <span class="n">classe</span> <span class="n">Vue</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>    <span class="n">Object</span><span class="o">.</span><span class="n">defineProperty</span><span class="p">(</span><span class="n">Vue</span><span class="o">.</span><span class="n">prototype</span><span class="p">,</span> <span class="s1">&#39;$eventBus&#39;</span><span class="p">,</span> <span class="p">{</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>      <span class="o">//</span> <span class="n">lorsque</span> <span class="n">Vue</span><span class="o">.</span><span class="err">$</span><span class="n">eventBus</span> <span class="n">est</span> <span class="n">référencé</span><span class="p">,</span> <span class="n">on</span> <span class="n">rend</span> <span class="n">le</span> <span class="mi">2</span><span class="n">ième</span> <span class="n">paramètre</span> <span class="p">[</span><span class="n">eventBus</span><span class="p">]</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>      <span class="n">get</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">eventBus</span><span class="p">,</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>    <span class="p">})</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>  <span class="p">}</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="p">}</span>
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line"><span style="color:#0000ff">export</span><span style="color:#000000"> </span><span style="color:#0000ff">default</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line">  install(Vue, eventBus) {</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// ajoute une propriété </span><span style="font-weight:bold;color:#008000">[$eventBus]</span><span style="color:#008000"> à la classe Vue</span></span>
+<span class="odt-code-line"><span style="color:#000000">    Object.defineProperty(Vue.prototype, </span><span style="color:#a31515">&#x27;$eventBus&#x27;</span><span style="color:#000000">, {</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// lorsque Vue.$eventBus est référencé, on rend le 2ième paramètre </span><span style="font-weight:bold;color:#008000">[eventBus]</span></span>
+<span class="odt-code-line">      get: () =&gt; eventBus,</span>
+<span class="odt-code-line">    })</span>
+<span class="odt-code-line">  }</span>
+<span class="odt-code-line">}</span>
+</code></pre></div>
+
 <p><strong>Commentaires</strong></p>
 <ul>
 <li>un plugin <strong>[Vue]</strong> est un objet ayant une fonction <strong>[install]</strong> (ligne 2). Celle-ci sera automatiquement appelée lorsqu’un code déclare l’utilisation du plugin ;</li>
@@ -1024,182 +1020,120 @@
 <li>on notera que le plugin n’a pas à s’appeler lui-même <strong>[event-bus.js]</strong>. On aurait pu l’appeler <strong>[plugin-event-bus]</strong> par exemple ;</li>
 <li>on notera également que le terme $ dans <strong>[$eventBus]</strong> est une convention pour désigner les propriétés de <strong>[Vue]</strong> qui ont été ajoutées via des plugins. On n’est pas obligés d’observer cette convention. Dans ce texte, nous l’observerons ;</li>
 </ul>
+<p><a id="refheadingtoc2480372728496130"></a></p>
 <h2 id="112-le-script-principal-mainjs">11.2. Le script principal [main.js]</h2>
 <p>Le script <strong>[./plugins/event-bus.js]</strong> définit un plugin pour le framework <strong>[Vue.js]</strong>. Ce plugin n’est pas encore utilisé, juste défini. C’est le script <strong>[main.js]</strong> qui l’active :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span>
-<span class="normal"><a href="#__codelineno-2-23">23</a></span>
-<span class="normal"><a href="#__codelineno-2-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="o">//</span> <span class="n">imports</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">Vue</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;vue&#39;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">App</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;./App.vue&#39;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="o">//</span> <span class="n">plugins</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">BootstrapVue</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;bootstrap-vue&#39;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="n">Vue</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">BootstrapVue</span><span class="p">);</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="o">//</span> <span class="n">bootstrap</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="kn">import</span><span class="w"> </span><span class="s1">&#39;bootstrap/dist/css/bootstrap.css&#39;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="kn">import</span><span class="w"> </span><span class="s1">&#39;bootstrap-vue/dist/bootstrap-vue.css&#39;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="o">//</span> <span class="n">eventbus</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="kn">import</span><span class="w"> </span><span class="nn">eventBus</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;./event-bus&#39;</span><span class="p">;</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="kn">import</span><span class="w"> </span><span class="nn">PluginEventBus</span> <span class="kn">from</span><span class="w"> </span><span class="s1">&#39;./plugins/event-bus&#39;</span><span class="p">;</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="n">Vue</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">PluginEventBus</span><span class="p">,</span> <span class="n">eventBus</span><span class="p">);</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="o">//</span> <span class="n">configuration</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="n">Vue</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">productionTip</span> <span class="o">=</span> <span class="n">false</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="o">//</span> <span class="n">instanciation</span> <span class="n">projet</span> <span class="p">[</span><span class="n">App</span><span class="p">]</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="n">new</span> <span class="n">Vue</span><span class="p">({</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a>  <span class="n">render</span><span class="p">:</span> <span class="n">h</span> <span class="o">=&gt;</span> <span class="n">h</span><span class="p">(</span><span class="n">App</span><span class="p">),</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="p">})</span><span class="o">.</span><span class="err">$</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;#app&#39;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
+<span class="odt-code-line">// imports</span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> Vue </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;vue&#x27;</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> App </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;./App.vue&#x27;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// plugins</span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> BootstrapVue </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;bootstrap-vue&#x27;</span></span>
+<span class="odt-code-line">Vue.use(BootstrapVue);</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// bootstrap</span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;bootstrap/dist/css/bootstrap.css&#x27;</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;bootstrap-vue/dist/bootstrap-vue.css&#x27;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// eventbus</span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> eventBus </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;./event-bus&#x27;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">import</span><span style="color:#000000"> PluginEventBus </span><span style="color:#0000ff">from</span><span style="color:#000000"> </span><span style="color:#a31515">&#x27;./plugins/event-bus&#x27;</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">Vue.use(PluginEventBus, eventBus);</span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// configuration</span>
+<span class="odt-code-line"><span style="color:#000000">Vue.config.productionTip = </span><span style="color:#0000ff">false</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line">// instanciation projet <span style="font-weight:bold">[App]</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">new</span><span style="color:#000000"> Vue({</span></span>
+<span class="odt-code-line">  render: h =&gt; h(App),</span>
+<span class="odt-code-line"><span style="color:#000000">}).$mount(</span><span style="color:#a31515">&#x27;#app&#x27;</span><span style="color:#000000">)</span></span>
+</code></pre></div>
+
 <p><strong>Commentaires</strong></p>
 <ul>
 <li>les lignes 14-16 activent le plugin <strong>[PluginEventBus]</strong>. Après la ligne 16, toutes les instances de la classe (fonction) <strong>[Vue]</strong> possèdent la propriété <strong>[$eventBus]</strong> qui pointe pour chacune d’elles sur le même object exporté par le script <strong>[./event-bus.js]</strong>. Ce sera le cas pour chacun des composants du projet ;</li>
 </ul>
+<p><a id="refheadingtoc2480392728496130"></a></p>
 <h2 id="113-la-vue-principale-app">11.3. La vue principale [App]</h2>
 <p>La vue principale <strong>[App]</strong> reste ce qu’elle était dans le projet précédent.</p>
+<p><a id="refheadingtoc2480412728496130"></a></p>
 <h2 id="114-le-composant-component1">11.4. Le composant [Component1]</h2>
 <p>Le composant <strong>[Component1]</strong> utilise désormais sa propriété <strong>[$eventBus]</strong> pour écouter l’événement <strong>[someEvent]</strong> :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-3-10">10</a></span>
-<span class="normal"><a href="#__codelineno-3-11">11</a></span>
-<span class="normal"><a href="#__codelineno-3-12">12</a></span>
-<span class="normal"><a href="#__codelineno-3-13">13</a></span>
-<span class="normal"><a href="#__codelineno-3-14">14</a></span>
-<span class="normal"><a href="#__codelineno-3-15">15</a></span>
-<span class="normal"><a href="#__codelineno-3-16">16</a></span>
-<span class="normal"><a href="#__codelineno-3-17">17</a></span>
-<span class="normal"><a href="#__codelineno-3-18">18</a></span>
-<span class="normal"><a href="#__codelineno-3-19">19</a></span>
-<span class="normal"><a href="#__codelineno-3-20">20</a></span>
-<span class="normal"><a href="#__codelineno-3-21">21</a></span>
-<span class="normal"><a href="#__codelineno-3-22">22</a></span>
-<span class="normal"><a href="#__codelineno-3-23">23</a></span>
-<span class="normal"><a href="#__codelineno-3-24">24</a></span>
-<span class="normal"><a href="#__codelineno-3-25">25</a></span>
-<span class="normal"><a href="#__codelineno-3-26">26</a></span>
-<span class="normal"><a href="#__codelineno-3-27">27</a></span>
-<span class="normal"><a href="#__codelineno-3-28">28</a></span>
-<span class="normal"><a href="#__codelineno-3-29">29</a></span>
-<span class="normal"><a href="#__codelineno-3-30">30</a></span>
-<span class="normal"><a href="#__codelineno-3-31">31</a></span>
-<span class="normal"><a href="#__codelineno-3-32">32</a></span>
-<span class="normal"><a href="#__codelineno-3-33">33</a></span>
-<span class="normal"><a href="#__codelineno-3-34">34</a></span>
-<span class="normal"><a href="#__codelineno-3-35">35</a></span>
-<span class="normal"><a href="#__codelineno-3-36">36</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>  <span class="p">&lt;</span><span class="nt">b-row</span><span class="p">&gt;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="p">&lt;</span><span class="nt">b-col</span><span class="p">&gt;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>      <span class="p">&lt;</span><span class="nt">b-alert</span> <span class="na">show</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>               <span class="na">variant</span><span class="o">=</span><span class="s">&quot;warning&quot;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a>               <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;showMsg&quot;</span><span class="p">&gt;</span>Evénement [someEvent] intercepté par [Component1]. Valeur reçue={{data}}<span class="p">&lt;/</span><span class="nt">b-alert</span><span class="p">&gt;</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a>    <span class="p">&lt;/</span><span class="nt">b-col</span><span class="p">&gt;</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a>  <span class="p">&lt;/</span><span class="nt">b-row</span><span class="p">&gt;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a>
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;component1&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">    </span><span class="c1">// état du composant</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">        </span><span class="nx">showMsg</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">      </span><span class="p">};</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">    </span><span class="c1">// méthodes de gestion des évts</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">      </span><span class="c1">// gestion de l&#39;evt [someEvent]</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">      </span><span class="nx">doSomething</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">;</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">showMsg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">      </span><span class="p">}</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="w">    </span><span class="c1">// gestion du cycle de vie du composant</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">    </span><span class="c1">// évt [created] - le composant a été créé</span>
-<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">    </span><span class="nx">created</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">      </span><span class="c1">// écoute de l&#39;évt [someEvent]</span>
-<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$eventBus</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s2">&quot;someEvent&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">doSomething</span><span class="p">);</span>
-<a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="w">  </span><span class="p">};</span>
-<a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
+<span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">template</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">b-row</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">b-col</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">b-alert</span><span style="color:#000000"> </span><span style="color:#ff0000">show</span></span>
+<span class="odt-code-line"><span style="color:#000000">               </span><span style="color:#ff0000">variant</span><span style="color:#0000ff">=&quot;warning&quot;</span></span>
+<span class="odt-code-line"><span style="color:#000000">               </span><span style="color:#ff0000">v-if</span><span style="color:#0000ff">=&quot;showMsg&quot;&gt;</span><span style="color:#000000">Evénement </span><span style="font-weight:bold;color:#000000">[someEvent]</span><span style="color:#000000"> intercepté par </span><span style="font-weight:bold;color:#000000">[Component1]</span><span style="color:#000000">. Valeur reçue=</span><span style="font-weight:bold;color:#000000">{{</span><span style="color:#800080">data</span><span style="font-weight:bold;color:#000000">}}</span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">b-alert</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">b-col</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">b-row</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">&lt;/</span><span style="color:#800000">template</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"></span>
+<span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">script</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">export</span><span style="color:#000000"> </span><span style="color:#0000ff">default</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    name: </span><span style="color:#a31515">&quot;component1&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// état du composant</span></span>
+<span class="odt-code-line">    data() {</span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">return</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line"><span style="color:#000000">        data: </span><span style="color:#a31515">&quot;&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">        showMsg: </span><span style="color:#0000ff">false</span></span>
+<span class="odt-code-line">      };</span>
+<span class="odt-code-line">    },</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// méthodes de gestion des évts</span></span>
+<span class="odt-code-line">    methods: {</span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// gestion de l&#x27;evt </span><span style="font-weight:bold;color:#008000">[someEvent]</span></span>
+<span class="odt-code-line">      doSomething(data) {</span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">this</span><span style="color:#000000">.data = data;</span></span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">this</span><span style="color:#000000">.showMsg = </span><span style="color:#0000ff">true</span><span style="color:#000000">;</span></span>
+<span class="odt-code-line">      }</span>
+<span class="odt-code-line">    },</span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// gestion du cycle de vie du composant</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// évt </span><span style="font-weight:bold;color:#008000">[created]</span><span style="color:#008000"> - le composant a été créé</span></span>
+<span class="odt-code-line">    created() {</span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#008000">// écoute de l&#x27;évt </span><span style="font-weight:bold;color:#008000">[someEvent]</span></span>
+<span class="odt-code-line"><span style="color:#000000">      </span><span style="color:#0000ff">this</span><span style="color:#000000">.$eventBus.$on(</span><span style="color:#a31515">&quot;someEvent&quot;</span><span style="color:#000000">, </span><span style="color:#0000ff">this</span><span style="color:#000000">.doSomething);</span></span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line">  };</span>
+<span class="odt-code-line"><span style="color:#0000ff">&lt;/</span><span style="color:#800000">script</span><span style="color:#0000ff">&gt;</span></span>
+</code></pre></div>
+
 <p><strong>Commentaires</strong></p>
 <ul>
 <li>ligne 33, utilisation de la propriété <strong>[this.$eventBus]</strong> du composant. On remarquera de plus que le script ligne 11 n’importe plus le script <strong>[./event-bus.js]</strong> ;</li>
 </ul>
+<p><a id="refheadingtoc2480432728496130"></a></p>
 <h2 id="115-le-composant-component2">11.5. Le composant [Component2]</h2>
 <p>Le composant <strong>[Component2]</strong> utilise désormais sa propriété <strong>[$eventBus]</strong> pour émettre l’événement <strong>[someEvent]</strong> :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-4-10">10</a></span>
-<span class="normal"><a href="#__codelineno-4-11">11</a></span>
-<span class="normal"><a href="#__codelineno-4-12">12</a></span>
-<span class="normal"><a href="#__codelineno-4-13">13</a></span>
-<span class="normal"><a href="#__codelineno-4-14">14</a></span>
-<span class="normal"><a href="#__codelineno-4-15">15</a></span>
-<span class="normal"><a href="#__codelineno-4-16">16</a></span>
-<span class="normal"><a href="#__codelineno-4-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    <span class="p">&lt;</span><span class="nt">b-button</span> <span class="err">@</span><span class="na">click</span><span class="o">=</span><span class="s">&quot;createEvent&quot;</span><span class="p">&gt;</span>Créer un événement<span class="p">&lt;/</span><span class="nt">b-button</span><span class="p">&gt;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="cm">&lt;!-- script --&gt;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">  </span><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;component2&quot;</span><span class="p">,</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">    </span><span class="c1">// méthodes de gestion des évts</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">      </span><span class="nx">createEvent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">$eventBus</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;someEvent&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="p">})</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">      </span><span class="p">}</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">  </span><span class="p">};</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div></td></tr></table></div>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
+<span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">template</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">div</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#0000ff">&lt;</span><span style="color:#800000">b-button</span><span style="color:#000000"> </span><span style="color:#ff0000">@click</span><span style="color:#0000ff">=&quot;createEvent&quot;&gt;</span><span style="color:#000000">Créer un événement</span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">b-button</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">&lt;/</span><span style="color:#800000">div</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#0000ff">&lt;/</span><span style="color:#800000">template</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line">&lt;!-- script --&gt;</span>
+<span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">script</span><span style="color:#0000ff">&gt;</span></span>
+<span class="odt-code-line"><span style="color:#000000">  </span><span style="color:#0000ff">export</span><span style="color:#000000"> </span><span style="color:#0000ff">default</span><span style="color:#000000"> {</span></span>
+<span class="odt-code-line"><span style="color:#000000">    name: </span><span style="color:#a31515">&quot;component2&quot;</span><span style="color:#000000">,</span></span>
+<span class="odt-code-line"><span style="color:#000000">    </span><span style="color:#008000">// méthodes de gestion des évts</span></span>
+<span class="odt-code-line">    methods: {</span>
+<span class="odt-code-line">      createEvent() {</span>
+<span class="odt-code-line"><span style="color:#000000">        </span><span style="color:#0000ff">this</span><span style="color:#000000">.$eventBus.$emit(</span><span style="color:#a31515">&quot;someEvent&quot;</span><span style="color:#000000">, { x: 2, y: 4 })</span></span>
+<span class="odt-code-line">      }</span>
+<span class="odt-code-line">    }</span>
+<span class="odt-code-line">  };</span>
+<span class="odt-code-line"><span style="color:#0000ff">&lt;/</span><span style="color:#800000">script</span><span style="color:#0000ff">&gt;</span></span>
+</code></pre></div>
+
 <p><strong>Commentaires</strong></p>
 <ul>
 <li>ligne 13, utilisation de la propriété <strong>[this.$eventBus]</strong> du composant. On remarquera de plus que le script ligne 7 n’importe plus le script <strong>[./event-bus.js]</strong> ;</li>
 </ul>
+<p><a id="refheadingtoc2480452728496130"></a></p>
 <h2 id="116-composant-component3">11.6. Composant [Component3]</h2>
 <p>Le composant <strong>[Component3]</strong> a le même code que <strong>[Component1]</strong>. Lui également écoute l’événement <strong>[someEvent]</strong>.</p>
+<p><a id="refheadingtoc2480472728496130"></a></p>
 <h2 id="117-execution-du-projet">11.7. Exécution du projet</h2>
 <p><img src="images/10000000000006FC0000023FBFF22C19.png" style="width:14.191cm;height:4.56cm;" alt="Image" /></p>
 <p>On obtient les mêmes résultats que dans le projet précédent.</p>
@@ -1260,7 +1194,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
