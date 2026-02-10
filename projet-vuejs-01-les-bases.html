@@ -869,7 +869,7 @@
 <p><a id="refheadingtoc2479492728496130"></a></p>
 <h1 id="3-projet-vuejs-01-les-bases">3. projet [vuejs-01] : les bases</h1>
 <p>Pour expliquer le code exécuté dans <strong>[vuejs-00]</strong> nous allons le simplifier dans <strong>[vuejs-01]</strong>. Nous dupliquons le dossier <strong>[vuejs-00]</strong> dans <strong>[vuejs-01]</strong> :</p>
-<p><img src="images/100000000000044500000366DD4C062F.png" style="width:8.67cm;height:6.91cm;" alt="Image" /></p>
+<p><img src="images/100000000000044500000366DD4C062F.png" style="width:8.67cm;height:6.91cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000044500000366DD4C062F.png" /></p>
 <p>Le projet <strong>[vuejs-01]</strong> comprend essentiellement quatre fichiers :</p>
 <ul>
 <li><strong>[main.js]</strong> <strong>[2]</strong> est le point d’entrée du projet ;</li>
@@ -966,7 +966,7 @@
 <li>lignes 2-5 : la section <strong>[template]</strong> ne peut contenir qu’un élément. On met en général une section <strong>[div]</strong> qui englobe tout le HTML du fragment. On peut mettre également une balise &lt;template&gt; ;</li>
 <li>ligne 3 : une image ;</li>
 </ul>
-<p><img src="images/10000000000001370000011D7170BF2C.png" style="width:2.881cm;height:2.641cm;" alt="Image" /></p>
+<p><img src="images/10000000000001370000011D7170BF2C.png" style="width:2.881cm;height:2.641cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001370000011D7170BF2C.png" /></p>
 <ul>
 <li>ligne 4 : un composant nommé <strong>[HelloWorld]</strong>. Le principe de <strong>[Vue.js]</strong> est de construire des pages web à l’aide de fragments définis dans des fichiers <strong>[.vue]</strong> comme ici <strong>[App.vue]</strong>. Ce composant est défini par le fichier <strong>[HelloWorld.vue]</strong> défini ligne 9 du script jS associé ;</li>
 <li>ligne 4 : un composant peut accepter des paramètres. Le paramètre est ici l’attribut <strong>[msg]</strong> ;</li>
@@ -977,7 +977,7 @@
 <li>lignes 13-15 : l’attribut <strong>[components]</strong> liste les composants utilisés par le composant <strong>[App]</strong>. Ils sont exportés avec lui ;</li>
 </ul>
 <p>Ligne 9, il n’y a pas obligation que le composant <strong>[HelloWorld]</strong> porte le même nom que le fichier qui le définit. On pourrait l’importer en tant que <strong>[X]</strong> et l’exporter en tant que composant <strong>[Bonjour]</strong> :</p>
-<p><img src="images/10000000000003F700000322A4C5E0AD.png" style="width:9.401cm;height:7.43cm;" alt="Image" /></p>
+<p><img src="images/10000000000003F700000322A4C5E0AD.png" style="width:9.401cm;height:7.43cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003F700000322A4C5E0AD.png" /></p>
 <ul>
 <li>ligne 14 : le composant <strong>[X]</strong> est exporté sous le nom <strong>[Bonjour]</strong>. Il est alors utilisé sous ce nom, ligne 4 ;</li>
 </ul>
@@ -1003,7 +1003,7 @@
 </code></pre></div>
 
 <p>La ligne 14 est un raccourci pour le code <strong>[HelloWorld : HelloWorld]</strong> : le composant <strong>[HelloWorld]</strong> (à droite, importé ligne 9) est exporté sous le nom <strong>[HelloWorld]</strong> (à gauche).</p>
-<p><img src="images/10000000000001350000014894FDE6BC.png" style="width:2.86cm;height:3.04cm;" alt="Image" /></p>
+<p><img src="images/10000000000001350000014894FDE6BC.png" style="width:2.86cm;height:3.04cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001350000014894FDE6BC.png" /></p>
 <p>Nous simplifions le composant <strong>[HelloWorld.vue]</strong> de la façon suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">template</span><span style="color:#0000ff">&gt;</span></span>
@@ -1071,16 +1071,16 @@
 </code></pre></div>
 
 <p>Nous lançons l’application en modifiant la commande <strong>[serve]</strong> <strong>[1]</strong> du fichier <strong>[package.json]</strong> :</p>
-<p><img src="images/100000000000081C0000029C213051F8.png" style="width:16.481cm;height:5.301cm;" alt="Image" /></p>
+<p><img src="images/100000000000081C0000029C213051F8.png" style="width:16.481cm;height:5.301cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000081C0000029C213051F8.png" /></p>
 <p>La page affichée est alors <strong>[2]</strong>.</p>
 <p>Maintenant regardons le code de cette page :</p>
-<p><img src="images/100000000000077B00000295864F5236.png" style="width:17.731cm;height:6.121cm;" alt="Image" /></p>
+<p><img src="images/100000000000077B00000295864F5236.png" style="width:17.731cm;height:6.121cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000077B00000295864F5236.png" /></p>
 <ul>
 <li>en <strong>[1]</strong>, faire <strong>[clic droit]</strong> ;</li>
 <li>en <strong>[2]</strong>, le code source de la page. On voit que c’est le code du fichier initial <strong>[index.html]</strong> et ce n’est pas ça qui a été affiché. C’est bien la page <strong>[index.html]</strong> qui a été chargée initialement. Ensuite, dynamiquement, du code Javascript a modifié cette page, mais cela ne nous est pas montré ;</li>
 </ul>
 <p>Lorsque les pages sont générées dynamiquement par du Javascript, l’option <strong>[2]</strong> ne sert à rien. Il faut aller dans les outils du navigateur (F12 sur Firefox) pour voir le code de la page actuellement affichée :</p>
-<p><img src="images/10000000000003D700000423F1048BC4.png" style="width:9.101cm;height:9.812cm;" alt="Image" /></p>
+<p><img src="images/10000000000003D700000423F1048BC4.png" style="width:9.101cm;height:9.812cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003D700000423F1048BC4.png" /></p>
 <ul>
 <li>en <strong>[1]</strong>, l’inspecteur du DOM (Document Object Model) du document affiché ;</li>
 <li>en <strong>[2]</strong>, ce que contient réellement ce DOM ;</li>
@@ -1092,10 +1092,10 @@
 </li>
 </ul>
 <p>Examinons l’onglet <strong>[Vue]</strong> <strong>[4]</strong> :</p>
-<p><img src="images/10000000000007F70000028B2332E881.png" style="width:16.181cm;height:5.171cm;" alt="Image" /></p>
+<p><img src="images/10000000000007F70000028B2332E881.png" style="width:16.181cm;height:5.171cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007F70000028B2332E881.png" /></p>
 <p>La vue <strong>[1-4]</strong> nous montre la structure <strong>[Vue.js]</strong> du document : la racine du document <strong>[2]</strong> (index.html) comprend le composant <strong>[App]</strong> (3) qui lui même comprend le composant <strong>[HelloWorld]</strong> (4). Cliquer sur <strong>[4]</strong> fait apparaître les propriétés du composant <strong>[HelloWorld]</strong> <strong>[5]</strong>.</p>
 <p>On voit en <strong>[4]</strong> (à droite), l’indicateur <strong>[$vm0]</strong>. C’est le nom de la variable qu’on peut utiliser dans la console JavaScript <strong>[6]</strong> pour désigner l’objet <strong>[HelloWorld]</strong>. Faisons-le :</p>
-<p><img src="images/100000000000050D00000364B1481999.png" style="width:11.971cm;height:8.041cm;" alt="Image" /></p>
+<p><img src="images/100000000000050D00000364B1481999.png" style="width:11.971cm;height:8.041cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000050D00000364B1481999.png" /></p>
 <ul>
 <li>en <strong>[2]</strong>, on fait évaluer l’expression <strong>[$vm0]</strong>, ce qui a pour effet d’afficher sa structure. Normalement nous n’aurons pas à utiliser directement cette structure ;</li>
 </ul>
@@ -1103,7 +1103,7 @@
 <ul>
 <li>dans <strong>[App.vue]</strong>, modifiez le message affiché par <strong>[HelloWorld]</strong> :</li>
 </ul>
-<p><img src="images/1000000000000811000002A06D4FC083.png" style="width:16.391cm;height:5.331cm;" alt="Image" /></p>
+<p><img src="images/1000000000000811000002A06D4FC083.png" style="width:16.391cm;height:5.331cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000811000002A06D4FC083.png" /></p>
 <ul>
 <li>en <strong>[1]</strong>, on modifie le message affiché ;</li>
 <li>en <strong>[2-3]</strong>, la page est automatiquement mise en jour sans intervention de notre part ;</li>

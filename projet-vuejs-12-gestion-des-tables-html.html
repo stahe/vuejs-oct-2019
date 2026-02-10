@@ -950,7 +950,7 @@
 <p><a id="refheadingtoc2480832728496130"></a></p>
 <h1 id="14-projet-vuejs-12-gestion-des-tables-html">14. projet [vuejs-12] : gestion des tables HTML</h1>
 <p>L’arborescence du projet <strong>[vuejs-12]</strong> est la suivante :</p>
-<p><img src="images/1000000000000155000000DF71B4D4AB.png" style="width:3.162cm;height:2.072cm;" alt="Image" /></p>
+<p><img src="images/1000000000000155000000DF71B4D4AB.png" style="width:3.162cm;height:2.072cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000155000000DF71B4D4AB.png" /></p>
 <p><a id="refheadingtoc2480852728496130"></a></p>
 <h2 id="141-le-script-principal-mainjs">14.1. Le script principal [main.js]</h2>
 <p>Le script principal redevient ce qu’il était dans les premiers projets :</p>
@@ -1130,9 +1130,9 @@
 <li>ou bien un message indiquant que la liste à afficher est vide ;</li>
 </ol>
 <p>Le 1er état est affiché si la condition <strong>[lignes.length!=0]</strong> est vérifiée (ligne 12) :</p>
-<p><img src="images/10000000000007CF00000339BCF658A0.png" style="width:13.221cm;height:5.46cm;" alt="Image" /></p>
+<p><img src="images/10000000000007CF00000339BCF658A0.png" style="width:13.221cm;height:5.46cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007CF00000339BCF658A0.png" /></p>
 <p>Le second est affiché si la condition <strong>[lignes.length==0]</strong> est vérifiée (ligne 4).</p>
-<p><img src="images/100000000000065500000249DDE95992.png" style="width:10.72cm;height:3.871cm;" alt="Image" /></p>
+<p><img src="images/100000000000065500000249DDE95992.png" style="width:10.72cm;height:3.871cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000065500000249DDE95992.png" /></p>
 <ul>
 <li><strong>[lignes]</strong> est un paramètre d’entrée du composant (lignes 29-33) ;</li>
 <li>lignes 4-10 : au lieu d’introduire un bloc de code avec une balise &lt;div&gt;, on a ici utilisé une balise &lt;template&gt;. la différence entre les deux est que la balise &lt;template&gt; n’est pas insérée dans le code HTML généré ;</li>
@@ -1173,7 +1173,7 @@
 </code></pre></div>
 
 <p>La syntaxe <strong>[v-slot:cell(action)]</strong> désigne la colonne de clé <strong>[action]</strong>. Cette syntaxe permet de définir une colonne lorsque la syntaxe du tableau <strong>[fields]</strong> n’est pas suffisante pour la décrire. Ici nous voulons que la dernière colonne contienne un lien permettant de supprimer une ligne de la table HTML :</p>
-<p><img src="images/10000000000007D20000034311EC8DBA.png" style="width:13.241cm;height:5.52cm;" alt="Image" /></p>
+<p><img src="images/10000000000007D20000034311EC8DBA.png" style="width:13.241cm;height:5.52cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007D20000034311EC8DBA.png" /></p>
 <p>Dans la syntaxe <strong>[&lt;template v-slot:cell(action)=&quot;row&quot;&gt;]</strong>, le nom <strong>[row]</strong> désigne la ligne de la table. On peut utiliser le nom que l’on veut. On aurait pu écrire <strong>[&lt;template v-slot:cell(action)=&quot;ligne&quot;&gt;]</strong> ;</p>
 <ul>
 <li>ligne 19 : un bouton &lt;b-button&gt; affiché comme un lien <strong>[variant=’link’]</strong>. Un clic sur ce lien provoque l’exécution de la méthode <strong>[supprimerLigne(row.index)]</strong>. Ici <strong>[row]</strong> est le nom donné à la ligne de la table HTML, ligne 18 du code ;</li>
@@ -1184,15 +1184,15 @@
 </ul>
 <p><a id="refheadingtoc2480912728496130"></a></p>
 <h2 id="144-execution-du-projet">14.4. Exécution du projet</h2>
-<p><img src="images/10000000000007080000025F4C64C426.png" style="width:11.911cm;height:4.01cm;" alt="Image" /></p>
+<p><img src="images/10000000000007080000025F4C64C426.png" style="width:11.911cm;height:4.01cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007080000025F4C64C426.png" /></p>
 <p>La 1ère vue affichée est la suivante :</p>
-<p><img src="images/10000000000007E80000034849481130.png" style="width:13.39cm;height:5.561cm;" alt="Image" /></p>
+<p><img src="images/10000000000007E80000034849481130.png" style="width:13.39cm;height:5.561cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007E80000034849481130.png" /></p>
 <p>Après avoir supprimé la ligne 1 <strong>[1]</strong>, la vue devient la suivante :</p>
-<p><img src="images/10000000000007930000029F72EBB598.png" style="width:12.831cm;height:4.44cm;" alt="Image" /></p>
+<p><img src="images/10000000000007930000029F72EBB598.png" style="width:12.831cm;height:4.44cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007930000029F72EBB598.png" /></p>
 <p>Après avoir supprimé toutes les lignes :</p>
-<p><img src="images/10000000000005AF000002571579D8D9.png" style="width:9.621cm;height:3.961cm;" alt="Image" /></p>
+<p><img src="images/10000000000005AF000002571579D8D9.png" style="width:9.621cm;height:3.961cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005AF000002571579D8D9.png" /></p>
 <p>Après avoir cliqué sur le bouton <strong>[2]</strong>, on obtient de nouveau la liste :</p>
-<p><img src="images/10000000000007BE0000033BEA6E9866.png" style="width:13.11cm;height:5.471cm;" alt="Image" /></p>
+<p><img src="images/10000000000007BE0000033BEA6E9866.png" style="width:13.11cm;height:5.471cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007BE0000033BEA6E9866.png" /></p>
 
 
 
