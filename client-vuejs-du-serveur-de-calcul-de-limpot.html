@@ -1189,15 +1189,24 @@
 <p><img src="images/10000000000001BA0000031B0868DD70.png" style="width:4.091cm;height:7.361cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001BA0000031B0868DD70.png" /></p>
 <p>Les éléments du projet sont les suivants :</p>
 <ul>
-<li><strong>[assets/logo.jpg]</strong> : le logo du projet ;</li>
-<li><strong>[couches]</strong> : les couches <strong>[métier]</strong> et <strong>[dao]</strong> de l’application ;</li>
-<li><strong>[plugins]</strong> : les plugins de l’application ;</li>
-<li><strong>[views]</strong> : les vues de l’application ;</li>
-<li><strong>[config.js]</strong> : configure l’application ;</li>
-<li><strong>[router.js]</strong> : définit le routage de l’application ;</li>
-<li><strong>[store.js]</strong> : le store de <strong>[Vuex]</strong> ;</li>
-<li><strong>[main.js]</strong> : le script principal de l’application ;</li>
+  <li><b>[assets/logo.jpg]</b> : le logo du projet ;
+  </li>
+  <li><b>[couches]</b> : les couches <b>[métier]</b> et <b>[dao]</b> de l’application ;
+  </li>
+  <li><b>[plugins]</b> : les plugins de l’application ;
+  </li>
+  <li><b>[views]</b> : les vues de l’application ;
+  </li>
+  <li><b>[config.js]</b> : configure l’application ;
+  </li>
+  <li><b>[router.js]</b> : définit le routage de l’application ;
+  </li>
+  <li><b>[store.js]</b> : le store de <b>[Vuex]</b> ;
+  </li>
+  <li><b>[main.js]</b> : le script principal de l’application ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2481292728496130"></a></p>
 <h3 id="1831-les-couches-metier-et-dao">18.3.1. Les couches [métier] et [dao]</h3>
 <p><a id="refheadingtoc2481312728496130"></a></p>
@@ -1222,9 +1231,12 @@
 
 <p>La méthode <strong>[setTaxAdminData]</strong> fait la même chose que le constructeur. Sa présence permet la séquence suivante :</p>
 <ol>
-<li>instancier la classe <strong>[Métier]</strong> avec une instruction <strong>[métier=new Métier()]</strong> lorsqu’on veut instancier la classe mais qu’on n’a pas encore la donnée <strong>[taxAdminData]</strong> ;</li>
-<li>puis renseigner ultérieurement sa propriété <strong>[taxAdminData]</strong> par une opération <strong>[métier.setTaxAdminData(taxAdmindata)]</strong> ;</li>
+  <li>instancier la classe <b>[Métier]</b> avec une instruction <b>[métier=new Métier()]</b> lorsqu’on veut instancier la classe mais qu’on n’a pas encore la donnée <b>[taxAdminData]</b> ;
+  </li>
+  <li>puis renseigner ultérieurement sa propriété <b>[taxAdminData]</b> par une opération <b>[métier.setTaxAdminData(taxAdmindata)]</b> ;
+  </li>
 </ol>
+
 <p><a id="refheadingtoc2481352728496130"></a></p>
 <h3 id="1832-le-fichier-de-configuration-config">18.3.2. Le fichier de configuration [config]</h3>
 <p>Le fichier <strong>[config.js]</strong> est le suivant :</p>
@@ -1251,10 +1263,14 @@
 <h3 id="1833-les-plugins">18.3.3. Les plugins</h3>
 <p>Les plugins <strong>[pluginDao, pluginMétier, pluginConfig]</strong> ont pour but de créer trois nouvelles propriétés à la fonction / classe <strong>[Vue]</strong> :</p>
 <ul>
-<li><strong>[$dao]</strong> : aura pour valeur une instance de la classe <strong>[Dao]</strong> ;</li>
-<li><strong>[$métier]</strong> : aura pour valeur une instance de la classe <strong>[Métier]</strong> ;</li>
-<li><strong>[$config]</strong> : aura pour valeur l’objet exporté par le fichier de configuration <strong>[config]</strong> ;</li>
+  <li><b>[$dao]</b> : aura pour valeur une instance de la classe <b>[Dao]</b> ;
+  </li>
+  <li><b>[$métier]</b> : aura pour valeur une instance de la classe <b>[Métier]</b> ;
+  </li>
+  <li><b>[$config]</b> : aura pour valeur l’objet exporté par le fichier de configuration <b>[config]</b> ;
+  </li>
 </ul>
+
 <p><strong>[pluginDao]</strong></p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
 <span class="odt-code-line"><span style="color:#0000ff">export</span><span style="color:#000000"> </span><span style="color:#0000ff">default</span><span style="color:#000000"> {</span></span>
@@ -1343,22 +1359,32 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 2-4 : le plugin <strong>[Vuex]</strong> est intégré au framework <strong>[Vue]</strong> ;</li>
-<li>lignes 8-13 : nous mettons dans le store de <strong>[Vuex]</strong> les éléments suivants :<ul>
-<li><strong>[simulations]</strong> : la liste des simulations faites par l’utilisateur ;</li>
-<li><strong>[idSimulation]</strong> : le n° de la dernière simulation faite par l’utilisateur ;</li>
+  <li>lignes 2-4 : le plugin <b>[Vuex]</b> est intégré au framework <b>[Vue]</b> ;
+  </li>
+  <li>lignes 8-13 : nous mettons dans le store de <b>[Vuex]</b> les éléments suivants :
+    <ul>
+      <li><b>[simulations]</b> : la liste des simulations faites par l’utilisateur ;
+      </li>
+      <li><b>[idSimulation]</b> : le n° de la dernière simulation faite par l’utilisateur ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p>On rappelle que le store va être partagé entre les vues et que son contenu est réactif : lorsqu’il est modifié, les vues qui l’utilisent sont automatiquement mises à jour. Dans notre application, seul l’élément <strong>[simulations]</strong> a besoin d’être réactif, pas l’élément <strong>[idSimulation]</strong>. On a laissé cet élément dans le store par commodité ;</p>
 <ul>
-<li>lignes 14-40 : les mutations autorisées sur l’objet <strong>[state]</strong> des lignes 8-13. On rappelle que celles-ci reçoivent toujours l’objet <strong>[state]</strong> des lignes 8-13 en 1er paramètre ;<ul>
-<li>ligne 16 : la mutation <strong>[deleteSimulation]</strong> permet de supprimer une simulation dont on donne le n° <strong>[index]</strong> ;</li>
-<li>ligne 25 : la mutation <strong>[addSimulation]</strong> permet d’ajouter une nouvelle simulation au tableau des simulations ;</li>
-<li>ligne 35 :  la mutation <strong>[clear]</strong> permet de réinitialiser l’objet <strong>[state]</strong> des lignes 8-13 ;</li>
+  <li>lignes 14-40 : les mutations autorisées sur l’objet <b>[state]</b> des lignes 8-13. On rappelle que celles-ci reçoivent toujours l’objet <b>[state]</b> des lignes 8-13 en 1er paramètre ;
+    <ul>
+      <li>ligne 16 : la mutation <b>[deleteSimulation]</b> permet de supprimer une simulation dont on donne le n° <b>[index]</b> ;
+      </li>
+      <li>ligne 25 : la mutation <b>[addSimulation]</b> permet d’ajouter une nouvelle simulation au tableau des simulations ;
+      </li>
+      <li>ligne 35 :  la mutation <b>[clear]</b> permet de réinitialiser l’objet <b>[state]</b> des lignes 8-13 ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p><a id="refheadingtoc2481412728496130"></a></p>
 <h3 id="1835-le-fichier-de-routage-router">18.3.5. Le fichier de routage [router]</h3>
 <p>Le fichier de routage est le suivant :</p>
@@ -1408,13 +1434,20 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 16 : au démarrage de l’application, c’est la vue <strong>[Authentification]</strong> qui est affichée car son URL est la racine <strong>[/]</strong> ;</li>
-<li>ligne 20 : la vue <strong>[CalculImpot]</strong> est affichée lorsque l’URL <strong>[/calcul-impot]</strong> est demandée ;</li>
-<li>ligne 24 : la vue <strong>[ListeSimulations]</strong> est affichée lorsque l’URL <strong>[/liste-des-simualtions]</strong> est demandée ;</li>
-<li>ligne 28 : la vue <strong>[Authentification]</strong> est affichée lorsque l’URL <strong>[/fin-session]</strong> est demandée ;</li>
-<li>lignes 33-38 : un objet <strong>[router]</strong> est créé avec ces routes (ligne 35) et le mode <strong>[history]</strong> (ligne 37) de gestion des URL ;</li>
-<li>ligne 41 : ce routeur est exporté ;</li>
+  <li>ligne 16 : au démarrage de l’application, c’est la vue <b>[Authentification]</b> qui est affichée car son URL est la racine <b>[/]</b> ;
+  </li>
+  <li>ligne 20 : la vue <b>[CalculImpot]</b> est affichée lorsque l’URL <b>[/calcul-impot]</b> est demandée ;
+  </li>
+  <li>ligne 24 : la vue <b>[ListeSimulations]</b> est affichée lorsque l’URL <b>[/liste-des-simualtions]</b> est demandée ;
+  </li>
+  <li>ligne 28 : la vue <b>[Authentification]</b> est affichée lorsque l’URL <b>[/fin-session]</b> est demandée ;
+  </li>
+  <li>lignes 33-38 : un objet <b>[router]</b> est créé avec ces routes (ligne 35) et le mode <b>[history]</b> (ligne 37) de gestion des URL ;
+  </li>
+  <li>ligne 41 : ce routeur est exporté ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2481432728496130"></a></p>
 <h3 id="1836-le-script-principal-mainjs">18.3.6. Le script principal [main.js]</h3>
 <p>Le script <strong>[main.js]</strong> est le suivant :</p>
@@ -1474,18 +1507,28 @@
 
 <p>On notera les points suivants :</p>
 <ul>
-<li>lignes 18-21, l’objet exporté par le script <strong>[./config]</strong> va être disponible dans l’attribut <strong>[Vue.$config]</strong> donc disponible à toutes les vues de l’application. C’était inutile ici car l’objet <strong>[config]</strong> n’est utilisé que par le script <strong>[main]</strong> (ligne 25). Néanmoins il est fréquent que la configuration soit nécessaire à plusieurs vues. On a donc voulu ici garder le principe de la rendre disponible dans un attribut de la vue ;</li>
-<li>lignes 24-25 : instanciation de la couche <strong>[dao]</strong>. La classe <strong>[Dao]</strong> est importée ligne 24 puis instanciée ligne 25. Son constructeur admet pour unique paramètre l’objet <strong>[axios]</strong>, propriété de configuration ;</li>
-<li>lignes 27-29 : la couche <strong>[dao]</strong> est rendue disponible dans l’attribut <strong>[$dao]</strong> de toutes les vues ;</li>
-<li>lignes 31-37 : on répète la même séquence pour la couche <strong>[métier]</strong>. Le constructeur de la classe <strong>[Métier]</strong> a pour paramètre <strong>[taxAdminData]</strong> qui représente les données de l’administration fiscale. Nous n’avons pas encore cette donnée. L’objet <strong>[métier]</strong> de la ligne 33 devra donc être complété ultérieurement ;</li>
-<li>ligne 40 : on importe le store <strong>[Vuex]</strong> ;</li>
-<li>lignes 43-51 : on instancie la vue principale <strong>[Main]</strong> (lignes 5 et 50), en lui passant deux paramètres :<ul>
-<li>ligne 46 : le routeur <strong>[router]</strong> défini ligne 16 ;</li>
-<li>ligne 48 : le store <strong>[Vuex]</strong> <strong>[store]</strong> défini ligne 40 ;</li>
-<li>dans les deux cas, le nom de la propriété est à gauche et sa valeur à droite. Les noms des propriétés <strong>[router, store]</strong> sont fixés par les frameworks <strong>[vue-router]</strong> et <strong>[vuex]</strong>. Les valeurs associées peuvent elles être quelconques ;</li>
+  <li>lignes 18-21, l’objet exporté par le script <b>[./config]</b> va être disponible dans l’attribut <b>[Vue.$config]</b> donc disponible à toutes les vues de l’application. C’était inutile ici car l’objet <b>[config]</b> n’est utilisé que par le script <b>[main]</b> (ligne 25). Néanmoins il est fréquent que la configuration soit nécessaire à plusieurs vues. On a donc voulu ici garder le principe de la rendre disponible dans un attribut de la vue ;
+  </li>
+  <li>lignes 24-25 : instanciation de la couche <b>[dao]</b>. La classe <b>[Dao]</b> est importée ligne 24 puis instanciée ligne 25. Son constructeur admet pour unique paramètre l’objet <b>[axios]</b>, propriété de configuration ;
+  </li>
+  <li>lignes 27-29 : la couche <b>[dao]</b> est rendue disponible dans l’attribut <b>[$dao]</b> de toutes les vues ;
+  </li>
+  <li>lignes 31-37 : on répète la même séquence pour la couche <b>[métier]</b>. Le constructeur de la classe <b>[Métier]</b> a pour paramètre <b>[taxAdminData]</b> qui représente les données de l’administration fiscale. Nous n’avons pas encore cette donnée. L’objet <b>[métier]</b> de la ligne 33 devra donc être complété ultérieurement ;
+  </li>
+  <li>ligne 40 : on importe le store <b>[Vuex]</b> ;
+  </li>
+  <li>lignes 43-51 : on instancie la vue principale <b>[Main]</b> (lignes 5 et 50), en lui passant deux paramètres :
+    <ul>
+      <li>ligne 46 : le routeur <b>[router]</b> défini ligne 16 ;
+      </li>
+      <li>ligne 48 : le store <b>[Vuex]</b> <b>[store]</b> défini ligne 40 ;
+      </li>
+      <li>dans les deux cas, le nom de la propriété est à gauche et sa valeur à droite. Les noms des propriétés <b>[router, store]</b> sont fixés par les frameworks <b>[vue-router]</b> et <b>[vuex]</b>. Les valeurs associées peuvent elles être quelconques ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p><a id="refheadingtoc2481452728496130"></a></p>
 <h2 id="184-les-vues-de-lapplication">18.4. Les vues de l’application</h2>
 <p><a id="refheadingtoc2481472728496130"></a></p>
@@ -1569,34 +1612,54 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>la vue <strong>[Main]</strong> assure une mise en page de la vue routée et affichée ligne 23 :</li>
+  <li>la vue <b>[Main]</b> assure une mise en page de la vue routée et affichée ligne 23 :
+  </li>
 </ul>
+
 <p><img src="images/1000000000000697000004B3516B4F3A.png" style="width:11.161cm;height:7.961cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000697000004B3516B4F3A.png" /></p>
 <ul>
-<li>les lignes 5-15 affichent la zone 1 ;</li>
-<li>le ligne 23 affiche la vue routée <strong>[2]</strong> ;</li>
-<li>lignes 16-19 : une alerte affichée seulement en cas d’erreur de communication avec le serveur de calcul de l’impôt ;</li>
-<li>lignes 25-28 : un message d’attente affiché à chaque requête HTTP faite au serveur ;</li>
-<li>toutes les vues vont être affichées avec cette mise en page puisque chaque vue routée est affichée par les lignes 20-24. La vue <strong>[Main]</strong> sert à factoriser ce qui peut être partagé par les différentes vues ;</li>
-<li>ligne 23 : chaque vue routée peut émettre trois événements :<ul>
-<li><strong>[loading]</strong> : une requête HTTP a été lancée. Il faut montrer le message d’attente de la réponse ;</li>
-<li><strong>[error]</strong> : la requête HTTP s’est terminée sur une erreur. Il faut montrer le message d’erreur et cacher la vue routée ;</li>
+  <li>les lignes 5-15 affichent la zone 1 ;
+  </li>
+  <li>le ligne 23 affiche la vue routée <b>[2]</b> ;
+  </li>
+  <li>lignes 16-19 : une alerte affichée seulement en cas d’erreur de communication avec le serveur de calcul de l’impôt ;
+  </li>
+  <li>lignes 25-28 : un message d’attente affiché à chaque requête HTTP faite au serveur ;
+  </li>
+  <li>toutes les vues vont être affichées avec cette mise en page puisque chaque vue routée est affichée par les lignes 20-24. La vue <b>[Main]</b> sert à factoriser ce qui peut être partagé par les différentes vues ;
+  </li>
+  <li>ligne 23 : chaque vue routée peut émettre trois événements :
+    <ul>
+      <li><b>[loading]</b> : une requête HTTP a été lancée. Il faut montrer le message d’attente de la réponse ;
+      </li>
+      <li><b>[error]</b> : la requête HTTP s’est terminée sur une erreur. Il faut montrer le message d’erreur et cacher la vue routée ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 38-49 : l’état de la vue :
+    <ul>
+      <li>ligne 41 : <b>[showLoading]</b> contrôle l’affichage du message d’attente de la fin d’une requête HTTP (ligne 25) ;
+      </li>
+      <li>ligne 43 : <b>[showError]</b> contrôle l’affichage du message d’erreur d’une requête HTTP (lignes 17-21) ;
+      </li>
+      <li>ligne 45 : <b>[showView]</b> contrôle l’affichage de la vue routée (ligne 23) ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 53-63 : la méthode <b>[mShowError]</b> gère l’événement <b>[error]</b> émis par la vue routée (ligne 23) ;
+  </li>
+  <li>lignes 65-70 : la méthode <b>[mShowLoading]</b> gère l’événement <b>[loading]</b> émis par la vue routée (ligne 23) ;
+  </li>
+  <li>ligne 23 : on prêtera attention aux événements <b>[error]</b> et <b>[loading]</b>. Ils ne sont interceptés que si la vue routée est affichée <b>[showView=true]</b>. C’est pourquoi la vue routée est au départ affichée (ligne 45). Elle n’est cachée qu’en cas d’erreur (ligne 60). Pour éviter ce problème on aurait pu utiliser la directive <b>[v-show]</b> au lieu de <b>[v-if]</b>. la différence entre ces deux directives est la suivante :
+    <ul>
+      <li><b>[v-if=’false’]</b> cache le bloc contrôlé en l’éliminant du code HTML global. Les événements de la vue routée ne peuvent plus alors être interceptés ;
+      </li>
+      <li><b>[v-show=’false’]</b> cache le bloc contrôlé en jouant sur son CSS, mais le code du bloc reste présent dans le HTML global et peut ainsi intercepter les événements de la vue routée ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>lignes 38-49 : l’état de la vue :<ul>
-<li>ligne 41 : <strong>[showLoading]</strong> contrôle l’affichage du message d’attente de la fin d’une requête HTTP (ligne 25) ;</li>
-<li>ligne 43 : <strong>[showError]</strong> contrôle l’affichage du message d’erreur d’une requête HTTP (lignes 17-21) ;</li>
-<li>ligne 45 : <strong>[showView]</strong> contrôle l’affichage de la vue routée (ligne 23) ;</li>
-</ul>
-</li>
-<li>lignes 53-63 : la méthode <strong>[mShowError]</strong> gère l’événement <strong>[error]</strong> émis par la vue routée (ligne 23) ;</li>
-<li>lignes 65-70 : la méthode <strong>[mShowLoading]</strong> gère l’événement <strong>[loading]</strong> émis par la vue routée (ligne 23) ;</li>
-<li>ligne 23 : on prêtera attention aux événements <strong>[error]</strong> et <strong>[loading]</strong>. Ils ne sont interceptés que si la vue routée est affichée <strong>[showView=true]</strong>. C’est pourquoi la vue routée est au départ affichée (ligne 45). Elle n’est cachée qu’en cas d’erreur (ligne 60). Pour éviter ce problème on aurait pu utiliser la directive <strong>[v-show]</strong> au lieu de <strong>[v-if]</strong>. la différence entre ces deux directives est la suivante :<ul>
-<li><strong>[v-if=’false’]</strong> cache le bloc contrôlé en l’éliminant du code HTML global. Les événements de la vue routée ne peuvent plus alors être interceptés ;</li>
-<li><strong>[v-show=’false’]</strong> cache le bloc contrôlé en jouant sur son CSS, mais le code du bloc reste présent dans le HTML global et peut ainsi intercepter les événements de la vue routée ;</li>
-</ul>
-</li>
-</ul>
+
 <p><a id="refheadingtoc2481492728496130"></a></p>
 <h3 id="1842-la-vue-de-mise-en-page-layout">18.4.2. La vue de mise en page [Layout]</h3>
 <p>Le code de la vue <strong>[Layout]</strong> est le suivant :</p>
@@ -1637,12 +1700,16 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>la vue <strong>[Layout]</strong> permet de diviser la vue routée en deux zones :<ul>
-<li>une zone de 3 colonnes Bootstrap à gauche (lignes 7-9). Cette zone accueillera le menu de navigation lorsqu’il y en a un ;</li>
-<li>une zone de 9 colonnes à droite (lignes 11-13). Cette zone accueillera l’information amenée par la vue routée ;</li>
+  <li>la vue <b>[Layout]</b> permet de diviser la vue routée en deux zones :
+    <ul>
+      <li>une zone de 3 colonnes Bootstrap à gauche (lignes 7-9). Cette zone accueillera le menu de navigation lorsqu’il y en a un ;
+      </li>
+      <li>une zone de 9 colonnes à droite (lignes 11-13). Cette zone accueillera l’information amenée par la vue routée ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p><a id="refheadingtoc2481512728496130"></a></p>
 <h3 id="1843-la-vue-authentification">18.4.3. La vue [Authentification]</h3>
 <p>La vue d’authentification est la suivante :</p>
@@ -1812,58 +1879,96 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 3 : la vue <strong>[Authentification]</strong> utilise uniquement la colonne de droite du <strong>[Layout]</strong> (lignes 3 et 4) ;</li>
-<li>lignes 6-38 : le formulaire Bootstrap qui génère la zone 1 de la copie d’écran ci-dessus ;</li>
-<li>ligne 6 : l’événement <strong>[@submit]</strong> se produit lorsque l’utilisateur va cliquer sur le bouton de type <strong>[submit]</strong> de la ligne 35. Le modificateur <strong>[prevent]</strong> demande à ce que la page ne soit pas rechargée lors du <strong>[submit]</strong>. On aurait pu écrire également :<ul>
-<li>une balise &lt;b-form&gt; sans gestion de l’événement <strong>[submit]</strong> ;</li>
-<li>une balise &lt;b-button&gt; avec l’événement <strong>[@click=’login’]</strong> et sans l’attribut <strong>[type=’submit’]</strong> ;</li>
+  <li>ligne 3 : la vue <b>[Authentification]</b> utilise uniquement la colonne de droite du <b>[Layout]</b> (lignes 3 et 4) ;
+  </li>
+  <li>lignes 6-38 : le formulaire Bootstrap qui génère la zone 1 de la copie d’écran ci-dessus ;
+  </li>
+  <li>ligne 6 : l’événement <b>[@submit]</b> se produit lorsque l’utilisateur va cliquer sur le bouton de type <b>[submit]</b> de la ligne 35. Le modificateur <b>[prevent]</b> demande à ce que la page ne soit pas rechargée lors du <b>[submit]</b>. On aurait pu écrire également :
+    <ul>
+      <li>une balise &lt;b-form&gt; sans gestion de l’événement <b>[submit]</b> ;
+      </li>
+      <li>une balise &lt;b-button&gt; avec l’événement <b>[@click=’login’]</b> et sans l’attribut <b>[type=’submit’]</b> ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p>Ca marche également. L’avantage de la solution retenue est que le submit se fait non seulement avec un clic sur le bouton <strong>[Valider]</strong> mais également sur une validation (touche <strong>[Entrée]</strong>) dans les zones de saisie. C’est donc par commodité pour l’utilisateur que la solution <strong>[&lt;b-form @submit.prevent=&quot;login&quot;&gt;]</strong> a été retenue ici ;</p>
 <ul>
-<li>lignes 33-37 : une alerte qui apparaît lorsque le serveur a rejeté les identifiants saisis par l’utilisateur :</li>
+  <li>lignes 33-37 : une alerte qui apparaît lorsque le serveur a rejeté les identifiants saisis par l’utilisateur :
+  </li>
 </ul>
+
 <p><img src="images/100000000000065D0000053EB147A75B.png" style="width:10.782cm;height:8.88cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000065D0000053EB147A75B.png" /></p>
 <ul>
-<li>ligne 35 : le bouton <strong>[Valider]</strong> n’est pas toujours actif. Son état dépend de l’attribut calculé <strong>[valid]</strong> des lignes 71-73. L’attribut <strong>[valid]</strong> est vrai si :<ul>
-<li>il y a quelque chose dans les champs <strong>[user, password]</strong> du formulaire ;</li>
-<li>la session jSON a démarré. Au départ, cette session n’a pas démarré (ligne 59) et donc le bouton <strong>[Valider]</strong> est inactif.</li>
+  <li>ligne 35 : le bouton <b>[Valider]</b> n’est pas toujours actif. Son état dépend de l’attribut calculé <b>[valid]</b> des lignes 71-73. L’attribut <b>[valid]</b> est vrai si :
+    <ul>
+      <li>il y a quelque chose dans les champs <b>[user, password]</b> du formulaire ;
+      </li>
+      <li>la session jSON a démarré. Au départ, cette session n’a pas démarré (ligne 59) et donc le bouton <b>[Valider]</b> est inactif.
+      </li>
+    </ul>
+  </li>
+  <li>lignes 49-60 : l’état de la vue ;
+    <ul>
+      <li><b>[user]</b> représente la saisie de l’utilisateur dans le champ <b>[user]</b> (lignes 12-17) du formulaire. La directive <b>[v-model]</b> de la ligne 15 établit une liaison bidirectionnelle entre la saisie de l’utilisateur et l’attribut <b>[user]</b> de la vue ;
+      </li>
+      <li><b>[password]</b> représente la saisie de l’utilisateur dans le champ <b>[password]</b> (lignes 19-24) du formulaire. La directive <b>[v-model]</b> de la ligne 22 établit une liaison bidirectionnelle entre la saisie de l’utilisateur et l’attribut <b>[password]</b> de la vue ;
+      </li>
+      <li><b>[showError]</b> contrôle (ligne 29) l’affichage de l’alerte des lignes 26-31 ;
+      </li>
+      <li><b>[message]</b> est le message d’erreur (ligne 31) à afficher dans l’alerte des lignes 26-31 ;
+      </li>
+      <li><b>[sessionStarted]</b> indique si la session jSON avec le serveur a démarré ou non. Au départ cet attribut a la valeur <b>[false]</b> (ligne 59). La session jSON avec le serveur est initialisée dans l’événement <b>[created]</b> du cycle de vie de la vue, lignes 126-156. Si le serveur répond positivement, alors l’attribut <b>[sessionStarted]</b> est passé à <b>[true]</b> (ligne 149) ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 126-156 : la fonction <b>[created]</b> est exécutée lorsque la vue <b>[Authentification]</b> a été créée (pas forcément encore affichée). En tâche de fond, on initialise alors une session jSON avec le serveur. On sait que c’est la 1ère action à faire avec le serveur de calcul de l’impôt. Pour ce faire, on utilise la couche <b>[dao]</b> de l’application (ligne 134). Toutes les méthodes de cette couche sont asynchrones. On utilise ici la promesse (Promise) rendue par la méthode <b>[$dao.initSession]</b> qui initialise la session jSON avec le serveur.
+  </li>
+  <li>lignes 138-150 : le code exécuté lorsque le serveur a rendu sa réponse sans erreur ;
+  </li>
+  <li>ligne 142 : on vérifie la propriété <b>[état]</b> de la réponse. Elle doit avoir la valeur <b>[700]</b> pour une opération réussie. Sinon, il s’est produit une erreur dont la cause est indiquée dans la propriété <b>[response.réponse]</b> (ligne 144). On affiche alors le message d’erreur de la vue (ligne 145) ;
+  </li>
+  <li>ligne 149 : on note que la session jSON a démarré ;
+  </li>
+  <li>lignes 152-155 : le code exécuté en cas d’erreur. Celle-ci est remontée à la vue parente <b>[Main]</b> qui
+    <ul>
+      <li>affichera l’erreur ;
+      </li>
+      <li>cachera le message d’attente ;
+      </li>
+      <li>cachera la vue routée, la vue <b>[Autentification]</b> ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 79-124 : la méthode <b>[login]</b> traite le clic sur le bouton <b>[Valider]</b> ;
+  </li>
+  <li>ligne 79 : la méthode a été préfixée avec le mot clé <b>[async]</b> pour permettre l’utilisation du mot clé <b>[await]</b>, lignes 84 et 103 ;
+  </li>
+  <li>lignes 84-87 : appel bloquant à la méthode <b>[$dao.authentifierUtilisateur(user, password)]</b>. On aurait pu utiliser une promesse <b>[Promise]</b> comme il a été fait dans la fonction <b>[created]</b>. Nous avons voulu varier les styles. Il n’y a pas de risque à bloquer l’utilisateur car nous avons mis un <b>[timeout]</b> de 2 secondes à toutes les requêtes HTTP. Il n’attendra pas longtemps. De plus, il ne peut rien faire tant que le serveur n’a pas rendu sa réponse car alors le bouton <b>[Valider]</b> reste inactif ;
+  </li>
+  <li>ligne 91 : le serveur de calcul de l’impôt envoie des réponses jSON ayant toutes la structure <b>[{‘action’:action, ‘état’:val, ‘réponse’:réponse}]</b>. L’authentification a réussi si <b>[état==200]</b>. Si ce n’est pas le cas, un message d’erreur est affiché, lignes 93-94 ;
+  </li>
+  <li>ligne 98 : on cache un éventuel message d’erreur d’une opération précédente ;
+  </li>
+  <li>lignes 99-116 : on demande mainteant au serveur les données de l’administration fiscale qui permettent le calcul de l’impôt. Dans <b>[this.$métier]</b> nous avons une instance de la classe <b>[Métier]</b> qui pour l’instant ne peut rien faire car elle n’a pas ces données ;
+  </li>
+  <li>ligne 103 :  les données de l’administration fiscale sont demandées au serveur par une opération bloquante ;
+  </li>
+  <li>lignes 107-112 : la réponse du serveur est analysée. Elle doit avoir une valeur d’état égale à 1000 sinon c’est qu’il s’est produit une erreur. Dans ce dernier cas, on affiche le message d’erreur (lignes 109-110) ;
+  </li>
+  <li>lignes 113-118 : en cas de réussite de l’opération, on :
+    <ul>
+      <li>cache le message d’erreur, ligne 114 ;
+      </li>
+      <li>on transmet les données de l’administration fiscale à la couche <b>[métier]</b> (ligne 116) ;
+      </li>
+      <li>on fait afficher la vue <b>[CalculImpot]</b>, ligne 118. On se rappelle que <b>[this.$router]</b> désigne le routeur de l’application. La méthode <b>[push]</b> permet de fixer la prochaine vue routée. Ici on la désigne par son attribut <b>[name]</b>. On aurait pu également la désigner par son attribut <b>[path]</b>. Ces informations sont dans le fichier de routage :
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>lignes 49-60 : l’état de la vue ;<ul>
-<li><strong>[user]</strong> représente la saisie de l’utilisateur dans le champ <strong>[user]</strong> (lignes 12-17) du formulaire. La directive <strong>[v-model]</strong> de la ligne 15 établit une liaison bidirectionnelle entre la saisie de l’utilisateur et l’attribut <strong>[user]</strong> de la vue ;</li>
-<li><strong>[password]</strong> représente la saisie de l’utilisateur dans le champ <strong>[password]</strong> (lignes 19-24) du formulaire. La directive <strong>[v-model]</strong> de la ligne 22 établit une liaison bidirectionnelle entre la saisie de l’utilisateur et l’attribut <strong>[password]</strong> de la vue ;</li>
-<li><strong>[showError]</strong> contrôle (ligne 29) l’affichage de l’alerte des lignes 26-31 ;</li>
-<li><strong>[message]</strong> est le message d’erreur (ligne 31) à afficher dans l’alerte des lignes 26-31 ;</li>
-<li><strong>[sessionStarted]</strong> indique si la session jSON avec le serveur a démarré ou non. Au départ cet attribut a la valeur <strong>[false]</strong> (ligne 59). La session jSON avec le serveur est initialisée dans l’événement <strong>[created]</strong> du cycle de vie de la vue, lignes 126-156. Si le serveur répond positivement, alors l’attribut <strong>[sessionStarted]</strong> est passé à <strong>[true]</strong> (ligne 149) ;</li>
-</ul>
-</li>
-<li>lignes 126-156 : la fonction <strong>[created]</strong> est exécutée lorsque la vue <strong>[Authentification]</strong> a été créée (pas forcément encore affichée). En tâche de fond, on initialise alors une session jSON avec le serveur. On sait que c’est la 1ère action à faire avec le serveur de calcul de l’impôt. Pour ce faire, on utilise la couche <strong>[dao]</strong> de l’application (ligne 134). Toutes les méthodes de cette couche sont asynchrones. On utilise ici la promesse (Promise) rendue par la méthode <strong>[$dao.initSession]</strong> qui initialise la session jSON avec le serveur.</li>
-<li>lignes 138-150 : le code exécuté lorsque le serveur a rendu sa réponse sans erreur ;</li>
-<li>ligne 142 : on vérifie la propriété <strong>[état]</strong> de la réponse. Elle doit avoir la valeur <strong>[700]</strong> pour une opération réussie. Sinon, il s’est produit une erreur dont la cause est indiquée dans la propriété <strong>[response.réponse]</strong> (ligne 144). On affiche alors le message d’erreur de la vue (ligne 145) ;</li>
-<li>ligne 149 : on note que la session jSON a démarré ;</li>
-<li>lignes 152-155 : le code exécuté en cas d’erreur. Celle-ci est remontée à la vue parente <strong>[Main]</strong> qui<ul>
-<li>affichera l’erreur ;</li>
-<li>cachera le message d’attente ;</li>
-<li>cachera la vue routée, la vue <strong>[Autentification]</strong> ;</li>
-</ul>
-</li>
-<li>lignes 79-124 : la méthode <strong>[login]</strong> traite le clic sur le bouton <strong>[Valider]</strong> ;</li>
-<li>ligne 79 : la méthode a été préfixée avec le mot clé <strong>[async]</strong> pour permettre l’utilisation du mot clé <strong>[await]</strong>, lignes 84 et 103 ;</li>
-<li>lignes 84-87 : appel bloquant à la méthode <strong>[$dao.authentifierUtilisateur(user, password)]</strong>. On aurait pu utiliser une promesse <strong>[Promise]</strong> comme il a été fait dans la fonction <strong>[created]</strong>. Nous avons voulu varier les styles. Il n’y a pas de risque à bloquer l’utilisateur car nous avons mis un <strong>[timeout]</strong> de 2 secondes à toutes les requêtes HTTP. Il n’attendra pas longtemps. De plus, il ne peut rien faire tant que le serveur n’a pas rendu sa réponse car alors le bouton <strong>[Valider]</strong> reste inactif ;</li>
-<li>ligne 91 : le serveur de calcul de l’impôt envoie des réponses jSON ayant toutes la structure <strong>[{‘action’:action, ‘état’:val, ‘réponse’:réponse}]</strong>. L’authentification a réussi si <strong>[état==200]</strong>. Si ce n’est pas le cas, un message d’erreur est affiché, lignes 93-94 ;</li>
-<li>ligne 98 : on cache un éventuel message d’erreur d’une opération précédente ;</li>
-<li>lignes 99-116 : on demande mainteant au serveur les données de l’administration fiscale qui permettent le calcul de l’impôt. Dans <strong>[this.$métier]</strong> nous avons une instance de la classe <strong>[Métier]</strong> qui pour l’instant ne peut rien faire car elle n’a pas ces données ;</li>
-<li>ligne 103 :  les données de l’administration fiscale sont demandées au serveur par une opération bloquante ;</li>
-<li>lignes 107-112 : la réponse du serveur est analysée. Elle doit avoir une valeur d’état égale à 1000 sinon c’est qu’il s’est produit une erreur. Dans ce dernier cas, on affiche le message d’erreur (lignes 109-110) ;</li>
-<li>lignes 113-118 : en cas de réussite de l’opération, on :<ul>
-<li>cache le message d’erreur, ligne 114 ;</li>
-<li>on transmet les données de l’administration fiscale à la couche <strong>[métier]</strong> (ligne 116) ;</li>
-<li>on fait afficher la vue <strong>[CalculImpot]</strong>, ligne 118. On se rappelle que <strong>[this.$router]</strong> désigne le routeur de l’application. La méthode <strong>[push]</strong> permet de fixer la prochaine vue routée. Ici on la désigne par son attribut <strong>[name]</strong>. On aurait pu également la désigner par son attribut <strong>[path]</strong>. Ces informations sont dans le fichier de routage :</li>
-</ul>
-</li>
-</ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line">// calcul de l&#x27;impôt</span>
 <span class="odt-code-line">  {</span>
@@ -1872,16 +1977,21 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 119-122 : le <strong>[catch]</strong> se déclenche lorsqu’une des deux requêtes HTTP a échoué (serveur pas présent, timeout dépassé, ...). On signale alors l’erreur à la vue parente <strong>[Main]</strong> qui l’affichera, cachera le message d’attente et la vue <strong>[Authentification]</strong> ;</li>
+  <li>lignes 119-122 : le <b>[catch]</b> se déclenche lorsqu’une des deux requêtes HTTP a échoué (serveur pas présent, timeout dépassé, ...). On signale alors l’erreur à la vue parente <b>[Main]</b> qui l’affichera, cachera le message d’attente et la vue <b>[Authentification]</b> ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2481532728496130"></a></p>
 <h3 id="1844-la-vue-calculimpot">18.4.4. La vue [CalculImpot]</h3>
 <p>La vue <strong>[CalculImpot]</strong> est la suivante :</p>
 <p><img src="images/100000000000089E000005362FAE52B6.png" style="width:14.592cm;height:8.82cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000089E000005362FAE52B6.png" /></p>
 <ul>
-<li><strong>[1]</strong> : un menu de navigation occupe la colonne de gauche de la vue routée ;</li>
-<li><strong>[2]</strong> : le formulaire de calcul de l’impôt occupe la colonne de droite de la vue routée ;</li>
+  <li><b>[1]</b> : un menu de navigation occupe la colonne de gauche de la vue routée ;
+  </li>
+  <li><b>[2]</b> : le formulaire de calcul de l’impôt occupe la colonne de droite de la vue routée ;
+  </li>
 </ul>
+
 <p>Le code de la vue <strong>[CalculImpot]</strong> est le suivant :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
 <span class="odt-code-line">&lt;!-- définition HTML de la vue --&gt;</span>
@@ -1972,25 +2082,40 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 4 : les deux colonnes du <strong>[Layout]</strong> sont ici présentes ;</li>
-<li>ligne 6 : le formulaire de calcul de l’impôt occupe la colonne de droite. Il émet l’événement <strong>[resultatObtenu]</strong> lorsque le résultat du calcul de l’impôt a été obtenu. On notera que les noms d’événements et les noms des méthodes qui les gèrent ne peuvent contenir de caractères accentués ;</li>
-<li>ligne 8 : le menu de navigation occupe la colonne de gauche ;</li>
-<li>lignes 11-20 : le résultat du calcul de l’impôt est affiché sous le formulaire :</li>
+  <li>ligne 4 : les deux colonnes du <b>[Layout]</b> sont ici présentes ;
+  </li>
+  <li>ligne 6 : le formulaire de calcul de l’impôt occupe la colonne de droite. Il émet l’événement <b>[resultatObtenu]</b> lorsque le résultat du calcul de l’impôt a été obtenu. On notera que les noms d’événements et les noms des méthodes qui les gèrent ne peuvent contenir de caractères accentués ;
+  </li>
+  <li>ligne 8 : le menu de navigation occupe la colonne de gauche ;
+  </li>
+  <li>lignes 11-20 : le résultat du calcul de l’impôt est affiché sous le formulaire :
+  </li>
 </ul>
+
 <p><img src="images/1000000000000679000004069109784C.png" style="width:10.962cm;height:6.811cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000679000004069109784C.png" /></p>
 <ul>
-<li>ligne 11 : le résultat n’est affiché que si l’attribut <strong>[résultatObtenu]</strong> (ligne 47) vaut <strong>[true]</strong> ;</li>
-<li>lignes 34-48 : l’état de la vue :<ul>
-<li><strong>[options]</strong> : la liste des options du menu de navigation. Ce tableau est passé en paramètre au composant <strong>[Menu]</strong>, ligne 8 ;</li>
-<li><strong>[résultat]</strong> : le résultat du calcul de l’impôt. Ce résultat est une chaîne HTML. C’est pourquoi on a utilisé la directive <strong>[v-html]</strong> à la ligne 17 pour l’afficher ;</li>
-<li><strong>[résultatObtenu]</strong> : le booléen qui contrôle l’affichage du résultat, ligne 11 ;</li>
+  <li>ligne 11 : le résultat n’est affiché que si l’attribut <b>[résultatObtenu]</b> (ligne 47) vaut <b>[true]</b> ;
+  </li>
+  <li>lignes 34-48 : l’état de la vue :
+    <ul>
+      <li><b>[options]</b> : la liste des options du menu de navigation. Ce tableau est passé en paramètre au composant <b>[Menu]</b>, ligne 8 ;
+      </li>
+      <li><b>[résultat]</b> : le résultat du calcul de l’impôt. Ce résultat est une chaîne HTML. C’est pourquoi on a utilisé la directive <b>[v-html]</b> à la ligne 17 pour l’afficher ;
+      </li>
+      <li><b>[résultatObtenu]</b> : le booléen qui contrôle l’affichage du résultat, ligne 11 ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 59-81 : la méthode <b>[handleResultatObtenu]</b> affiche le résultat du calcul de l’impôt que lui a envoyé la vue fille <b>[FormCalculImpot]</b>, ligne 6. Ce résultat est un objet avec les propriétés <b>[impot, décôte, réduction, surcôte, taux, marié, enfants, salaire]</b> ;
+  </li>
+  <li>lignes 61-75 : on inscrit l’objet <b>[impot, décôte, réduction, surcôte, taux]</b> dans un texte HTML qui est visualisé par la ligne 17 du template ;
+  </li>
+  <li>ligne 77 : on affiche ce résultat ;
+  </li>
+  <li>ligne 80 : on appelle la mutation <b>[addSimulation]</b> du store Vuex qui va ajouter <b>[résultat]</b> aux simulations déjà présentes dans le store ;
+  </li>
 </ul>
-</li>
-<li>lignes 59-81 : la méthode <strong>[handleResultatObtenu]</strong> affiche le résultat du calcul de l’impôt que lui a envoyé la vue fille <strong>[FormCalculImpot]</strong>, ligne 6. Ce résultat est un objet avec les propriétés <strong>[impot, décôte, réduction, surcôte, taux, marié, enfants, salaire]</strong> ;</li>
-<li>lignes 61-75 : on inscrit l’objet <strong>[impot, décôte, réduction, surcôte, taux]</strong> dans un texte HTML qui est visualisé par la ligne 17 du template ;</li>
-<li>ligne 77 : on affiche ce résultat ;</li>
-<li>ligne 80 : on appelle la mutation <strong>[addSimulation]</strong> du store Vuex qui va ajouter <strong>[résultat]</strong> aux simulations déjà présentes dans le store ;</li>
-</ul>
+
 <p><a id="refheadingtoc2481552728496130"></a></p>
 <h3 id="1845-le-menu-de-navigation-menu">18.4.5. Le menu de navigation [Menu]</h3>
 <p>Le menu de navigation s’affiche dans la colonne de gauche des vues routées :</p>
@@ -2026,9 +2151,12 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>les options du menu sont fournies par le paramètre <strong>[options]</strong> (lignes 7, 20-22) ;</li>
-<li>chaque élément du tableau <strong>[options]</strong> a une propriété <strong>[text]</strong> (ligne 12) qui est le texte du lien et une propriété <strong>[path]</strong> (ligne 9) qui sera le chemin de la vue cible du lien ;</li>
+  <li>les options du menu sont fournies par le paramètre <b>[options]</b> (lignes 7, 20-22) ;
+  </li>
+  <li>chaque élément du tableau <b>[options]</b> a une propriété <b>[text]</b> (ligne 12) qui est le texte du lien et une propriété <b>[path]</b> (ligne 9) qui sera le chemin de la vue cible du lien ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc251834278084667"></a></p>
 <h3 id="1846-la-vue-formcalculimpot">18.4.6. La vue [FormCalculImpot]</h3>
 <p>Cette vue fournit le formulaire de calcul de l’impôt :</p>
@@ -2151,43 +2279,68 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 4-51 : le formulaire Bootstrap ;</li>
-<li>lignes 11-17 : un groupe de boutons radio avec leur libellé ;</li>
-<li>lignes 14-15 : la balise &lt;b-form-radio&gt; assure l’affichage d’un bouton radio :<ul>
-<li>ligne 14 : la directive <strong>[v-model]</strong> assure que lors d’un clic sur le bouton, l’attribut <strong>[marié]</strong> de la ligne 61 recevra la valeur <strong>[oui]</strong> (attribut <strong>[value=&quot;oui&quot;]</strong>) ;</li>
-<li>ligne 15 : la directive <strong>[v-model]</strong> assure que lors d’un clic sur le bouton, l’attribut <strong>[marié]</strong> de la ligne 61 recevra la valeur <strong>[non]</strong> (attribut <strong>[value=&quot;non&quot;]</strong>) ;</li>
+  <li>lignes 4-51 : le formulaire Bootstrap ;
+  </li>
+  <li>lignes 11-17 : un groupe de boutons radio avec leur libellé ;
+  </li>
+  <li>lignes 14-15 : la balise &lt;b-form-radio&gt; assure l’affichage d’un bouton radio :
+    <ul>
+      <li>ligne 14 : la directive <b>[v-model]</b> assure que lors d’un clic sur le bouton, l’attribut <b>[marié]</b> de la ligne 61 recevra la valeur <b>[oui]</b> (attribut <b>[value=&quot;oui&quot;]</b>) ;
+      </li>
+      <li>ligne 15 : la directive <b>[v-model]</b> assure que lors d’un clic sur le bouton, l’attribut <b>[marié]</b> de la ligne 61 recevra la valeur <b>[non]</b> (attribut <b>[value=&quot;non&quot;]</b>) ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 19-29 : la partie saisie du nombre d’enfants :
+    <ul>
+      <li>ligne 24 : la saisie du nombre d’enfants est liée à l’attribut <b>[enfants]</b> de la ligne 63 ;
+      </li>
+      <li>ligne 25 : la validité de la saisie est vérifiée par l’attribut calculé <b>[enfantsValide]</b> des lignes 87-89 ;
+      </li>
+      <li>ligne 28 : assure l’affichage d’un message d’erreur si la saisie est invalide ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 31-45 : la partie saisie du salaire annuel :
+    <ul>
+      <li>ligne 35 : affiche un message d’aide juste sous la zone de saisie ;
+      </li>
+      <li>ligne 41 : la saisie du salaire est liée à l’attribut <b>[salaire]</b> de la ligne 65 ;
+      </li>
+      <li>ligne 42 : la validité de la saisie est vérifiée par l’attribut calculé <b>[salaireValide]</b> des lignes 82-85 ;
+      </li>
+      <li>ligne 45 : assure l’affichage d’un message d’erreur si la saisie est invalide ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 48-50 : un bouton de type <b>[submit]</b>. Lorsqu’on clique sur ce bouton ou lorsqu’on valide une saisie avec la touche <b>[Entrée]</b>, la méthode <b>[calculerImpot]</b> est exécutée (ligne 94) ;
+    <ul>
+      <li>ligne 49 : l’état du bouton actif / inactif est contrôlé par l’attribut calculé <b>[formInvalide]</b> des lignes 71-80 ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 71-80 : le formulaire est valide si :
+    <ul>
+      <li>le nombre d’enfants est valide ;
+      </li>
+      <li>le salaire est valide ;
+      </li>
+      <li>l’application a obtenu du serveur les données de l’administration fiscale permettant le calcul de l’impôt. On rappelle que cette donnée est enregistrée dans la propriété <b>[$métier.taxAdminData]</b>. La vue <b>[FormCalculImpot]</b> peut être affichée avant que cette donnée ait été obtenue car elle est demandée de façon asynchrone en même temps que se produit l’affichage de la vue. On s’assure ici que l’utilisateur ne peut pas cliquer sur le bouton <b>[Valider]</b> tant que la donnée n’a pas été obtenue ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 94-109 : la méthode de calcul de l’impôt :
+    <ul>
+      <li>lignes 96-100 : c’est la couche <b>[métier]</b> qui fait ce calcul. C’est un calcul synchrone. Une fois la donnée <b>[taxAdminData]</b> a été obtenue, le client <b>[Vue]</b> n’a plus à communiquer avec le serveur. Tout se fait localement. On obtient un objet <b>[résultat]</b> avec les propriétés <b>[impôt, décôte, surcôte, réduction, taux]</b> ;
+      </li>
+      <li>lignes 104-106 : on ajoute les propriétés <b>[marié, enfants, salaire]</b> au résultat ;
+      </li>
+      <li>ligne 108 : le résultat est passé à la vue parent <b>[CalculImpot]</b> via l’événement <b>[resultatObtenu]</b>. Cette vue est chargée d’afficher le résultat ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>lignes 19-29 : la partie saisie du nombre d’enfants :<ul>
-<li>ligne 24 : la saisie du nombre d’enfants est liée à l’attribut <strong>[enfants]</strong> de la ligne 63 ;</li>
-<li>ligne 25 : la validité de la saisie est vérifiée par l’attribut calculé <strong>[enfantsValide]</strong> des lignes 87-89 ;</li>
-<li>ligne 28 : assure l’affichage d’un message d’erreur si la saisie est invalide ;</li>
-</ul>
-</li>
-<li>lignes 31-45 : la partie saisie du salaire annuel :<ul>
-<li>ligne 35 : affiche un message d’aide juste sous la zone de saisie ;</li>
-<li>ligne 41 : la saisie du salaire est liée à l’attribut <strong>[salaire]</strong> de la ligne 65 ;</li>
-<li>ligne 42 : la validité de la saisie est vérifiée par l’attribut calculé <strong>[salaireValide]</strong> des lignes 82-85 ;</li>
-<li>ligne 45 : assure l’affichage d’un message d’erreur si la saisie est invalide ;</li>
-</ul>
-</li>
-<li>lignes 48-50 : un bouton de type <strong>[submit]</strong>. Lorsqu’on clique sur ce bouton ou lorsqu’on valide une saisie avec la touche <strong>[Entrée]</strong>, la méthode <strong>[calculerImpot]</strong> est exécutée (ligne 94) ;<ul>
-<li>ligne 49 : l’état du bouton actif / inactif est contrôlé par l’attribut calculé <strong>[formInvalide]</strong> des lignes 71-80 ;</li>
-</ul>
-</li>
-<li>lignes 71-80 : le formulaire est valide si :<ul>
-<li>le nombre d’enfants est valide ;</li>
-<li>le salaire est valide ;</li>
-<li>l’application a obtenu du serveur les données de l’administration fiscale permettant le calcul de l’impôt. On rappelle que cette donnée est enregistrée dans la propriété <strong>[$métier.taxAdminData]</strong>. La vue <strong>[FormCalculImpot]</strong> peut être affichée avant que cette donnée ait été obtenue car elle est demandée de façon asynchrone en même temps que se produit l’affichage de la vue. On s’assure ici que l’utilisateur ne peut pas cliquer sur le bouton <strong>[Valider]</strong> tant que la donnée n’a pas été obtenue ;</li>
-</ul>
-</li>
-<li>lignes 94-109 : la méthode de calcul de l’impôt :<ul>
-<li>lignes 96-100 : c’est la couche <strong>[métier]</strong> qui fait ce calcul. C’est un calcul synchrone. Une fois la donnée <strong>[taxAdminData]</strong> a été obtenue, le client <strong>[Vue]</strong> n’a plus à communiquer avec le serveur. Tout se fait localement. On obtient un objet <strong>[résultat]</strong> avec les propriétés <strong>[impôt, décôte, surcôte, réduction, taux]</strong> ;</li>
-<li>lignes 104-106 : on ajoute les propriétés <strong>[marié, enfants, salaire]</strong> au résultat ;</li>
-<li>ligne 108 : le résultat est passé à la vue parent <strong>[CalculImpot]</strong> via l’événement <strong>[resultatObtenu]</strong>. Cette vue est chargée d’afficher le résultat ;</li>
-</ul>
-</li>
-</ul>
+
 <p><a id="refheadingtoc251836278084667"></a></p>
 <h3 id="1847-la-vue-listesimulations">18.4.7. La vue [ListeSimulations]</h3>
 <p>La vue <strong>[ListeSimulations]</strong> affiche la liste des simulations faites par l’utilisateur :</p>
@@ -2286,25 +2439,40 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 5 : la vue occupe les deux colonnes de la mise en page <strong>[Layout]</strong> des vues routées ;</li>
-<li>lignes 7-26 : les simulations vont dans la colonne de droite ;</li>
-<li>ligne 28 : le menu de navigation va dans la colonne de gauche ;</li>
-<li>lignes 8, 14, 20, 75 : les simulations proviennent du store <strong>[Vuex]</strong> <strong>[$this.store]</strong> ;</li>
-<li>lignes 8-13 : alerte affichée lorsque la liste des simulations est vide ;</li>
-<li>lignes 14-25 : la table HTML affichée lorsque la liste des simulations n’est pas vide ;</li>
-<li>lignes 20-24 : la table HTML est générée par une balise &lt;b-table&gt; ;<ul>
-<li>ligne 20 : le tableau des simulations est fourni par l’attribut calculé <strong>[simulations]</strong> des lignes 74-76 ;</li>
-<li>ligne 20 : la configuration de la table HTML est faite par l’attribut calculé <strong>[fields]</strong> des lignes 58-69. Ligne 67, la colonne de clé <strong>[action]</strong> est la dernière colonne de la table HTML ;</li>
-<li>lignes 21-23 : template de la dernière colonne de la table HTML ;</li>
-<li>ligne 22 : on y met un bouton de type lien. Lorsqu’on clique dessus, la méthode <strong>[supprimerSimulation(data.index)]</strong> est appelée, où <strong>[data]</strong> représente la ligne courante (ligne 21). <strong>[data.index]</strong> représente le n° de cette ligne dans la liste des lignes affichées ;</li>
+  <li>ligne 5 : la vue occupe les deux colonnes de la mise en page <b>[Layout]</b> des vues routées ;
+  </li>
+  <li>lignes 7-26 : les simulations vont dans la colonne de droite ;
+  </li>
+  <li>ligne 28 : le menu de navigation va dans la colonne de gauche ;
+  </li>
+  <li>lignes 8, 14, 20, 75 : les simulations proviennent du store <b>[Vuex]</b> <b>[$this.store]</b> ;
+  </li>
+  <li>lignes 8-13 : alerte affichée lorsque la liste des simulations est vide ;
+  </li>
+  <li>lignes 14-25 : la table HTML affichée lorsque la liste des simulations n’est pas vide ;
+  </li>
+  <li>lignes 20-24 : la table HTML est générée par une balise &lt;b-table&gt; ;
+    <ul>
+      <li>ligne 20 : le tableau des simulations est fourni par l’attribut calculé <b>[simulations]</b> des lignes 74-76 ;
+      </li>
+      <li>ligne 20 : la configuration de la table HTML est faite par l’attribut calculé <b>[fields]</b> des lignes 58-69. Ligne 67, la colonne de clé <b>[action]</b> est la dernière colonne de la table HTML ;
+      </li>
+      <li>lignes 21-23 : template de la dernière colonne de la table HTML ;
+      </li>
+      <li>ligne 22 : on y met un bouton de type lien. Lorsqu’on clique dessus, la méthode <b>[supprimerSimulation(data.index)]</b> est appelée, où <b>[data]</b> représente la ligne courante (ligne 21). <b>[data.index]</b> représente le n° de cette ligne dans la liste des lignes affichées ;
+      </li>
+    </ul>
+  </li>
+  <li>ligne 28 : génération du menu de navigation. Les options de celui-ci sont fournies par l’attribut <b>[options]</b> des lignes 47-56 ;
+  </li>
+  <li>lignes 80-85 : la méthode qui réagit au clic sur un lien <b>[Supprimer]</b> de la page HTML ;
+    <ul>
+      <li>ligne 84 : on fait appel à la mutation <b>[deleteSimulation]</b> du store <b>[Vuex]</b> (cf paragraphe <a href="#1.16.projet [vuejs-15] : utilisation du plugin [Vuex]|outline">|vuejs-15|</a>) ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>ligne 28 : génération du menu de navigation. Les options de celui-ci sont fournies par l’attribut <strong>[options]</strong> des lignes 47-56 ;</li>
-<li>lignes 80-85 : la méthode qui réagit au clic sur un lien <strong>[Supprimer]</strong> de la page HTML ;<ul>
-<li>ligne 84 : on fait appel à la mutation <strong>[deleteSimulation]</strong> du store <strong>[Vuex]</strong> (cf paragraphe <a href="#1.16.projet [vuejs-15] : utilisation du plugin [Vuex]|outline">|vuejs-15|</a>) ;</li>
-</ul>
-</li>
-</ul>
+
 <p><a id="refheadingtoc251838278084667"></a></p>
 <h2 id="185-execution-du-projet">18.5. Exécution du projet</h2>
 <p><img src="images/10000000000007350000026D785B8212.png" style="width:14.641cm;height:4.931cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007350000026D785B8212.png" /></p>
@@ -2373,28 +2541,38 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 39 : on indique au routeur que les chemins des routes définies lignes 13-30 sont relatives au chemin défini ligne 39. Par exemple, le chemin de la ligne 20 <strong>[/calcul-impot]</strong> deviendra <strong>[/client-vuejs-impot/calcul-impot]</strong> ;</li>
+  <li>ligne 39 : on indique au routeur que les chemins des routes définies lignes 13-30 sont relatives au chemin défini ligne 39. Par exemple, le chemin de la ligne 20 <b>[/calcul-impot]</b> deviendra <b>[/client-vuejs-impot/calcul-impot]</b> ;
+  </li>
 </ul>
+
 <p>On peut alors tester de nouveau le projet <strong>[vuejs-20]</strong> pour vérifier le changement des chemins de l’application :</p>
 <p><img src="images/10000000000006B7000004D958A1D813.png" style="width:11.371cm;height:8.21cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000006B7000004D958A1D813.png" /></p>
 <p><u><strong>étape 2</strong></u></p>
 <p>Nous construisons maintenant la version de production du projet <strong>[vuejs-20]</strong> :</p>
 <p><img src="images/1000000000000732000002599D527D42.png" style="width:14.622cm;height:4.77cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000732000002599D527D42.png" /></p>
 <ul>
-<li>en <strong>[1-2]</strong>, nous configurons la tâche <strong>[build]</strong> <strong>[2]</strong> dans le fichier <strong>[package.json]</strong> <strong>[1]</strong> ;</li>
-<li>en <strong>[3-5]</strong>, nous exécutons cette tâche. C’est elle qui va construire la version de production du projet <strong>[vuejs-20]</strong> ;</li>
+  <li>en <b>[1-2]</b>, nous configurons la tâche <b>[build]</b> <b>[2]</b> dans le fichier <b>[package.json]</b> <b>[1]</b> ;
+  </li>
+  <li>en <b>[3-5]</b>, nous exécutons cette tâche. C’est elle qui va construire la version de production du projet <b>[vuejs-20]</b> ;
+  </li>
 </ul>
+
 <p>L’exécution de la tâche <strong>[build]</strong> se passe dans un terminal de <strong>[VSCode]</strong> :</p>
 <p><img src="images/1000000000000729000002598F4859BA.png" style="width:14.551cm;height:4.77cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000729000002598F4859BA.png" /></p>
 <p><img src="images/1000000000000670000003D4C30CC002.png" style="width:13.08cm;height:7.781cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000670000003D4C30CC002.png" /></p>
 <ul>
-<li>en <strong>[3-6]</strong>, des avertissements nous disent que le code généré est trop gros et qu’il faudrait le découper <strong>[8]</strong>. Cela relève de l’optimisation de l’architecture du code que nous n’aborderons pas ici ;</li>
-<li>en <strong>[7]</strong>, on nous dit que le dossier <strong>[dist]</strong> contient la version de production générée :</li>
+  <li>en <b>[3-6]</b>, des avertissements nous disent que le code généré est trop gros et qu’il faudrait le découper <b>[8]</b>. Cela relève de l’optimisation de l’architecture du code que nous n’aborderons pas ici ;
+  </li>
+  <li>en <b>[7]</b>, on nous dit que le dossier <b>[dist]</b> contient la version de production générée :
+  </li>
 </ul>
+
 <p><img src="images/10000000000006C900000305F58F21C4.png" style="width:13.791cm;height:6.13cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000006C900000305F58F21C4.png" /></p>
 <ul>
-<li>en <strong>[3]</strong>, le fichier <strong>[index.html]</strong> est le fichier qui sera utilisé lorsqu’on demandera l’URL <strong>[https://localhost:80/client-vue-js-impot/]</strong>;</li>
+  <li>en <b>[3]</b>, le fichier <b>[index.html]</b> est le fichier qui sera utilisé lorsqu’on demandera l’URL <b>[https://localhost:80/client-vue-js-impot/]</b>;
+  </li>
 </ul>
+
 <p>On a ici un site <strong>statique</strong> qui peut être déployé sur n’importe quel serveur. Nous allons le déployer sur le serveur Laragon local (cf <a href="#1.Introduction au framework VUE.JS|outline">d</a>ocument |<a href="https://tahe.developpez.com/tutoriels-cours/php7">https://tahe.developpez.com/tutoriels-cours/php7</a>|). Le dossier <strong>[dist]</strong> <strong>[2]</strong> est copié dans le dossier <strong>[&lt;laragon&gt;/www]</strong> <strong>[4]</strong> où &lt;laragon&gt; est le dossier d’installation du serveur Laragon. Nous renommons ce dossier <strong>[client-vuejs-impot]</strong> <strong>[5]</strong> puisque nous avons configuré la version  de production pour fonctionner à l’URL <strong>[/client-vuejs-impot/]</strong>.</p>
 <p><u><strong>étape 3</strong></u></p>
 <p>Nous ajoutons dans le dossier <strong>[client-vuejs-impot]</strong> qui vient d’être créé le fichier <strong>[.htaccess]</strong> suivant :</p>
@@ -2418,8 +2596,10 @@
 <p>Nous modifions le fichier <strong>[config.json]</strong> de la version 14 du serveur :</p>
 <p><img src="images/10000000000006F30000033A75F81E6D.png" style="width:14.121cm;height:6.561cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000006F30000033A75F81E6D.png" /></p>
 <ul>
-<li>en <strong>[4]</strong>, nous indiquons que désormais les requêtes CORS sont refusées ;</li>
+  <li>en <b>[4]</b>, nous indiquons que désormais les requêtes CORS sont refusées ;
+  </li>
 </ul>
+
 <p>Sauvegardons cette modification et redemandons l’URL <strong>[https://localhost/client-vuejs-impot/]</strong>. Ca doit continuer à marcher.</p>
 <p><a id="refheadingtoc251842278084667"></a></p>
 <h2 id="187-gestion-des-url-manuelles">18.7. Gestion des URL manuelles</h2>
@@ -2463,8 +2643,10 @@
 <p>On a fait quelque chose de déconseillé : taper l’URL à la main (faire F5 revient à ça). Nous avons alors perdu nos simulations.</p>
 <p>Le projet suivant <strong>[vuejs-21]</strong> se propose d’apporter deux améliorations :</p>
 <ul>
-<li>contrôler les URL tapées par l’utilisateur ;</li>
-<li>garder une mémoire de l’application même si l’utilisateur tape une URL. Ci-dessus, on voit qu’on a perdu la liste des simulations ;</li>
+  <li>contrôler les URL tapées par l’utilisateur ;
+  </li>
+  <li>garder une mémoire de l’application même si l’utilisateur tape une URL. Ci-dessus, on voit qu’on a perdu la liste des simulations ;
+  </li>
 </ul>
 
 

@@ -1008,18 +1008,28 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>un plugin <strong>[Vue]</strong> est un objet ayant une fonction <strong>[install]</strong> (ligne 2). Celle-ci sera automatiquement appelée lorsqu’un code déclare l’utilisation du plugin ;</li>
-<li>lignes 1-9 : l’objet exporté par le script ;</li>
-<li>ligne 2 : la fonction <strong>[install]</strong> accepte ici deux paramètres :<ul>
-<li><strong>[Vue]</strong> : la fonction obtenue par l’instruction <strong>[import Vue from ‘Vue’]</strong>. Peut-être assimilée à une classe ;</li>
-<li><strong>[eventBus]</strong> : l’objet exporté par le script <strong>[./event-bus]</strong> ;</li>
+  <li>un plugin <b>[Vue]</b> est un objet ayant une fonction <b>[install]</b> (ligne 2). Celle-ci sera automatiquement appelée lorsqu’un code déclare l’utilisation du plugin ;
+  </li>
+  <li>lignes 1-9 : l’objet exporté par le script ;
+  </li>
+  <li>ligne 2 : la fonction <b>[install]</b> accepte ici deux paramètres :
+    <ul>
+      <li><b>[Vue]</b> : la fonction obtenue par l’instruction <b>[import Vue from ‘Vue’]</b>. Peut-être assimilée à une classe ;
+      </li>
+      <li><b>[eventBus]</b> : l’objet exporté par le script <b>[./event-bus]</b> ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 4-7 : modifient la définition (on dit le prototype) de la fonction <b>[Vue]</b> en lui ajoutant la propriété <b>[$eventBus]</b>. Si on raisonne avec le terme <b>[classe]</b>, la propriété <b>[$eventBus]</b> est ajoutée à la clase <b>[Vue]</b>. Les composants qui sont des instances de <b>[Vue]</b> auront donc accès à cette nouvelle propriété ;
+  </li>
+  <li>la ligne 6 indique que lorsqu’on référencera la propriété <b>[Vue]</b><b>.$eventBus</b>, on obtiendra le paramètre <b>[eventBus]</b> de la ligne 2. Nous allons voir un peu plus loin que ce second paramètre sera l’objet <b>[eventBus]</b> exporté par le script <b>[./event-bus.js]</b>. Donc au final, lorsqu’un composant C utilisera l’expression <b>[C.$eventBus]</b> il référencera  l’objet <b>[eventBus]</b> exporté par le script <b>[./event-bus.js]</b>. Cela lui évitera d’importer le script <b>[./event-bus.js]</b>. L’intérêt du plugin est là : simplifier l’accès à l’objet <b>[eventBus]</b> exporté par le script <b>[./event-bus.js]</b> ;
+  </li>
+  <li>on notera que le plugin n’a pas à s’appeler lui-même <b>[event-bus.js]</b>. On aurait pu l’appeler <b>[plugin-event-bus]</b> par exemple ;
+  </li>
+  <li>on notera également que le terme $ dans <b>[$eventBus]</b> est une convention pour désigner les propriétés de <b>[Vue]</b> qui ont été ajoutées via des plugins. On n’est pas obligés d’observer cette convention. Dans ce texte, nous l’observerons ;
+  </li>
 </ul>
-</li>
-<li>lignes 4-7 : modifient la définition (on dit le prototype) de la fonction <strong>[Vue]</strong> en lui ajoutant la propriété <strong>[$eventBus]</strong>. Si on raisonne avec le terme <strong>[classe]</strong>, la propriété <strong>[$eventBus]</strong> est ajoutée à la clase <strong>[Vue]</strong>. Les composants qui sont des instances de <strong>[Vue]</strong> auront donc accès à cette nouvelle propriété ;</li>
-<li>la ligne 6 indique que lorsqu’on référencera la propriété <strong>[Vue]</strong><strong>.$eventBus</strong>, on obtiendra le paramètre <strong>[eventBus]</strong> de la ligne 2. Nous allons voir un peu plus loin que ce second paramètre sera l’objet <strong>[eventBus]</strong> exporté par le script <strong>[./event-bus.js]</strong>. Donc au final, lorsqu’un composant C utilisera l’expression <strong>[C.$eventBus]</strong> il référencera  l’objet <strong>[eventBus]</strong> exporté par le script <strong>[./event-bus.js]</strong>. Cela lui évitera d’importer le script <strong>[./event-bus.js]</strong>. L’intérêt du plugin est là : simplifier l’accès à l’objet <strong>[eventBus]</strong> exporté par le script <strong>[./event-bus.js]</strong> ;</li>
-<li>on notera que le plugin n’a pas à s’appeler lui-même <strong>[event-bus.js]</strong>. On aurait pu l’appeler <strong>[plugin-event-bus]</strong> par exemple ;</li>
-<li>on notera également que le terme $ dans <strong>[$eventBus]</strong> est une convention pour désigner les propriétés de <strong>[Vue]</strong> qui ont été ajoutées via des plugins. On n’est pas obligés d’observer cette convention. Dans ce texte, nous l’observerons ;</li>
-</ul>
+
 <p><a id="refheadingtoc2480372728496130"></a></p>
 <h2 id="112-le-script-principal-mainjs">11.2. Le script principal [main.js]</h2>
 <p>Le script <strong>[./plugins/event-bus.js]</strong> définit un plugin pour le framework <strong>[Vue.js]</strong>. Ce plugin n’est pas encore utilisé, juste défini. C’est le script <strong>[main.js]</strong> qui l’active :</p>
@@ -1052,8 +1062,10 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>les lignes 14-16 activent le plugin <strong>[PluginEventBus]</strong>. Après la ligne 16, toutes les instances de la classe (fonction) <strong>[Vue]</strong> possèdent la propriété <strong>[$eventBus]</strong> qui pointe pour chacune d’elles sur le même object exporté par le script <strong>[./event-bus.js]</strong>. Ce sera le cas pour chacun des composants du projet ;</li>
+  <li>les lignes 14-16 activent le plugin <b>[PluginEventBus]</b>. Après la ligne 16, toutes les instances de la classe (fonction) <b>[Vue]</b> possèdent la propriété <b>[$eventBus]</b> qui pointe pour chacune d’elles sur le même object exporté par le script <b>[./event-bus.js]</b>. Ce sera le cas pour chacun des composants du projet ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480392728496130"></a></p>
 <h2 id="113-la-vue-principale-app">11.3. La vue principale [App]</h2>
 <p>La vue principale <strong>[App]</strong> reste ce qu’elle était dans le projet précédent.</p>
@@ -1101,8 +1113,10 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 33, utilisation de la propriété <strong>[this.$eventBus]</strong> du composant. On remarquera de plus que le script ligne 11 n’importe plus le script <strong>[./event-bus.js]</strong> ;</li>
+  <li>ligne 33, utilisation de la propriété <b>[this.$eventBus]</b> du composant. On remarquera de plus que le script ligne 11 n’importe plus le script <b>[./event-bus.js]</b> ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480432728496130"></a></p>
 <h2 id="115-le-composant-component2">11.5. Le composant [Component2]</h2>
 <p>Le composant <strong>[Component2]</strong> utilise désormais sa propriété <strong>[$eventBus]</strong> pour émettre l’événement <strong>[someEvent]</strong> :</p>
@@ -1128,8 +1142,10 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 13, utilisation de la propriété <strong>[this.$eventBus]</strong> du composant. On remarquera de plus que le script ligne 7 n’importe plus le script <strong>[./event-bus.js]</strong> ;</li>
+  <li>ligne 13, utilisation de la propriété <b>[this.$eventBus]</b> du composant. On remarquera de plus que le script ligne 7 n’importe plus le script <b>[./event-bus.js]</b> ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480452728496130"></a></p>
 <h2 id="116-composant-component3">11.6. Composant [Component3]</h2>
 <p>Le composant <strong>[Component3]</strong> a le même code que <strong>[Component1]</strong>. Lui également écoute l’événement <strong>[someEvent]</strong>.</p>

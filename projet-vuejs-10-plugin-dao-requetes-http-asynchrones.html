@@ -992,8 +992,10 @@
 <p>L’application <strong>[vuejs-10]</strong> utilise la bibliothèque <strong>[axios]</strong> pour faire les requêtes asynchrones vers le serveur de calcul d’impôt. Il nous faut installer cette dépendance :</p>
 <p><img src="images/100000000000076A0000018CD19A0CFA.png" style="width:15.071cm;height:3.14cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000076A0000018CD19A0CFA.png" /></p>
 <ul>
-<li>en <strong>[4-5]</strong>, la ligne ajoutée au fichier <strong>[package.json]</strong> après l’installation de la bibliothèque <strong>[axios]</strong> <strong>[1-3]</strong> ;</li>
+  <li>en <b>[4-5]</b>, la ligne ajoutée au fichier <b>[package.json]</b> après l’installation de la bibliothèque <b>[axios]</b> <b>[1-3]</b> ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480532728496130"></a></p>
 <h2 id="122-la-classe-dao">12.2. La classe [Dao]</h2>
 <p>La classe <strong>[Dao]</strong> est celle qui a été développée au paragraphe <a href="#1.11.2.La classe [Dao]|outline">[La classe Dao]</a>. Nous la redonnons ici pour mémoire :</p>
@@ -1176,21 +1178,32 @@
 
 <p>Le script <strong>[main.js]</strong> :</p>
 <ul>
-<li>instancie la couche <strong>[dao]</strong> aux lignes 14-21 ;</li>
-<li>intègre le plugin <strong>[pluginDao]</strong> aux lignes 24-25 ;</li>
-<li>ligne 15 : la classe <strong>[Dao]</strong> est importée ;</li>
-<li>lignes 17-18 : on configure l’objet <strong>[axios]</strong> qui réalise les requêtes HTTP. Cet objet est importé à la ligne 4 ;<ul>
-<li>ligne 17 : définition d’un <strong>[timeout]</strong> de 2 secondes ;</li>
-<li>ligne 18 : l’URL du serveur de calcul de l’impôt ;</li>
-<li>ligne 19 : pour pouvoir échanger des cookies avec le serveur ;</li>
+  <li>instancie la couche <b>[dao]</b> aux lignes 14-21 ;
+  </li>
+  <li>intègre le plugin <b>[pluginDao]</b> aux lignes 24-25 ;
+  </li>
+  <li>ligne 15 : la classe <b>[Dao]</b> est importée ;
+  </li>
+  <li>lignes 17-18 : on configure l’objet <b>[axios]</b> qui réalise les requêtes HTTP. Cet objet est importé à la ligne 4 ;
+    <ul>
+      <li>ligne 17 : définition d’un <b>[timeout]</b> de 2 secondes ;
+      </li>
+      <li>ligne 18 : l’URL du serveur de calcul de l’impôt ;
+      </li>
+      <li>ligne 19 : pour pouvoir échanger des cookies avec le serveur ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 24-25 : utilisation du plugin <b>[pluginDao]</b>
+    <ul>
+      <li>ligne 24 : import du plugin ;
+      </li>
+      <li>ligne 25 : intégration du plugin. On voit que le second paramètre de la méthode <b>[Vue.use]</b> est la référence de la couche <b>[dao]</b> définie ligne 21. C’est pour cette raison que la propriété <b>[Vue.$dao]</b> désignera la couche <b>[dao]</b> dans toutes les instances de la classe / fonction <b>[Vue]</b>, ç-à-d dans tous les composants <b>[Vue.js]</b> ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>lignes 24-25 : utilisation du plugin <strong>[pluginDao]</strong><ul>
-<li>ligne 24 : import du plugin ;</li>
-<li>ligne 25 : intégration du plugin. On voit que le second paramètre de la méthode <strong>[Vue.use]</strong> est la référence de la couche <strong>[dao]</strong> définie ligne 21. C’est pour cette raison que la propriété <strong>[Vue.$dao]</strong> désignera la couche <strong>[dao]</strong> dans toutes les instances de la classe / fonction <strong>[Vue]</strong>, ç-à-d dans tous les composants <strong>[Vue.js]</strong> ;</li>
-</ul>
-</li>
-</ul>
+
 <p><a id="refheadingtoc2480592728496130"></a></p>
 <h2 id="125-la-vue-principale-appvue">12.5. La vue principale [App.vue]</h2>
 <p>Le code de la vue principale <strong>[App]</strong> est le suivant :</p>
@@ -1264,18 +1277,28 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 9 : <strong>[Component1]</strong> est le composant qui fait la requête HTTP asynchrone. Il peut émettre trois événements :<ul>
-<li><strong>[beginWaiting]</strong> : la requête va être faite. Il faut afficher un message d’attente à destination de l’utilisateur ;</li>
-<li><strong>[endWaiting]</strong> : la requête est terminée. Il faut arrêter l’attente ;</li>
-<li><strong>[error]</strong> : la requête s’est mal passée. Il faut afficher un message d’erreur ;</li>
+  <li>ligne 9 : <b>[Component1]</b> est le composant qui fait la requête HTTP asynchrone. Il peut émettre trois événements :
+    <ul>
+      <li><b>[beginWaiting]</b> : la requête va être faite. Il faut afficher un message d’attente à destination de l’utilisateur ;
+      </li>
+      <li><b>[endWaiting]</b> : la requête est terminée. Il faut arrêter l’attente ;
+      </li>
+      <li><b>[error]</b> : la requête s’est mal passée. Il faut afficher un message d’erreur ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 10-13 : l’alerte qui affiche l’éventuel message d’erreur. Elle est contrôlée par le booléen <b>[showError]</b> de la ligne 33. Elle affiche l’erreur de la ligne 35 ;
+  </li>
+  <li>lignes 14-18 : l’alerte qui affiche le message d’attente avec un spinner. Elle est contrôlée par le booléen <b>[showWaiting]</b> de la ligne 47 ;
+  </li>
+  <li>lignes 45-50 : <b>[beginWaiting]</b> est la méthode exécutée à réception de l’événement <b>[beginWaiting]</b>. Elle affiche le message d’attente (ligne 47) et cache le message d’erreur (ligne 49) au cas où celui-ci serait visible suite à une opération précédente ;
+  </li>
+  <li>lignes 52-55 : <b>[endWaiting]</b> est la méthode exécutée à réception de l’événement <b>[endWaiting]</b>. Elle cache le message d’attente (ligne 54) ;
+  </li>
+  <li>lignes 57-62 : <b>[doSomethingWithError]</b> est la méthode exécutée à réception de l’événement <b>[error]</b>. Elle enregistre l’erreur reçue (ligne 59) et affiche le message d’erreur (ligne 61) ;
+  </li>
 </ul>
-</li>
-<li>lignes 10-13 : l’alerte qui affiche l’éventuel message d’erreur. Elle est contrôlée par le booléen <strong>[showError]</strong> de la ligne 33. Elle affiche l’erreur de la ligne 35 ;</li>
-<li>lignes 14-18 : l’alerte qui affiche le message d’attente avec un spinner. Elle est contrôlée par le booléen <strong>[showWaiting]</strong> de la ligne 47 ;</li>
-<li>lignes 45-50 : <strong>[beginWaiting]</strong> est la méthode exécutée à réception de l’événement <strong>[beginWaiting]</strong>. Elle affiche le message d’attente (ligne 47) et cache le message d’erreur (ligne 49) au cas où celui-ci serait visible suite à une opération précédente ;</li>
-<li>lignes 52-55 : <strong>[endWaiting]</strong> est la méthode exécutée à réception de l’événement <strong>[endWaiting]</strong>. Elle cache le message d’attente (ligne 54) ;</li>
-<li>lignes 57-62 : <strong>[doSomethingWithError]</strong> est la méthode exécutée à réception de l’événement <strong>[error]</strong>. Elle enregistre l’erreur reçue (ligne 59) et affiche le message d’erreur (ligne 61) ;</li>
-</ul>
+
 <p><a id="refheadingtoc2480612728496130"></a></p>
 <h2 id="126-le-composant-component1">12.6. Le composant [Component1]</h2>
 <p>Le code du composant <strong>[Component1]</strong> est le suivant :</p>
@@ -1339,15 +1362,24 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 4-6 : le composant est constitué d’une unique alerte qui affiche la valeur renvoyée par le serveur de calcul de l’impôt, ceci uniquement en cas de succès de la requête HTTP. Cette alerte est contrôlée par le booléen <strong>[showMsg]</strong> de la ligne 17 ;</li>
-<li>lignes 31-53 : la requête HTTP est faite dès que le composant a été créé. On met donc son code dans la méthode <strong>[created]</strong> de la ligne 31 ;</li>
-<li>ligne 35 : on indique au composant parent que la requête asynchrone va démarrer ;</li>
-<li>lignes 37-39 : la méthode <strong>[this.$dao.initSession]</strong> est exécutée. Elle initialise une session jSON avec le serveur de calcul d’impôt. Le résultat immédiat de cette méthode est une <strong>[Promise]</strong> ;</li>
-<li>lignes 41-44 : ce code s’exécute lorsque le serveur a rendu son résultat sans erreur. Le résultat du serveur est dans <strong>[data]</strong>. Ligne 43, on demande à la méthode <strong>[doSomethingWithData]</strong> de traiter ce résultat ;</li>
-<li>lignes 46-49 : ce code s’exécute en cas d’erreur lors de l’exécution de la requête. Ligne 48, on indique au composant parent qu’une erreur est survenue et on lui passe le message de l’erreur <strong>[error.message]</strong> ;</li>
-<li>lignes 49-52 : ce code s’exécute dans tous les cas. On indique au composant parent que la requête HTTP est terminée ;</li>
-<li>lignes 23-28 : la méthode <strong>[doSomethingWithData]</strong> est la méthode chagée d’exploiter la donnée <strong>[data]</strong> envoyée par le serveur. Ligne 25, on enregistre cette donnée et ligne 27 on l’affiche ;</li>
+  <li>lignes 4-6 : le composant est constitué d’une unique alerte qui affiche la valeur renvoyée par le serveur de calcul de l’impôt, ceci uniquement en cas de succès de la requête HTTP. Cette alerte est contrôlée par le booléen <b>[showMsg]</b> de la ligne 17 ;
+  </li>
+  <li>lignes 31-53 : la requête HTTP est faite dès que le composant a été créé. On met donc son code dans la méthode <b>[created]</b> de la ligne 31 ;
+  </li>
+  <li>ligne 35 : on indique au composant parent que la requête asynchrone va démarrer ;
+  </li>
+  <li>lignes 37-39 : la méthode <b>[this.$dao.initSession]</b> est exécutée. Elle initialise une session jSON avec le serveur de calcul d’impôt. Le résultat immédiat de cette méthode est une <b>[Promise]</b> ;
+  </li>
+  <li>lignes 41-44 : ce code s’exécute lorsque le serveur a rendu son résultat sans erreur. Le résultat du serveur est dans <b>[data]</b>. Ligne 43, on demande à la méthode <b>[doSomethingWithData]</b> de traiter ce résultat ;
+  </li>
+  <li>lignes 46-49 : ce code s’exécute en cas d’erreur lors de l’exécution de la requête. Ligne 48, on indique au composant parent qu’une erreur est survenue et on lui passe le message de l’erreur <b>[error.message]</b> ;
+  </li>
+  <li>lignes 49-52 : ce code s’exécute dans tous les cas. On indique au composant parent que la requête HTTP est terminée ;
+  </li>
+  <li>lignes 23-28 : la méthode <b>[doSomethingWithData]</b> est la méthode chagée d’exploiter la donnée <b>[data]</b> envoyée par le serveur. Ligne 25, on enregistre cette donnée et ligne 27 on l’affiche ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480632728496130"></a></p>
 <h2 id="127-execution-du-projet">12.7. Exécution du projet</h2>
 <p><img src="images/10000000000006F40000024A89EDD34C.png" style="width:14.131cm;height:4.65cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000006F40000024A89EDD34C.png" /></p>

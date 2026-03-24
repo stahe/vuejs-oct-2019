@@ -1001,9 +1001,12 @@
 <p>Le routage dans <strong>[Vue.js]</strong> nécessite la dépendance <strong>[vue-router]</strong> :</p>
 <p><img src="images/1000000000000783000002717021C36E.png" style="width:15.26cm;height:4.961cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000783000002717021C36E.png" /></p>
 <ul>
-<li>en <strong>[1-3]</strong>, on installe la dépendance <strong>[vue-router]</strong> ;</li>
-<li>en <strong>[4-6]</strong>, après installation de la dépendance, le fichier <strong>[package.json]</strong> a été modifié ;</li>
+  <li>en <b>[1-3]</b>, on installe la dépendance <b>[vue-router]</b> ;
+  </li>
+  <li>en <b>[4-6]</b>, après installation de la dépendance, le fichier <b>[package.json]</b> a été modifié ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480692728496130"></a></p>
 <h2 id="132-le-script-de-routage-routerjs">13.2. Le script de routage [router.js]</h2>
 <p>Les règles de navigation de l’application sont inscrites dans le fichier <strong>[router.js]</strong> (le nom du script peut être quelconque) :</p>
@@ -1051,25 +1054,38 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>le script <strong>[router.js]</strong> va fixer les règles de routage de notre application ;</li>
-<li>ligne 1-6 : activation du plugin <strong>[vue-router]</strong> nécessaire au routage. Cette activation nécessite l’import de la classe / fonction <strong>[Vue]</strong> (ligne 2) et celui du plugin de routage (ligne 3). Ce plugin a été installé avec la dépendance <strong>[router]</strong> que nous venons d’installer ;</li>
-<li>lignes 8-11 : import des vues cibles du routage ;</li>
-<li>lignes 15-21 : définition du tableau des routes. Chaque élément de ce tableau est un objet avec les propriétés suivantes :<ul>
-<li><strong>[path]</strong> : l’URL de la vue, celle que nous voulons voir affichée dans le champ <strong>[URL]</strong> du navigateur. On est libre de mettre ce qu’on veut ;</li>
-<li><strong>[name]</strong> : le nom de la route. Là également on peut mettre ce qu’on veut ;</li>
-<li><strong>[component]</strong> : le composant qui affiche la vue. Là c’est forcément un composant existant ;</li>
+  <li>le script <b>[router.js]</b> va fixer les règles de routage de notre application ;
+  </li>
+  <li>ligne 1-6 : activation du plugin <b>[vue-router]</b> nécessaire au routage. Cette activation nécessite l’import de la classe / fonction <b>[Vue]</b> (ligne 2) et celui du plugin de routage (ligne 3). Ce plugin a été installé avec la dépendance <b>[router]</b> que nous venons d’installer ;
+  </li>
+  <li>lignes 8-11 : import des vues cibles du routage ;
+  </li>
+  <li>lignes 15-21 : définition du tableau des routes. Chaque élément de ce tableau est un objet avec les propriétés suivantes :
+    <ul>
+      <li><b>[path]</b> : l’URL de la vue, celle que nous voulons voir affichée dans le champ <b>[URL]</b> du navigateur. On est libre de mettre ce qu’on veut ;
+      </li>
+      <li><b>[name]</b> : le nom de la route. Là également on peut mettre ce qu’on veut ;
+      </li>
+      <li><b>[component]</b> : le composant qui affiche la vue. Là c’est forcément un composant existant ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p>On aura donc ici quatre routes <strong>[/, /vue1, /vue2, /vue3]</strong>.</p>
 <ul>
-<li>lignes 33-36 : le routeur est une instance de la classe <strong>[VueRouter]</strong> importée ligne 3. Le constructeur de <strong>[VueRouter]</strong> est ici utilisé avec deux paramètres :<ul>
-<li>les routes de l’application ;</li>
-<li>un mode d’écriture des URL dans le navigateur : le mode par défaut <strong>[hash]</strong> écrit les URL sous la forme <strong>[localhost:8080/#/vue1]</strong> (# est le hash). Le mode <strong>[history]</strong> enlève le # <strong>[localhost:8080/vue1]</strong> ;</li>
+  <li>lignes 33-36 : le routeur est une instance de la classe <b>[VueRouter]</b> importée ligne 3. Le constructeur de <b>[VueRouter]</b> est ici utilisé avec deux paramètres :
+    <ul>
+      <li>les routes de l’application ;
+      </li>
+      <li>un mode d’écriture des URL dans le navigateur : le mode par défaut <b>[hash]</b> écrit les URL sous la forme <b>[localhost:8080/#/vue1]</b> (# est le hash). Le mode <b>[history]</b> enlève le # <b>[localhost:8080/vue1]</b> ;
+      </li>
+    </ul>
+  </li>
+  <li>ligne 39 : on exporte le routeur ;
+  </li>
 </ul>
-</li>
-<li>ligne 39 : on exporte le routeur ;</li>
-</ul>
+
 <p><a id="refheadingtoc2480712728496130"></a></p>
 <h2 id="133-le-script-principal-mainjs">13.3. Le script principal [main.js]</h2>
 <p>Le script principal <strong>[main.js]</strong> est le suivant :</p>
@@ -1104,9 +1120,12 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 14 : on importe le routeur exporté par le script <strong>[router.js]</strong> ;</li>
-<li>ligne 25 : ce routeur est passé en paramètre du constructeur de la classe <strong>[Vue]</strong> qui va afficher la vue principale <strong>[App]</strong>, associé à la propriété <strong>[router]</strong> de la vue ;</li>
+  <li>ligne 14 : on importe le routeur exporté par le script <b>[router.js]</b> ;
+  </li>
+  <li>ligne 25 : ce routeur est passé en paramètre du constructeur de la classe <b>[Vue]</b> qui va afficher la vue principale <b>[App]</b>, associé à la propriété <b>[router]</b> de la vue ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480732728496130"></a></p>
 <h2 id="134-la-vue-principale-app">13.4. La vue principale [App]</h2>
 <p>Le code de la vue principale est le suivant :</p>
@@ -1133,8 +1152,10 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 9 : affiche la vue courante du routage. La balise &lt;<strong>router-view</strong>&gt; n’est reconnue que si la propriété <strong>[router]</strong> de la vue a été initialisée ;</li>
+  <li>ligne 9 : affiche la vue courante du routage. La balise &lt;<b>router-view</b>&gt; n’est reconnue que si la propriété <b>[router]</b> de la vue a été initialisée ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480752728496130"></a></p>
 <h2 id="135-la-mise-en-page-des-vues">13.5. La mise en page des vues</h2>
 <p>La mise en page des vues est assurée par le composant <strong>[Layout]</strong> suivant :</p>
@@ -1188,9 +1209,12 @@
 </code></pre></div>
 
 <ul>
-<li>ce code génère le bloc 1 de trois liens permettant la navigation ;</li>
-<li>l’attribut <strong>[to]</strong> des balises &lt;b-nav-item&gt; doit correspondre à l’une des propriétés <strong>[path]</strong> des routes du routeur de l’application ;</li>
+  <li>ce code génère le bloc 1 de trois liens permettant la navigation ;
+  </li>
+  <li>l’attribut <b>[to]</b> des balises &lt;b-nav-item&gt; doit correspondre à l’une des propriétés <b>[path]</b> des routes du routeur de l’application ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480792728496130"></a></p>
 <h2 id="137-les-vues">13.7. Les vues</h2>
 <p>La vue n° 1 est la suivante :</p>
@@ -1222,10 +1246,14 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 2 : la vue n° 1 utilise la mise en page du composant <strong>[Layout]</strong> composée de deux slots appelés <strong>[left, right]</strong> ;</li>
-<li>ligne 4 : le menu de navigation est placé dans le slot de gauche. C’est la zone <strong>[3]</strong> qu’on voit ci-dessus ;</li>
-<li>ligne 6 : un message est placé dans le slot de droite. C’est la zone <strong>[4]</strong> qu’on voit ci-dessus ;</li>
+  <li>ligne 2 : la vue n° 1 utilise la mise en page du composant <b>[Layout]</b> composée de deux slots appelés <b>[left, right]</b> ;
+  </li>
+  <li>ligne 4 : le menu de navigation est placé dans le slot de gauche. C’est la zone <b>[3]</b> qu’on voit ci-dessus ;
+  </li>
+  <li>ligne 6 : un message est placé dans le slot de droite. C’est la zone <b>[4]</b> qu’on voit ci-dessus ;
+  </li>
 </ul>
+
 <p>Les vues 2 et 3 sont analogues.</p>
 <p>Vue n° 2 affichée par le composant <strong>[Component2]</strong> :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
@@ -1286,8 +1314,10 @@
 <p>A l’exécution la vue suivante s’affiche :</p>
 <p><img src="images/10000000000005F600000276BAF9C18A.png" style="width:10.09cm;height:4.171cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000005F600000276BAF9C18A.png" /></p>
 <ul>
-<li>en <strong>[1]</strong>, l’URL est <strong>[http://localhost:8080]</strong>. C’est alors la règle de routage suivante qui s’est exécutée :</li>
+  <li>en <b>[1]</b>, l’URL est <b>[http://localhost:8080]</b>. C’est alors la règle de routage suivante qui s’est exécutée :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">{ path: </span><span style="color:#a31515">&#x27;</span><span style="background-color:#ffff00;color:#a31515">/</span><span style="color:#a31515">&#x27;</span><span style="color:#000000">, name: </span><span style="color:#a31515">&#x27;home&#x27;</span><span style="color:#000000">, component: Component1 }</span></span>
 </code></pre></div>
@@ -1299,8 +1329,10 @@
 
 <p>L’affichage devient le suivant :</p>
 <ul>
-<li>en <strong>[3]</strong>, la règle suivante de routage s’est exécutée :</li>
+  <li>en <b>[3]</b>, la règle suivante de routage s’est exécutée :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">path: </span><span style="color:#a31515">&#x27;</span><span style="background-color:#ffff00;color:#a31515">/vue1</span><span style="color:#a31515">&#x27;</span><span style="color:#000000">, name: </span><span style="color:#a31515">&#x27;vue1&#x27;</span><span style="color:#000000">, component: Component1</span></span>
 </code></pre></div>
@@ -1313,8 +1345,10 @@
 <p>La nouvelle vue est alors la suivante :</p>
 <p><img src="images/10000000000002D10000028345F88051.png" style="width:4.77cm;height:4.25cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002D10000028345F88051.png" /></p>
 <ul>
-<li>en <strong>[5]</strong>, la règle suivante de routage s’est exécutée :</li>
+  <li>en <b>[5]</b>, la règle suivante de routage s’est exécutée :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">path: </span><span style="color:#a31515">&#x27;</span><span style="background-color:#ffff00;color:#a31515">/vue2</span><span style="color:#a31515">&#x27;</span><span style="color:#000000">, name: </span><span style="color:#a31515">&#x27;vue2&#x27;</span><span style="color:#000000">, component: Component2</span></span>
 </code></pre></div>
@@ -1327,8 +1361,10 @@
 <p>Nous obtenons la nouvelle vue suivante :</p>
 <p><img src="images/10000000000002D200000247B35F1259.png" style="width:4.77cm;height:3.86cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000002D200000247B35F1259.png" /></p>
 <ul>
-<li>en <strong>[6]</strong>, la règle de routage suivante s’est exécutée :</li>
+  <li>en <b>[6]</b>, la règle de routage suivante s’est exécutée :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#000000">path: </span><span style="color:#a31515">&#x27;</span><span style="background-color:#ffff00;color:#a31515">/vue3</span><span style="color:#a31515">&#x27;</span><span style="color:#000000">, name: </span><span style="color:#a31515">&#x27;vue3&#x27;</span><span style="color:#000000">, component: Component3</span></span>
 </code></pre></div>

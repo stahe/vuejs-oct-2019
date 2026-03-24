@@ -998,9 +998,12 @@
 
 <p>Le script <strong>[event-bus]</strong> se contente de créer une instance de la classe <strong>[Vue]</strong> (lignes 1-2) et de l’exporter (ligne 3). La classe <strong>[Vue]</strong> possède deux méthodes pour gérer les événements :</p>
 <ul>
-<li><strong>[Vue]</strong><strong>.$emit(nom, donnée)</strong> : permet d’émettre un événement nommé <strong>[nom]</strong> et associé à la donnée <strong>[donnée]</strong> ;</li>
-<li><strong>[Vue]</strong><strong>.$on(nom, fn)</strong> : permet d’intercepter l’événement nommé <strong>[nom]</strong> et de le faire traiter par la fonction <strong>[fn]</strong>. La fonction <strong>[fn]</strong> recevra en paramètre la donnée <strong>[donnée]</strong> associée à l’événement par son émetteur ;</li>
+  <li><b>[Vue]</b><b>.$emit(nom, donnée)</b> : permet d’émettre un événement nommé <b>[nom]</b> et associé à la donnée <b>[donnée]</b> ;
+  </li>
+  <li><b>[Vue]</b><b>.$on(nom, fn)</b> : permet d’intercepter l’événement nommé <b>[nom]</b> et de le faire traiter par la fonction <b>[fn]</b>. La fonction <b>[fn]</b> recevra en paramètre la donnée <b>[donnée]</b> associée à l’événement par son émetteur ;
+  </li>
 </ul>
+
 <p>Cette gestion d’événements n’est pas liée à la hiérarchie des composants. Il faut simplement que les composants qui veulent communiquer ainsi utilisent <strong>la même instance</strong> de la classe <strong>[Vue]</strong> pour émettre / écouter les événements. Dans notre exemple, nous utiliserons l’instance <strong>[eventBus]</strong> définie par le script <strong>[event-bus.js]</strong> précédent.</p>
 <p><a id="refheadingtoc2480232728496130"></a></p>
 <h2 id="103-la-vue-principale-appvue">10.3. La vue principale [App.vue]</h2>
@@ -1037,8 +1040,10 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 8-10 : la vue principale <strong>[App]</strong> utilise trois composants <strong>[Component1, Component2, Component3]</strong> qui vont communiquer par événements. Les trois composants sont au même niveau dans la vue <strong>[App]</strong>. De plus, il n’y aura pas de relation de hiérarchie entre eux ;</li>
+  <li>lignes 8-10 : la vue principale <b>[App]</b> utilise trois composants <b>[Component1, Component2, Component3]</b> qui vont communiquer par événements. Les trois composants sont au même niveau dans la vue <b>[App]</b>. De plus, il n’y aura pas de relation de hiérarchie entre eux ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480252728496130"></a></p>
 <h2 id="104-le-composant-component1">10.4. Le composant [Component1]</h2>
 <p>Le code du composant <strong>[Component1]</strong> est le suivant :</p>
@@ -1084,13 +1089,20 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 4-6 : une alerte qui affiche la donnée <strong>[data]</strong> de la ligne 18. Cette donnée sera initialisée par le gestionnaire d’événement  <strong>[doSomething]</strong> de la ligne 25. Ce gestionnaire est activé à réception de l’événement <strong>[someEvent]</strong> (ligne 34). L’alerte est affichée conditionnellement à la valeur de l’attribut <strong>[showMsg]</strong> de la ligne 19. Cet attribut est lui également positionné par le gestionnaire d’événement  <strong>[doSomething]</strong> de la ligne 25 ;</li>
-<li>ligne 32 : la fonction <strong>[created]</strong> est un gestionnaire d’événement. Elle gère l’événement <strong>[created]</strong>, un événement émis au cours du cycle de vie du composant. Il en existe d’autres <strong>[beforeCreate, created, beforeMount, mounted, beforeUpdate, updated, beforeDestroy, destroyed]</strong>. L’événement <strong>[created]</strong> est émis lorsque le composant a été créé ;</li>
-<li>ligne 12 : l’instance <strong>[eventBus]</strong> de la classe <strong>[Vue]</strong> est importée ;</li>
-<li>ligne 34 : elle est utilisée pour écouter l’événement <strong>[someEvent]</strong>. Lorsque celui-ci se produit, la méthode <strong>[doSomething]</strong> de la ligne 25 est appelée ;</li>
-<li>ligne 25 : la méthode <strong>[doSomething]</strong> reçoit comme paramètre <strong>[data]</strong> la donnée que l’émetteur de l’événement <strong>[someEvent]</strong> a associée à l’événement ;</li>
-<li>lignes 26-27 : l’état du composant est modifié pour que l’alerte des lignes 4-6 affiche la donnée reçue ;</li>
+  <li>lignes 4-6 : une alerte qui affiche la donnée <b>[data]</b> de la ligne 18. Cette donnée sera initialisée par le gestionnaire d’événement  <b>[doSomething]</b> de la ligne 25. Ce gestionnaire est activé à réception de l’événement <b>[someEvent]</b> (ligne 34). L’alerte est affichée conditionnellement à la valeur de l’attribut <b>[showMsg]</b> de la ligne 19. Cet attribut est lui également positionné par le gestionnaire d’événement  <b>[doSomething]</b> de la ligne 25 ;
+  </li>
+  <li>ligne 32 : la fonction <b>[created]</b> est un gestionnaire d’événement. Elle gère l’événement <b>[created]</b>, un événement émis au cours du cycle de vie du composant. Il en existe d’autres <b>[beforeCreate, created, beforeMount, mounted, beforeUpdate, updated, beforeDestroy, destroyed]</b>. L’événement <b>[created]</b> est émis lorsque le composant a été créé ;
+  </li>
+  <li>ligne 12 : l’instance <b>[eventBus]</b> de la classe <b>[Vue]</b> est importée ;
+  </li>
+  <li>ligne 34 : elle est utilisée pour écouter l’événement <b>[someEvent]</b>. Lorsque celui-ci se produit, la méthode <b>[doSomething]</b> de la ligne 25 est appelée ;
+  </li>
+  <li>ligne 25 : la méthode <b>[doSomething]</b> reçoit comme paramètre <b>[data]</b> la donnée que l’émetteur de l’événement <b>[someEvent]</b> a associée à l’événement ;
+  </li>
+  <li>lignes 26-27 : l’état du composant est modifié pour que l’alerte des lignes 4-6 affiche la donnée reçue ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480272728496130"></a></p>
 <h2 id="105-le-composant-component2">10.5. Le composant [Component2]</h2>
 <p>Le composant <strong>[Component2]</strong> est le suivant :</p>
@@ -1117,10 +1129,14 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 3 : un bouton pour créer un événement. Lorsque l’utilisateur clique sur ce bouton, la méthode <strong>[createEvent]</strong> de la ligne 13 est appelée ;</li>
-<li>ligne 8 : l’instance <strong>[eventBus]</strong> définie par le script <strong>[event-bus.js]</strong> est importée ;</li>
-<li>ligne 14 : cette instance est utilisée pour émettre un événement nommé <strong>[someEvent]</strong> associé à la donnée <strong>[{ x: 2, y: 4 }]</strong>. Au final,  lorsque l’utilisateur clique sur le bouton de la ligne 3, l’événement <strong>[someEvent]</strong> est émis. Si on se rappelle la définition de <strong>[Component1]</strong>, celui-ci interceptera cet événement ;</li>
+  <li>ligne 3 : un bouton pour créer un événement. Lorsque l’utilisateur clique sur ce bouton, la méthode <b>[createEvent]</b> de la ligne 13 est appelée ;
+  </li>
+  <li>ligne 8 : l’instance <b>[eventBus]</b> définie par le script <b>[event-bus.js]</b> est importée ;
+  </li>
+  <li>ligne 14 : cette instance est utilisée pour émettre un événement nommé <b>[someEvent]</b> associé à la donnée <b>[{ x: 2, y: 4 }]</b>. Au final,  lorsque l’utilisateur clique sur le bouton de la ligne 3, l’événement <b>[someEvent]</b> est émis. Si on se rappelle la définition de <b>[Component1]</b>, celui-ci interceptera cet événement ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480292728496130"></a></p>
 <h2 id="106-le-composant-component3">10.6. Le composant [Component3]</h2>
 <p>Le code de ce composant est le suivant :</p>

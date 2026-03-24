@@ -1171,18 +1171,28 @@
 <p>Le projet <strong>[vuejs-21]</strong> est créé initialement par duplication du projet <strong>[vuejs-20]</strong>. Il est ensuite modifié <strong>[3]</strong>.</p>
 <p>De nouveaux fichiers apparaissent :</p>
 <ul>
-<li><strong>[session.js]</strong> : exporte un objet <strong>[session]</strong> qui va encapsuler des informations sur la session courante ;</li>
-<li><strong>[pluginSession]</strong> : rend disponible l’objet <strong>[session]</strong> précédent dans la propriété <strong>[$session]</strong> des vues ;</li>
-<li><strong>[NotFound.vue]</strong> : une nouvelle vue affichée lorsque l’utilisateur demande manuellement une URL qui n’existe pas ;</li>
+  <li><b>[session.js]</b> : exporte un objet <b>[session]</b> qui va encapsuler des informations sur la session courante ;
+  </li>
+  <li><b>[pluginSession]</b> : rend disponible l’objet <b>[session]</b> précédent dans la propriété <b>[$session]</b> des vues ;
+  </li>
+  <li><b>[NotFound.vue]</b> : une nouvelle vue affichée lorsque l’utilisateur demande manuellement une URL qui n’existe pas ;
+  </li>
 </ul>
+
 <p>Des fichiers seront modifiés :</p>
 <ul>
-<li><strong>[main.js]</strong> : va initialiser la session courante puis, lorsque l’utilisateur va taper manuellement des URL va la restaurer ;</li>
-<li><strong>[router.js]</strong> : des contrôles sont ajoutés pour traiter le cas des URL tapées par l’utilisateur ;</li>
-<li><strong>[store.js]</strong> : une nouvelle mutation est ajoutée ;</li>
-<li><strong>[config.js]</strong> : une nouvelle configuration est ajoutée ;</li>
-<li>différentes vues essentiellement pour sauver la session courante à des moments clés de la vie de l’application. Celle-ci est ensuite restaurée à chaque fois que l’utilisateur tape manuellement des URL ;</li>
+  <li><b>[main.js]</b> : va initialiser la session courante puis, lorsque l’utilisateur va taper manuellement des URL va la restaurer ;
+  </li>
+  <li><b>[router.js]</b> : des contrôles sont ajoutés pour traiter le cas des URL tapées par l’utilisateur ;
+  </li>
+  <li><b>[store.js]</b> : une nouvelle mutation est ajoutée ;
+  </li>
+  <li><b>[config.js]</b> : une nouvelle configuration est ajoutée ;
+  </li>
+  <li>différentes vues essentiellement pour sauver la session courante à des moments clés de la vie de l’application. Celle-ci est ensuite restaurée à chaque fois que l’utilisateur tape manuellement des URL ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc259305196815120"></a></p>
 <h2 id="192-le-store-vuex">19.2. Le store [Vuex]</h2>
 <p>Le script <strong>[./store]</strong> évolue de la façon suivante :</p>
@@ -1223,8 +1233,10 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 24-29 : la mutation <strong>[clear]</strong> supprime la liste des simulations enregistrées et remet à 0 le n° de la dernière simulation.</li>
+  <li>lignes 24-29 : la mutation <b>[clear]</b> supprime la liste des simulations enregistrées et remet à 0 le n° de la dernière simulation.
+  </li>
 </ul>
+
 <p><a id="refheadingtoc259307196815120"></a></p>
 <h2 id="193-la-session">19.3. La session</h2>
 <p>Le besoin d’une session vient du fait que lorsque l’utilisateur tape une URL dans le champ adresse du navigateur, le script <strong>[main.js]</strong> <strong>est exécuté de nouveau</strong>. Or celui-ci contient l’instruction :</p>
@@ -1258,10 +1270,14 @@
 
 <p>On voit, lignes 7-13, qu’on importe un tableau de simulations vide. Si donc on avait des simulations avant que l’utilisateur ne tape une URL dans le champ adresse du navigateur, après on n’en a plus. L’idée est :</p>
 <ul>
-<li>d’utiliser une session qui stockerait les informations qu’on veut conserver si l’utilisateur tape manuellement des URL ;</li>
-<li>de la sauvegarder à des moments clés de l’application ;</li>
-<li>de la restaurer dans <strong>[main.js]</strong> qui <strong>est toujours exécuté</strong> lorsqu’une URL est tapée manuellement ;</li>
+  <li>d’utiliser une session qui stockerait les informations qu’on veut conserver si l’utilisateur tape manuellement des URL ;
+  </li>
+  <li>de la sauvegarder à des moments clés de l’application ;
+  </li>
+  <li>de la restaurer dans <b>[main.js]</b> qui <b>est toujours exécuté</b> lorsqu’une URL est tapée manuellement ;
+  </li>
 </ul>
+
 <p>Le script <strong>[./session]</strong> est le suivant :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
 <span class="odt-code-line">// on importe le store Vuex</span>
@@ -1347,38 +1363,62 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 2 : la session va encapsuler également le store <strong>[Vuex]</strong> (liste des simulations, n° de la dernière simulation faite) ;</li>
-<li>lignes 7-17 : les informations conservées par la session :<ul>
-<li><strong>[started]</strong> : la session jSON avec le serveur a démarré ou non ;</li>
-<li><strong>[authenticated]</strong> : l’utilisateur s’est authentifié ou pas ;</li>
-<li><strong>[saveTime]</strong> : la date en millisecondes de la dernière sauvegarde ;</li>
-<li><strong>[métier]</strong> : une référence sur la couche <strong>[métier]</strong>. Celle-ci contient la donnée <strong>[taxAdminData]</strong> qui permet le calcul de l’impôt ;</li>
-<li><strong>[state]</strong> : le state du store <strong>[Vuex]</strong> (liste des simulations, n° de la dernière simulation faite) ;</li>
+  <li>ligne 2 : la session va encapsuler également le store <b>[Vuex]</b> (liste des simulations, n° de la dernière simulation faite) ;
+  </li>
+  <li>lignes 7-17 : les informations conservées par la session :
+    <ul>
+      <li><b>[started]</b> : la session jSON avec le serveur a démarré ou non ;
+      </li>
+      <li><b>[authenticated]</b> : l’utilisateur s’est authentifié ou pas ;
+      </li>
+      <li><b>[saveTime]</b> : la date en millisecondes de la dernière sauvegarde ;
+      </li>
+      <li><b>[métier]</b> : une référence sur la couche <b>[métier]</b>. Celle-ci contient la donnée <b>[taxAdminData]</b> qui permet le calcul de l’impôt ;
+      </li>
+      <li><b>[state]</b> : le state du store <b>[Vuex]</b> (liste des simulations, n° de la dernière simulation faite) ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 20-30 : la méthode <b>[save]</b> sauvegarde la session localement sur le navigateur exécutant l’application ;
+    <ul>
+      <li>ligne 22 : on note l’heure de sauvegarde ;
+      </li>
+      <li>ligne 23 : on récupère le <b>[state]</b> du store <b>[Vuex]</b> ;
+      </li>
+      <li>ligne 25 : on crée la chaîne jSON de la session ;
+      </li>
+      <li>ligne 27 : on la stocke localement sur le navigateur associée à la clé <b>[session]</b> ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 33-57 : la méthode <b>[restore]</b> permet de restaurer une session à partir de sa sauvegarde locale sur le navigateur ;
+    <ul>
+      <li>ligne 35 : on récupère la sauvegarde jSON locale ;
+      </li>
+      <li>ligne 37 : si on a récupéré quelque chose ;
+      </li>
+      <li>lignes 39-44 : l’objet <b>[session]</b> est reconstitué ;
+      </li>
+      <li>ligne 46 : on calcule la durée qui nous sépare de la dernière sauvegarde ;
+      </li>
+      <li>lignes 47-50 : si cette durée est supérieure à une valeur <b>[config.duréeSession]</b> fixée par configuration, la session est réinitialisée (ligne 49) et à cette occasion sauvegardée ;
+      </li>
+      <li>ligne 52 : sinon on régénère l’attribut <b>[state]</b> du store <b>[Vuex]</b> ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 60-75 : la méthode <b>[clear]</b> réinitialise la session ;
+    <ul>
+      <li>lignes 64-70 : les propriétés de la session sont réinitialisées à leurs valeurs initiales ;
+      </li>
+      <li>ligne 72 : ainsi que le store <b>[Vuex]</b> ;
+      </li>
+      <li>ligne 74 : la nouvelle session est sauvegardée ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>lignes 20-30 : la méthode <strong>[save]</strong> sauvegarde la session localement sur le navigateur exécutant l’application ;<ul>
-<li>ligne 22 : on note l’heure de sauvegarde ;</li>
-<li>ligne 23 : on récupère le <strong>[state]</strong> du store <strong>[Vuex]</strong> ;</li>
-<li>ligne 25 : on crée la chaîne jSON de la session ;</li>
-<li>ligne 27 : on la stocke localement sur le navigateur associée à la clé <strong>[session]</strong> ;</li>
-</ul>
-</li>
-<li>lignes 33-57 : la méthode <strong>[restore]</strong> permet de restaurer une session à partir de sa sauvegarde locale sur le navigateur ;<ul>
-<li>ligne 35 : on récupère la sauvegarde jSON locale ;</li>
-<li>ligne 37 : si on a récupéré quelque chose ;</li>
-<li>lignes 39-44 : l’objet <strong>[session]</strong> est reconstitué ;</li>
-<li>ligne 46 : on calcule la durée qui nous sépare de la dernière sauvegarde ;</li>
-<li>lignes 47-50 : si cette durée est supérieure à une valeur <strong>[config.duréeSession]</strong> fixée par configuration, la session est réinitialisée (ligne 49) et à cette occasion sauvegardée ;</li>
-<li>ligne 52 : sinon on régénère l’attribut <strong>[state]</strong> du store <strong>[Vuex]</strong> ;</li>
-</ul>
-</li>
-<li>lignes 60-75 : la méthode <strong>[clear]</strong> réinitialise la session ;<ul>
-<li>lignes 64-70 : les propriétés de la session sont réinitialisées à leurs valeurs initiales ;</li>
-<li>ligne 72 : ainsi que le store <strong>[Vuex]</strong> ;</li>
-<li>ligne 74 : la nouvelle session est sauvegardée ;</li>
-</ul>
-</li>
-</ul>
+
 <p><a id="refheadingtoc259309196815120"></a></p>
 <h2 id="194-le-fichier-de-configuration-config">19.4. Le fichier de configuration [config]</h2>
 <p>Le fichier <strong>[./config]</strong> évolue de la façon suivante :</p>
@@ -1399,8 +1439,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 12 : on va gérer la session de l’application un peu comme on gère une session web. On fixe ici une durée d’inactivité maximale de 5 minutes ;</li>
+  <li>ligne 12 : on va gérer la session de l’application un peu comme on gère une session web. On fixe ici une durée d’inactivité maximale de 5 minutes ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc259311196815120"></a></p>
 <h2 id="195-le-plugin-pluginsession">19.5. Le plugin [pluginSession]</h2>
 <p>Comme il a été fait déjà de nombreuses fois, le plugin <strong>[pluginSession]</strong> va permettre aux vues d’avoir accès à la session via la propriété <strong>[this.$session]</strong> :</p>
@@ -1470,13 +1512,20 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 19 : on importe la session ;</li>
-<li>ligne 20 : on importe son plugin ;</li>
-<li>ligne 21 : le plugin <strong>[pluginSession]</strong> est intégré à <strong>[Vue]</strong>. Après cette instruction toutes les vues disposent de la session dans leur attribut <strong>[$session]</strong> ;</li>
-<li>ligne 27 : la session est restaurée. La session importée ligne 11 est alors initialisée avec le contenu de sa dernière sauvegarde ;</li>
-<li>après la ligne 16, les vues disposent d’une propriété <strong>[$métier]</strong> initialisée ligne 12. Cette propriété n’a pas l’information <strong>[taxAdminData]</strong> qui permet de calculer l’impôt ;</li>
-<li>lignes 30-32 : si la restauration qui vient d’être faite a restauré la propriété <strong>[session.métier.taxAdminData]</strong> alors la propriété <strong>[$métier]</strong> des vues est initialisée avec cette valeur ;</li>
+  <li>ligne 19 : on importe la session ;
+  </li>
+  <li>ligne 20 : on importe son plugin ;
+  </li>
+  <li>ligne 21 : le plugin <b>[pluginSession]</b> est intégré à <b>[Vue]</b>. Après cette instruction toutes les vues disposent de la session dans leur attribut <b>[$session]</b> ;
+  </li>
+  <li>ligne 27 : la session est restaurée. La session importée ligne 11 est alors initialisée avec le contenu de sa dernière sauvegarde ;
+  </li>
+  <li>après la ligne 16, les vues disposent d’une propriété <b>[$métier]</b> initialisée ligne 12. Cette propriété n’a pas l’information <b>[taxAdminData]</b> qui permet de calculer l’impôt ;
+  </li>
+  <li>lignes 30-32 : si la restauration qui vient d’être faite a restauré la propriété <b>[session.métier.taxAdminData]</b> alors la propriété <b>[$métier]</b> des vues est initialisée avec cette valeur ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc259315196815120"></a></p>
 <h2 id="197-le-fichier-de-routage-router">19.7. Le fichier de routage [router]</h2>
 <p>Le fichier de routage <strong>[./router]</strong> évolue comme suit :</p>
@@ -1564,28 +1613,46 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 16-38 : certaines routes ont été enrichies d’informations supplémentaires ;</li>
-<li>ligne 19 : on a créé une nouvelle route pour aller à la vue <strong>[Authentification]</strong> ;</li>
-<li>lignes 21-24 : la route qui mène à la vue <strong>[CalculImpot]</strong> a maintenant une propriété <strong>[meta]</strong> (ce nom est obligatoire). Le contenu de cet objet peut être quelconque et est fixé par le développeur ;</li>
-<li>ligne 23 : on met dans <strong>[meta]</strong>, la propriété <strong>[authenticated]</strong> (ce nom peut être quelconque). Il signifiera pour nous que pour aller à la vue <strong>[CalculImpot]</strong>, l’utilisateur doit être authentifié ;</li>
-<li>lignes 26-29 : on fait la même chose pour la route qui mène à la vue <strong>[ListeSimulations]</strong>. Là aussi, l’utilisateur doit être authentifié ;</li>
-<li>la propriété <strong>[meta.authenticated]</strong> va nous permettre de vérifier qu’un utilisateur qui tape manuellement les URL des vues <strong>[CalculImpot, ListeSimulations]</strong> ne peut pas les obtenir s’il n’est pas authentifié ;</li>
-<li>lignes 51-76 : la méthode <strong>[beforeEach]</strong> est exécutée avant qu’une vue ne soit routée. C’est le bon moment pour faire des vérifications ;<ul>
-<li><strong>[to]</strong> : la prochaine route si on ne fait rien ;</li>
-<li><strong>[from]</strong> : la dernière route affichée ;</li>
-<li><strong>[next]</strong> : fonction permettant de changer la prochaine route affichée ;</li>
+  <li>lignes 16-38 : certaines routes ont été enrichies d’informations supplémentaires ;
+  </li>
+  <li>ligne 19 : on a créé une nouvelle route pour aller à la vue <b>[Authentification]</b> ;
+  </li>
+  <li>lignes 21-24 : la route qui mène à la vue <b>[CalculImpot]</b> a maintenant une propriété <b>[meta]</b> (ce nom est obligatoire). Le contenu de cet objet peut être quelconque et est fixé par le développeur ;
+  </li>
+  <li>ligne 23 : on met dans <b>[meta]</b>, la propriété <b>[authenticated]</b> (ce nom peut être quelconque). Il signifiera pour nous que pour aller à la vue <b>[CalculImpot]</b>, l’utilisateur doit être authentifié ;
+  </li>
+  <li>lignes 26-29 : on fait la même chose pour la route qui mène à la vue <b>[ListeSimulations]</b>. Là aussi, l’utilisateur doit être authentifié ;
+  </li>
+  <li>la propriété <b>[meta.authenticated]</b> va nous permettre de vérifier qu’un utilisateur qui tape manuellement les URL des vues <b>[CalculImpot, ListeSimulations]</b> ne peut pas les obtenir s’il n’est pas authentifié ;
+  </li>
+  <li>lignes 51-76 : la méthode <b>[beforeEach]</b> est exécutée avant qu’une vue ne soit routée. C’est le bon moment pour faire des vérifications ;
+    <ul>
+      <li><b>[to]</b> : la prochaine route si on ne fait rien ;
+      </li>
+      <li><b>[from]</b> : la dernière route affichée ;
+      </li>
+      <li><b>[next]</b> : fonction permettant de changer la prochaine route affichée ;
+      </li>
+    </ul>
+  </li>
+  <li>ligne 55 : on regarde si la prochaine route demande à ce que l’utilisateur soit authentifié ;
+  </li>
+  <li>lignes 56-59 : si oui et que l’utilisateur n’est pas authentifié, on change la prochaine route vers la vue <b>[Authentification]</b> ;
+  </li>
+  <li>lignes 64-73 : on traite le cas particulier de la route <b>[finSession]</b> des lignes 30-32. Celle-ci n’a pas de vue associée ;
+    <ul>
+      <li>ligne 66 : on réinitialise la session à sa valeur initiale ;
+      </li>
+      <li>lignes 68-70 : on programme la vue <b>[Authentification]</b> comme prochaine vue ;
+      </li>
+    </ul>
+  </li>
+  <li>ligne 75 : si on n’est pas dans les deux cas précédents, on se contente de passer à la route prévue par le fichier de routage ;
+  </li>
+  <li>lignes 35-37 : on prévoit une vue <b>[NotFound]</b> si la route tapée par l’utilisateur ne correspond à aucune route connue. Cette vue est importée ligne 8. Les routes sont vérifiées dans l’ordre du fichier de routage. Si donc on arrive à la ligne 36, c’est que la route demandée n’est aucune des routes des lignes 18-33 ;
+  </li>
 </ul>
-</li>
-<li>ligne 55 : on regarde si la prochaine route demande à ce que l’utilisateur soit authentifié ;</li>
-<li>lignes 56-59 : si oui et que l’utilisateur n’est pas authentifié, on change la prochaine route vers la vue <strong>[Authentification]</strong> ;</li>
-<li>lignes 64-73 : on traite le cas particulier de la route <strong>[finSession]</strong> des lignes 30-32. Celle-ci n’a pas de vue associée ;<ul>
-<li>ligne 66 : on réinitialise la session à sa valeur initiale ;</li>
-<li>lignes 68-70 : on programme la vue <strong>[Authentification]</strong> comme prochaine vue ;</li>
-</ul>
-</li>
-<li>ligne 75 : si on n’est pas dans les deux cas précédents, on se contente de passer à la route prévue par le fichier de routage ;</li>
-<li>lignes 35-37 : on prévoit une vue <strong>[NotFound]</strong> si la route tapée par l’utilisateur ne correspond à aucune route connue. Cette vue est importée ligne 8. Les routes sont vérifiées dans l’ordre du fichier de routage. Si donc on arrive à la ligne 36, c’est que la route demandée n’est aucune des routes des lignes 18-33 ;</li>
-</ul>
+
 <p><a id="refheadingtoc259317196815120"></a></p>
 <h2 id="198-la-vue-notfound">19.8. La vue [NotFound]</h2>
 <p>La vue <strong>[NotFound]</strong> est affichée si la route tapée par l’utilisateur ne correspond à aucune route connue :</p>
@@ -1655,14 +1722,22 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 4 : elle utilise les deux colonnes des vues routées ;</li>
-<li>lignes 6-11 : un message d’erreur ;</li>
-<li>ligne 13 : le menu de navigation occupe la colonne de gauche ;</li>
-<li>lignes 31-36 : les options par défaut du menu ;</li>
-<li>lignes 40-57 : code exécuté lorsque la vue est créée ;</li>
-<li>ligne 44 : on regarde si l’utilisateur peut faire des simulations ;</li>
-<li>lignes 45-55 : si oui, on ajoute deux options au menu de navigation, celles où il faut être authentifié et avoir une couche <strong>[métier]</strong> opérationnelle (lignes 46-55) ;</li>
+  <li>ligne 4 : elle utilise les deux colonnes des vues routées ;
+  </li>
+  <li>lignes 6-11 : un message d’erreur ;
+  </li>
+  <li>ligne 13 : le menu de navigation occupe la colonne de gauche ;
+  </li>
+  <li>lignes 31-36 : les options par défaut du menu ;
+  </li>
+  <li>lignes 40-57 : code exécuté lorsque la vue est créée ;
+  </li>
+  <li>ligne 44 : on regarde si l’utilisateur peut faire des simulations ;
+  </li>
+  <li>lignes 45-55 : si oui, on ajoute deux options au menu de navigation, celles où il faut être authentifié et avoir une couche <b>[métier]</b> opérationnelle (lignes 46-55) ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc259319196815120"></a></p>
 <h2 id="199-la-vue-authentification">19.9. La vue [Authentification]</h2>
 <p>La vue <strong>[Authentification]</strong> évolue comme suit :</p>
@@ -1824,16 +1899,26 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>on a surligné en jaune les instructions qui utilisent la session introduite dans cette version du client <strong>[Vue.js]</strong> ;</li>
-<li>lignes 97, 148 : à la fin des méthodes <strong>[login, created]</strong>, la session est sauvegardée quelque soit le résultat des requêtes HTTP qui ont lieu dans ces méthodes (clause <strong>[finally]</strong> dans les deux cas) ;</li>
-<li>la méthode <strong>[created]</strong> des lignes 102-150 est exécutée à chaque fois que la vue <strong>[Authentification]</strong> est créée. Si c’est l’utilisateur qui a tapé l’URL de la vue, la session va nous permettre de savoir quoi faire ;</li>
-<li>lignes 106-115 : si la session jSON est démarrée, l’utilisateur authentifié et la donnée <strong>[this.$métier.taxAdminData]</strong> initialisée alors l’utilisateur peut directement aller au formulaire de calcul de l’impôt (ligne 112) ;</li>
-<li>ligne 117 : la méthode <strong>[created]</strong> était utilisée dans la version précédente pour initialiser une session jSON avec le serveur. Cette phase est inutile si elle a déjà eu lieu ;</li>
-<li>lignes 42-66 : la méthode d’authentification ;</li>
-<li>ligne 66 : si l’authentification réussit, on le note dans la session ;</li>
-<li>lignes 67-92 : la demande au serveur des données de l’administration fiscale <strong>[taxAdminData]</strong> ;</li>
-<li>ligne 95 : à la fin de cette phase, on met à jour la propriété <strong>[métier]</strong> de la session que l’opération ait réussi ou pas ;</li>
+  <li>on a surligné en jaune les instructions qui utilisent la session introduite dans cette version du client <b>[Vue.js]</b> ;
+  </li>
+  <li>lignes 97, 148 : à la fin des méthodes <b>[login, created]</b>, la session est sauvegardée quelque soit le résultat des requêtes HTTP qui ont lieu dans ces méthodes (clause <b>[finally]</b> dans les deux cas) ;
+  </li>
+  <li>la méthode <b>[created]</b> des lignes 102-150 est exécutée à chaque fois que la vue <b>[Authentification]</b> est créée. Si c’est l’utilisateur qui a tapé l’URL de la vue, la session va nous permettre de savoir quoi faire ;
+  </li>
+  <li>lignes 106-115 : si la session jSON est démarrée, l’utilisateur authentifié et la donnée <b>[this.$métier.taxAdminData]</b> initialisée alors l’utilisateur peut directement aller au formulaire de calcul de l’impôt (ligne 112) ;
+  </li>
+  <li>ligne 117 : la méthode <b>[created]</b> était utilisée dans la version précédente pour initialiser une session jSON avec le serveur. Cette phase est inutile si elle a déjà eu lieu ;
+  </li>
+  <li>lignes 42-66 : la méthode d’authentification ;
+  </li>
+  <li>ligne 66 : si l’authentification réussit, on le note dans la session ;
+  </li>
+  <li>lignes 67-92 : la demande au serveur des données de l’administration fiscale <b>[taxAdminData]</b> ;
+  </li>
+  <li>ligne 95 : à la fin de cette phase, on met à jour la propriété <b>[métier]</b> de la session que l’opération ait réussi ou pas ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc259321196815120"></a></p>
 <h2 id="1910-la-vue-calculimpot">19.10. La vue [CalculImpot]</h2>
 <p>Le code de la vue <strong>[CalculImpot]</strong> évolue comme suit :</p>
@@ -1898,9 +1983,12 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 45 : la simulation calculée est ajoutée au store <strong>[Vuex]</strong>. Cela a un impact sur la session qui englobe la propriété <strong>[state]</strong> du store. Aussi sauvegarde-t-on la session (ligne 47) ;</li>
-<li>ligne 51 : on crée une méthode <strong>[created]</strong> pour suivre dans les logs les créations des vues ;</li>
+  <li>ligne 45 : la simulation calculée est ajoutée au store <b>[Vuex]</b>. Cela a un impact sur la session qui englobe la propriété <b>[state]</b> du store. Aussi sauvegarde-t-on la session (ligne 47) ;
+  </li>
+  <li>ligne 51 : on crée une méthode <b>[created]</b> pour suivre dans les logs les créations des vues ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc259323196815120"></a></p>
 <h2 id="1911-la-vue-listesimulations">19.11. La vue [ListeSimulations]</h2>
 <p>La vue <strong>[ListeSimulations]</strong> évolue comme suit :</p>
@@ -1954,31 +2042,45 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 36 : après la suppression d’une simulation ligne 34, on sauvegarde la session pour tenir compte de ce changement d’état ;</li>
-<li>lignes 40-43 : on continue à suivre la création des vues ;</li>
+  <li>ligne 36 : après la suppression d’une simulation ligne 34, on sauvegarde la session pour tenir compte de ce changement d’état ;
+  </li>
+  <li>lignes 40-43 : on continue à suivre la création des vues ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc259325196815120"></a></p>
 <h2 id="1912-execution-du-projet">19.12. Exécution du projet</h2>
 <p><img src="images/10000000000007660000021C6CDBCEAB.png" style="width:15.031cm;height:4.291cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007660000021C6CDBCEAB.png" /></p>
 <p>Lors des tests vérifiez les points suivants :</p>
 <ul>
-<li>si l’utilisateur ‘utilise’ l’application via les liens du menu de navigation et les boutons / liens d’action, celle-ci fonctionne ;</li>
-<li>si l’utilisateur tape manuellement des URL, l’application continue à fonctionner. Faites en particulier le test suivant :<ul>
-<li>faites simulations ;</li>
-<li>une fois sur la vue <strong>[ListeSimulations]</strong>, rechargez (F5) la vue. Dans l’application précédente <strong>[vuejs-20]</strong>, on perdait alors les simulations. Ici ce n’est pas le cas : on retrouve bien les simulations déjà faites ;</li>
+  <li>si l’utilisateur ‘utilise’ l’application via les liens du menu de navigation et les boutons / liens d’action, celle-ci fonctionne ;
+  </li>
+  <li>si l’utilisateur tape manuellement des URL, l’application continue à fonctionner. Faites en particulier le test suivant :
+    <ul>
+      <li>faites simulations ;
+      </li>
+      <li>une fois sur la vue <b>[ListeSimulations]</b>, rechargez (F5) la vue. Dans l’application précédente <b>[vuejs-20]</b>, on perdait alors les simulations. Ici ce n’est pas le cas : on retrouve bien les simulations déjà faites ;
+      </li>
+    </ul>
+  </li>
+  <li>regardez les logs pour comprendre :
+    <ul>
+      <li>à quel moment le script <b>[main]</b> est exécuté. Vous devez voir qu’il l’est à chaque fois que l’utilisateur tape une URL à la main ;
+      </li>
+      <li>à quels moments les vues sont créées. Vous devez voir qu’elles le sont à chaque fois qu’elles vont être affichées ;
+      </li>
+      <li>le fonctionnement du routage. Avant chaque routage un log est fait qui vous indique :
+        <ul>
+          <li>la route d’où vous venez ;
+          </li>
+          <li>la route où vous allez ;
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>regardez les logs pour comprendre :<ul>
-<li>à quel moment le script <strong>[main]</strong> est exécuté. Vous devez voir qu’il l’est à chaque fois que l’utilisateur tape une URL à la main ;</li>
-<li>à quels moments les vues sont créées. Vous devez voir qu’elles le sont à chaque fois qu’elles vont être affichées ;</li>
-<li>le fonctionnement du routage. Avant chaque routage un log est fait qui vous indique :<ul>
-<li>la route d’où vous venez ;</li>
-<li>la route où vous allez ;</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+
 <p><a id="refheadingtoc259327196815120"></a></p>
 <h2 id="1913-deploiement-de-lapplication-sur-un-serveur-local">19.13. Déploiement de l’application sur un serveur local</h2>
 <p>Comme exercice, suivez le paragraphe <a href="#1.17.6.Déploiement de l’application sur un serveur local|outline">|Déploiement sur un serveur local|</a>, pour déployer le projet <strong>[vuejs-21]</strong> sur le serveur Laragon local. Puis testez-le.</p>
@@ -2014,9 +2116,12 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 8 : là où il y avait <strong>[cols=’4’]</strong> on écrit <strong>[sm=’4’]</strong>. <strong>[sm]</strong> signifie <strong>[small]</strong>. Les écrans des smartphones tombent dans cette catégorie. Les autres catégories sont <strong>[xs=extra small, md=medium, lg=large, xl=extra large]</strong> ;</li>
-<li>ligne 11 : idem ;</li>
+  <li>ligne 8 : là où il y avait <b>[cols=’4’]</b> on écrit <b>[sm=’4’]</b>. <b>[sm]</b> signifie <b>[small]</b>. Les écrans des smartphones tombent dans cette catégorie. Les autres catégories sont <b>[xs=extra small, md=medium, lg=large, xl=extra large]</b> ;
+  </li>
+  <li>ligne 11 : idem ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc539274143258178"></a></p>
 <h3 id="19142-la-vue-layout">19.14.2. La vue [Layout]</h3>
 <p>La vue <strong>[Layout]</strong> évolue comme suit :</p>
@@ -2088,8 +2193,10 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 11 et 19 : on a supprimé l’attribut <strong>[label-cols]</strong> qui fixait un nombre de colonnes au label de la saisie. En l’absence de cet attribut, le label est <mark style="background-color: #ffff00">au-dessus</mark> de la zone de saisie. Cela convient mieux aux écrans des smartphones ;</li>
+  <li>lignes 11 et 19 : on a supprimé l’attribut <b>[label-cols]</b> qui fixait un nombre de colonnes au label de la saisie. En l’absence de cet attribut, le label est <mark style="background-color: #ffff00">au-dessus</mark> de la zone de saisie. Cela convient mieux aux écrans des smartphones ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc539278143258178"></a></p>
 <h3 id="19144-la-vue-calculimpot">19.14.4. La vue [CalculImpot]</h3>
 <p>La vue <strong>[CalculImpot]</strong> évolue comme suit :</p>
@@ -2181,8 +2288,10 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 15, 23, 35 : on a supprimé l’attribut <strong>[label-cols]</strong> ;</li>
+  <li>lignes 15, 23, 35 : on a supprimé l’attribut <b>[label-cols]</b> ;
+  </li>
 </ul>
+
 <p>Par ailleurs, on fait évoluer les tests de validité :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line">...</span>
@@ -2219,10 +2328,14 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 19 : lorsque rien n’a été saisi, la saisie est considérée comme valide. Cela permet d’avoir une saisie valide lorsque la vue est initialement affichée. Dans la version précédente, la saisie apparaissait initialement comme erronée ;</li>
-<li>ligne 26 : idem ;</li>
-<li>lignes 5-14 : le bouton de validation n’est actif que si les deux saisies contiennent quelque chose et sont valides ;</li>
+  <li>ligne 19 : lorsque rien n’a été saisi, la saisie est considérée comme valide. Cela permet d’avoir une saisie valide lorsque la vue est initialement affichée. Dans la version précédente, la saisie apparaissait initialement comme erronée ;
+  </li>
+  <li>ligne 26 : idem ;
+  </li>
+  <li>lignes 5-14 : le bouton de validation n’est actif que si les deux saisies contiennent quelque chose et sont valides ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc539282143258178"></a></p>
 <h3 id="19146-la-vue-menu">19.14.6. La vue [Menu]</h3>
 <p>La vue <strong>[Menu]</strong> évolue comme suit :</p>
@@ -2247,8 +2360,10 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 3 : on ajoute la balise &lt;b-card&gt; pour entourer le menu d’une fine bordure. Cela permet de mieux localiser le menu sur le smartphone ;</li>
+  <li>ligne 3 : on ajoute la balise &lt;b-card&gt; pour entourer le menu d’une fine bordure. Cela permet de mieux localiser le menu sur le smartphone ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc539284143258178"></a></p>
 <h3 id="19147-la-vue-listesimulations">19.14.7. La vue [ListeSimulations]</h3>
 <p>La vue <strong>[ListeSimulations]</strong> reste inchangée :</p>
@@ -2288,12 +2403,16 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 20 : on notera l’attribut <strong>[responsive]</strong> qui fait que l’affichage de la table s’adapte à la taille de l’écran :</li>
+  <li>ligne 20 : on notera l’attribut <b>[responsive]</b> qui fait que l’affichage de la table s’adapte à la taille de l’écran :
+  </li>
 </ul>
+
 <p><img src="images/1000000000000267000005B13238244F.png" style="width:4.07cm;height:9.64cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000267000005B13238244F.png" /></p>
 <ul>
-<li>en <strong>[2]</strong>, sur les petits écrans, une barre de défilement horizontal permet d’afficher la table ;</li>
+  <li>en <b>[2]</b>, sur les petits écrans, une barre de défilement horizontal permet d’afficher la table ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc539286143258178"></a></p>
 <h3 id="19148-la-vue-notfound">19.14.8. La vue [NotFound]</h3>
 <p>Elle reste inchangée.</p>

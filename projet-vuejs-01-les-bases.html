@@ -872,15 +872,22 @@
 <p><img src="images/100000000000044500000366DD4C062F.png" style="width:8.67cm;height:6.91cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000044500000366DD4C062F.png" /></p>
 <p>Le projet <strong>[vuejs-01]</strong> comprend essentiellement quatre fichiers :</p>
 <ul>
-<li><strong>[main.js]</strong> <strong>[2]</strong> est le point d’entrée du projet ;</li>
-<li><strong>[App.vue, HelloWorld.vue]</strong> <strong>[3-4]</strong> sont des composants <strong>[Vue.js]</strong>, comprenant de façon facultative les éléments suivants :<ul>
-<li><strong>[&lt;template&gt;...&lt;/template&gt;]</strong> : du code HTML ;</li>
-<li><strong>[&lt;script&gt;...&lt;/script&gt;]</strong> : le code Javascript associé au code HTML ;</li>
-<li><strong>[&lt;style&gt;...&lt;/style&gt;]</strong> : le style CSS associé au code HTML ;</li>
+  <li><b>[main.js]</b> <b>[2]</b> est le point d’entrée du projet ;
+  </li>
+  <li><b>[App.vue, HelloWorld.vue]</b> <b>[3-4]</b> sont des composants <b>[Vue.js]</b>, comprenant de façon facultative les éléments suivants :
+    <ul>
+      <li><b>[&lt;template&gt;...&lt;/template&gt;]</b> : du code HTML ;
+      </li>
+      <li><b>[&lt;script&gt;...&lt;/script&gt;]</b> : le code Javascript associé au code HTML ;
+      </li>
+      <li><b>[&lt;style&gt;...&lt;/style&gt;]</b> : le style CSS associé au code HTML ;
+      </li>
+    </ul>
+  </li>
+  <li><b>[public/index.html]</b> <b>[5]</b> : le document HTML visualisé par la commande <b>[npm run serve]</b> ;
+  </li>
 </ul>
-</li>
-<li><strong>[public/index.html]</strong> <strong>[5]</strong> : le document HTML visualisé par la commande <strong>[npm run serve]</strong> ;</li>
-</ul>
+
 <p>Le fichier <strong>[public/index.html]</strong> affiché à l’exécution du projet est celui-ci :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">!DOCTYPE</span><span style="color:#000000"> </span><span style="color:#ff0000">html</span><span style="color:#0000ff">&gt;</span></span>
@@ -920,15 +927,22 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 2 : l’objet <strong>[Vue]</strong> est fourni par le framework <strong>[vue.js]</strong> ;</li>
-<li>ligne 3 : l’objet <strong>[App]</strong> est fourni par le fichier <strong>[vuejs-01/App.vue]</strong> ;</li>
-<li>ligne 6 : configuration de l’objet <strong>[Vue]</strong> ;</li>
-<li>lignes 9-11 : ce sont les lignes qui :<ul>
-<li>génèrent le code HTML de l’application. Ligne 10, c’est le fichier <strong>[App.vue]</strong> qui le génère ;</li>
-<li>chargent le code HTML généré ligne 10 dans la section <strong>[&lt;div id=’app’&gt;&lt;/div&gt;]</strong> du fichier <strong>[public/index.html]</strong> ;</li>
+  <li>ligne 2 : l’objet <b>[Vue]</b> est fourni par le framework <b>[vue.js]</b> ;
+  </li>
+  <li>ligne 3 : l’objet <b>[App]</b> est fourni par le fichier <b>[vuejs-01/App.vue]</b> ;
+  </li>
+  <li>ligne 6 : configuration de l’objet <b>[Vue]</b> ;
+  </li>
+  <li>lignes 9-11 : ce sont les lignes qui :
+    <ul>
+      <li>génèrent le code HTML de l’application. Ligne 10, c’est le fichier <b>[App.vue]</b> qui le génère ;
+      </li>
+      <li>chargent le code HTML généré ligne 10 dans la section <b>[&lt;div id=’app’&gt;&lt;/div&gt;]</b> du fichier <b>[public/index.html]</b> ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p>Tout projet <strong>[Vue.js]</strong> peut conserver le fichier <strong>[index.html]</strong> tel quel.</p>
 <p>Le fichier <strong>[App.vue]</strong> du projet initial <strong>[vuejs-00]</strong> est simplifié de la façon suivante dans le projet <strong>[vuejs-01]</strong> :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
@@ -953,34 +967,53 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>un fragment <strong>[.vue]</strong> comprend au plus trois sections :<ul>
-<li><strong>[&lt;template&gt;...&lt;/template&gt;]</strong> : du code HTML ;</li>
-<li><strong>[&lt;script&gt;...&lt;/script&gt;]</strong> : le code Javascript associé au code HTML ;</li>
-<li><strong>[&lt;style&gt;...&lt;/style&gt;]</strong> : le style CSS associé au code HTML ;</li>
+  <li>un fragment <b>[.vue]</b> comprend au plus trois sections :
+    <ul>
+      <li><b>[&lt;template&gt;...&lt;/template&gt;]</b> : du code HTML ;
+      </li>
+      <li><b>[&lt;script&gt;...&lt;/script&gt;]</b> : le code Javascript associé au code HTML ;
+      </li>
+      <li><b>[&lt;style&gt;...&lt;/style&gt;]</b> : le style CSS associé au code HTML ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p>Ici, nous n’avons pas de section <strong>[style]</strong>.</p>
 <ul>
-<li>lignes 1-6 : le code HTML du fragment (page, composant,  vue, ...) ;</li>
-<li>lignes 2-5 : la section <strong>[template]</strong> ne peut contenir qu’un élément. On met en général une section <strong>[div]</strong> qui englobe tout le HTML du fragment. On peut mettre également une balise &lt;template&gt; ;</li>
-<li>ligne 3 : une image ;</li>
+  <li>lignes 1-6 : le code HTML du fragment (page, composant,  vue, ...) ;
+  </li>
+  <li>lignes 2-5 : la section <b>[template]</b> ne peut contenir qu’un élément. On met en général une section <b>[div]</b> qui englobe tout le HTML du fragment. On peut mettre également une balise &lt;template&gt; ;
+  </li>
+  <li>ligne 3 : une image ;
+  </li>
 </ul>
+
 <p><img src="images/10000000000001370000011D7170BF2C.png" style="width:2.881cm;height:2.641cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000001370000011D7170BF2C.png" /></p>
 <ul>
-<li>ligne 4 : un composant nommé <strong>[HelloWorld]</strong>. Le principe de <strong>[Vue.js]</strong> est de construire des pages web à l’aide de fragments définis dans des fichiers <strong>[.vue]</strong> comme ici <strong>[App.vue]</strong>. Ce composant est défini par le fichier <strong>[HelloWorld.vue]</strong> défini ligne 9 du script jS associé ;</li>
-<li>ligne 4 : un composant peut accepter des paramètres. Le paramètre est ici l’attribut <strong>[msg]</strong> ;</li>
-<li>lignes 8-17 : le script jS du fragment (ou composant) ;</li>
-<li>ligne 9 : pour pouvoir utiliser le composant <strong>[HelloWorld]</strong> dans le composant <strong>[App]</strong>, il faut importer sa définition dans la partie <strong>[script]</strong> ;</li>
-<li>lignes 11-16 : le script définit un objet et l’exporte afin de le rendre disponible à l’extérieur ;</li>
-<li>ligne 12 : l’attribut <strong>[name]</strong> : définit le nom du composant exporté ;</li>
-<li>lignes 13-15 : l’attribut <strong>[components]</strong> liste les composants utilisés par le composant <strong>[App]</strong>. Ils sont exportés avec lui ;</li>
+  <li>ligne 4 : un composant nommé <b>[HelloWorld]</b>. Le principe de <b>[Vue.js]</b> est de construire des pages web à l’aide de fragments définis dans des fichiers <b>[.vue]</b> comme ici <b>[App.vue]</b>. Ce composant est défini par le fichier <b>[HelloWorld.vue]</b> défini ligne 9 du script jS associé ;
+  </li>
+  <li>ligne 4 : un composant peut accepter des paramètres. Le paramètre est ici l’attribut <b>[msg]</b> ;
+  </li>
+  <li>lignes 8-17 : le script jS du fragment (ou composant) ;
+  </li>
+  <li>ligne 9 : pour pouvoir utiliser le composant <b>[HelloWorld]</b> dans le composant <b>[App]</b>, il faut importer sa définition dans la partie <b>[script]</b> ;
+  </li>
+  <li>lignes 11-16 : le script définit un objet et l’exporte afin de le rendre disponible à l’extérieur ;
+  </li>
+  <li>ligne 12 : l’attribut <b>[name]</b> : définit le nom du composant exporté ;
+  </li>
+  <li>lignes 13-15 : l’attribut <b>[components]</b> liste les composants utilisés par le composant <b>[App]</b>. Ils sont exportés avec lui ;
+  </li>
 </ul>
+
 <p>Ligne 9, il n’y a pas obligation que le composant <strong>[HelloWorld]</strong> porte le même nom que le fichier qui le définit. On pourrait l’importer en tant que <strong>[X]</strong> et l’exporter en tant que composant <strong>[Bonjour]</strong> :</p>
 <p><img src="images/10000000000003F700000322A4C5E0AD.png" style="width:9.401cm;height:7.43cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003F700000322A4C5E0AD.png" /></p>
 <ul>
-<li>ligne 14 : le composant <strong>[X]</strong> est exporté sous le nom <strong>[Bonjour]</strong>. Il est alors utilisé sous ce nom, ligne 4 ;</li>
+  <li>ligne 14 : le composant <b>[X]</b> est exporté sous le nom <b>[Bonjour]</b>. Il est alors utilisé sous ce nom, ligne 4 ;
+  </li>
 </ul>
+
 <p>La première version est la version la plus courante, aussi définirons-nous nos composants de cette façon ;</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
 <span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">template</span><span style="color:#0000ff">&gt;</span></span>
@@ -1024,10 +1057,14 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>le composant <strong>[HelloWorld]</strong> a la même structure de fichier que le composant principal <strong>[App]</strong> ;</li>
-<li>ligne 3 : on a ici une évaluation d’expression Javascript, ici l’expression <strong>[msg]</strong> ;</li>
-<li>lignes 10-12 : définissent les propriétés du composant, plus exactement ses paramètres. Lorsque le composant <strong>[App]</strong> a instancié un composant <strong>[HelloWorld]</strong>, il l’a fait avec la syntaxe suivante :</li>
+  <li>le composant <b>[HelloWorld]</b> a la même structure de fichier que le composant principal <b>[App]</b> ;
+  </li>
+  <li>ligne 3 : on a ici une évaluation d’expression Javascript, ici l’expression <b>[msg]</b> ;
+  </li>
+  <li>lignes 10-12 : définissent les propriétés du composant, plus exactement ses paramètres. Lorsque le composant <b>[App]</b> a instancié un composant <b>[HelloWorld]</b>, il l’a fait avec la syntaxe suivante :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">HelloWorld</span><span style="color:#000000"> </span><span style="color:#ff0000">msg</span><span style="color:#0000ff">=&quot;Notre première application Vue.js&quot;</span><span style="color:#000000"> </span><span style="color:#0000ff">/&gt;</span></span>
 </code></pre></div>
@@ -1040,12 +1077,16 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 7-14 : les propriétés du composant définies sous la forme d’un objet qui est exporté ;<ul>
-<li>ligne 9 : le composant est exporté sous le nom <strong>[HelloWorld]</strong> ;</li>
-<li>lignes 10-12 : ses paramètres sont définis par la propriété <strong>[props]</strong> ;</li>
+  <li>lignes 7-14 : les propriétés du composant définies sous la forme d’un objet qui est exporté ;
+    <ul>
+      <li>ligne 9 : le composant est exporté sous le nom <b>[HelloWorld]</b> ;
+      </li>
+      <li>lignes 10-12 : ses paramètres sont définis par la propriété <b>[props]</b> ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p>Au final, si on rassemble les templates des deux composants <strong>[App, HelloWorld]</strong> utilisés, le fichier <strong>[index.html]</strong> affiché sera le suivant :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-html">
 <span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">!DOCTYPE</span><span style="color:#000000"> </span><span style="color:#ff0000">html</span><span style="color:#0000ff">&gt;</span></span>
@@ -1076,38 +1117,55 @@
 <p>Maintenant regardons le code de cette page :</p>
 <p><img src="images/100000000000077B00000295864F5236.png" style="width:17.731cm;height:6.121cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000077B00000295864F5236.png" /></p>
 <ul>
-<li>en <strong>[1]</strong>, faire <strong>[clic droit]</strong> ;</li>
-<li>en <strong>[2]</strong>, le code source de la page. On voit que c’est le code du fichier initial <strong>[index.html]</strong> et ce n’est pas ça qui a été affiché. C’est bien la page <strong>[index.html]</strong> qui a été chargée initialement. Ensuite, dynamiquement, du code Javascript a modifié cette page, mais cela ne nous est pas montré ;</li>
+  <li>en <b>[1]</b>, faire <b>[clic droit]</b> ;
+  </li>
+  <li>en <b>[2]</b>, le code source de la page. On voit que c’est le code du fichier initial <b>[index.html]</b> et ce n’est pas ça qui a été affiché. C’est bien la page <b>[index.html]</b> qui a été chargée initialement. Ensuite, dynamiquement, du code Javascript a modifié cette page, mais cela ne nous est pas montré ;
+  </li>
 </ul>
+
 <p>Lorsque les pages sont générées dynamiquement par du Javascript, l’option <strong>[2]</strong> ne sert à rien. Il faut aller dans les outils du navigateur (F12 sur Firefox) pour voir le code de la page actuellement affichée :</p>
 <p><img src="images/10000000000003D700000423F1048BC4.png" style="width:9.101cm;height:9.812cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003D700000423F1048BC4.png" /></p>
 <ul>
-<li>en <strong>[1]</strong>, l’inspecteur du DOM (Document Object Model) du document affiché ;</li>
-<li>en <strong>[2]</strong>, ce que contient réellement ce DOM ;</li>
-<li><strong>[3-4]</strong>, des outils que nous utiliserons pour afficher les objets Javascript utilisés par le framework <strong>[Vue.js]</strong> ;</li>
-<li><strong>[4]</strong> est une extension (ici Firefox) pour déboguer des applications <strong>[Vue.js]</strong> :<ul>
-<li>pour Firefox : <strong>[https://addons.mozilla.org/fr/firefox/addon/vue-js-devtools/]</strong>;</li>
-<li>pour Chrome : <strong>[https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd]</strong>;</li>
+  <li>en <b>[1]</b>, l’inspecteur du DOM (Document Object Model) du document affiché ;
+  </li>
+  <li>en <b>[2]</b>, ce que contient réellement ce DOM ;
+  </li>
+  <li><b>[3-4]</b>, des outils que nous utiliserons pour afficher les objets Javascript utilisés par le framework <b>[Vue.js]</b> ;
+  </li>
+  <li><b>[4]</b> est une extension (ici Firefox) pour déboguer des applications <b>[Vue.js]</b> :
+    <ul>
+      <li>pour Firefox : <b>[https://addons.mozilla.org/fr/firefox/addon/vue-js-devtools/]</b>;
+      </li>
+      <li>pour Chrome : <b>[https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd]</b>;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p>Examinons l’onglet <strong>[Vue]</strong> <strong>[4]</strong> :</p>
 <p><img src="images/10000000000007F70000028B2332E881.png" style="width:16.181cm;height:5.171cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007F70000028B2332E881.png" /></p>
 <p>La vue <strong>[1-4]</strong> nous montre la structure <strong>[Vue.js]</strong> du document : la racine du document <strong>[2]</strong> (index.html) comprend le composant <strong>[App]</strong> (3) qui lui même comprend le composant <strong>[HelloWorld]</strong> (4). Cliquer sur <strong>[4]</strong> fait apparaître les propriétés du composant <strong>[HelloWorld]</strong> <strong>[5]</strong>.</p>
 <p>On voit en <strong>[4]</strong> (à droite), l’indicateur <strong>[$vm0]</strong>. C’est le nom de la variable qu’on peut utiliser dans la console JavaScript <strong>[6]</strong> pour désigner l’objet <strong>[HelloWorld]</strong>. Faisons-le :</p>
 <p><img src="images/100000000000050D00000364B1481999.png" style="width:11.971cm;height:8.041cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000050D00000364B1481999.png" /></p>
 <ul>
-<li>en <strong>[2]</strong>, on fait évaluer l’expression <strong>[$vm0]</strong>, ce qui a pour effet d’afficher sa structure. Normalement nous n’aurons pas à utiliser directement cette structure ;</li>
+  <li>en <b>[2]</b>, on fait évaluer l’expression <b>[$vm0]</b>, ce qui a pour effet d’afficher sa structure. Normalement nous n’aurons pas à utiliser directement cette structure ;
+  </li>
 </ul>
+
 <p>Terminons en montrant la capacité de <strong>[hot reload]</strong> de la commande <strong>[serve]</strong> utilisée pour exécuter le projet :</p>
 <ul>
-<li>dans <strong>[App.vue]</strong>, modifiez le message affiché par <strong>[HelloWorld]</strong> :</li>
+  <li>dans <b>[App.vue]</b>, modifiez le message affiché par <b>[HelloWorld]</b> :
+  </li>
 </ul>
+
 <p><img src="images/1000000000000811000002A06D4FC083.png" style="width:16.391cm;height:5.331cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000811000002A06D4FC083.png" /></p>
 <ul>
-<li>en <strong>[1]</strong>, on modifie le message affiché ;</li>
-<li>en <strong>[2-3]</strong>, la page est automatiquement mise en jour sans intervention de notre part ;</li>
+  <li>en <b>[1]</b>, on modifie le message affiché ;
+  </li>
+  <li>en <b>[2-3]</b>, la page est automatiquement mise en jour sans intervention de notre part ;
+  </li>
 </ul>
+
 <p>Nous allons maintenant créer divers projets <strong>[vuejs-xx]</strong> pour illustrer les points importants de <strong>[Vue.js]</strong>. Par ‘importants’, il faut entendre ‘que nous allons utiliser dans le client <strong>[vue.js]</strong> du serveur de calcul de l’impôt’. D’autres points ‘importants’ seront passés sous silence s’ils ne sont pas utilisés dans le client. Ce n’est donc pas une présentation exhaustive de <strong>[vue.js]</strong> qui sera faite.</p>
 
 

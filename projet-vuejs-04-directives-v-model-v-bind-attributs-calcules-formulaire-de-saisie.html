@@ -1064,43 +1064,74 @@
 <p><img src="images/100000000000080C0000037C7B1E4A86.png" style="width:13.63cm;height:5.901cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000080C0000037C7B1E4A86.png" /></p>
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 4-32 : la balise &lt;b-form&gt; introduit un formulaire Bootstrap ;</li>
-<li>ligne 6 : la balise &lt;b-row&gt; introduit une ligne dans le formulaire ;</li>
-<li>ligne 7 : la balise &lt;b-col cols=’4’&gt; introduit une colonne s’étalant sur 4 colonnes Bootstrap ;</li>
-<li>ligne 8 : la balise &lt;b-card&gt; <strong>[6]</strong> introduit une carte Bootstrap, une zone encadrée par une bordure ;</li>
-<li>ligne 9 : la balise &lt;b-form-group&gt; introduit un groupe d’éléments du formulaire liés entre-eux. Ici un texte (attribut <strong>[label]</strong>) <strong>[1]</strong> est lié à une zone de saisie (attribut <strong>[label-for]</strong>). La valeur de <strong>[label-for]</strong> est la valeur du champ <strong>[id]</strong>, ligne 12, de la zone de saisie ;</li>
-<li>lignes 10-14 : la balise &lt;b-input&gt; <strong>[2]</strong> introduit une zone de saisie :<ul>
-<li>ligne 10 : <strong>[type=’text’]</strong> indique qu’on peut taper du texte dans la zone de saisie. On aurait pu écrire <strong>[type=’number’]</strong> avec des contraintes <strong>[min=’val1’ max=’val2’ step=’val3’]</strong> puisqu’on attend un nombre d’enfants. On a mis <strong>[type=’text’]</strong> afin de montrer comment vérifier la validité d’une saisie ;</li>
-<li>ligne 12 : l’attribut <strong>[placeholder]</strong> <strong>[3]</strong> fixe le message affiché dans la zone de saisie tant que l’utilisateur n’a rien saisi ;</li>
-<li>ligne 13 : la directive <strong>[v-model]</strong> associe, de façon <strong>bidirectionnelle</strong> la valeur saisie avec l’attribut <strong>[enfants]</strong>, ligne 42, du composant :<ul>
-<li>lorsque la valeur saisie change, alors la valeur de l’attribut <strong>[enfants]</strong> change également ;</li>
-<li>lorsque la valeur de l’attribut <strong>[enfants]</strong> change, alors la valeur saisie change également, ç-à-d que le contenu de <strong>[2]</strong> change ;</li>
-<li>le point important à comprendre est que, grâce au mécanisme précédent, lorsque l’utilisateur clique sur le bouton <strong>[Valider]</strong> <strong>[5]</strong>, l’attribut <strong>[enfants]</strong> de la ligne 42 a pour valeur, la valeur saisie en <strong>[2]</strong> ;</li>
+  <li>lignes 4-32 : la balise &lt;b-form&gt; introduit un formulaire Bootstrap ;
+  </li>
+  <li>ligne 6 : la balise &lt;b-row&gt; introduit une ligne dans le formulaire ;
+  </li>
+  <li>ligne 7 : la balise &lt;b-col cols=’4’&gt; introduit une colonne s’étalant sur 4 colonnes Bootstrap ;
+  </li>
+  <li>ligne 8 : la balise &lt;b-card&gt; <b>[6]</b> introduit une carte Bootstrap, une zone encadrée par une bordure ;
+  </li>
+  <li>ligne 9 : la balise &lt;b-form-group&gt; introduit un groupe d’éléments du formulaire liés entre-eux. Ici un texte (attribut <b>[label]</b>) <b>[1]</b> est lié à une zone de saisie (attribut <b>[label-for]</b>). La valeur de <b>[label-for]</b> est la valeur du champ <b>[id]</b>, ligne 12, de la zone de saisie ;
+  </li>
+  <li>lignes 10-14 : la balise &lt;b-input&gt; <b>[2]</b> introduit une zone de saisie :
+    <ul>
+      <li>ligne 10 : <b>[type=’text’]</b> indique qu’on peut taper du texte dans la zone de saisie. On aurait pu écrire <b>[type=’number’]</b> avec des contraintes <b>[min=’val1’ max=’val2’ step=’val3’]</b> puisqu’on attend un nombre d’enfants. On a mis <b>[type=’text’]</b> afin de montrer comment vérifier la validité d’une saisie ;
+      </li>
+      <li>ligne 12 : l’attribut <b>[placeholder]</b> <b>[3]</b> fixe le message affiché dans la zone de saisie tant que l’utilisateur n’a rien saisi ;
+      </li>
+      <li>ligne 13 : la directive <b>[v-model]</b> associe, de façon <b>bidirectionnelle</b> la valeur saisie avec l’attribut <b>[enfants]</b>, ligne 42, du composant :
+        <ul>
+          <li>lorsque la valeur saisie change, alors la valeur de l’attribut <b>[enfants]</b> change également ;
+          </li>
+          <li>lorsque la valeur de l’attribut <b>[enfants]</b> change, alors la valeur saisie change également, ç-à-d que le contenu de <b>[2]</b> change ;
+          </li>
+          <li>le point important à comprendre est que, grâce au mécanisme précédent, lorsque l’utilisateur clique sur le bouton <b>[Valider]</b> <b>[5]</b>, l’attribut <b>[enfants]</b> de la ligne 42 a pour valeur, la valeur saisie en <b>[2]</b> ;
+          </li>
+        </ul>
+      </li>
+      <li>ligne 14 : la directive <b>[v-bind]</b> introduit une liaison entre d’un côté un attribut de la balise &lt;b-input&gt;, ici l’attribut <b>[state]</b> avec un attribut du composant, ici <b>[enfantsValide]</b>, ligne 53. L’attribut <b>[enfantsValide]</b> est particulier en ce sens que c’est une <b>fonction</b> qui rend la valeur de l’attribut. On appelle, attribut <b>calculé</b>, ce type d’attribut. On trouve les attributs calculés dans la propriété <b>[computed]</b>, ligne 47, du composant. Les attributs calculés s’utilisent de la même façon que les attributs statiques de la fonction <b>[data]</b> : On n’écrit pas, ligne 14, <b>[v-bind:state=’enfantsValide()’]</b> mais <b>[v-bind:state=’enfantsValide’]</b>, <b>sans les parenthèses</b>. Aussi à la lecture du <b>[template]</b>, on ne sait pas distinguer un attribut <b>calculé</b> d’un attribut <b>statique</b>. Il faut pour cela regarder le code du script du composant ;
+      </li>
+      <li>ligne 14 : l’attribut <b>[state]</b> va fixer l’état valide / invalide de la valeur saisie : si <b>[enfantsValide]</b> rend la valeur <b>[true]</b>, la valeur saisie est considérée comme valide, sinon comme invalide. La copie d’écran ci-dessus montre le composant <b>[b-input]</b> lorsque la fonction <b>[enfantsValide]</b> rend la valeur <b>[false]</b> ;
+      </li>
+      <li>ligne 15 : la balise &lt;b-form-invalid-feedback&gt; <b>[4]</b> permet d’afficher un message lorsque la saisie en <b>[2]</b> est invalide. Son attribut <b>[:state=’enfantsValide’]</b> est identique à l’attribut <b>[v-bind:state=’enfantsValide’]</b> de la ligne 14. On peut omettre la directive <b>[v-bind]</b> mais il faut garder le signe <b>[:]</b>. Le message d’erreur s’affiche donc lorsque l’attribut <b>[enfantsValide]</b> vaut <b>[false]</b> ;
+      </li>
+      <li>ligne 16 : fin du groupe d’éléments &lt;b-group&gt; ;
+      </li>
+      <li>ligne 18 : le bouton <b>[5]</b> qui va permettre de valider la saisie :
+        <ul>
+          <li>il sera bleu <b>[variant=’primary’]</b> ;
+          </li>
+          <li><b>[:disabled=&quot;formInvalide&quot;]</b> : l’attribut <b>[disabled]</b> permet de valider / invalider le bouton. Cet attribut est lié (v-bind) à l’attribut calculé <b>[formInvalide]</b> de la ligne 49 ;
+          </li>
+          <li><b>[@click=&quot;doSomething&quot;]</b> : lorsque l’utilisateur cliquera sur le bouton, la méthode <b>[doSomething]</b>, ligne 59, sera exécutée ;
+          </li>
+        </ul>
+      </li>
+      <li>lignes 19-22 : fermeture des différentes balises ouvertes ;
+      </li>
+      <li>lignes 23-29 : une nouvelle ligne dans le <b>[template]</b>. <b>[class=’mt-3’]</b> signifie <b>[margin (m) top (t) égale à 3 spacers]</b>. <b>[spacer]</b> est une mesure d’espacement de Bootstrap. Cette classe génère l’espacement <b>[8]</b> dans la copie d’écran ci-dessus. Sans cette classe, la zone <b>[7]</b> est collée à la zone <b>[1-6]</b> ;
+      </li>
+      <li>ligne 24 : une colonne occupant 4 colonnes Bootstrap ;
+      </li>
+      <li>lignes 25-27 : une alerte <b>[warning]</b> affichant la valeur de l’attribut statique <b>[enfants]</b> (ligne 42). Comme cet attribut a une liaison bidirectionnelle avec la zone de saisie, dès que l’utilisateur modifie celle-ci, la valeur affichée dans l’alerte change également ;
+      </li>
+      <li>lignes 34-65 : le code jS du composant ;
+      </li>
+      <li>ligne 42 : l’unique attribut statique du composant ;
+      </li>
+      <li>lignes 47-56 : les attributs calculés du composant ;
+      </li>
+      <li>lignes 53-55 : la saisie est considérée valide si c’est un nombre entier positif éventuellement précédé / suivi par des ‘espaces’ ;
+      </li>
+      <li>lignes 49-51 : le formulaire est considéré comme valide si la saisie du nombre d’enfants est valide. En général, un formulaire a plusieurs saisies et est considéré valide si celles-ci sont toutes valides ;
+      </li>
+      <li>lignes 58-63 : les méthodes du composant qui réagissent aux événements de celui-ci. Ici, il n’y a qu’un événement : le <b>[click]</b> sur le bouton. On se contente d’afficher la valeur saisie pour montrer qu’on a bien accès à celle-ci ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>ligne 14 : la directive <strong>[v-bind]</strong> introduit une liaison entre d’un côté un attribut de la balise &lt;b-input&gt;, ici l’attribut <strong>[state]</strong> avec un attribut du composant, ici <strong>[enfantsValide]</strong>, ligne 53. L’attribut <strong>[enfantsValide]</strong> est particulier en ce sens que c’est une <strong>fonction</strong> qui rend la valeur de l’attribut. On appelle, attribut <strong>calculé</strong>, ce type d’attribut. On trouve les attributs calculés dans la propriété <strong>[computed]</strong>, ligne 47, du composant. Les attributs calculés s’utilisent de la même façon que les attributs statiques de la fonction <strong>[data]</strong> : On n’écrit pas, ligne 14, <strong>[v-bind:state=’enfantsValide()’]</strong> mais <strong>[v-bind:state=’enfantsValide’]</strong>, <strong>sans les parenthèses</strong>. Aussi à la lecture du <strong>[template]</strong>, on ne sait pas distinguer un attribut <strong>calculé</strong> d’un attribut <strong>statique</strong>. Il faut pour cela regarder le code du script du composant ;</li>
-<li>ligne 14 : l’attribut <strong>[state]</strong> va fixer l’état valide / invalide de la valeur saisie : si <strong>[enfantsValide]</strong> rend la valeur <strong>[true]</strong>, la valeur saisie est considérée comme valide, sinon comme invalide. La copie d’écran ci-dessus montre le composant <strong>[b-input]</strong> lorsque la fonction <strong>[enfantsValide]</strong> rend la valeur <strong>[false]</strong> ;</li>
-<li>ligne 15 : la balise &lt;b-form-invalid-feedback&gt; <strong>[4]</strong> permet d’afficher un message lorsque la saisie en <strong>[2]</strong> est invalide. Son attribut <strong>[:state=’enfantsValide’]</strong> est identique à l’attribut <strong>[v-bind:state=’enfantsValide’]</strong> de la ligne 14. On peut omettre la directive <strong>[v-bind]</strong> mais il faut garder le signe <strong>[:]</strong>. Le message d’erreur s’affiche donc lorsque l’attribut <strong>[enfantsValide]</strong> vaut <strong>[false]</strong> ;</li>
-<li>ligne 16 : fin du groupe d’éléments &lt;b-group&gt; ;</li>
-<li>ligne 18 : le bouton <strong>[5]</strong> qui va permettre de valider la saisie :<ul>
-<li>il sera bleu <strong>[variant=’primary’]</strong> ;</li>
-<li><strong>[:disabled=&quot;formInvalide&quot;]</strong> : l’attribut <strong>[disabled]</strong> permet de valider / invalider le bouton. Cet attribut est lié (v-bind) à l’attribut calculé <strong>[formInvalide]</strong> de la ligne 49 ;</li>
-<li><strong>[@click=&quot;doSomething&quot;]</strong> : lorsque l’utilisateur cliquera sur le bouton, la méthode <strong>[doSomething]</strong>, ligne 59, sera exécutée ;</li>
-</ul>
-</li>
-<li>lignes 19-22 : fermeture des différentes balises ouvertes ;</li>
-<li>lignes 23-29 : une nouvelle ligne dans le <strong>[template]</strong>. <strong>[class=’mt-3’]</strong> signifie <strong>[margin (m) top (t) égale à 3 spacers]</strong>. <strong>[spacer]</strong> est une mesure d’espacement de Bootstrap. Cette classe génère l’espacement <strong>[8]</strong> dans la copie d’écran ci-dessus. Sans cette classe, la zone <strong>[7]</strong> est collée à la zone <strong>[1-6]</strong> ;</li>
-<li>ligne 24 : une colonne occupant 4 colonnes Bootstrap ;</li>
-<li>lignes 25-27 : une alerte <strong>[warning]</strong> affichant la valeur de l’attribut statique <strong>[enfants]</strong> (ligne 42). Comme cet attribut a une liaison bidirectionnelle avec la zone de saisie, dès que l’utilisateur modifie celle-ci, la valeur affichée dans l’alerte change également ;</li>
-<li>lignes 34-65 : le code jS du composant ;</li>
-<li>ligne 42 : l’unique attribut statique du composant ;</li>
-<li>lignes 47-56 : les attributs calculés du composant ;</li>
-<li>lignes 53-55 : la saisie est considérée valide si c’est un nombre entier positif éventuellement précédé / suivi par des ‘espaces’ ;</li>
-<li>lignes 49-51 : le formulaire est considéré comme valide si la saisie du nombre d’enfants est valide. En général, un formulaire a plusieurs saisies et est considéré valide si celles-ci sont toutes valides ;</li>
-<li>lignes 58-63 : les méthodes du composant qui réagissent aux événements de celui-ci. Ici, il n’y a qu’un événement : le <strong>[click]</strong> sur le bouton. On se contente d’afficher la valeur saisie pour montrer qu’on a bien accès à celle-ci ;</li>
-</ul>
-</li>
-</ul>
+
 <p><a id="refheadingtoc2479812728496130"></a></p>
 <h2 id="64-execution-du-projet">6.4. Exécution du projet</h2>
 <p>On modifie le fichier <strong>[package.json]</strong> et on exécute le projet :</p>

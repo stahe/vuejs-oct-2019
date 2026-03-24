@@ -969,9 +969,12 @@
 <p><strong>[BootstrapVue]</strong> est un framework qu’on ajoute au projet avec l’outil <strong>[npm]</strong> :</p>
 <p><img src="images/100000000000083B000002D93736EEAA.png" style="width:18.121cm;height:6.271cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000083B000002D93736EEAA.png" /></p>
 <ul>
-<li>en <strong>[1]</strong>, c’est donc deux frameworks qu’on installe : <strong>[Bootstrap]</strong> et sa variante <strong>[BootstrapVue]</strong> ;</li>
-<li>en <strong>[2]</strong>, les deux dépendances apparaissent dans le fichier <strong>[package.json]</strong> ;</li>
+  <li>en <b>[1]</b>, c’est donc deux frameworks qu’on installe : <b>[Bootstrap]</b> et sa variante <b>[BootstrapVue]</b> ;
+  </li>
+  <li>en <b>[2]</b>, les deux dépendances apparaissent dans le fichier <b>[package.json]</b> ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2479552728496130"></a></p>
 <h2 id="42-le-script-mainjs">4.2. Le script [main.js]</h2>
 <p>Le script principal <strong>[main.js]</strong> est le suivant :</p>
@@ -998,13 +1001,20 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 2 : import du framework <strong>[Vue]</strong> ;</li>
-<li>ligne 3 : import de la vue principale ;</li>
-<li>ligne 6 : import du framework <strong>[BootstrapVue]</strong> ;</li>
-<li>ligne 7 : ce framework est conçu comme un plugin du framework <strong>[Vue]</strong>. La ligne 7 inclut ce plugin dans le framework <strong>[Vue]</strong> ;</li>
-<li>lignes 10-11 : import des fichiers CSS des frameworks <strong>[Bootstrap]</strong> et <strong>[BootstrapVue]</strong> ;</li>
-<li>les lignes 5-11 sont donc entièrement consacrées à l’utilisation de <strong>[BootstrapVue]</strong>. Le reste du code est identique à ce qu’on avait vu au paragraphe précédent ;</li>
+  <li>ligne 2 : import du framework <b>[Vue]</b> ;
+  </li>
+  <li>ligne 3 : import de la vue principale ;
+  </li>
+  <li>ligne 6 : import du framework <b>[BootstrapVue]</b> ;
+  </li>
+  <li>ligne 7 : ce framework est conçu comme un plugin du framework <b>[Vue]</b>. La ligne 7 inclut ce plugin dans le framework <b>[Vue]</b> ;
+  </li>
+  <li>lignes 10-11 : import des fichiers CSS des frameworks <b>[Bootstrap]</b> et <b>[BootstrapVue]</b> ;
+  </li>
+  <li>les lignes 5-11 sont donc entièrement consacrées à l’utilisation de <b>[BootstrapVue]</b>. Le reste du code est identique à ce qu’on avait vu au paragraphe précédent ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2479572728496130"></a></p>
 <h2 id="43-le-composant-appvue">4.3. Le composant [App.vue]</h2>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
@@ -1045,26 +1055,43 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 1-21 : toutes les balises &lt;b-xx&gt; sont des balises du framework <strong>[BootstrapVue]</strong> ;</li>
-<li>lignes 2, 20 : la balise &lt;b-container&gt; définit un conteneur Bootstrap. A l’intérieur de ce conteneur, on va pouvoir définir des lignes avec la balise &lt;b-row&gt; et des colonnes avec la balise &lt;b-col&gt; ;</li>
-<li>lignes 3, 19 : la balise &lt;b-card&gt; définit une ‘carte’ Bootstrap. Cela se matérialise visuellement par un rectangle avec une bordure ;</li>
-<li>lignes 5, 17 : la balise &lt;b-jumbotron&gt; permet de mettre en avant une partie de la page, ici une image et un texte. On l’utilisera dans nos divers projets comme identification visuelle du projet ;</li>
-<li>ligne 7 : la balise &lt;b-row&gt; définit une ligne ;</li>
-<li>lignes 9-11 : la balise &lt;b-col&gt; définit une colonne de la ligne précédente. Bootstrap attribue 12 colonnes à chaque ligne. L’attribut <strong>[cols=’4’]</strong> indique que la colonne &lt;b-col&gt; va occuper 4 de ces 12 colonnes ;</li>
-<li>ligne 10 : une image</li>
-<li>lignes 13-15 : une colonne qui va occuper 8 des 12 colonnes de la ligne. on y met un texte ;</li>
-<li>ligne 18 : utilisation d’un composant appelé <strong>[HelloBootstrap]</strong> avec une propriété nommée <strong>[msg]</strong> ;</li>
-<li>lignes 24-33 : la partie &lt;script&gt; du composant ;</li>
-<li>lignes 29-31 : le composant <strong>[HelloBootstrap]</strong> utilisée ligne 18 est exporté. Pour être connu, il doit être importé ligne 25 ;</li>
+  <li>lignes 1-21 : toutes les balises &lt;b-xx&gt; sont des balises du framework <b>[BootstrapVue]</b> ;
+  </li>
+  <li>lignes 2, 20 : la balise &lt;b-container&gt; définit un conteneur Bootstrap. A l’intérieur de ce conteneur, on va pouvoir définir des lignes avec la balise &lt;b-row&gt; et des colonnes avec la balise &lt;b-col&gt; ;
+  </li>
+  <li>lignes 3, 19 : la balise &lt;b-card&gt; définit une ‘carte’ Bootstrap. Cela se matérialise visuellement par un rectangle avec une bordure ;
+  </li>
+  <li>lignes 5, 17 : la balise &lt;b-jumbotron&gt; permet de mettre en avant une partie de la page, ici une image et un texte. On l’utilisera dans nos divers projets comme identification visuelle du projet ;
+  </li>
+  <li>ligne 7 : la balise &lt;b-row&gt; définit une ligne ;
+  </li>
+  <li>lignes 9-11 : la balise &lt;b-col&gt; définit une colonne de la ligne précédente. Bootstrap attribue 12 colonnes à chaque ligne. L’attribut <b>[cols=’4’]</b> indique que la colonne &lt;b-col&gt; va occuper 4 de ces 12 colonnes ;
+  </li>
+  <li>ligne 10 : une image
+  </li>
+  <li>lignes 13-15 : une colonne qui va occuper 8 des 12 colonnes de la ligne. on y met un texte ;
+  </li>
+  <li>ligne 18 : utilisation d’un composant appelé <b>[HelloBootstrap]</b> avec une propriété nommée <b>[msg]</b> ;
+  </li>
+  <li>lignes 24-33 : la partie &lt;script&gt; du composant ;
+  </li>
+  <li>lignes 29-31 : le composant <b>[HelloBootstrap]</b> utilisée ligne 18 est exporté. Pour être connu, il doit être importé ligne 25 ;
+  </li>
 </ul>
+
 <p>Le résultat est le suivant :</p>
 <p><img src="images/10000000000008D9000002B38C0F4F3C.png" style="width:14.981cm;height:4.571cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000008D9000002B38C0F4F3C.png" /></p>
 <ul>
-<li>en <strong>[1]</strong>, la balise &lt;b-card&gt; ;</li>
-<li>en <strong>[2]</strong>, la balise &lt;jumbotron&gt; ;</li>
-<li>en <strong>[3]</strong>, l’image sur 4 colonnes ;</li>
-<li>en <strong>[4]</strong>, le texte sur 8 colonnes ;</li>
+  <li>en <b>[1]</b>, la balise &lt;b-card&gt; ;
+  </li>
+  <li>en <b>[2]</b>, la balise &lt;jumbotron&gt; ;
+  </li>
+  <li>en <b>[3]</b>, l’image sur 4 colonnes ;
+  </li>
+  <li>en <b>[4]</b>, le texte sur 8 colonnes ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2479592728496130"></a></p>
 <h2 id="44-le-composant-hellobootstrap">4.4. Le composant [HelloBootstrap]</h2>
 <p><strong>[HelloBootstrap]</strong> est le composant suivant :</p>
@@ -1098,34 +1125,52 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 3 : la balise &lt;b-alert show&gt; affiche un rectangle de couleur dans lequel on met en général un texte (ligne 6). L’attribut <strong>[variant]</strong> permet de sélectionner un type d’alerte. Chaque type d’alerte a une couleur de fond différente. La couleur de la variante <strong>[success]</strong> est le vert. L’attribut <strong>[align]</strong> permet d’aligner le texte de l’alerte (gauche, droite, centré). On notera que l’attribut <strong>[show]</strong> est obligatoire pour afficher l’alerte. Sans cet attribut, l’alerte n’est pas visible ;</li>
-<li>les valeurs possibles de <strong>[variant]</strong> :<ul>
-<li><strong>[primary]</strong> : bleu ;</li>
-<li><strong>[secondary]</strong> : gris ;</li>
-<li><strong>[success]</strong>:vert ;</li>
-<li><strong>[danger]</strong> : rouge léger ;</li>
-<li><strong>[warning]</strong> : jaune ;</li>
-<li><strong>[info]</strong> : turquoise ;</li>
-<li><strong>[light]</strong> : pas de couleur de fond ;</li>
-<li><strong>[dark]</strong> : gris un peu plus foncé que <strong>[secondary]</strong> ;</li>
+  <li>ligne 3 : la balise &lt;b-alert show&gt; affiche un rectangle de couleur dans lequel on met en général un texte (ligne 6). L’attribut <b>[variant]</b> permet de sélectionner un type d’alerte. Chaque type d’alerte a une couleur de fond différente. La couleur de la variante <b>[success]</b> est le vert. L’attribut <b>[align]</b> permet d’aligner le texte de l’alerte (gauche, droite, centré). On notera que l’attribut <b>[show]</b> est obligatoire pour afficher l’alerte. Sans cet attribut, l’alerte n’est pas visible ;
+  </li>
+  <li>les valeurs possibles de <b>[variant]</b> :
+    <ul>
+      <li><b>[primary]</b> : bleu ;
+      </li>
+      <li><b>[secondary]</b> : gris ;
+      </li>
+      <li><b>[success]</b>:vert ;
+      </li>
+      <li><b>[danger]</b> : rouge léger ;
+      </li>
+      <li><b>[warning]</b> : jaune ;
+      </li>
+      <li><b>[info]</b> : turquoise ;
+      </li>
+      <li><b>[light]</b> : pas de couleur de fond ;
+      </li>
+      <li><b>[dark]</b> : gris un peu plus foncé que <b>[secondary]</b> ;
+      </li>
+    </ul>
+  </li>
+  <li>ligne 12 : <b>[msg]</b> est un paramètre du composant <b>[HelloBootstrap]</b> (lignes 21-23) ;
+  </li>
 </ul>
-</li>
-<li>ligne 12 : <strong>[msg]</strong> est un paramètre du composant <strong>[HelloBootstrap]</strong> (lignes 21-23) ;</li>
-</ul>
+
 <p>Le rendu visuel est le suivant :</p>
 <p><img src="images/10000000000008FD000004463E55F670.png" style="width:8.051cm;height:4.121cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000008FD000004463E55F670.png" /></p>
 <ul>
-<li><strong>[1]</strong> : balise &lt;b-alert show variant=’success’&gt; ;</li>
-<li><strong>[2]</strong> : balise &lt;b-alert show variant=’warning’&gt; ;</li>
+  <li><b>[1]</b> : balise &lt;b-alert show variant=’success’&gt; ;
+  </li>
+  <li><b>[2]</b> : balise &lt;b-alert show variant=’warning’&gt; ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2479612728496130"></a></p>
 <h2 id="45-execution-du-projet">4.5. Exécution du projet</h2>
 <p>Pour exécuter le projet, on modifie d’abord le fichier <strong>[package.json]</strong> :</p>
 <p><img src="images/1000000000000735000001FF3D38ABB4.png" style="width:8.051cm;height:4.121cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/1000000000000735000001FF3D38ABB4.png" /></p>
 <ul>
-<li>en <strong>[3]</strong>, on modifie le script exécuté par la commande <strong>[serve]</strong> <strong>[2]</strong> du fichier package.json <strong>[1]</strong> ;</li>
-<li>en <strong>[4]</strong>, on exécute le projet ;</li>
+  <li>en <b>[3]</b>, on modifie le script exécuté par la commande <b>[serve]</b> <b>[2]</b> du fichier package.json <b>[1]</b> ;
+  </li>
+  <li>en <b>[4]</b>, on exécute le projet ;
+  </li>
 </ul>
+
 <p><strong>Note</strong> : dans tout ce qui suit on utilisera les balises du framework BootstrapVue, des balises de la forme &lt;b-qqchose&gt;. Ce n’est pas obligatoire. On peut utiliser les balises originelles du framework Bootstrap. Elles sont fonctionnelles dans les templates de <strong>[Vue.js]</strong>. Aussi le développeur habitué aux balises Bootstrap peut continuer à les utiliser.</p>
 
 

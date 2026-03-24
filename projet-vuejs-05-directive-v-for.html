@@ -983,8 +983,10 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 7, 14, 19 : le composant <strong>[App]</strong> utilise le composant <strong>[VFor]</strong> ;</li>
+  <li>lignes 7, 14, 19 : le composant <b>[App]</b> utilise le composant <b>[VFor]</b> ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2479892728496130"></a></p>
 <h2 id="73-le-composant-vfor">7.3. Le composant [VFor]</h2>
 <p>Le rendu visuel sera le suivant :</p>
@@ -1054,21 +1056,36 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 4 : la balise &lt;b-dropdown&gt; sert à définir une liste déroulante <strong>[1]</strong> sous la forme d’un bouton qu’on clique pour voir les options de la liste <strong>[2]</strong>. <strong>[text=’Options’]</strong> définit le texte affiché sur le bouton <strong>[1]</strong> ;</li>
-<li>lignes 5-7 : la balise &lt;dropdown-item&gt; définit un élément de la liste déroulante ;</li>
-<li>ligne 5 : l’attribut <strong>[v-for]</strong> indique que la balise &lt;dropdown-item&gt; doit être répétée pour chaque élément <strong>[option]</strong> de l’attribut <strong>[options]</strong>, lignes 37-41, du composant. <strong>[index]</strong> représente le n° de l’élément dans la liste <strong>[0, 1, ..., n]</strong>. Le nom de l’élément <strong>[option]</strong> ainsi que celui de l’index sont libres. On aurait pu écrire <strong>[&lt;b-dropdown-item v-for=&quot;(o,i) in options&quot; :key=&quot;o.id&quot; @click=&quot;select(i)&quot;&gt;{{o.text}}&lt;/b-dropdown-item&gt;]</strong> ;</li>
-<li>ligne 6 : si on oublie l’attribut <strong>[key]</strong>, ESLint émet un warning. La valeur de l’attribut <strong>[key]</strong> doit persister dans le temps.  Aussi la valeur <strong>[index]</strong> de l’élément ne convient-elle pas. Car si cet élément est supprimé, les valeurs <strong>[index]</strong> de ceux qui sont derrière lui dans la liste vont être décrémentées de 1. Aussi ici, prend-on comme valeur de clé la valeur <strong>[option.id]</strong>, lignes 38-40, qui ne changera pas en cas de suppression d’un élément. L’attribut <strong>[key]</strong> est un élément d’optimisation de régénération du DOM (Document Object Model) par <strong>[Vue.js]</strong> lorsque la liste doit être régénérée. Notez la notation <strong>[:key]</strong>, car <strong>[key]</strong> a une valeur dynamique ;</li>
-<li>ligne 7 : la méthode <strong>[select(index)]</strong>, lignes 49-51, sera appelée lorsque l’utilisateur cliquera sur un élément de la liste ;</li>
-<li>ligne 7 : le texte de l’option sera la valeur <strong>[option.text]</strong> définie aux lignes 37-41 ;</li>
-<li>ligne 10 : le bouton <strong>[3]</strong>. <strong>[class=’ml-3]</strong> signifie margin (m) left (l) de trois spacers. <strong>[@click=&quot;generateErrors&quot;]</strong> indique que la méthode <strong>[generateErrors]</strong>, lignes 45-48, sera exécutée lors d’un <strong>[click]</strong> sur le bouton. <strong>[v-if=&quot;!error&quot;]</strong> indique que l’affichage du bouton est conditionné à la valeur de l’attribut statique <strong>[error]</strong> de la ligne 35 ;</li>
-<li>lignes 15-21 : une alerte de type <strong>[danger]</strong> <strong>[4]</strong> contrôlée elle-aussi par l’attribut statique <strong>[error]</strong> de la ligne 35. L’attribut <strong>[class=’mt-3’]</strong> (<strong>m</strong>argin <strong>t</strong>op <strong>3</strong> spacers) fixe l’espace entre cette alerte et l’élément qui est au-dessus de lui ;</li>
-<li>ligne 27 : la balise HTML &lt;br /&gt; fait un saut de ligne ;</li>
-<li>ligne 18 : début d’une liste non ordonnée <strong>[ul=unordered list]</strong> ;</li>
-<li>ligne 19 : la balise &lt;li&gt; définit un élément de la liste &lt;ul&gt;. Là encore, on utilise une directive <strong>[v-for]</strong> pour générer la balise plusieurs fois. Autant de fois ici que le tableau <strong>[erreurs]</strong> de la ligne 33 aura d’éléments. On utilise ici l’attribut <strong>[:key=index]</strong>. On a dit précédemment que l’index des éléments d’une liste ne faisait pas un bon discriminant entre éléments de la liste car en cas de suppression d’un élément, tous les éléments qui suivent voient leur index changer. Ici ça n’a pas d’importance car les éléments de la liste d’erreurs ne sont pas susceptibles d’être supprimés ;</li>
-<li>ligne 19 : l’élément sert à afficher l’élément <strong>[erreur]</strong> de la liste <strong>[erreurs]</strong> ;</li>
-<li>lignes 30-43 : tous les éléments dynamiques du <strong>[template]</strong> sont des attributs du composant. Il n’y a ici aucune propriété de type <strong>[props]</strong> dont la valeur serait fixée par le composant parent ;</li>
-<li>lignes 48-55 : la méthode <strong>[generateErrors]</strong> génère la liste d’erreurs à afficher par la balise &lt;ul&gt; des lignes 16-18. De plus, elle modifie l’attribut statique <strong>[error]</strong>, à la fois pour afficher cette liste d’erreurs (ligne 15) et cacher le bouton de génération (ligne 13) ;</li>
+  <li>ligne 4 : la balise &lt;b-dropdown&gt; sert à définir une liste déroulante <b>[1]</b> sous la forme d’un bouton qu’on clique pour voir les options de la liste <b>[2]</b>. <b>[text=’Options’]</b> définit le texte affiché sur le bouton <b>[1]</b> ;
+  </li>
+  <li>lignes 5-7 : la balise &lt;dropdown-item&gt; définit un élément de la liste déroulante ;
+  </li>
+  <li>ligne 5 : l’attribut <b>[v-for]</b> indique que la balise &lt;dropdown-item&gt; doit être répétée pour chaque élément <b>[option]</b> de l’attribut <b>[options]</b>, lignes 37-41, du composant. <b>[index]</b> représente le n° de l’élément dans la liste <b>[0, 1, ..., n]</b>. Le nom de l’élément <b>[option]</b> ainsi que celui de l’index sont libres. On aurait pu écrire <b>[&lt;b-dropdown-item v-for=&quot;(o,i) in options&quot; :key=&quot;o.id&quot; @click=&quot;select(i)&quot;&gt;{{o.text}}&lt;/b-dropdown-item&gt;]</b> ;
+  </li>
+  <li>ligne 6 : si on oublie l’attribut <b>[key]</b>, ESLint émet un warning. La valeur de l’attribut <b>[key]</b> doit persister dans le temps.  Aussi la valeur <b>[index]</b> de l’élément ne convient-elle pas. Car si cet élément est supprimé, les valeurs <b>[index]</b> de ceux qui sont derrière lui dans la liste vont être décrémentées de 1. Aussi ici, prend-on comme valeur de clé la valeur <b>[option.id]</b>, lignes 38-40, qui ne changera pas en cas de suppression d’un élément. L’attribut <b>[key]</b> est un élément d’optimisation de régénération du DOM (Document Object Model) par <b>[Vue.js]</b> lorsque la liste doit être régénérée. Notez la notation <b>[:key]</b>, car <b>[key]</b> a une valeur dynamique ;
+  </li>
+  <li>ligne 7 : la méthode <b>[select(index)]</b>, lignes 49-51, sera appelée lorsque l’utilisateur cliquera sur un élément de la liste ;
+  </li>
+  <li>ligne 7 : le texte de l’option sera la valeur <b>[option.text]</b> définie aux lignes 37-41 ;
+  </li>
+  <li>ligne 10 : le bouton <b>[3]</b>. <b>[class=’ml-3]</b> signifie margin (m) left (l) de trois spacers. <b>[@click=&quot;generateErrors&quot;]</b> indique que la méthode <b>[generateErrors]</b>, lignes 45-48, sera exécutée lors d’un <b>[click]</b> sur le bouton. <b>[v-if=&quot;!error&quot;]</b> indique que l’affichage du bouton est conditionné à la valeur de l’attribut statique <b>[error]</b> de la ligne 35 ;
+  </li>
+  <li>lignes 15-21 : une alerte de type <b>[danger]</b> <b>[4]</b> contrôlée elle-aussi par l’attribut statique <b>[error]</b> de la ligne 35. L’attribut <b>[class=’mt-3’]</b> (<b>m</b>argin <b>t</b>op <b>3</b> spacers) fixe l’espace entre cette alerte et l’élément qui est au-dessus de lui ;
+  </li>
+  <li>ligne 27 : la balise HTML &lt;br /&gt; fait un saut de ligne ;
+  </li>
+  <li>ligne 18 : début d’une liste non ordonnée <b>[ul=unordered list]</b> ;
+  </li>
+  <li>ligne 19 : la balise &lt;li&gt; définit un élément de la liste &lt;ul&gt;. Là encore, on utilise une directive <b>[v-for]</b> pour générer la balise plusieurs fois. Autant de fois ici que le tableau <b>[erreurs]</b> de la ligne 33 aura d’éléments. On utilise ici l’attribut <b>[:key=index]</b>. On a dit précédemment que l’index des éléments d’une liste ne faisait pas un bon discriminant entre éléments de la liste car en cas de suppression d’un élément, tous les éléments qui suivent voient leur index changer. Ici ça n’a pas d’importance car les éléments de la liste d’erreurs ne sont pas susceptibles d’être supprimés ;
+  </li>
+  <li>ligne 19 : l’élément sert à afficher l’élément <b>[erreur]</b> de la liste <b>[erreurs]</b> ;
+  </li>
+  <li>lignes 30-43 : tous les éléments dynamiques du <b>[template]</b> sont des attributs du composant. Il n’y a ici aucune propriété de type <b>[props]</b> dont la valeur serait fixée par le composant parent ;
+  </li>
+  <li>lignes 48-55 : la méthode <b>[generateErrors]</b> génère la liste d’erreurs à afficher par la balise &lt;ul&gt; des lignes 16-18. De plus, elle modifie l’attribut statique <b>[error]</b>, à la fois pour afficher cette liste d’erreurs (ligne 15) et cacher le bouton de génération (ligne 13) ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2479912728496130"></a></p>
 <h2 id="74-execution-du-projet">7.4. Exécution du projet</h2>
 <p><img src="images/100000000000071C0000023D32BB36D5.png" style="width:14.451cm;height:4.552cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000071C0000023D32BB36D5.png" /></p>

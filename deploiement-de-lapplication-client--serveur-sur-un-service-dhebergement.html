@@ -941,17 +941,24 @@
 <h2 id="201-deploiement-du-serveur">20.1. Déploiement du serveur</h2>
 <p>L’hébergement OVH visé est un hébergement basique :</p>
 <ol>
-<li>un environnement PHP 7.3 ;</li>
-<li>un SGBD MySQL ;</li>
-<li>pas de serveur <strong>[Redis]</strong> ;</li>
+  <li>un environnement PHP 7.3 ;
+  </li>
+  <li>un SGBD MySQL ;
+  </li>
+  <li>pas de serveur <b>[Redis]</b> ;
+  </li>
 </ol>
+
 <p>Le 3ième point nous oblige à modifier la version 14 de notre serveur de calcul de l’impôt.</p>
 <p><img src="images/10000000000008170000026ACEE5D371.png" style="width:16.44cm;height:4.911cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000008170000026ACEE5D371.png" /></p>
 <p>Il nous faut modifier :</p>
 <ul>
-<li>les fichiers de configuration <strong>[1]</strong> ;</li>
-<li>les contrôleurs <strong>[AdminDataController]</strong> et <strong>[CalculerImpotController]</strong> pour tenir compte du fait qu’il n’y a pas de serveur <strong>[Redis]</strong> ;</li>
+  <li> les fichiers de configuration <b>[1]</b> ;
+  </li>
+  <li>les contrôleurs <b>[AdminDataController]</b> et <b>[CalculerImpotController]</b> pour tenir compte du fait qu’il n’y a pas de serveur <b>[Redis]</b> ;
+  </li>
 </ul>
+
 <p>Le fichier <strong>[config.json]</strong> évolue de la façon suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line">{</span>
@@ -981,9 +988,12 @@
 
 <p><strong><span style="color: #000000">Commentaires</span></strong></p>
 <ul>
-<li><span style="color: #000000">ligne 4 : on introduit un booléen </span><strong><span style="color: #000000">[redisAvailable]</span></strong><span style="color: #000000"> pour indiquer si on a accès ou non à un serveur </span><strong><span style="color: #000000">[Redis]</span></strong><span style="color: #000000"> ;</span></li>
-<li><span style="color: #000000">lignes 5, 13, 14 : les chemins absolus vont changer ;</span></li>
+  <li><span style="color: #000000">ligne 4 : on introduit un booléen </span><b><span style="color: #000000">[redisAvailable]</span></b><span style="color: #000000"> pour indiquer si on a accès ou non à un serveur </span><b><span style="color: #000000">[Redis]</span></b><span style="color: #000000"> ;</span>
+  </li>
+  <li><span style="color: #000000">lignes 5, 13, 14 : les chemins absolus vont changer ;</span>
+  </li>
 </ul>
+
 <p><span style="color: #000000">Le fichier </span><strong><span style="color: #000000">[database.json]</span></strong><span style="color: #000000"> évolue comme suit :</span></p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line">{</span>
@@ -1002,8 +1012,10 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 2-4 : l’identité de la base de données ainsi que les identifiants de son propriétaire vont changer ;</li>
+  <li>lignes 2-4 : l’identité de la base de données ainsi que les identifiants de son propriétaire vont changer ;
+  </li>
 </ul>
+
 <p>Le contrôleur <strong>[AdminDataController]</strong> évolue de la façon suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-php">
 <span class="odt-code-line">&lt;?php</span>
@@ -1064,16 +1076,23 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 31 : on teste désormais si on a ou non un serveur <strong>[Redis]</strong> ;</li>
-<li>lignes 32-34 : si oui, le code précédent est repris dans son intégralité ;</li>
-<li>lignes 35-46 : sinon, les données de l’administration fiscale sont prises dans la base de données ;</li>
+  <li>ligne 31 : on teste désormais si on a ou non un serveur <b>[Redis]</b> ;
+  </li>
+  <li>lignes 32-34 : si oui, le code précédent est repris dans son intégralité ;
+  </li>
+  <li>lignes 35-46 : sinon, les données de l’administration fiscale sont prises dans la base de données ;
+  </li>
 </ul>
+
 <p>Le contrôleur <strong>[CalculerImpotController]</strong> qui lui également a besoin des données de l’administration fiscale évolue de façon identique.</p>
 <p>Ceci fait. Le déploiement sur le serveur OVH a consisté à faire du FTP. On a téléchargé sur OVH :</p>
 <ul>
-<li>la version <strong>[vuejs-14-without-redis]</strong> ;</li>
-<li>le dossier <strong>[vendor]</strong> qui contient toutes les dépendances du serveur <strong>[vuejs-14-without-redis]</strong> ;</li>
+  <li>la version <b>[vuejs-14-without-redis]</b> ;
+  </li>
+  <li>le dossier <b>[vendor]</b> qui contient toutes les dépendances du serveur <b>[vuejs-14-without-redis]</b> ;
+  </li>
 </ul>
+
 <p>Le transfert FTP fait, on a généré les tables nécessaires au serveur avec le script SQL suivant :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-sql">
 <span class="odt-code-line">-- phpMyAdmin SQL Dump</span>
@@ -1234,8 +1253,10 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 21 : la base des URL a été modifiée ;</li>
+  <li>ligne 21 : la base des URL a été modifiée ;
+  </li>
 </ul>
+
 <p>Le fichier <strong>[config.js]</strong> est modifié de la façon suivante :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-python">
 <span class="odt-code-line"><span style="color:#008000">// utilisation de la biblioth</span><span style="color:#008000">èque </span><span style="font-weight:bold;color:#008000">[axios]</span></span>
@@ -1262,8 +1283,10 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 10 : on met l’URL du serveur de calcul de l’impôt ;</li>
+  <li>ligne 10 : on met l’URL du serveur de calcul de l’impôt ;
+  </li>
 </ul>
+
 <p>La version de production du projet a été générée avec la commande <strong>[build]</strong> du fichier <strong>[package.json]</strong> <strong>[5]</strong> suivant :</p>
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line">{</span>

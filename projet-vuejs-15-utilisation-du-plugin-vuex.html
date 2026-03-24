@@ -1021,19 +1021,30 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 2-4 : on intègre le plugin <strong>[Vuex]</strong> au framework <strong>[Vue]</strong> ;</li>
-<li>ligne 7 : la session devient un objet de type <strong>[Vuex.Store]</strong> ;</li>
-<li>lignes 8-11 : la propriété <strong>[state]</strong> contient l’état partagé de l’application <strong>[Vue]</strong>. Cette propriété sera accessible à tous les composants de l’application. Ici nous partageons le tableau des simulations <strong>[lignes]</strong> (ligne 10) ;</li>
-<li>lignes 12-35 : la propriété <strong>[mutations]</strong> rassemble les méthodes qui modifie le contenu de l’objet <strong>[state]</strong> ;</li>
-<li>lignes 14-26 : la propriété <strong>[generateLignes]</strong> est une fonction générant une valeur initiale pour la propriété <strong>[state.lignes]</strong>. Elle admet ici <strong>[state]</strong> comme paramètre. Lignes 18-23 : la propriété <strong>[state.lignes]</strong> est initialisée ;</li>
-<li>lignes 28-35 : la propriété <strong>[deleteLigne]</strong> est une fonction supprimant une ligne du tableau <strong>[state.lignes]</strong>. Elle a pour paramètres :<ul>
-<li><strong>[state]</strong> qui représente l’objet des lignes 8-11 ;</li>
-<li><strong>[index]</strong> qui est le n° de la ligne à supprimer ;</li>
+  <li>lignes 2-4 : on intègre le plugin <b>[Vuex]</b> au framework <b>[Vue]</b> ;
+  </li>
+  <li>ligne 7 : la session devient un objet de type <b>[Vuex.Store]</b> ;
+  </li>
+  <li>lignes 8-11 : la propriété <b>[state]</b> contient l’état partagé de l’application <b>[Vue]</b>. Cette propriété sera accessible à tous les composants de l’application. Ici nous partageons le tableau des simulations <b>[lignes]</b> (ligne 10) ;
+  </li>
+  <li>lignes 12-35 : la propriété <b>[mutations]</b> rassemble les méthodes qui modifie le contenu de l’objet <b>[state]</b> ;
+  </li>
+  <li>lignes 14-26 : la propriété <b>[generateLignes]</b> est une fonction générant une valeur initiale pour la propriété <b>[state.lignes]</b>. Elle admet ici <b>[state]</b> comme paramètre. Lignes 18-23 : la propriété <b>[state.lignes]</b> est initialisée ;
+  </li>
+  <li>lignes 28-35 : la propriété <b>[deleteLigne]</b> est une fonction supprimant une ligne du tableau <b>[state.lignes]</b>. Elle a pour paramètres :
+    <ul>
+      <li><b>[state]</b> qui représente l’objet des lignes 8-11 ;
+      </li>
+      <li><b>[index]</b> qui est le n° de la ligne à supprimer ;
+      </li>
+    </ul>
+  </li>
+  <li>les fonctions de la propriété <b>[mutations]</b> admettent toujours comme 1er paramètre, un objet représentant la propriété <b>[state]</b> de la ligne 8. Les paramètres suivants sont fournis par le code appelant la mutation ;
+  </li>
+  <li>ligne 37 : l’objet <b>[session]</b> est exporté.
+  </li>
 </ul>
-</li>
-<li>les fonctions de la propriété <strong>[mutations]</strong> admettent toujours comme 1er paramètre, un objet représentant la propriété <strong>[state]</strong> de la ligne 8. Les paramètres suivants sont fournis par le code appelant la mutation ;</li>
-<li>ligne 37 : l’objet <strong>[session]</strong> est exporté.</li>
-</ul>
+
 <p>Contrairement au projet précédent <strong>[vuejs-13]</strong> nous n’aurons pas ici de plugin pour rendre la session accessible aux composants dans un attribut <strong>[Vue.$session]</strong>.</p>
 <p><a id="refheadingtoc2481132728496130"></a></p>
 <h2 id="173-le-script-principal-mainjs">17.3. Le script principal [./main.js]</h2>
@@ -1068,9 +1079,12 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 14 : la session est importée ;</li>
-<li>ligne 23 : elle est passée à la vue principale dans un attribut nommé <strong>[store]</strong> (c’est imposé). Grâce au plugin <strong>[Vuex]</strong>, cet attribut devient alors disponible à tous les composants dans un attribut <strong>[Vue.$store]</strong>. On est donc dans une configuration très proche de celle du projet précédent : là où dans un composant on accédait à la session via la notation <strong>[this.$session]</strong>, on y accèdera maintenant via la notation <strong>[this.$store]</strong> ;</li>
+  <li>ligne 14 : la session est importée ;
+  </li>
+  <li>ligne 23 : elle est passée à la vue principale dans un attribut nommé <b>[store]</b> (c’est imposé). Grâce au plugin <b>[Vuex]</b>, cet attribut devient alors disponible à tous les composants dans un attribut <b>[Vue.$store]</b>. On est donc dans une configuration très proche de celle du projet précédent : là où dans un composant on accédait à la session via la notation <b>[this.$session]</b>, on y accèdera maintenant via la notation <b>[this.$store]</b> ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2481152728496130"></a></p>
 <h2 id="174-la-vue-principale-app">17.4. La vue principale [App]</h2>
 <p>La vue principale <strong>[App]</strong> évolue comme suit :</p>
@@ -1108,9 +1122,12 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 9 : la vue <strong>[App]</strong> utilise le composant <strong>[Table]</strong> mais ne reçoit plus d’événements de sa part, ceci grâce au fait que le store <strong>[Vuex]</strong> est <strong>réactif</strong> ;</li>
-<li>lignes 24-27 : la méthode <strong>[created]</strong> est exécutée juste après la création du composant <strong>[App]</strong>. Dans celle-ci, on exécute la mutation nommée <strong>[generateLignes]</strong> qui génère une valeur initiale pour le tableau des simulations. On notera la syntaxe particulière de l’instruction. On rappelle que la notation <strong>[this.$store]</strong> fait référence à la propriété <strong>[store]</strong> de la vue instanciée dans <strong>[main.js]</strong> :</li>
+  <li>ligne 9 : la vue <b>[App]</b> utilise le composant <b>[Table]</b> mais ne reçoit plus d’événements de sa part, ceci grâce au fait que le store <b>[Vuex]</b> est <b>réactif</b> ;
+  </li>
+  <li>lignes 24-27 : la méthode <b>[created]</b> est exécutée juste après la création du composant <b>[App]</b>. Dans celle-ci, on exécute la mutation nommée <b>[generateLignes]</b> qui génère une valeur initiale pour le tableau des simulations. On notera la syntaxe particulière de l’instruction. On rappelle que la notation <b>[this.$store]</b> fait référence à la propriété <b>[store]</b> de la vue instanciée dans <b>[main.js]</b> :
+  </li>
 </ul>
+
 <div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line">// instanciation vue <span style="font-weight:bold">[App]</span></span>
 <span class="odt-code-line"><span style="color:#0000ff">new</span><span style="color:#000000"> Vue({</span></span>
@@ -1194,11 +1211,16 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>le <strong>[template]</strong> des lignes 1-24 ne change pas ;</li>
-<li>lignes 30-32 : la propriété calculée <strong>[lignes]</strong> utilise désormais le <strong>[store]</strong> de <strong>[Vuex]</strong> ;</li>
-<li>lignes 49-54 : pour supprimer une ligne de la table HTML, on utilise la mutation <strong>[deleteLigne]</strong> du <strong>[store]</strong> de <strong>[Vuex]</strong>. On passe en paramètre le n° <strong>[index]</strong> de la ligne à supprimer (ligne 53) ;</li>
-<li>lignes 56-61 : pour recharger la table HTML avec une nouvelle liste, on utilise la mutation <strong>[generateLignes]</strong> du <strong>[store]</strong> de <strong>[Vuex]</strong> ;</li>
+  <li>le <b>[template]</b> des lignes 1-24 ne change pas ;
+  </li>
+  <li>lignes 30-32 : la propriété calculée <b>[lignes]</b> utilise désormais le <b>[store]</b> de <b>[Vuex]</b> ;
+  </li>
+  <li>lignes 49-54 : pour supprimer une ligne de la table HTML, on utilise la mutation <b>[deleteLigne]</b> du <b>[store]</b> de <b>[Vuex]</b>. On passe en paramètre le n° <b>[index]</b> de la ligne à supprimer (ligne 53) ;
+  </li>
+  <li>lignes 56-61 : pour recharger la table HTML avec une nouvelle liste, on utilise la mutation <b>[generateLignes]</b> du <b>[store]</b> de <b>[Vuex]</b> ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2481192728496130"></a></p>
 <h2 id="176-conclusion">17.6. Conclusion</h2>
 <p>Les attributs <strong>[Vue.$session]</strong> du projet <strong>[vuejs-13]</strong> et <strong>[Vue.$store]</strong> du projet <strong>[vuejs-15]</strong> sont très proches l’un de l’autre. Ils visent le même objectif : partager de l’information entre vues. L’avantage de l’objet <strong>[store]</strong> est d’être réactif alors que l’objet <strong>[session]</strong> ne l’est pas. Mais le projet [vuejs-14] a montré qu’il était aisé de rendre réactif l’objet [session] en le dupliquant dans les propriétés réactives des vues.</p>

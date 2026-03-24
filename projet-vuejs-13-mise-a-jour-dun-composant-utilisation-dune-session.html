@@ -1017,8 +1017,10 @@
 </code></pre></div>
 
 <ul>
-<li>ligne 4 : l’objet partagé <strong>[session]</strong> sera disponible dans la propriété <strong>[$session]</strong> de tous les composants ;</li>
+  <li>ligne 4 : l’objet partagé <b>[session]</b> sera disponible dans la propriété <b>[$session]</b> de tous les composants ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480992728496130"></a></p>
 <h2 id="153-le-script-principal-mainjs">15.3. Le script principal [main.js]</h2>
 <p>Le script principal <strong>[main.js]</strong> est le suivant :</p>
@@ -1051,9 +1053,12 @@
 </code></pre></div>
 
 <ul>
-<li>lignes 14-16 : le plugin <strong>[pluginSession]</strong> est intégré au framework <strong>[Vue.js]</strong> ;</li>
-<li>après la ligne 16, l’attribut <strong>[$session]</strong> est disponible pour tous les composants ;</li>
+  <li>lignes 14-16 : le plugin <b>[pluginSession]</b> est intégré au framework <b>[Vue.js]</b> ;
+  </li>
+  <li>après la ligne 16, l’attribut <b>[$session]</b> est disponible pour tous les composants ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2481012728496130"></a></p>
 <h2 id="154-la-vue-principale-app">15.4. La vue principale [App]</h2>
 <p>La vue <strong>[App]</strong> est désormais la suivante :</p>
@@ -1103,10 +1108,14 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>la vue <strong>[App]</strong> ne gère plus désormais le tableau affiché par le composant <strong>[Table]</strong> de la ligne 9 ;</li>
-<li>ligne 9 : le composant <strong>[Table]</strong> émet l’événement <strong>[updateTable]</strong> qui demande à ce que le composant <strong>[Table]</strong> soit régénéré. Une façon de faire cela est d’utiliser l’attribut <strong>[:key]</strong>. On donne à cet attribut une valeur modifiable. A chaque fois qu’elle est modifiée, le composant <strong>[Table]</strong> est régénéré ;</li>
-<li>ligne 9 : la valeur de l’attribut <strong>[:key]</strong> est l’attribut <strong>[versionTable]</strong> de la ligne 27. La méthode <strong>[updateTable]</strong> (lignes 33-38) est chargée de régénérer le composant <strong>[Table]</strong> de la ligne 9. Pour cela, la méthode incrémente la valeur de l’attribut <strong>[:key]</strong> du composant <strong>[Table]</strong>, ligne 37. Le composant <strong>[Table]</strong> est alors automatiquement régénéré ;</li>
+  <li>la vue <b>[App]</b> ne gère plus désormais le tableau affiché par le composant <b>[Table]</b> de la ligne 9 ;
+  </li>
+  <li>ligne 9 : le composant <b>[Table]</b> émet l’événement <b>[updateTable]</b> qui demande à ce que le composant <b>[Table]</b> soit régénéré. Une façon de faire cela est d’utiliser l’attribut <b>[:key]</b>. On donne à cet attribut une valeur modifiable. A chaque fois qu’elle est modifiée, le composant <b>[Table]</b> est régénéré ;
+  </li>
+  <li>ligne 9 : la valeur de l’attribut <b>[:key]</b> est l’attribut <b>[versionTable]</b> de la ligne 27. La méthode <b>[updateTable]</b> (lignes 33-38) est chargée de régénérer le composant <b>[Table]</b> de la ligne 9. Pour cela, la méthode incrémente la valeur de l’attribut <b>[:key]</b> du composant <b>[Table]</b>, ligne 37. Le composant <b>[Table]</b> est alors automatiquement régénéré ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2481032728496130"></a></p>
 <h2 id="155-le-composant-table">15.5. Le composant [Table]</h2>
 <p>Le composant <strong>[Table]</strong> évolue de la façon suivante :</p>
@@ -1183,10 +1192,14 @@
 
 <p><strong>Commentaires :</strong></p>
 <ul>
-<li>l’attribut <strong>[lignes]</strong> (lignes 4, 12, 17) n’est plus un paramètre fixé par le composant parent mais un attribut calculé du composant <strong>[Table]</strong> (lignes 30-32). <strong>[lignes]</strong> est alors le tableau <strong>[$session.lignes]</strong> (ligne 31) ;</li>
-<li>lignes 49-56 : la méthode <strong>[supprimerLigne]</strong> fait supprimer une ligne du tableau <strong>[$session.lignes]</strong>. Cette suppression ne change pas, par défaut, l’affichage de la table HTML. En effet, les éléments de <strong>[$session]</strong> <strong>ne sont pas réactifs</strong> : leur modification n’est pas répercutée sur les composants qui les utilisent. Pour cette raison, le composant <strong>[Table]</strong> demande à son parent de le régénérer au moyen de l’événement <strong>[updateTable]</strong> (ligne 55). On a vu que le composant parent allait alors incrémenter l’attribut <strong>[:key]</strong> du composant <strong>[Table]</strong> pour forcer sa régénération ;</li>
-<li>lignes 58-65 : la méthode <strong>[rechargerListe]</strong> demande à l’objet <strong>[$session]</strong> de régénérer le tableau <strong>[$session.lignes]</strong>. Pour la même raison que précédemment, cette modification de <strong>[$session.liste]</strong> ne change pas, par défaut, l’affichage de la table HTML. Pour cette raison, le composant <strong>[Table]</strong> demande à son parent de le régénérer au moyen de l’événement <strong>[updateTable]</strong> (ligne 64).</li>
+  <li>l’attribut <b>[lignes]</b> (lignes 4, 12, 17) n’est plus un paramètre fixé par le composant parent mais un attribut calculé du composant <b>[Table]</b> (lignes 30-32). <b>[lignes]</b> est alors le tableau <b>[$session.lignes]</b> (ligne 31) ;
+  </li>
+  <li>lignes 49-56 : la méthode <b>[supprimerLigne]</b> fait supprimer une ligne du tableau <b>[$session.lignes]</b>. Cette suppression ne change pas, par défaut, l’affichage de la table HTML. En effet, les éléments de <b>[$session]</b> <b>ne sont pas réactifs</b> : leur modification n’est pas répercutée sur les composants qui les utilisent. Pour cette raison, le composant <b>[Table]</b> demande à son parent de le régénérer au moyen de l’événement <b>[updateTable]</b> (ligne 55). On a vu que le composant parent allait alors incrémenter l’attribut <b>[:key]</b> du composant <b>[Table]</b> pour forcer sa régénération ;
+  </li>
+  <li>lignes 58-65 : la méthode <b>[rechargerListe]</b> demande à l’objet <b>[$session]</b> de régénérer le tableau <b>[$session.lignes]</b>. Pour la même raison que précédemment, cette modification de <b>[$session.liste]</b> ne change pas, par défaut, l’affichage de la table HTML. Pour cette raison, le composant <b>[Table]</b> demande à son parent de le régénérer au moyen de l’événement <b>[updateTable]</b> (ligne 64).
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2481052728496130"></a></p>
 <h2 id="156-execution-du-projet">15.6. Exécution du projet</h2>
 <p><img src="images/10000000000006FF0000025B003B9340.png" style="width:14.221cm;height:4.791cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000006FF0000025B003B9340.png" /></p>

@@ -1042,16 +1042,24 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>la vue principale affiche un composant <strong>[Table]</strong> (lignes 9, 15, 21) ;</li>
-<li>ligne 9 :  le composant <strong>[Table]</strong> admet le paramètre <strong>[:lignes]</strong> qui représente les lignes à afficher dans une table HTML. Ces lignes sont définies par les lignes 27-31 du code ;</li>
-<li>ligne 9 : le composant <strong>[Table]</strong>est susceptible d’émettre deux événements :<ul>
-<li><strong>[supprimerLigne]</strong> : pour supprimer une ligne dont on donne l’index (ligne 38) ;</li>
-<li><strong>[rechargerListe]</strong> : pour régénérer la liste des lignes 27-31. En effet, nous allons voir que l’utilisateur peut supprimer certaines des lignes affichées ;</li>
+  <li>la vue principale affiche un composant <b>[Table]</b> (lignes 9, 15, 21) ;
+  </li>
+  <li>ligne 9 :  le composant <b>[Table]</b> admet le paramètre <b>[:lignes]</b> qui représente les lignes à afficher dans une table HTML. Ces lignes sont définies par les lignes 27-31 du code ;
+  </li>
+  <li>ligne 9 : le composant <b>[Table]</b>est susceptible d’émettre deux événements :
+    <ul>
+      <li><b>[supprimerLigne]</b> : pour supprimer une ligne dont on donne l’index (ligne 38) ;
+      </li>
+      <li><b>[rechargerListe]</b> : pour régénérer la liste des lignes 27-31. En effet, nous allons voir que l’utilisateur peut supprimer certaines des lignes affichées ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 38-43 : la méthode chargée de gérer l’événement <b>[supprimerLigne]</b>. Elle reçoit en paramètre l’index de la ligne à supprimer ;
+  </li>
+  <li>lignes 45-54 : la méthode chargée de gérer l’événement <b>[rechargerListe]</b>. En modifiant l’attribut <b>[lignes]</b> de la ligne 27, on provoque la mise à jour du composant <b>[Table]</b> de la ligne 9, puisqu’il a un paramètre <b>[:lignes=&quot;lignes&quot;]</b> ;
+  </li>
 </ul>
-</li>
-<li>lignes 38-43 : la méthode chargée de gérer l’événement <strong>[supprimerLigne]</strong>. Elle reçoit en paramètre l’index de la ligne à supprimer ;</li>
-<li>lignes 45-54 : la méthode chargée de gérer l’événement <strong>[rechargerListe]</strong>. En modifiant l’attribut <strong>[lignes]</strong> de la ligne 27, on provoque la mise à jour du composant <strong>[Table]</strong> de la ligne 9, puisqu’il a un paramètre <strong>[:lignes=&quot;lignes&quot;]</strong> ;</li>
-</ul>
+
 <p><a id="refheadingtoc2480892728496130"></a></p>
 <h2 id="143-le-composant-table">14.3. Le composant [Table]</h2>
 <p>Le composant <strong>[Table]</strong> est le suivant :</p>
@@ -1126,48 +1134,75 @@
 <p><strong>Commentaires</strong></p>
 <p>Ce composant a deux états :</p>
 <ol>
-<li>il affiche une liste dans un tableau HTML ;</li>
-<li>ou bien un message indiquant que la liste à afficher est vide ;</li>
+  <li>il affiche une liste dans un tableau HTML ;
+  </li>
+  <li>ou bien un message indiquant que la liste à afficher est vide ;
+  </li>
 </ol>
+
 <p>Le 1er état est affiché si la condition <strong>[lignes.length!=0]</strong> est vérifiée (ligne 12) :</p>
 <p><img src="images/10000000000007CF00000339BCF658A0.png" style="width:13.221cm;height:5.46cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007CF00000339BCF658A0.png" /></p>
 <p>Le second est affiché si la condition <strong>[lignes.length==0]</strong> est vérifiée (ligne 4).</p>
 <p><img src="images/100000000000065500000249DDE95992.png" style="width:10.72cm;height:3.871cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000065500000249DDE95992.png" /></p>
 <ul>
-<li><strong>[lignes]</strong> est un paramètre d’entrée du composant (lignes 29-33) ;</li>
-<li>lignes 4-10 : au lieu d’introduire un bloc de code avec une balise &lt;div&gt;, on a ici utilisé une balise &lt;template&gt;. la différence entre les deux est que la balise &lt;template&gt; n’est pas insérée dans le code HTML généré ;</li>
-<li>ligne 9 : lorsque la liste affichée par la table HTML est vide, un bouton propose de la régénérer. Lorsqu’on clique sur ce bouton, la méthode <strong>[rechargerListe]</strong> des lignes 57-62 est exécutée. Celle-ci se contente d’émettre vers le composant parent l’événement <strong>[rechargerListe]</strong> qui demande au parent de régénérer la liste affichée par la table HTML ;</li>
-<li>lignes 12-22 : le code affiché lorsque la liste à afficher n’est pas vide ;</li>
-<li>ligne 17 : la balise &lt;b-table&gt; est la balise qui génère une table HTML. Les attributs utilisés ici sont les suivants :<ul>
-<li><strong>[striped]</strong> : la couleur de fond des lignes alterne. Il y a une couleur pour les lignes paires et une autre pour les lignes impaires. Cela améliore la visibilité ;</li>
-<li><strong>[hover]</strong> : la ligne sur laquelle on passe la souris change de couleur ;</li>
-<li><strong>[responsive]</strong> : la taille de la table s’adapte à l’écran qui l’affiche ;</li>
-<li><strong>[:items]</strong> : le tableau des éléments à afficher. Ici le tableau <strong>[lignes]</strong> passé en paramètre au composant (lignes 30-32) ;</li>
-<li><strong>[:fields]</strong> : un tableau définissant la mise en page de la table HTML (lignes 37-44) ;<ul>
-<li>chaque élément du tableau <strong>[fields]</strong> définit une colonne de la table HTML ;</li>
-<li><strong>[label]</strong> : désigne le titre de la colonne ;</li>
-<li><strong>[key]</strong> : désigne le contenu de la colonne ;</li>
+  <li><b>[lignes]</b> est un paramètre d’entrée du composant (lignes 29-33) ;
+  </li>
+  <li>lignes 4-10 : au lieu d’introduire un bloc de code avec une balise &lt;div&gt;, on a ici utilisé une balise &lt;template&gt;. la différence entre les deux est que la balise &lt;template&gt; n’est pas insérée dans le code HTML généré ;
+  </li>
+  <li>ligne 9 : lorsque la liste affichée par la table HTML est vide, un bouton propose de la régénérer. Lorsqu’on clique sur ce bouton, la méthode <b>[rechargerListe]</b> des lignes 57-62 est exécutée. Celle-ci se contente d’émettre vers le composant parent l’événement <b>[rechargerListe]</b> qui demande au parent de régénérer la liste affichée par la table HTML ;
+  </li>
+  <li>lignes 12-22 : le code affiché lorsque la liste à afficher n’est pas vide ;
+  </li>
+  <li>ligne 17 : la balise &lt;b-table&gt; est la balise qui génère une table HTML. Les attributs utilisés ici sont les suivants :
+    <ul>
+      <li><b>[striped]</b> : la couleur de fond des lignes alterne. Il y a une couleur pour les lignes paires et une autre pour les lignes impaires. Cela améliore la visibilité ;
+      </li>
+      <li><b>[hover]</b> : la ligne sur laquelle on passe la souris change de couleur ;
+      </li>
+      <li><b>[responsive]</b> : la taille de la table s’adapte à l’écran qui l’affiche ;
+      </li>
+      <li><b>[:items]</b> : le tableau des éléments à afficher. Ici le tableau <b>[lignes]</b> passé en paramètre au composant (lignes 30-32) ;
+      </li>
+      <li><b>[:fields]</b> : un tableau définissant la mise en page de la table HTML (lignes 37-44) ;
+        <ul>
+          <li>chaque élément du tableau <b>[fields]</b> définit une colonne de la table HTML ;
+          </li>
+          <li><b>[label]</b> : désigne le titre de la colonne ;
+          </li>
+          <li><b>[key]</b> : désigne le contenu de la colonne ;
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>ligne 38 : définit la colonne 0 de la table HTML :
+    <ul>
+      <li><b>[#]</b> : est le titre de la colonne ;
+      </li>
+      <li><b>[id]</b> : est son contenu. C’est le champ <b>[id]</b> de la ligne affichée qui remplira la colonne 0 ;
+      </li>
+    </ul>
+  </li>
+  <li>ligne 39 : définit la colonne 1 de la table HTML :
+    <ul>
+      <li><b>[Marié]</b> : est le titre de la colonne ;
+      </li>
+      <li><b>[marié]</b> : est son contenu. C’est le champ <b>[marié]</b> de la ligne affichée qui remplira la colonne 0 ;
+      </li>
+    </ul>
+  </li>
+  <li>ligne 43 : définit la dernière colonne de la table HTML :
+    <ul>
+      <li>la colonne n’a pas de titre ;
+      </li>
+      <li>son contenu est défini par un champ <b>[action]</b>, un champ qui n’existe pas dans les lignes affichées. Cette clé est référencée ligne 18 du <b>[template]</b>. La clé est donc utilisée ici uniquement pour identifier une colonne ;
+      </li>
+    </ul>
+  </li>
+  <li>lignes 18-20 : ce code sert à définir la dernière colonne de la table HTML, celle de clé <b>[action]</b> :
+  </li>
 </ul>
-</li>
-</ul>
-</li>
-<li>ligne 38 : définit la colonne 0 de la table HTML :<ul>
-<li><strong>[#]</strong> : est le titre de la colonne ;</li>
-<li><strong>[id]</strong> : est son contenu. C’est le champ <strong>[id]</strong> de la ligne affichée qui remplira la colonne 0 ;</li>
-</ul>
-</li>
-<li>ligne 39 : définit la colonne 1 de la table HTML :<ul>
-<li><strong>[Marié]</strong> : est le titre de la colonne ;</li>
-<li><strong>[marié]</strong> : est son contenu. C’est le champ <strong>[marié]</strong> de la ligne affichée qui remplira la colonne 0 ;</li>
-</ul>
-</li>
-<li>ligne 43 : définit la dernière colonne de la table HTML :<ul>
-<li>la colonne n’a pas de titre ;</li>
-<li>son contenu est défini par un champ <strong>[action]</strong>, un champ qui n’existe pas dans les lignes affichées. Cette clé est référencée ligne 18 du <strong>[template]</strong>. La clé est donc utilisée ici uniquement pour identifier une colonne ;</li>
-</ul>
-</li>
-<li>lignes 18-20 : ce code sert à définir la dernière colonne de la table HTML, celle de clé <strong>[action]</strong> :</li>
-</ul>
+
 <div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
 <span class="odt-code-line"><span style="color:#0000ff">&lt;</span><span style="color:#800000">template</span><span style="color:#000000"> </span><span style="color:#ff0000">v-slot:cell(action)</span><span style="color:#0000ff">=&quot;row&quot;&gt;</span></span>
 </code></pre></div>
@@ -1176,12 +1211,18 @@
 <p><img src="images/10000000000007D20000034311EC8DBA.png" style="width:13.241cm;height:5.52cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007D20000034311EC8DBA.png" /></p>
 <p>Dans la syntaxe <strong>[&lt;template v-slot:cell(action)=&quot;row&quot;&gt;]</strong>, le nom <strong>[row]</strong> désigne la ligne de la table. On peut utiliser le nom que l’on veut. On aurait pu écrire <strong>[&lt;template v-slot:cell(action)=&quot;ligne&quot;&gt;]</strong> ;</p>
 <ul>
-<li>ligne 19 : un bouton &lt;b-button&gt; affiché comme un lien <strong>[variant=’link’]</strong>. Un clic sur ce lien provoque l’exécution de la méthode <strong>[supprimerLigne(row.index)]</strong>. Ici <strong>[row]</strong> est le nom donné à la ligne de la table HTML, ligne 18 du code ;</li>
-<li>lignes 50-55 : la méthode <strong>[supprimerLigne]</strong> ;</li>
-<li>ligne 54 : on émet l’événement <strong>[supprimerLigne]</strong> vers le composant parent accompagné du n° de la ligne à supprimer ;</li>
-<li>lignes 57-62 : la méthode <strong>[rechargerListe]</strong> ;</li>
-<li>ligne 61 : on émet  l’événement <strong>[rechargerListe]</strong> vers le composant parent ;</li>
+  <li>ligne 19 : un bouton &lt;b-button&gt; affiché comme un lien <b>[variant=’link’]</b>. Un clic sur ce lien provoque l’exécution de la méthode <b>[supprimerLigne(row.index)]</b>. Ici <b>[row]</b> est le nom donné à la ligne de la table HTML, ligne 18 du code ;
+  </li>
+  <li>lignes 50-55 : la méthode <b>[supprimerLigne]</b> ;
+  </li>
+  <li>ligne 54 : on émet l’événement <b>[supprimerLigne]</b> vers le composant parent accompagné du n° de la ligne à supprimer ;
+  </li>
+  <li>lignes 57-62 : la méthode <b>[rechargerListe]</b> ;
+  </li>
+  <li>ligne 61 : on émet  l’événement <b>[rechargerListe]</b> vers le composant parent ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480912728496130"></a></p>
 <h2 id="144-execution-du-projet">14.4. Exécution du projet</h2>
 <p><img src="images/10000000000007080000025F4C64C426.png" style="width:11.911cm;height:4.01cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007080000025F4C64C426.png" /></p>

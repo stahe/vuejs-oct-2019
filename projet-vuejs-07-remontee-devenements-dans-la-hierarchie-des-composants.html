@@ -1017,14 +1017,20 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 1-3 : le composant <strong>[Component11]</strong> ne comporte qu’un bouton qu’on peut cliquer. Lorsqu’on le clique, la méthode <strong>[createEvent]</strong> des lignes 11-14 est exécutée ;</li>
-<li>ligne 13 : chaque instance <strong>[Vue]</strong> dispose d’une méthode <strong>[$emit]</strong> qui permet d’émettre un événement :<ul>
-<li>le 1er paramètre est le nom de l’événement émis ;</li>
-<li>le second paramètre est la donnée que l’on veut associer à cet événement ;</li>
-<li>l’événement émis remonte la hiérarchie des composants qui chapeautent le composant <strong>[Component11]</strong>. Il remonte la hiérarchie jusqu’à ce qu’il trouve un composant disposé à le traiter. Cette remontée commence par le composant parent de <strong>[Component11]</strong> ;</li>
+  <li>lignes 1-3 : le composant <b>[Component11]</b> ne comporte qu’un bouton qu’on peut cliquer. Lorsqu’on le clique, la méthode <b>[createEvent]</b> des lignes 11-14 est exécutée ;
+  </li>
+  <li>ligne 13 : chaque instance <b>[Vue]</b> dispose d’une méthode <b>[$emit]</b> qui permet d’émettre un événement :
+    <ul>
+      <li>le 1er paramètre est le nom de l’événement émis ;
+      </li>
+      <li>le second paramètre est la donnée que l’on veut associer à cet événement ;
+      </li>
+      <li>l’événement émis remonte la hiérarchie des composants qui chapeautent le composant <b>[Component11]</b>. Il remonte la hiérarchie jusqu’à ce qu’il trouve un composant disposé à le traiter. Cette remontée commence par le composant parent de <b>[Component11]</b> ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p><a id="refheadingtoc2480132728496130"></a></p>
 <h2 id="94-le-composant-component1">9.4. Le composant [Component1]</h2>
 <p>Le code du composant <strong>[Component1]</strong> est le suivant :</p>
@@ -1077,11 +1083,16 @@
 <p><img src="images/10000000000007AA000001F7AAB0105E.png" style="width:12.981cm;height:3.331cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000007AA000001F7AAB0105E.png" /></p>
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>ligne 5 : <strong>[Component1]</strong> est parent de <strong>[Component11]</strong> et peut donc ‘écouter’ (c’est le terme) les événements émis par ce composant. On sait que celui-ci peut émettre l’événement <strong>[someEvent]</strong>. L’attribut <strong>[@someEvent=&quot;doSomething&quot;]</strong> indique que si l’événement <strong>[someEvent]</strong> émis par <strong>[Component11]</strong> se produit, alors la méthode <strong>[doSomething]</strong> de la ligne 33 doit être exécutée ;</li>
-<li>lignes 9-11 : un message affiché par la méthode <strong>[doSomething]</strong>. Son affichage est contrôlé par le booléen <strong>[showMsg]</strong> de la ligne 28. L’alerte affiche l’attribut <strong>[data]</strong> de la ligne 27 ;</li>
-<li>ligne 33 : la méthode <strong>[doSomething]</strong> exécutée lorsque l’événement <strong>[someEvent]</strong> se produit ligne 5, reçoit comme paramètre la donnée <strong>[data]</strong> associée à cet événement. Ce paramètre est affecté à l’attribut <strong>[data]</strong> de la ligne 27 et qui est affiché par la ligne 11 ;</li>
-<li>ligne 37 : on met l’attribut <strong>[showMsg]</strong> à <strong>[true]</strong> pour afficher l’alerte des lignes 9-11 ;</li>
+  <li>ligne 5 : <b>[Component1]</b> est parent de <b>[Component11]</b> et peut donc ‘écouter’ (c’est le terme) les événements émis par ce composant. On sait que celui-ci peut émettre l’événement <b>[someEvent]</b>. L’attribut <b>[@someEvent=&quot;doSomething&quot;]</b> indique que si l’événement <b>[someEvent]</b> émis par <b>[Component11]</b> se produit, alors la méthode <b>[doSomething]</b> de la ligne 33 doit être exécutée ;
+  </li>
+  <li>lignes 9-11 : un message affiché par la méthode <b>[doSomething]</b>. Son affichage est contrôlé par le booléen <b>[showMsg]</b> de la ligne 28. L’alerte affiche l’attribut <b>[data]</b> de la ligne 27 ;
+  </li>
+  <li>ligne 33 : la méthode <b>[doSomething]</b> exécutée lorsque l’événement <b>[someEvent]</b> se produit ligne 5, reçoit comme paramètre la donnée <b>[data]</b> associée à cet événement. Ce paramètre est affecté à l’attribut <b>[data]</b> de la ligne 27 et qui est affiché par la ligne 11 ;
+  </li>
+  <li>ligne 37 : on met l’attribut <b>[showMsg]</b> à <b>[true]</b> pour afficher l’alerte des lignes 9-11 ;
+  </li>
 </ul>
+
 <p><a id="refheadingtoc2480152728496130"></a></p>
 <h2 id="95-execution-du-projet">9.5. Exécution du projet</h2>
 <p><img src="images/100000000000070F00000202C3A97AFF.png" style="width:14.341cm;height:4.081cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000070F00000202C3A97AFF.png" /></p>

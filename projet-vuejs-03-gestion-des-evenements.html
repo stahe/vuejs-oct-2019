@@ -951,9 +951,12 @@
 <h1 id="5-projet-vuejs-03-gestion-des-evenements">5. projet [vuejs-03] : gestion des événements</h1>
 <p>Le projet <strong>[vuejs-03]</strong> introduit deux concepts :</p>
 <ul>
-<li>la gestion d’un événement <strong>[clic]</strong> sur un bouton ;</li>
-<li>la directive <strong>[v-if]</strong> qui permet d’afficher un bloc HTML de façon conditionnelle ;</li>
+  <li>la gestion d’un événement <b>[clic]</b> sur un bouton ;
+  </li>
+  <li>la directive <b>[v-if]</b> qui permet d’afficher un bloc HTML de façon conditionnelle ;
+  </li>
 </ul>
+
 <p>L’arborescence du projet est la suivante :</p>
 <p><img src="images/100000000000011F00000132AC670D58.png" style="width:2.661cm;height:2.83cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/100000000000011F00000132AC670D58.png" /></p>
 <p><a id="refheadingtoc2479652728496130"></a></p>
@@ -1077,48 +1080,78 @@
 
 <p><strong>Commentaires</strong></p>
 <ul>
-<li>lignes 4-6 : une alerte verte Bootstrap. Le nombre de colonnes occupées n’est pas indiqué. Ce sont alors les 12 colonnes de Bootstrap qui sont utilisées ;</li>
-<li>lignes 8-10 : une alerte jaune Bootstrap :<ul>
-<li>ligne 8 : la directive <strong>[v-if]</strong> de <strong>[Vue.js]</strong> contrôle la visibilité d’un bloc HTML. L’alerte est ici contrôlée par un booléen <strong>[show]</strong> (ligne 29). Si <strong>[show==true]</strong> alors l’alerte sera visible sinon elle ne le sera pas ;</li>
-<li>ligne 9 : l’alerte affiche un message <strong>[msg]</strong> qui est une propriété (lignes 20-22) du composant ;</li>
+  <li>lignes 4-6 : une alerte verte Bootstrap. Le nombre de colonnes occupées n’est pas indiqué. Ce sont alors les 12 colonnes de Bootstrap qui sont utilisées ;
+  </li>
+  <li>lignes 8-10 : une alerte jaune Bootstrap :
+    <ul>
+      <li>ligne 8 : la directive <b>[v-if]</b> de <b>[Vue.js]</b> contrôle la visibilité d’un bloc HTML. L’alerte est ici contrôlée par un booléen <b>[show]</b> (ligne 29). Si <b>[show==true]</b> alors l’alerte sera visible sinon elle ne le sera pas ;
+      </li>
+      <li>ligne 9 : l’alerte affiche un message <b>[msg]</b> qui est une propriété (lignes 20-22) du composant ;
+      </li>
+    </ul>
+  </li>
+  <li>ligne 12 : un bouton de couleur bleue sur laquelle on clique pour cacher / montrer l’alerte <b>[warning]</b> ;
+  </li>
+  <li>lignes 16-48 : le code jS du composant. Ce code règle le fonctionnement dynamique du composant :
+  </li>
+  <li>lignes 20-22 : les propriétés du composant ;
+  </li>
+  <li>lignes 24-31 : les attributs du composant ;
+  </li>
 </ul>
-</li>
-<li>ligne 12 : un bouton de couleur bleue sur laquelle on clique pour cacher / montrer l’alerte <strong>[warning]</strong> ;</li>
-<li>lignes 16-48 : le code jS du composant. Ce code règle le fonctionnement dynamique du composant :</li>
-<li>lignes 20-22 : les propriétés du composant ;</li>
-<li>lignes 24-31 : les attributs du composant ;</li>
-</ul>
+
 <p>Quelle est la différence entre <strong>[propriétés]</strong> et <strong>[attributs]</strong> d’un composant, entre les champs <strong>[props]</strong> et <strong>[data]</strong> de l’objet exporté par le composant aux lignes 17-47 ?</p>
 <ul>
-<li>comme nous l’avons déjà vu, les propriétés <strong>[props]</strong> d’un composant sont des paramètres du composant. Leurs valeurs sont fixées de l’<strong>extérieur</strong> du composant. Un composant A utilisant un composant B ayant les propriétés <strong>[prop1, prop2, ..., propn]</strong> l’utilisera de la façon suivante : <strong>&lt;B :prop1=’val1’ :prop2=’val2’ ...&gt;</strong> ;</li>
-<li>l’objet rendu par la fonction <strong>[data]</strong> des lignes 24-31 représente l’état du composant ou <strong>attributs</strong> du composant. Cet état est manipulé par les méthodes du composant (lignes 33-46). Le &lt;template&gt; des lignes 1-14 utilise aussi bien des éléments <strong>[propriétés]</strong> que <strong>[attributs]</strong> :<ul>
-<li>les valeurs des propriétés sont fixées par un composant parent ;</li>
-<li>les valeurs des attributs sont fixées initialement par la fonction <strong>[data]</strong> puis peuvent être modifiées par les méthodes ;</li>
-<li>dans les deux cas, le rendu visuel <strong>réagit</strong> immédiatement aux changements d’une propriété (composant parent) ou d’un attribut (méthode du composant). On parle alors d’interface <strong>réactive</strong> ;</li>
+  <li>comme nous l’avons déjà vu, les propriétés <b>[props]</b> d’un composant sont des paramètres du composant. Leurs valeurs sont fixées de l’<b>extérieur</b> du composant. Un composant A utilisant un composant B ayant les propriétés <b>[prop1, prop2, ..., propn]</b> l’utilisera de la façon suivante : <b>&lt;B :prop1=’val1’ :prop2=’val2’ ...&gt;</b> ;
+  </li>
+  <li>l’objet rendu par la fonction <b>[data]</b> des lignes 24-31 représente l’état du composant ou <b>attributs</b> du composant. Cet état est manipulé par les méthodes du composant (lignes 33-46). Le &lt;template&gt; des lignes 1-14 utilise aussi bien des éléments <b>[propriétés]</b> que <b>[attributs]</b> :
+    <ul>
+      <li>les valeurs des propriétés sont fixées par un composant parent ;
+      </li>
+      <li>les valeurs des attributs sont fixées initialement par la fonction <b>[data]</b> puis peuvent être modifiées par les méthodes ;
+      </li>
+      <li>dans les deux cas, le rendu visuel <b>réagit</b> immédiatement aux changements d’une propriété (composant parent) ou d’un attribut (méthode du composant). On parle alors d’interface <b>réactive</b> ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p>Dans le <strong>[template]</strong> d’un composant, rien ne diffère une propriété <strong>[prop]</strong> d’un attribut <strong>[data]</strong>. Pour savoir si une donnée dynamique du <strong>[template]</strong> doit être mise dans l’attribut <strong>[props]</strong> ou dans l’objet rendu par la fonction <strong>[data]</strong>, il faut simplement se demander qui fixe la valeur de cette donnée :</p>
 <ul>
-<li>si la réponse est le composant parent, alors on mettra la donnée dans l’attribut <strong>[props]</strong> ;</li>
-<li>si la réponse est la méthode gérant tel événement du composant, alors on mettra la donnée dans l’objet rendu par la fonction <strong>[data]</strong> ;</li>
+  <li>si la réponse est le composant parent, alors on mettra la donnée dans l’attribut <b>[props]</b> ;
+  </li>
+  <li>si la réponse est la méthode gérant tel événement du composant, alors on mettra la donnée dans l’objet rendu par la fonction <b>[data]</b> ;
+  </li>
 </ul>
+
 <p>Le <strong>[template]</strong> utilise ici les données dynamiques suivantes :</p>
 <ul>
-<li><strong>[show]</strong>, ligne 8. Cette donnée est manipulée en interne par la méthode <strong>[changer]</strong> qui gère l’événement <strong>[click]</strong> sur le bouton de la ligne 12. C’est donc un attribut construit par la fonction <strong>[data]</strong> (ligne 29) ;</li>
-<li><strong>[msg]</strong>, ligne 9. C’est un message fixé par le composant parent. On le met donc dans l’attribut <strong>[props]</strong> (ligne 21) ;</li>
-<li><strong>[buttonTitle]</strong> ligne 12. Cette donnée est manipulée en interne par la méthode <strong>[changer]</strong> qui gère l’événement <strong>[click]</strong> sur le bouton de la ligne 12. C’est donc un attribut construit par la fonction <strong>[data]</strong> (ligne 27) ;</li>
-<li>les noms des attributs <strong>[name, props, data, methods]</strong> de l’objet exporté par le composant sont prédéfinis. On ne peut pas utiliser d’autres noms ;</li>
-<li>ligne 12 : l’attribut <strong>[@click]</strong> du bouton sert à désigner la méthode qui doit réagir au clic sur le bouton. Cette méthode doit se trouver dans la propriété <strong>[methods]</strong> du composant ;</li>
-<li>ligne 33 : l’attribut <strong>[methods]</strong> du composant réunit toutes les méthodes de celui-ci. La plupart du temps ce sont des fonctions qui réagissent à un événement du composant ;</li>
-<li>lignes 35-46 : la méthode <strong>[changer]</strong> est appelée lorsque l’utilisateur clique sur le bouton :<ul>
-<li>si l’alerte <strong>[warning]</strong> est affichée alors elle est cachée et le texte du bouton devient <strong>[Montrer]</strong> (ligne 39) ;</li>
-<li>si l’alerte <strong>[warning]</strong> est cachée alors elle est affichée et le texte du bouton devient <strong>[Cacher]</strong> (ligne 43) ;</li>
-<li>pour afficher / cacher l’alerte <strong>[warning]</strong>, on modifie la valeur du booléen <strong>[show]</strong> (lignes 38 et 42) ;</li>
-<li>lorsqu’une méthode doit référencer l’attribut <strong>[attr]</strong> rendu par la fonction <strong>[data]</strong>, on écrit <strong>[this.attr]</strong> (lignes 38 et 42). Cela signifie que les attributs de l’objet rendu par la fonction <strong>[data]</strong> sont des attributs directs du composant <strong>[this]</strong> ;</li>
+  <li><b>[show]</b>, ligne 8. Cette donnée est manipulée en interne par la méthode <b>[changer]</b> qui gère l’événement <b>[click]</b> sur le bouton de la ligne 12. C’est donc un attribut construit par la fonction <b>[data]</b> (ligne 29) ;
+  </li>
+  <li><b>[msg]</b>, ligne 9. C’est un message fixé par le composant parent. On le met donc dans l’attribut <b>[props]</b> (ligne 21) ;
+  </li>
+  <li><b>[buttonTitle]</b> ligne 12. Cette donnée est manipulée en interne par la méthode <b>[changer]</b> qui gère l’événement <b>[click]</b> sur le bouton de la ligne 12. C’est donc un attribut construit par la fonction <b>[data]</b> (ligne 27) ;
+  </li>
+  <li>les noms des attributs <b>[name, props, data, methods]</b> de l’objet exporté par le composant sont prédéfinis. On ne peut pas utiliser d’autres noms ;
+  </li>
+  <li>ligne 12 : l’attribut <b>[@click]</b> du bouton sert à désigner la méthode qui doit réagir au clic sur le bouton. Cette méthode doit se trouver dans la propriété <b>[methods]</b> du composant ;
+  </li>
+  <li>ligne 33 : l’attribut <b>[methods]</b> du composant réunit toutes les méthodes de celui-ci. La plupart du temps ce sont des fonctions qui réagissent à un événement du composant ;
+  </li>
+  <li>lignes 35-46 : la méthode <b>[changer]</b> est appelée lorsque l’utilisateur clique sur le bouton :
+    <ul>
+      <li>si l’alerte <b>[warning]</b> est affichée alors elle est cachée et le texte du bouton devient <b>[Montrer]</b> (ligne 39) ;
+      </li>
+      <li>si l’alerte <b>[warning]</b> est cachée alors elle est affichée et le texte du bouton devient <b>[Cacher]</b> (ligne 43) ;
+      </li>
+      <li>pour afficher / cacher l’alerte <b>[warning]</b>, on modifie la valeur du booléen <b>[show]</b> (lignes 38 et 42) ;
+      </li>
+      <li>lorsqu’une méthode doit référencer l’attribut <b>[attr]</b> rendu par la fonction <b>[data]</b>, on écrit <b>[this.attr]</b> (lignes 38 et 42). Cela signifie que les attributs de l’objet rendu par la fonction <b>[data]</b> sont des attributs directs du composant <b>[this]</b> ;
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-</ul>
+
 <p><a id="refheadingtoc2479712728496130"></a></p>
 <h2 id="54-execution-du-projet">5.4. Exécution du projet</h2>
 <p><img src="images/10000000000003F6000002088D07FD55.png" style="width:8.051cm;height:4.121cm;" alt="Image" class="odt-zoomable" data-zoom-src="images/10000000000003F6000002088D07FD55.png" /></p>
