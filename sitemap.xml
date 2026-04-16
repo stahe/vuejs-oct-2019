@@ -2,86 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/index.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/ameliorations-du-client-vuejs.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/client-vuejs-du-serveur-de-calcul-de-limpot.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/creation-dun-environnement-de-travail.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/deploiement-de-lapplication-client--serveur-sur-un-service-dhebergement.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/introduction-au-framework-vuejs.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-01-les-bases.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-02-utilisation-du-framework-css-bootstrap.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-03-gestion-des-evenements.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-04-directives-v-model-v-bind-attributs-calcules-formulaire-de-saisie.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-05-directive-v-for.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-06-mise-en-page-dune-vue-avec-des-slots.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-07-remontee-devenements-dans-la-hierarchie-des-composants.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-08-evenements-independants-de-la-hierarchie-des-composants-cycle-de-vie-des-composants.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-09-utilisation-dun-plugin-eventbus.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-10-plugin-dao-requetes-http-asynchrones.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-11-routage-et-navigation.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-12-gestion-des-tables-html.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-13-mise-a-jour-dun-composant-utilisation-dune-session.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-14-rendre-la-session-reactive.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
     <url>
          <loc>https://stahe.github.io/vuejs-oct-2019/projet-vuejs-15-utilisation-du-plugin-vuex.html</loc>
-         <lastmod>2026-03-24</lastmod>
+         <lastmod>2026-04-16</lastmod>
     </url>
 </urlset>
